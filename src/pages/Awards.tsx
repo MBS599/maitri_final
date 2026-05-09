@@ -108,7 +108,7 @@ export default function Awards() {
               variants={fadeInUp}
               className="text-lg max-w-2xl mx-auto opacity-90 leading-relaxed"
             >
-              A decade of dedicated service recognized by global institutions. These awards are a testament to our volunteers, donors, and the communities we serve.
+              A decade of dedicated service recognized by esteemed institutions. These awards are a testament to our volunteers, donors, and the communities we serve.
             </motion.p>
           </motion.div>
         </div>
@@ -193,7 +193,7 @@ export default function Awards() {
           viewport={{ once: true }}
         >
           {[
-            { value: '25+', label: 'National & International Awards' },
+            { value: '25+', label: 'National & State Level Awards' },
             { value: '100k', label: 'Lives Impacted Annually' },
             { value: '10y', label: 'Of Continuous Service' }
           ].map((stat, idx) => (

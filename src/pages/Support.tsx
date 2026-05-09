@@ -170,8 +170,8 @@ export default function Support() {
           >
             {[
               { val: '100%', label: 'Funds Allocation' },
-              { val: '50k+', label: 'Lives Impacted' },
-              { val: '120+', label: 'Projects Completed' },
+              { val: '5k+', label: 'Lives Impacted' },
+              { val: '150+', label: 'Projects Completed' },
               { val: '24/7', label: 'Donor Support' }
             ].map((stat, idx) => (
               <motion.div

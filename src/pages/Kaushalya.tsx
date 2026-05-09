@@ -1,6 +1,12 @@
+import React from 'react';
 import { motion } from 'motion/react';
-import { Sparkles, Heart, BookOpen, Scissors, TrendingUp, ArrowRight } from 'lucide-react';
+import { Sparkles, Heart, BookOpen, Scissors, TrendingUp, ArrowRight, Send, Loader2, Award, Youtube, Mic } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useState, useRef, useEffect } from 'react';
+import award2023 from '../assets/team/award_2023.png';
+import award2024 from '../assets/team/award_2024.png';
+import award2025 from '../assets/team/award_2025.png';
+import { toast } from 'sonner';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -12,8 +18,8 @@ const containerVariants = {
 
 const itemVariants = {
   hidden: { y: 25, opacity: 0 },
-  visible: { 
-    y: 0, 
+  visible: {
+    y: 0,
     opacity: 1,
     transition: { duration: 0.5, ease: "easeOut" }
   }
@@ -40,11 +46,75 @@ const scaleIn = {
 };
 
 export default function Kaushalya() {
+  const [isSending, setIsSending] = useState(false);
+  const [captcha, setCaptcha] = useState({ question: '', answer: 0 });
+  const [userCaptcha, setUserCaptcha] = useState('');
+  const formRef = useRef<HTMLFormElement>(null);
+
+  const generateCaptcha = () => {
+    const num1 = Math.floor(Math.random() * 10) + 1;
+    const num2 = Math.floor(Math.random() * 10) + 1;
+    setCaptcha({
+      question: `What is ${num1} + ${num2}?`,
+      answer: num1 + num2
+    });
+    setUserCaptcha('');
+  };
+
+  useEffect(() => {
+    generateCaptcha();
+  }, []);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!formRef.current) return;
+
+    if (parseInt(userCaptcha) !== captcha.answer) {
+      toast.error('Incorrect CAPTCHA answer. Please try again.');
+      generateCaptcha();
+      return;
+    }
+
+    setIsSending(true);
+    const formData = new FormData(formRef.current);
+
+    try {
+      const sheetData = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        phone: formData.get('phone'),
+        expertise: formData.get('expertise'),
+        message: formData.get('message'),
+        applied_at: "'" + new Date().toLocaleString()
+      };
+
+      const SHEETDB_URL = 'https://sheetdb.io/api/v1/szlyae3x9dd1o?sheet=Sheet3';
+      const res = await fetch(SHEETDB_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ data: [sheetData] })
+      });
+
+      if (res.ok) {
+        toast.success('Mentorship application submitted successfully!');
+        formRef.current?.reset();
+        generateCaptcha();
+      } else {
+        throw new Error('Submission failed');
+      }
+    } catch (error) {
+      console.error('Submission Error:', error);
+      toast.error('Failed to submit application. Please try again.');
+    } finally {
+      setIsSending(false);
+    }
+  };
+
   return (
     <div className="pt-20">
       {/* Hero Section */}
       <section className="relative h-[550px] flex items-center overflow-hidden bg-primary text-on-primary">
-        <motion.div 
+        <motion.div
           className="absolute inset-0 z-0 opacity-20"
           initial={{ scale: 1.15 }}
           animate={{ scale: 1 }}
@@ -72,13 +142,13 @@ export default function Kaushalya() {
               </motion.div>
               <span className="font-bold tracking-widest uppercase text-xs">Women Empowerment Initiative</span>
             </motion.div>
-            <motion.h1 
+            <motion.h1
               variants={itemVariants}
               className="text-5xl md:text-6xl font-extrabold mb-6 leading-tight"
             >
               Kaushalya: Skill, Strength & Success
             </motion.h1>
-            <motion.p 
+            <motion.p
               variants={itemVariants}
               className="text-lg opacity-90 mb-8 leading-relaxed"
             >
@@ -107,7 +177,7 @@ export default function Kaushalya() {
           >
             <motion.h2 variants={fadeInUp} className="text-4xl font-bold text-primary mb-6">Empowering Half the Sky</motion.h2>
             <motion.p variants={fadeInUp} className="text-on-surface-variant leading-relaxed text-lg">
-              The 'Kaushalya' initiative focuses on bridging the skill gap for women in marginalized communities. 
+              The 'Kaushalya' initiative focuses on bridging the skill gap for women in marginalized communities.
               We believe that when you empower a woman, you empower an entire family and ultimately, the nation.
             </motion.p>
           </motion.div>
@@ -117,7 +187,7 @@ export default function Kaushalya() {
       {/* Core Programs */}
       <section className="py-24 bg-surface-container-low">
         <div className="max-w-7xl mx-auto px-6">
-          <motion.div 
+          <motion.div
             className="grid grid-cols-1 md:grid-cols-3 gap-8"
             variants={containerVariants}
             initial="hidden"
@@ -148,7 +218,7 @@ export default function Kaushalya() {
                 transition={{ type: "spring", stiffness: 300 }}
                 className="bg-surface p-10 rounded-3xl shadow-sm border border-outline-variant/30 transition-all group"
               >
-                <motion.div 
+                <motion.div
                   className="w-14 h-14 bg-primary-container text-on-primary-container rounded-2xl flex items-center justify-center mb-6 shadow-md"
                   whileHover={{ scale: 1.15, rotate: 5 }}
                   transition={{ type: "spring", stiffness: 400 }}
@@ -157,6 +227,150 @@ export default function Kaushalya() {
                 </motion.div>
                 <h3 className="text-2xl font-bold text-primary mb-4">{program.title}</h3>
                 <p className="text-on-surface-variant text-sm leading-relaxed">{program.desc}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Naarishakti Podcast Section */}
+      <section className="py-24 bg-surface overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex flex-col md:flex-row items-center gap-16">
+            <motion.div
+              className="flex-1"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeInLeft}
+            >
+              <div className="flex items-center gap-2 mb-4">
+                <div className="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center">
+                  <Youtube className="w-5 h-5" />
+                </div>
+                <span className="text-secondary font-bold tracking-widest uppercase text-xs">Annual Navratri Event</span>
+              </div>
+              <h2 className="text-4xl font-bold text-primary mb-6">Naarishakti: Celebrating the Goddess Within</h2>
+              <p className="text-on-surface-variant text-lg leading-relaxed mb-8">
+                Every year during the auspicious days of Navratri, we host <strong>Naarishakti</strong>—a tribute to the women who tirelessly serve society. We facilitate these extraordinary women and share their inspiring life journeys through our dedicated YouTube podcast series.
+              </p>
+              <div className="space-y-4">
+                {[
+                  "Annual Felicitation of Social Workers",
+                  "Deep-dive Podcast Interviews",
+                  "Spreading Inspiration Worldwide",
+                  "Community-driven Recognition"
+                ].map((point, i) => (
+                  <div key={i} className="flex items-center gap-3">
+                    <div className="w-2 h-2 rounded-full bg-secondary"></div>
+                    <span className="text-on-surface font-medium">{point}</span>
+                  </div>
+                ))}
+              </div>
+              <motion.div
+                className="mt-10"
+                whileHover={{ x: 5 }}
+              >
+                <a
+                  href="https://www.youtube.com/@maitriwelfarefoundation_"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 text-primary font-bold hover:text-secondary transition-colors"
+                >
+                  Watch our Podcast Series <ArrowRight className="w-5 h-5" />
+                </a>
+              </motion.div>
+            </motion.div>
+            <motion.div
+              className="flex-1 relative"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeInRight}
+            >
+              <div className="relative aspect-video rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white group">
+                <img
+                  src="https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260"
+                  alt="Naarishakti Podcast"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-primary/20 flex items-center justify-center">
+                  <div className="w-20 h-20 bg-white/90 rounded-full flex items-center justify-center shadow-2xl animate-pulse">
+                    <div className="w-0 h-0 border-t-[10px] border-t-transparent border-l-[18px] border-l-primary border-b-[10px] border-b-transparent ml-1"></div>
+                  </div>
+                </div>
+              </div>
+              {/* Floating element */}
+              <motion.div
+                className="absolute -bottom-10 -left-10 bg-white p-6 rounded-3xl shadow-xl border border-outline-variant/30 hidden md:block"
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center text-red-600">
+                    <Mic className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <div className="text-xs font-bold text-on-surface-variant uppercase">Latest Episode</div>
+                    <div className="text-sm font-bold text-primary">Voices of Resilience</div>
+                  </div>
+                </div>
+              </motion.div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Narishakti Awardees Gallery */}
+      <section className="py-24 bg-surface-container-low">
+        <div className="max-w-7xl mx-auto px-6">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={containerVariants}
+            className="text-center mb-16"
+          >
+            <span className="text-secondary font-bold tracking-widest uppercase text-xs">Hall of Fame</span>
+            <h2 className="text-4xl font-bold text-primary mt-2">Our Narishakti Awardees</h2>
+          </motion.div>
+
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            {[
+              { year: '2025', img: award2025, title: 'Narishakti 2025' },
+              { year: '2024', img: award2024, title: 'Narishakti 2024' },
+              { year: '2023', img: award2023, title: 'Narishakti 2023' }
+            ].map((awardee, idx) => (
+              <motion.div
+                key={idx}
+                variants={itemVariants}
+                whileHover={{ y: -10 }}
+                className="bg-white rounded-[2.5rem] overflow-hidden shadow-sm border border-outline-variant/30 group"
+              >
+                <div className="aspect-[3/4] overflow-hidden relative">
+                  <motion.img
+                    src={awardee.img}
+                    alt={awardee.title}
+                    className="w-full h-full object-cover"
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ duration: 0.6 }}
+                  />
+                  <div className="absolute top-6 right-6 bg-primary text-on-primary px-4 py-1 rounded-full text-sm font-bold shadow-xl">
+                    {awardee.year}
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-8">
+                    <p className="text-white text-sm font-medium italic">"Recognized for exceptional service to society"</p>
+                  </div>
+                </div>
+                <div className="p-8 text-center">
+                  <h4 className="text-xl font-bold text-primary">{awardee.title}</h4>
+                </div>
               </motion.div>
             ))}
           </motion.div>
@@ -183,7 +397,7 @@ export default function Kaushalya() {
                   transition={{ duration: 0.6 }}
                 />
               </div>
-              <motion.div 
+              <motion.div
                 className="absolute -bottom-6 -right-6 bg-secondary text-on-secondary p-8 rounded-2xl shadow-xl max-w-[280px]"
                 initial={{ opacity: 0, y: 30, scale: 0.9 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
@@ -191,7 +405,7 @@ export default function Kaushalya() {
                 transition={{ delay: 0.5, duration: 0.5, type: "spring" }}
               >
                 <p className="text-sm italic font-medium">"Kaushalya gave me the wings to fly and the skills to feed my family."</p>
-                <motion.span 
+                <motion.span
                   className="block mt-4 font-bold text-xs"
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
@@ -202,7 +416,7 @@ export default function Kaushalya() {
                 </motion.span>
               </motion.div>
             </motion.div>
-            
+
             <motion.div
               variants={containerVariants}
               initial="hidden"
@@ -213,23 +427,23 @@ export default function Kaushalya() {
               <motion.p variants={fadeInRight} className="text-on-surface-variant mb-10 leading-relaxed">
                 Since its inception, Kaushalya has trained over 200 women in various skills. Many have started their own small ventures, while others have found stable employment in the local industry.
               </motion.p>
-              
-              <motion.div 
+
+              <motion.div
                 className="grid grid-cols-2 gap-8"
                 variants={containerVariants}
               >
                 {[
-                  { value: '200+', label: 'Women Trained' },
+                  { value: '100+', label: 'Women Trained' },
                   { value: '50+', label: 'Micro-Enterprises' }
                 ].map((stat, idx) => (
-                  <motion.div 
+                  <motion.div
                     key={idx}
                     variants={itemVariants}
                     whileHover={{ scale: 1.05, y: -5 }}
                     transition={{ type: "spring", stiffness: 300 }}
                     className="p-6 bg-surface-container rounded-2xl border border-outline-variant/30 text-center"
                   >
-                    <motion.span 
+                    <motion.span
                       className="text-3xl font-extrabold text-secondary mb-1 block"
                       initial={{ scale: 0.5, opacity: 0 }}
                       whileInView={{ scale: 1, opacity: 1 }}
@@ -242,16 +456,150 @@ export default function Kaushalya() {
                   </motion.div>
                 ))}
               </motion.div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
 
-              <motion.div 
-                variants={fadeInRight}
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-              >
-                <Link to="/volunteer" className="mt-12 inline-flex items-center gap-2 bg-primary text-on-primary px-10 py-4 rounded-full font-bold hover:shadow-xl transition-all">
-                  Become a Mentor <ArrowRight className="w-5 h-5" />
-                </Link>
-              </motion.div>
+      {/* Mentor Form Section */}
+      <section className="py-24 bg-surface-container-low border-t border-outline-variant/20" id="mentor-form">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeInLeft}
+            >
+              <span className="text-secondary font-bold tracking-widest uppercase text-xs">Join Us</span>
+              <h2 className="text-4xl font-bold text-primary mt-2 mb-6">Become a Mentor</h2>
+              <p className="text-on-surface-variant mb-8 leading-relaxed">
+                Your expertise can change lives. Share your skills and experience with our students to help them achieve their dreams of independence.
+              </p>
+              <div className="space-y-6">
+                {[
+                  { title: 'Share Your Expertise', desc: 'Guide students in tailoring, digital literacy, or business management.' },
+                  { title: 'Flexible Commitment', desc: 'Choose a schedule that works for you, from weekly to monthly sessions.' },
+                  { title: 'Direct Impact', desc: 'See firsthand the transformation your mentorship brings to these women.' }
+                ].map((item, idx) => (
+                  <div key={idx} className="flex gap-4">
+                    <div className="w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center shrink-0">
+                      <Award className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-primary">{item.title}</h4>
+                      <p className="text-sm text-on-surface-variant">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeInRight}
+              className="bg-white p-8 md:p-12 rounded-[32px] border border-outline-variant/20 shadow-xl"
+            >
+              <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <label className="text-xs font-bold uppercase tracking-wider text-primary">Full Name <span className="text-red-500">*</span></label>
+                    <input
+                      required
+                      name="name"
+                      type="text"
+                      placeholder="John Doe"
+                      className="w-full bg-surface border border-outline-variant/50 rounded-2xl px-5 py-4 focus:outline-none focus:border-primary transition-all text-sm"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-xs font-bold uppercase tracking-wider text-primary">Email Address <span className="text-red-500">*</span></label>
+                    <input
+                      required
+                      name="email"
+                      type="email"
+                      placeholder="john@example.com"
+                      className="w-full bg-surface border border-outline-variant/50 rounded-2xl px-5 py-4 focus:outline-none focus:border-primary transition-all text-sm"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <label className="text-xs font-bold uppercase tracking-wider text-primary">Phone Number <span className="text-red-500">*</span></label>
+                    <input
+                      required
+                      name="phone"
+                      type="tel"
+                      placeholder="+91 98765 43210"
+                      className="w-full bg-surface border border-outline-variant/50 rounded-2xl px-5 py-4 focus:outline-none focus:border-primary transition-all text-sm"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-xs font-bold uppercase tracking-wider text-primary">Expertise / Skill <span className="text-red-500">*</span></label>
+                    <input
+                      required
+                      name="expertise"
+                      type="text"
+                      placeholder="e.g. Tailoring, Finance"
+                      className="w-full bg-surface border border-outline-variant/50 rounded-2xl px-5 py-4 focus:outline-none focus:border-primary transition-all text-sm"
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-xs font-bold uppercase tracking-wider text-primary">Message / Motivation <span className="text-red-500">*</span></label>
+                  <textarea
+                    required
+                    name="message"
+                    rows={4}
+                    placeholder="Tell us why you'd like to join as a mentor..."
+                    className="w-full bg-surface border border-outline-variant/50 rounded-2xl px-5 py-4 focus:outline-none focus:border-primary transition-all text-sm resize-none"
+                  ></textarea>
+                </div>
+
+                <div className="bg-primary-container/30 p-6 rounded-2xl border border-primary-container/50">
+                  <label className="text-xs font-bold uppercase tracking-wider text-primary block mb-3">Security Check</label>
+                  <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <span className="text-lg font-bold text-primary bg-white px-6 py-3 rounded-xl border border-primary-container shadow-sm">
+                      {captcha.question}
+                    </span>
+                    <input
+                      required
+                      type="number"
+                      value={userCaptcha}
+                      onChange={(e) => setUserCaptcha(e.target.value)}
+                      placeholder="Your answer"
+                      className="w-full sm:w-40 bg-white border border-outline-variant/50 rounded-xl px-5 py-3 focus:outline-none focus:border-primary transition-all font-bold text-center"
+                    />
+                  </div>
+                </div>
+
+                <motion.button
+                  type="submit"
+                  disabled={isSending}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className={`w-full py-5 rounded-2xl font-bold text-lg shadow-xl flex items-center justify-center gap-3 transition-all ${isSending
+                      ? 'bg-outline-variant text-on-surface-variant cursor-not-allowed'
+                      : 'bg-primary text-on-primary hover:bg-primary/90'
+                    }`}
+                >
+                  {isSending ? (
+                    <>
+                      <Loader2 className="w-6 h-6 animate-spin" />
+                      Submitting Application...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-5 h-5" />
+                      Apply as Mentor
+                    </>
+                  )}
+                </motion.button>
+              </form>
             </motion.div>
           </div>
         </div>
@@ -259,7 +607,7 @@ export default function Kaushalya() {
 
       {/* CTA */}
       <section className="bg-primary py-24 text-center">
-        <motion.div 
+        <motion.div
           className="max-w-4xl mx-auto px-6"
           initial="hidden"
           whileInView="visible"
@@ -270,7 +618,7 @@ export default function Kaushalya() {
           <motion.p variants={fadeInUp} className="text-on-primary/70 mb-12 text-lg">
             We aim to reach 1000 women by 2025. Your donation can provide training kits, sewing machines, and expert mentorship.
           </motion.p>
-          <motion.div 
+          <motion.div
             variants={fadeInUp}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}

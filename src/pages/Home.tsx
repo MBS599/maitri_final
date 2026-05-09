@@ -14,8 +14,8 @@ export default function Home() {
 
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
-    visible: { 
-      y: 0, 
+    visible: {
+      y: 0,
       opacity: 1,
       transition: { duration: 0.5, ease: "easeOut" }
     }
@@ -61,7 +61,7 @@ export default function Home() {
             className="max-w-2xl text-on-primary"
           >
             <motion.div variants={itemVariants} className="flex items-center gap-3 mb-6">
-              <motion.div 
+              <motion.div
                 className="w-12 h-1 bg-secondary-container rounded-full"
                 initial={{ width: 0 }}
                 animate={{ width: 48 }}
@@ -69,13 +69,13 @@ export default function Home() {
               />
               <span className="font-bold tracking-widest uppercase text-xs">Established 2019</span>
             </motion.div>
-            <motion.h1 
+            <motion.h1
               variants={itemVariants}
               className="text-5xl md:text-6xl font-extrabold mb-6 leading-tight"
             >
               Maitri Welfare Foundation: Empowering Lives, Protecting Nature
             </motion.h1>
-            <motion.p 
+            <motion.p
               variants={itemVariants}
               className="text-lg opacity-90 mb-8 leading-relaxed"
             >
@@ -104,18 +104,18 @@ export default function Home() {
             className="grid grid-cols-1 md:grid-cols-3 gap-8"
           >
             {[
-              { label: 'Needy Helped', value: '500+' },
-              { label: 'Environmental Events', value: '100+' },
+              { label: 'Needy Helped', value: '5k+' },
+              { label: 'Environmental Events', value: '150+' },
               { label: 'Established', value: '2019' }
             ].map((stat, idx) => (
-              <motion.div 
-                key={idx} 
-                variants={itemVariants} 
+              <motion.div
+                key={idx}
+                variants={itemVariants}
                 whileHover={{ scale: 1.05, y: -5 }}
                 transition={{ type: "spring", stiffness: 300 }}
                 className="bg-surface p-10 rounded-2xl shadow-sm border border-outline-variant/30 text-center"
               >
-                <motion.span 
+                <motion.span
                   className="text-4xl font-extrabold text-secondary mb-2 block"
                   initial={{ scale: 0.5, opacity: 0 }}
                   whileInView={{ scale: 1, opacity: 1 }}
@@ -151,7 +151,7 @@ export default function Home() {
                   transition={{ duration: 0.6 }}
                 />
               </div>
-              <motion.div 
+              <motion.div
                 className="absolute -bottom-6 -right-6 bg-primary-container text-on-primary-container p-8 rounded-2xl shadow-xl max-w-[280px]"
                 initial={{ opacity: 0, y: 20, scale: 0.9 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
@@ -180,9 +180,9 @@ export default function Home() {
                   'Community-Driven Conservation Projects',
                   'Direct Support for Marginalized Families'
                 ].map((item, idx) => (
-                  <motion.li 
-                    key={idx} 
-                    variants={itemVariants} 
+                  <motion.li
+                    key={idx}
+                    variants={itemVariants}
                     className="flex items-center gap-3"
                     whileHover={{ x: 8 }}
                     transition={{ type: "spring", stiffness: 300 }}
@@ -207,7 +207,7 @@ export default function Home() {
       {/* Latest Events Preview */}
       <section className="py-24 bg-surface-container-low">
         <div className="max-w-7xl mx-auto px-6">
-          <motion.div 
+          <motion.div
             className="flex justify-between items-end mb-12"
             initial="hidden"
             whileInView="visible"
@@ -215,7 +215,7 @@ export default function Home() {
             variants={fadeInUp}
           >
             <div>
-              <motion.span 
+              <motion.span
                 className="text-secondary font-bold tracking-widest uppercase text-xs"
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -224,7 +224,7 @@ export default function Home() {
               >
                 Events
               </motion.span>
-              <motion.h3 
+              <motion.h3
                 className="text-3xl font-bold text-primary mt-2"
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -244,7 +244,7 @@ export default function Home() {
             </motion.div>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <motion.div 
+            <motion.div
               className="bg-surface rounded-2xl overflow-hidden shadow-md border border-outline-variant/20 group"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -260,7 +260,7 @@ export default function Home() {
                 />
               </div>
               <div className="p-6">
-                <motion.span 
+                <motion.span
                   className="bg-primary-container text-on-primary-container text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider inline-block"
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
@@ -292,7 +292,7 @@ export default function Home() {
               Follow our journey and become part of the change.
               We are always looking for passionate volunteers to help us grow our impact.
             </motion.p>
-            <motion.div 
+            <motion.div
               variants={fadeInUp}
               className="flex flex-col sm:flex-row gap-6 justify-center"
             >

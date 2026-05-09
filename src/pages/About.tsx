@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { Heart, Target, Lightbulb, Users, Globe, Shield } from 'lucide-react';
 import aboutHero from '../assets/hero.png';
+import fullTeam from '../assets/team/full_team.jpeg';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -18,8 +19,8 @@ const fadeInUp = {
 
 const itemVariants = {
   hidden: { y: 20, opacity: 0 },
-  visible: { 
-    y: 0, 
+  visible: {
+    y: 0,
     opacity: 1,
     transition: { duration: 0.5, ease: "easeOut" }
   }
@@ -62,7 +63,7 @@ export default function About() {
       {/* Mission & Vision Section */}
       <section className="py-16 max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <motion.div 
+          <motion.div
             className="bg-surface-container-low p-12 rounded-3xl border border-outline-variant/30 relative overflow-hidden group"
             initial="hidden"
             whileInView="visible"
@@ -82,7 +83,7 @@ export default function About() {
             </p>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             className="bg-surface-container-low p-12 rounded-3xl border border-outline-variant/30 relative overflow-hidden group"
             initial="hidden"
             whileInView="visible"
@@ -108,7 +109,7 @@ export default function About() {
       {/* Our Journey Section */}
       <section className="py-32 bg-surface-container-lowest overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
-          <motion.div 
+          <motion.div
             className="text-center mb-24"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -144,9 +145,9 @@ export default function About() {
               transition={{ duration: 0.8 }}
             >
               <div className="aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white">
-                <img 
-                  src="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=1260" 
-                  alt="Group of friends" 
+                <img
+                  src="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=1260"
+                  alt="Group of friends"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -164,9 +165,9 @@ export default function About() {
               transition={{ duration: 0.8 }}
             >
               <div className="aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white">
-                <img 
-                  src="https://images.pexels.com/photos/6646917/pexels-photo-6646917.jpeg?auto=compress&cs=tinysrgb&w=1260" 
-                  alt="Food donation" 
+                <img
+                  src="https://images.pexels.com/photos/6646917/pexels-photo-6646917.jpeg?auto=compress&cs=tinysrgb&w=1260"
+                  alt="Food donation"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -216,11 +217,11 @@ export default function About() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <div className="aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white">
-                <img 
-                  src="https://images.pexels.com/photos/3184391/pexels-photo-3184391.jpeg?auto=compress&cs=tinysrgb&w=1260" 
-                  alt="Modern young team" 
-                  className="w-full h-full object-cover"
+              <div className="aspect-video rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white bg-white">
+                <img
+                  src={fullTeam}
+                  alt="Maitri Welfare Foundation Team"
+                  className="w-full h-full object-contain"
                 />
               </div>
               <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-secondary/10 rounded-full blur-3xl -z-10"></div>
@@ -232,7 +233,7 @@ export default function About() {
       {/* Core Values */}
       <section className="bg-primary text-on-primary py-24">
         <div className="max-w-7xl mx-auto px-6">
-          <motion.div 
+          <motion.div
             className="text-center max-w-2xl mx-auto mb-16"
             initial="hidden"
             whileInView="visible"
@@ -245,7 +246,7 @@ export default function About() {
             </p>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             className="grid grid-cols-1 md:grid-cols-3 gap-8"
             variants={containerVariants}
             initial="hidden"
@@ -269,7 +270,7 @@ export default function About() {
                 desc: "Our solutions are designed to be long-lasting and environmentally conscious."
               }
             ].map((value, idx) => (
-              <motion.div 
+              <motion.div
                 key={idx}
                 variants={itemVariants}
                 className="bg-on-primary/5 p-8 rounded-3xl border border-on-primary/10 hover:bg-on-primary/10 transition-colors"
@@ -285,7 +286,7 @@ export default function About() {
 
       {/* Impact Stats */}
       <section className="py-24 max-w-7xl mx-auto px-6">
-        <motion.div 
+        <motion.div
           className="bg-surface-container rounded-[3rem] p-12 md:p-20 text-center"
           initial="hidden"
           whileInView="visible"
@@ -295,12 +296,12 @@ export default function About() {
           <h2 className="text-3xl font-bold text-primary mb-16">The Impact We've Made</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { number: "50k+", label: "Lives Impacted" },
+              { number: "5k+", label: "Lives Impacted" },
               { number: "120+", label: "Projects Done" },
-              { number: "25+", label: "Cities Reached" },
-              { number: "10k+", label: "Volunteers" }
+              { number: "5+", label: "Cities Reached" },
+              { number: "200s+", label: "Volunteers" }
             ].map((stat, idx) => (
-              <motion.div 
+              <motion.div
                 key={idx}
                 initial={{ scale: 0.5, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}

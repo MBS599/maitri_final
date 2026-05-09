@@ -10,6 +10,11 @@ import mayurSutar from '../assets/team/Mayur.png';
 import divya from '../assets/team/divya.png';
 import jayesh from '../assets/team/jayesh.png';
 import ankita from '../assets/team/ankita.png';
+import piyush from '../assets/team/piyush.png';
+import shivam from '../assets/team/shivam.png';
+import awardJayesh from '../assets/awards/best_volunteer/jayesh_pachange.webp';
+import awardPranaw from '../assets/awards/best_volunteer/pranav_pawar.jpeg';
+import awardShreya from '../assets/awards/best_volunteer/shreya deshpande.jpeg';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -112,11 +117,11 @@ export default function Team() {
           >
             <div className="aspect-square overflow-hidden relative">
               <motion.img
-                className="w-full h-full object-cover object-[center_5%]"
+                className="w-full h-full object-cover object-[center_25%]"
                 alt="Siddhesh Nikam"
                 src={sid}
-                initial={{ scale: 1.0 }}
-                whileHover={{ scale: 1.05 }}
+                initial={{ scale: 1.15 }}
+                whileHover={{ scale: 1.2 }}
                 transition={{ duration: 0.6 }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
@@ -124,6 +129,29 @@ export default function Team() {
             <div className="p-6 text-center">
               <h4 className="text-xl font-bold text-primary mb-1 leading-tight">Siddhesh Nikam</h4>
               <p className="text-secondary font-bold text-[10px] uppercase tracking-widest">President</p>
+            </div>
+          </motion.div>
+
+          {/* Shivam Mhetre */}
+          <motion.div
+            variants={itemVariants}
+            whileHover={{ y: -5 }}
+            className="bg-white rounded-[2rem] overflow-hidden shadow-sm border border-outline-variant/30 group transition-all hover:shadow-md"
+          >
+            <div className="aspect-square overflow-hidden relative">
+              <motion.img
+                className="w-full h-full object-cover object-[center_25%]"
+                alt="Shivam Mhetre"
+                src={shivam}
+                initial={{ scale: 1.15 }}
+                whileHover={{ scale: 1.2 }}
+                transition={{ duration: 0.6 }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            </div>
+            <div className="p-6 text-center">
+              <h4 className="text-xl font-bold text-primary mb-1 leading-tight">Shivam Mhetre</h4>
+              <p className="text-secondary font-bold text-[10px] uppercase tracking-widest">Vice President</p>
             </div>
           </motion.div>
 
@@ -262,6 +290,29 @@ export default function Team() {
             </div>
           </motion.div>
 
+          {/* Piyush Kadam */}
+          <motion.div
+            variants={itemVariants}
+            whileHover={{ y: -5 }}
+            className="bg-white rounded-[2rem] overflow-hidden shadow-sm border border-outline-variant/30 group transition-all hover:shadow-md"
+          >
+            <div className="aspect-square overflow-hidden relative">
+              <motion.img
+                className="w-full h-full object-cover object-[center_15%]"
+                alt="Piyush Kadam"
+                src={piyush}
+                initial={{ scale: 1.1 }}
+                whileHover={{ scale: 1.15 }}
+                transition={{ duration: 0.6 }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            </div>
+            <div className="p-6 text-center">
+              <h4 className="text-xl font-bold text-primary mb-1 leading-tight">Piyush Kadam</h4>
+              <p className="text-secondary font-bold text-[10px] uppercase tracking-widest">Member</p>
+            </div>
+          </motion.div>
+
           {/* Ankita Aware */}
           <motion.div
             variants={itemVariants}
@@ -270,11 +321,11 @@ export default function Team() {
           >
             <div className="aspect-square overflow-hidden relative">
               <motion.img
-                className="w-full h-full object-cover object-[center_25%]"
+                className="w-full h-full object-cover object-[center_5%]"
                 alt="Ankita Aware"
                 src={ankita}
-                initial={{ scale: 1.1 }}
-                whileHover={{ scale: 1.15 }}
+                initial={{ scale: 1.25 }}
+                whileHover={{ scale: 1.3 }}
                 transition={{ duration: 0.6 }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
@@ -293,11 +344,11 @@ export default function Team() {
           >
             <div className="aspect-square overflow-hidden relative">
               <motion.img
-                className="w-full h-full object-cover object-[center_25%]"
+                className="w-full h-full object-cover object-[center_15%]"
                 alt="Mayur Sutar"
                 src={mayurSutar}
-                initial={{ scale: 1.02 }}
-                whileHover={{ scale: 1.1 }}
+                initial={{ scale: 1.15 }}
+                whileHover={{ scale: 1.2 }}
                 transition={{ duration: 0.6 }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
@@ -313,8 +364,8 @@ export default function Team() {
       </section>
 
 
-      {/* Program Experts */}
-      <section className="bg-surface-container-low py-24">
+      {/* Best Volunteer Award */}
+      <section className="bg-surface-container-low py-24 border-b border-outline-variant/30">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
             <motion.div
@@ -323,8 +374,8 @@ export default function Team() {
               viewport={{ once: true }}
               variants={fadeInLeft}
             >
-              <span className="text-secondary font-bold tracking-widest uppercase text-xs">Program Experts</span>
-              <h3 className="text-4xl font-bold text-primary mt-2">Passionate Minds in Action</h3>
+              <span className="text-secondary font-bold tracking-widest uppercase text-xs">Excellence in Service</span>
+              <h3 className="text-4xl font-bold text-primary mt-2">Best Volunteer Award</h3>
             </motion.div>
             <motion.p
               className="text-on-surface-variant max-w-md text-sm leading-relaxed"
@@ -333,7 +384,7 @@ export default function Team() {
               viewport={{ once: true }}
               variants={fadeInRight}
             >
-              Our team combines technical expertise with deep community ties to deliver lasting impact across our focus areas.
+              Honoring the dedicated individuals who have gone above and beyond to serve the community through the Maitri Welfare Foundation.
             </motion.p>
           </div>
 
@@ -342,61 +393,72 @@ export default function Team() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
+            className="grid grid-cols-1 md:grid-cols-3 gap-8"
           >
             {[
               {
-                name: 'Arjun Mehta',
-                role: 'Community Outreach',
-                desc: 'Bridging the gap between corporate partners and local village councils.',
-                img: 'https://images.pexels.com/photos/33261949/pexels-photo-33261949.jpeg?auto=compress&cs=tinysrgb&w=1200'
+                year: '2025-26',
+                name: 'Mrs. Shreya Deshpande',
+                title: 'Maitrian of the Year',
+                desc: 'Always active in groups and events, providing invaluable support and help whenever possible.',
+                img: awardShreya
               },
               {
-                name: 'Sarah Jenkins',
-                role: 'Sustainability Lead',
-                desc: 'Specializing in water conservation and regenerative agricultural practices.',
-                img: 'https://images.pexels.com/photos/7468194/pexels-photo-7468194.jpeg?auto=compress&cs=tinysrgb&w=1200'
+                year: '2023-24',
+                name: 'Jayesh Pachange',
+                title: 'Maitrian of the Year',
+                desc: 'Recognized for his exceptional financial management and transparency in handling the foundation\'s resources.',
+                img: awardJayesh
               },
               {
-                name: 'Dr. David Okafor',
-                role: 'Health & Wellness',
-                desc: 'Overseeing our mobile health clinics and nutritional support programs.',
-                img: 'https://images.pexels.com/photos/4797690/pexels-photo-4797690.jpeg?auto=compress&cs=tinysrgb&w=1200'
-              },
-              {
-                name: 'Elena Rodriguez',
-                role: 'Education Director',
-                desc: 'Designing inclusive curriculum for our vocational training centers.',
-                img: 'https://images.pexels.com/photos/35843378/pexels-photo-35843378.jpeg?auto=compress&cs=tinysrgb&w=1200'
+                year: '2022-23',
+                name: 'Pranav Pawar',
+                title: 'Maitrian of the Year',
+                desc: 'Awarded for his creative leadership in enhancing our social media presence and digital outreach.',
+                img: awardPranaw
               }
-            ].map((staff, idx) => (
+            ].map((award, idx) => (
               <motion.div
                 key={idx}
                 variants={itemVariants}
-                whileHover={{ y: -10, boxShadow: "0 20px 40px rgba(0,0,0,0.1)" }}
-                transition={{ type: "spring", stiffness: 300 }}
-                className="bg-surface rounded-3xl p-4 border border-outline-variant/20 transition-all shadow-sm group"
+                whileHover={{ y: -10 }}
+                className="bg-white rounded-[2.5rem] overflow-hidden border border-outline-variant/20 shadow-sm transition-all hover:shadow-xl group relative"
               >
-                <div className="aspect-[3/4] rounded-2xl overflow-hidden mb-6">
-                  <motion.img
-                    className="w-full h-full object-cover transition-transform duration-700"
-                    src={staff.img}
-                    alt={staff.name}
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ duration: 0.6 }}
-                  />
+                <div className="absolute top-6 right-6 z-20">
+                  <motion.div
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    transition={{ delay: 0.5, type: "spring" }}
+                    className="bg-secondary text-on-secondary w-14 h-14 rounded-full flex items-center justify-center shadow-lg border-4 border-white"
+                  >
+                    <Award className="w-6 h-6" />
+                  </motion.div>
                 </div>
-                <motion.h5
-                  className="text-xl font-bold text-primary mb-1"
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.1 * idx + 0.3 }}
-                >
-                  {staff.name}
-                </motion.h5>
-                <p className="text-secondary font-bold text-xs uppercase mb-3">{staff.role}</p>
-                <p className="text-on-surface-variant text-xs leading-relaxed">{staff.desc}</p>
+
+                <div className="aspect-[4/5] overflow-hidden relative">
+                  <motion.img
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    src={award.img}
+                    alt={award.name}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity"></div>
+
+                  <div className="absolute bottom-0 left-0 right-0 p-8 text-on-primary">
+                    <motion.div
+                      initial={{ y: 20, opacity: 0 }}
+                      whileInView={{ y: 0, opacity: 1 }}
+                      transition={{ delay: 0.2 }}
+                    >
+                      <span className="text-secondary-container font-bold text-xs uppercase tracking-widest">Maitrian of the Year</span>
+                      <h4 className="text-2xl font-bold mt-1 leading-tight">{award.name}</h4>
+                    </motion.div>
+                  </div>
+                </div>
+
+                <div className="p-8">
+                  <h5 className="text-primary font-bold text-lg mb-2">Awarded Year: {award.year}</h5>
+                  <p className="text-on-surface-variant text-sm leading-relaxed">{award.desc}</p>
+                </div>
               </motion.div>
             ))}
           </motion.div>

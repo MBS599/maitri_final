@@ -16,8 +16,8 @@ const containerVariants = {
 
 const itemVariants = {
   hidden: { y: 25, opacity: 0 },
-  visible: { 
-    y: 0, 
+  visible: {
+    y: 0,
     opacity: 1,
     transition: { duration: 0.5, ease: "easeOut" }
   }
@@ -113,11 +113,11 @@ export default function Events() {
 
     setIsSending(true);
     const formData = new FormData(proposalFormRef.current);
-    
+
     // Helper to upload to Cloudinary
     const uploadToCloudinary = async (file: File) => {
       if (!file || file.size === 0) return null;
-      
+
       const data = new FormData();
       data.append('file', file);
       data.append('upload_preset', 'ml_default');
@@ -152,7 +152,7 @@ export default function Events() {
       };
 
       const SHEETDB_URL = 'https://sheetdb.io/api/v1/szlyae3x9dd1o?sheet=Sheet2';
-      
+
       const response = await fetch(SHEETDB_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -213,7 +213,7 @@ export default function Events() {
 
       {/* Tabs and Filter */}
       <section className="max-w-7xl mx-auto px-6 py-24">
-        <motion.div 
+        <motion.div
           className="flex flex-col md:flex-row justify-between items-end gap-8 mb-12 border-b border-outline-variant/30"
           initial="hidden"
           whileInView="visible"
@@ -236,7 +236,7 @@ export default function Events() {
               Past Events
             </button>
           </motion.div>
-          <motion.div 
+          <motion.div
             variants={fadeInRight}
             whileHover={{ scale: 1.05 }}
             className="mb-4 flex items-center gap-2 text-on-surface-variant font-semibold cursor-pointer hover:text-primary transition-colors"
@@ -247,7 +247,7 @@ export default function Events() {
         </motion.div>
 
         {/* Events Grid */}
-        <motion.div 
+        <motion.div
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           variants={containerVariants}
           initial="hidden"
@@ -270,7 +270,7 @@ export default function Events() {
                   whileHover={{ scale: 1.1 }}
                   transition={{ duration: 0.7 }}
                 />
-                <motion.div 
+                <motion.div
                   className="absolute top-4 right-4 bg-secondary-container text-on-secondary-container px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider"
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
@@ -281,7 +281,7 @@ export default function Events() {
                 </motion.div>
               </div>
               <div className="p-8">
-                <motion.div 
+                <motion.div
                   className="flex items-center gap-2 text-secondary font-bold text-xs uppercase tracking-widest mb-3"
                   initial={{ opacity: 0, x: -10 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -312,7 +312,7 @@ export default function Events() {
         </motion.div>
 
         {/* Host an Event CTA */}
-        <motion.div 
+        <motion.div
           className="mt-24 bg-surface-container-low rounded-3xl p-10 flex flex-col md:flex-row items-center gap-8 border border-outline-variant/30"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -320,7 +320,7 @@ export default function Events() {
           transition={{ duration: 0.6 }}
           whileHover={{ boxShadow: "0 15px 40px rgba(0,0,0,0.08)" }}
         >
-          <motion.div 
+          <motion.div
             className="flex-grow text-center md:text-left"
             initial="hidden"
             whileInView="visible"
@@ -331,7 +331,7 @@ export default function Events() {
             <p className="text-on-surface-variant leading-relaxed">Do you have a cause or an idea for a community drive? Partner with Maitri to bring it to life.</p>
           </motion.div>
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-            <button 
+            <button
               onClick={() => setIsProposalModalOpen(true)}
               className="border-2 border-primary text-primary px-10 py-3 rounded-full font-bold hover:bg-primary hover:text-on-primary transition-all text-center inline-block cursor-pointer"
             >
@@ -520,7 +520,7 @@ export default function Events() {
       {/* Impact Numbers */}
       <section className="bg-primary-container py-24">
         <div className="max-w-7xl mx-auto px-6 text-center">
-          <motion.h2 
+          <motion.h2
             className="text-4xl font-bold text-on-primary mb-12"
             initial="hidden"
             whileInView="visible"
@@ -529,7 +529,7 @@ export default function Events() {
           >
             Our Impact in Numbers
           </motion.h2>
-          <motion.div 
+          <motion.div
             className="grid grid-cols-2 md:grid-cols-4 gap-8"
             variants={containerVariants}
             initial="hidden"
@@ -538,18 +538,18 @@ export default function Events() {
           >
             {[
               { val: '150+', label: 'Events Hosted' },
-              { val: '12K', label: 'Lives Touched' },
-              { val: '5k+', label: 'Volunteers' },
-              { val: '50+', label: 'Partner NGOs' }
+              { val: '5K', label: 'Lives Touched' },
+              { val: '200+', label: 'Volunteers' },
+              { val: '10+', label: 'Partner NGOs' }
             ].map((stat, idx) => (
-              <motion.div 
-                key={idx} 
+              <motion.div
+                key={idx}
                 variants={itemVariants}
                 whileHover={{ scale: 1.08, y: -5 }}
                 transition={{ type: "spring", stiffness: 300 }}
                 className="bg-white/5 backdrop-blur-md p-8 rounded-2xl border border-on-primary/10"
               >
-                <motion.div 
+                <motion.div
                   className="text-secondary-container text-4xl font-extrabold mb-2"
                   initial={{ scale: 0.5, opacity: 0 }}
                   whileInView={{ scale: 1, opacity: 1 }}

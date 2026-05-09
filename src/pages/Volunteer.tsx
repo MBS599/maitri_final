@@ -194,7 +194,7 @@ export default function Volunteer() {
               variants={fadeInUp}
               className="text-5xl md:text-6xl font-extrabold mb-6"
             >
-              Join Our Global Community
+              Join Our Passionate Community
             </motion.h1>
             <motion.p 
               variants={fadeInUp}
