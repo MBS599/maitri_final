@@ -197,13 +197,13 @@ export default function Events() {
           >
             <motion.h1
               variants={fadeInUp}
-              className="text-5xl md:text-6xl font-extrabold mb-6"
+              className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6 leading-[1.1]"
             >
               Our Collective Journey
             </motion.h1>
             <motion.p
               variants={fadeInUp}
-              className="text-lg opacity-90 max-w-2xl mx-auto leading-relaxed"
+              className="text-base sm:text-lg opacity-90 max-w-2xl mx-auto leading-relaxed"
             >
               Join our upcoming initiatives or explore our past achievements. Every action counts towards a more compassionate world.
             </motion.p>
@@ -220,20 +220,20 @@ export default function Events() {
           viewport={{ once: true }}
           variants={containerVariants}
         >
-          <motion.div variants={fadeInLeft} className="flex gap-12">
+          <motion.div variants={fadeInLeft} className="flex gap-6 sm:gap-12">
             <button
               onClick={() => setTab('upcoming')}
-              className={`pb-4 text-2xl font-bold transition-all border-b-4 cursor-pointer ${tab === 'upcoming' ? 'border-secondary text-primary' : 'border-transparent text-on-surface-variant hover:text-primary'
+              className={`pb-4 text-lg sm:text-2xl font-bold transition-all border-b-4 cursor-pointer ${tab === 'upcoming' ? 'border-secondary text-primary' : 'border-transparent text-on-surface-variant hover:text-primary'
                 }`}
             >
-              Upcoming Events
+              Upcoming
             </button>
             <button
               onClick={() => setTab('past')}
-              className={`pb-4 text-2xl font-bold transition-all border-b-4 cursor-pointer ${tab === 'past' ? 'border-secondary text-primary' : 'border-transparent text-on-surface-variant hover:text-primary'
+              className={`pb-4 text-lg sm:text-2xl font-bold transition-all border-b-4 cursor-pointer ${tab === 'past' ? 'border-secondary text-primary' : 'border-transparent text-on-surface-variant hover:text-primary'
                 }`}
             >
-              Past Events
+              Past
             </button>
           </motion.div>
           <motion.div
@@ -327,8 +327,8 @@ export default function Events() {
             viewport={{ once: true }}
             variants={fadeInLeft}
           >
-            <h2 className="text-3xl font-bold text-primary mb-2">Host an Event</h2>
-            <p className="text-on-surface-variant leading-relaxed">Do you have a cause or an idea for a community drive? Partner with Maitri to bring it to life.</p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-primary mb-2">Host an Event</h2>
+            <p className="text-sm sm:text-base text-on-surface-variant leading-relaxed">Do you have a cause or an idea for a community drive? Partner with Maitri to bring it to life.</p>
           </motion.div>
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <button
@@ -521,7 +521,7 @@ export default function Events() {
       <section className="bg-primary-container py-24">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <motion.h2
-            className="text-4xl font-bold text-on-primary mb-12"
+            className="text-3xl sm:text-4xl font-bold text-on-primary mb-12"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}

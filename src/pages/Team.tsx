@@ -2,7 +2,7 @@ import { motion } from 'motion/react';
 import { Mail, Link as LinkIcon, ArrowRight, Award } from 'lucide-react';
 import teamBg from '../assets/team.jpg';
 import siddhiKadam from '../assets/team/siddhi_kadam.png';
-import pranavPawar from '../assets/team/pranav pawar.png';
+import pranavPawar from '../assets/team/pranav.png';
 import sanikaPhadtare from '../assets/team/sanika phadtare.png';
 import nirajSharma from '../assets/team/niraj.png';
 import sid from '../assets/team/sid.png';
@@ -12,6 +12,9 @@ import jayesh from '../assets/team/jayesh.png';
 import ankita from '../assets/team/ankita.png';
 import piyush from '../assets/team/piyush.png';
 import shivam from '../assets/team/shivam.png';
+import awanti from '../assets/team/awanti gaikwad.png';
+import pranjal from '../assets/team/pranjal khalate.png';
+
 import awardJayesh from '../assets/awards/best_volunteer/jayesh_pachange.webp';
 import awardPranaw from '../assets/awards/best_volunteer/pranav_pawar.jpeg';
 import awardShreya from '../assets/awards/best_volunteer/shreya deshpande.jpeg';
@@ -57,12 +60,12 @@ export default function Team() {
   return (
     <div className="pt-20">
       {/* Hero Section */}
-      <section className="bg-primary py-24 text-center text-on-primary relative overflow-hidden">
+      <section className="bg-primary py-48 text-center text-on-primary relative overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-50">
           <img
             src={teamBg}
             alt="Team background"
-            className="w-full h-full object-cover object-[center_40%]"
+            className="w-full h-full object-cover object-center"
           />
           <div className="absolute inset-0 bg-primary/40"></div>
         </div>
@@ -74,13 +77,13 @@ export default function Team() {
           >
             <motion.h2
               variants={fadeInUp}
-              className="text-5xl font-extrabold mb-6"
+              className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6 leading-[1.1]"
             >
               Meet Our Compassionate Team
             </motion.h2>
             <motion.p
               variants={fadeInUp}
-              className="text-lg text-on-primary/90 max-w-2xl mx-auto leading-relaxed"
+              className="text-base sm:text-lg text-on-primary/90 max-w-2xl mx-auto leading-relaxed"
             >
               A dedicated group of professionals and community leaders united by a single mission: creating sustainable social change through empathy and action.
             </motion.p>
@@ -98,8 +101,8 @@ export default function Team() {
           variants={fadeInUp}
         >
           <span className="text-secondary font-bold tracking-widest uppercase text-[10px]">Governance</span>
-          <h3 className="text-4xl font-bold text-primary mt-2">Core Committee</h3>
-          <p className="text-on-surface-variant text-sm mt-4 max-w-2xl mx-auto">The dedicated individuals guiding Maitri's mission and strategic decisions.</p>
+          <h3 className="text-3xl sm:text-4xl font-bold text-primary mt-2">Core Committee</h3>
+          <p className="text-on-surface-variant text-xs sm:text-sm mt-4 max-w-2xl mx-auto">The dedicated individuals guiding Maitri's mission and strategic decisions.</p>
         </motion.div>
 
         <motion.div
@@ -152,6 +155,29 @@ export default function Team() {
             <div className="p-6 text-center">
               <h4 className="text-xl font-bold text-primary mb-1 leading-tight">Shivam Mhetre</h4>
               <p className="text-secondary font-bold text-[10px] uppercase tracking-widest">Vice President</p>
+            </div>
+          </motion.div>
+
+          {/* Awanti Gaikwad */}
+          <motion.div
+            variants={itemVariants}
+            whileHover={{ y: -5 }}
+            className="bg-white rounded-[2rem] overflow-hidden shadow-sm border border-outline-variant/30 group transition-all hover:shadow-md"
+          >
+            <div className="aspect-square overflow-hidden relative">
+              <motion.img
+                className="w-full h-full object-cover object-[center_25%]"
+                alt="Awanti Gaikwad"
+                src={awanti}
+                initial={{ scale: 1.15 }}
+                whileHover={{ scale: 1.2 }}
+                transition={{ duration: 0.6 }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            </div>
+            <div className="p-6 text-center">
+              <h4 className="text-xl font-bold text-primary mb-1 leading-tight">Awanti Gaikwad</h4>
+              <p className="text-secondary font-bold text-[10px] uppercase tracking-widest">Joint Secretary</p>
             </div>
           </motion.div>
 
@@ -290,6 +316,29 @@ export default function Team() {
             </div>
           </motion.div>
 
+          {/* Pranjal Khalete */}
+          <motion.div
+            variants={itemVariants}
+            whileHover={{ y: -5 }}
+            className="bg-white rounded-[2rem] overflow-hidden shadow-sm border border-outline-variant/30 group transition-all hover:shadow-md"
+          >
+            <div className="aspect-square overflow-hidden relative">
+              <motion.img
+                className="w-full h-full object-cover object-[center_25%]"
+                alt="Pranjal Khalete"
+                src={pranjal}
+                initial={{ scale: 1.15 }}
+                whileHover={{ scale: 1.2 }}
+                transition={{ duration: 0.6 }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            </div>
+            <div className="p-6 text-center">
+              <h4 className="text-xl font-bold text-primary mb-1 leading-tight">Pranjal Khalete</h4>
+              <p className="text-secondary font-bold text-[10px] uppercase tracking-widest">Member</p>
+            </div>
+          </motion.div>
+
           {/* Piyush Kadam */}
           <motion.div
             variants={itemVariants}
@@ -374,8 +423,8 @@ export default function Team() {
               viewport={{ once: true }}
               variants={fadeInLeft}
             >
-              <span className="text-secondary font-bold tracking-widest uppercase text-xs">Excellence in Service</span>
-              <h3 className="text-4xl font-bold text-primary mt-2">Best Volunteer Award</h3>
+              <span className="text-secondary font-bold tracking-widest uppercase text-[10px] sm:text-xs">Excellence in Service</span>
+              <h3 className="text-3xl sm:text-4xl font-bold text-primary mt-2">Best Volunteer Award</h3>
             </motion.div>
             <motion.p
               className="text-on-surface-variant max-w-md text-sm leading-relaxed"

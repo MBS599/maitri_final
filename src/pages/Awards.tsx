@@ -94,19 +94,19 @@ export default function Awards() {
           >
             <motion.span
               variants={scaleIn}
-              className="inline-block px-4 py-1 bg-secondary-container text-on-secondary-container rounded-full text-xs font-bold uppercase tracking-widest mb-6"
+              className="inline-block px-4 py-1.5 bg-secondary-container text-on-secondary-container rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-widest mb-6"
             >
               Our Achievements
             </motion.span>
             <motion.h1
               variants={fadeInUp}
-              className="text-5xl md:text-6xl font-extrabold mb-6"
+              className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6 leading-[1.1]"
             >
               Recognizing Our Impact
             </motion.h1>
             <motion.p
               variants={fadeInUp}
-              className="text-lg max-w-2xl mx-auto opacity-90 leading-relaxed"
+              className="text-base sm:text-lg max-w-2xl mx-auto opacity-90 leading-relaxed"
             >
               A decade of dedicated service recognized by esteemed institutions. These awards are a testament to our volunteers, donors, and the communities we serve.
             </motion.p>

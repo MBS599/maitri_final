@@ -15,6 +15,7 @@ import Contact from './pages/Contact';
 import About from './pages/About';
 import Volunteer from './pages/Volunteer';
 import Kaushalya from './pages/Kaushalya';
+import Media from './pages/Media';
 import { Toaster } from 'sonner';
 
 function ScrollToTop() {
@@ -30,7 +31,7 @@ export default function App() {
     <Router>
       <ScrollToTop />
       <Toaster position="top-right" richColors />
-      <div className="flex flex-col min-h-screen">
+      <div className="flex flex-col min-h-screen overflow-x-hidden">
         <Navbar />
         <main className="flex-grow">
           <Routes>
@@ -43,6 +44,7 @@ export default function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/volunteer" element={<Volunteer />} />
             <Route path="/kaushalya" element={<Kaushalya />} />
+            <Route path="/media" element={<Media />} />
           </Routes>
         </main>
         <Footer />

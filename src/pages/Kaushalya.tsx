@@ -144,13 +144,13 @@ export default function Kaushalya() {
             </motion.div>
             <motion.h1
               variants={itemVariants}
-              className="text-5xl md:text-6xl font-extrabold mb-6 leading-tight"
+              className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6 leading-[1.1]"
             >
               Kaushalya: Skill, Strength & Success
             </motion.h1>
             <motion.p
               variants={itemVariants}
-              className="text-lg opacity-90 mb-8 leading-relaxed"
+              className="text-base sm:text-lg opacity-90 mb-8 leading-relaxed"
             >
               Empowering women through vocational training, financial independence, and community leadership to build a more equitable future.
             </motion.p>
@@ -175,8 +175,8 @@ export default function Kaushalya() {
             variants={containerVariants}
             className="max-w-3xl mx-auto"
           >
-            <motion.h2 variants={fadeInUp} className="text-4xl font-bold text-primary mb-6">Empowering Half the Sky</motion.h2>
-            <motion.p variants={fadeInUp} className="text-on-surface-variant leading-relaxed text-lg">
+            <motion.h2 variants={fadeInUp} className="text-3xl sm:text-4xl font-bold text-primary mb-6">Empowering Half the Sky</motion.h2>
+            <motion.p variants={fadeInUp} className="text-on-surface-variant leading-relaxed text-base sm:text-lg">
               The 'Kaushalya' initiative focuses on bridging the skill gap for women in marginalized communities.
               We believe that when you empower a woman, you empower an entire family and ultimately, the nation.
             </motion.p>
@@ -250,8 +250,8 @@ export default function Kaushalya() {
                 </div>
                 <span className="text-secondary font-bold tracking-widest uppercase text-xs">Annual Navratri Event</span>
               </div>
-              <h2 className="text-4xl font-bold text-primary mb-6">Naarishakti: Celebrating the Goddess Within</h2>
-              <p className="text-on-surface-variant text-lg leading-relaxed mb-8">
+              <h2 className="text-3xl sm:text-4xl font-bold text-primary mb-6">Naarishakti: Celebrating the Goddess Within</h2>
+              <p className="text-on-surface-variant text-base sm:text-lg leading-relaxed mb-8">
                 Every year during the auspicious days of Navratri, we host <strong>Naarishakti</strong>—a tribute to the women who tirelessly serve society. We facilitate these extraordinary women and share their inspiring life journeys through our dedicated YouTube podcast series.
               </p>
               <div className="space-y-4">
@@ -288,17 +288,15 @@ export default function Kaushalya() {
               viewport={{ once: true }}
               variants={fadeInRight}
             >
-              <div className="relative aspect-video rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white group">
-                <img
-                  src="https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260"
-                  alt="Naarishakti Podcast"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-primary/20 flex items-center justify-center">
-                  <div className="w-20 h-20 bg-white/90 rounded-full flex items-center justify-center shadow-2xl animate-pulse">
-                    <div className="w-0 h-0 border-t-[10px] border-t-transparent border-l-[18px] border-l-primary border-b-[10px] border-b-transparent ml-1"></div>
-                  </div>
-                </div>
+              <div className="relative aspect-video rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white group bg-black">
+                <iframe
+                  className="w-full h-full"
+                  src="https://www.youtube.com/embed/2DuyvmW4I6s?autoplay=1&mute=1&loop=1&playlist=2DuyvmW4I6s"
+                  title="Naarishakti Podcast"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                ></iframe>
               </div>
               {/* Floating element */}
               <motion.div
@@ -332,7 +330,7 @@ export default function Kaushalya() {
             className="text-center mb-16"
           >
             <span className="text-secondary font-bold tracking-widest uppercase text-xs">Hall of Fame</span>
-            <h2 className="text-4xl font-bold text-primary mt-2">Our Narishakti Awardees</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-primary mt-2">Our Narishakti Awardees</h2>
           </motion.div>
 
           <motion.div
@@ -423,7 +421,7 @@ export default function Kaushalya() {
               whileInView="visible"
               viewport={{ once: true }}
             >
-              <motion.h2 variants={fadeInRight} className="text-4xl font-bold text-primary mb-6">Our Impact So Far</motion.h2>
+              <motion.h2 variants={fadeInRight} className="text-3xl sm:text-4xl font-bold text-primary mb-6">Our Impact So Far</motion.h2>
               <motion.p variants={fadeInRight} className="text-on-surface-variant mb-10 leading-relaxed">
                 Since its inception, Kaushalya has trained over 200 women in various skills. Many have started their own small ventures, while others have found stable employment in the local industry.
               </motion.p>
@@ -472,7 +470,7 @@ export default function Kaushalya() {
               variants={fadeInLeft}
             >
               <span className="text-secondary font-bold tracking-widest uppercase text-xs">Join Us</span>
-              <h2 className="text-4xl font-bold text-primary mt-2 mb-6">Become a Mentor</h2>
+              <h2 className="text-3xl sm:text-4xl font-bold text-primary mt-2 mb-6">Become a Mentor</h2>
               <p className="text-on-surface-variant mb-8 leading-relaxed">
                 Your expertise can change lives. Share your skills and experience with our students to help them achieve their dreams of independence.
               </p>
@@ -614,7 +612,7 @@ export default function Kaushalya() {
           viewport={{ once: true }}
           variants={containerVariants}
         >
-          <motion.h2 variants={fadeInUp} className="text-4xl font-bold text-on-primary mb-6">Help Us Expand Kaushalya</motion.h2>
+          <motion.h2 variants={fadeInUp} className="text-3xl sm:text-4xl font-bold text-on-primary mb-6">Help Us Expand Kaushalya</motion.h2>
           <motion.p variants={fadeInUp} className="text-on-primary/70 mb-12 text-lg">
             We aim to reach 1000 women by 2025. Your donation can provide training kits, sewing machines, and expert mentorship.
           </motion.p>

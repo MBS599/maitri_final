@@ -60,17 +60,17 @@ export default function Support() {
           >
             <motion.h1
               variants={fadeInUp}
-              className="text-5xl font-extrabold mb-6"
+              className="text-4xl sm:text-5xl font-extrabold mb-6 leading-[1.1]"
             >
               Empower Change with Your Kindness
             </motion.h1>
             <motion.p
               variants={fadeInUp}
-              className="text-lg opacity-90 mb-12 leading-relaxed"
+              className="text-base sm:text-lg opacity-90 mb-12 leading-relaxed"
             >
               Every contribution fuels our mission to bring sustainable growth and social welfare to communities in need. Your trust is our greatest asset.
               <br />
-              <span className="text-sm font-bold text-secondary-container mt-2 block">Reg No: PUNE/0000407/2023</span>
+              <span className="text-xs sm:text-sm font-bold text-secondary-container mt-2 block">Reg No: PUNE/0000407/2023</span>
             </motion.p>
             <motion.div
               className="flex flex-wrap justify-center gap-4"
@@ -105,7 +105,7 @@ export default function Support() {
           variants={fadeInUp}
         >
           <motion.h2
-            className="text-4xl font-bold mb-6 text-primary text-center"
+            className="text-3xl sm:text-4xl font-bold mb-6 text-primary text-center"
             variants={fadeInUp}
           >
             Direct Contribution

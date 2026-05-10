@@ -17,6 +17,7 @@ export function Navbar() {
     { name: 'Support', path: '/support' },
     { name: 'Volunteer', path: '/volunteer' },
     { name: 'Kaushalya', path: '/kaushalya' },
+    { name: 'Media', path: '/media' },
   ];
 
   return (
@@ -26,20 +27,22 @@ export function Navbar() {
       animate={{ y: 0 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
     >
-      <div className="flex justify-between items-center w-full px-6 py-4 max-w-7xl mx-auto">
-        <Link to="/" className="flex items-center gap-3 group">
+      <div className="flex justify-between items-center w-full px-3 sm:px-6 py-4 max-w-7xl mx-auto">
+        <Link to="/" className="flex items-center gap-1 sm:gap-3 group shrink-0">
           <motion.img
             src={logo}
             alt="Maitri Logo"
-            className="w-10 h-10 object-contain"
+            className="w-8 h-8 sm:w-10 sm:h-10 object-contain shrink-0"
             whileHover={{ scale: 1.1, rotate: 5 }}
             transition={{ type: "spring", stiffness: 400 }}
           />
-          <h1 className="text-xl font-extrabold text-primary tracking-tight">Maitri Welfare Foundation</h1>
+          <h1 className="text-sm min-[400px]:text-base sm:text-lg xl:text-xl font-extrabold text-primary tracking-tight leading-tight">
+            Maitri Welfare Foundation
+          </h1>
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-6">
+        <nav className="hidden lg:flex items-center gap-4 xl:gap-6">
           {navLinks.map((link, idx) => (
             <motion.div
               key={link.path}
@@ -49,7 +52,7 @@ export function Navbar() {
             >
               <Link
                 to={link.path}
-                className={`text-sm font-semibold transition-colors duration-200 relative ${location.pathname === link.path
+                className={`text-[13px] xl:text-sm font-semibold transition-colors duration-200 relative ${location.pathname === link.path
                   ? 'text-secondary'
                   : 'text-on-surface-variant hover:text-primary'
                   }`}
@@ -67,17 +70,18 @@ export function Navbar() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-1 sm:gap-4">
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.5 }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            className="hidden xl:block"
           >
             <Link
               to="/contact"
-              className="hidden sm:block border border-primary text-primary px-6 py-2 rounded-full text-sm font-bold transition-all hover:bg-primary/5"
+              className="border border-primary text-primary px-5 py-2 rounded-full text-xs font-bold transition-all hover:bg-primary/5"
             >
               Contact Us
             </Link>
@@ -91,17 +95,18 @@ export function Navbar() {
           >
             <Link
               to="/support"
-              className="bg-secondary-container text-on-secondary-container px-6 py-2 rounded-full text-sm font-bold shadow-sm transition-all"
+              className="bg-secondary-container text-on-secondary-container px-4 sm:px-6 py-2 rounded-full text-xs sm:text-sm font-bold shadow-sm transition-all whitespace-nowrap flex items-center justify-center min-w-fit"
             >
-              Donate Now
+              <span className="hidden min-[410px]:inline">Donate Now</span>
+              <span className="min-[410px]:hidden">Donate</span>
             </Link>
           </motion.div>
           <motion.button
-            className="md:hidden cursor-pointer"
+            className="lg:hidden cursor-pointer p-2 hover:bg-surface-container rounded-lg transition-colors"
             onClick={() => setIsOpen(!isOpen)}
             whileTap={{ scale: 0.9 }}
           >
-            {isOpen ? <X /> : <Menu />}
+            {isOpen ? <X className="w-6 h-6 text-primary" /> : <Menu className="w-6 h-6 text-primary" />}
           </motion.button>
         </div>
       </div>
@@ -114,32 +119,34 @@ export function Navbar() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="md:hidden bg-surface border-t border-outline-variant"
+            className="lg:hidden bg-surface border-t border-outline-variant overflow-hidden"
           >
-            <nav className="flex flex-col p-4 gap-4">
-              <div className="flex items-center gap-3 px-2 mb-2">
-                <img src={logo} alt="Maitri Logo" className="w-8 h-8 object-contain" />
-                <span className="font-bold text-primary">Maitri Welfare Foundation</span>
+            <nav className="flex flex-col p-6 gap-5">
+              <div className="flex items-center gap-3 px-2 mb-4">
+                <img src={logo} alt="Maitri Logo" className="w-10 h-10 object-contain" />
+                <span className="font-bold text-lg text-primary leading-tight">Maitri Welfare Foundation</span>
               </div>
-              {navLinks.map((link, idx) => (
-                <motion.div
-                  key={link.path}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: idx * 0.05 }}
-                >
-                  <Link
-                    to={link.path}
-                    onClick={() => setIsOpen(false)}
-                    className={`text-sm font-semibold block ${location.pathname === link.path ? 'text-secondary' : 'text-on-surface-variant'
-                      }`}
+              <div className="grid grid-cols-2 gap-x-4 gap-y-6 px-2">
+                {navLinks.map((link, idx) => (
+                  <motion.div
+                    key={link.path}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: idx * 0.05 }}
                   >
-                    {link.name}
-                  </Link>
-                </motion.div>
-              ))}
+                    <Link
+                      to={link.path}
+                      onClick={() => setIsOpen(false)}
+                      className={`text-sm font-bold block transition-colors ${location.pathname === link.path ? 'text-secondary' : 'text-on-surface-variant hover:text-primary'
+                        }`}
+                    >
+                      {link.name}
+                    </Link>
+                  </motion.div>
+                ))}
+              </div>
               <motion.div
-                className="flex flex-col gap-3 mt-4 pt-4 border-t border-outline-variant/30"
+                className="flex flex-col gap-4 mt-6 pt-6 border-t border-outline-variant/30"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
@@ -147,14 +154,14 @@ export function Navbar() {
                 <Link
                   to="/contact"
                   onClick={() => setIsOpen(false)}
-                  className="w-full text-center py-3 text-primary font-bold border border-primary rounded-full"
+                  className="w-full text-center py-4 text-primary font-bold border-2 border-primary rounded-2xl hover:bg-primary/5 transition-colors"
                 >
                   Contact Us
                 </Link>
                 <Link
                   to="/support"
                   onClick={() => setIsOpen(false)}
-                  className="w-full text-center py-3 bg-secondary-container text-on-secondary-container font-bold rounded-xl shadow-lg cursor-pointer"
+                  className="w-full text-center py-4 bg-primary text-on-primary font-bold rounded-2xl shadow-xl hover:opacity-90 transition-all cursor-pointer"
                 >
                   Donate Now
                 </Link>
@@ -223,7 +230,7 @@ export function Footer() {
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-2 sm:grid-cols-3 gap-12"
+          className="grid grid-cols-2 sm:grid-cols-3 gap-8 md:gap-12"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -234,7 +241,8 @@ export function Footer() {
             {[
               { name: 'About Us', path: '/about' },
               { name: 'Our Team', path: '/team' },
-              { name: 'Awards', path: '/awards' }
+              { name: 'Awards', path: '/awards' },
+              { name: 'Media', path: '/media' }
             ].map((link, idx) => (
               <motion.div key={link.path} whileHover={{ x: 4 }} transition={{ type: "spring", stiffness: 300 }}>
                 <Link to={link.path} className="text-sm text-on-primary/80 hover:text-on-primary transition-colors">{link.name}</Link>

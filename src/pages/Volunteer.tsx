@@ -192,13 +192,13 @@ export default function Volunteer() {
             </motion.span>
             <motion.h1 
               variants={fadeInUp}
-              className="text-5xl md:text-6xl font-extrabold mb-6"
+              className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6 leading-[1.1]"
             >
               Join Our Passionate Community
             </motion.h1>
             <motion.p 
               variants={fadeInUp}
-              className="text-lg opacity-90 leading-relaxed max-w-2xl mx-auto"
+              className="text-base sm:text-lg opacity-90 leading-relaxed max-w-2xl mx-auto"
             >
               Your time and skills can make a world of difference. Join Maitri Welfare Foundation and help us protect our planet and empower communities in need.
             </motion.p>
@@ -250,7 +250,7 @@ export default function Volunteer() {
             className="lg:sticky lg:top-32 self-start bg-surface-container-low p-8 md:p-12 rounded-[32px] border border-outline-variant/20 shadow-sm"
           >
             <motion.h2 
-              className="text-4xl font-bold text-primary mb-8"
+              className="text-3xl sm:text-4xl font-bold text-primary mb-8"
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -369,9 +369,9 @@ export default function Volunteer() {
                 <label className="block text-[10px] uppercase font-bold text-on-surface-variant mb-4 tracking-widest">Skills & Expertise <span className="text-red-500">*</span></label>
                 <div className="grid grid-cols-2 gap-4 bg-surface-container-low p-4 rounded-2xl border border-outline-variant/30">
                   {[
-                    'Photography', 'Videography',
+                    'Photography', 'Social Media',
                     'Content Writing', 'Report Writing',
-                    'Social Media Handling', 'Event Management'
+                    'Promotion', 'Event Management'
                   ].map((skill, idx) => (
                     <motion.label 
                       key={skill} 

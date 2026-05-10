@@ -71,13 +71,13 @@ export default function Home() {
             </motion.div>
             <motion.h1
               variants={itemVariants}
-              className="text-5xl md:text-6xl font-extrabold mb-6 leading-tight"
+              className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6 leading-[1.1]"
             >
               Maitri Welfare Foundation: Empowering Lives, Protecting Nature
             </motion.h1>
             <motion.p
               variants={itemVariants}
-              className="text-lg opacity-90 mb-8 leading-relaxed"
+              className="text-base sm:text-lg opacity-90 mb-8 leading-relaxed"
             >
               Dedicated to sustainable social impact through environmental conservation and community welfare initiatives across India.
             </motion.p>
@@ -167,8 +167,8 @@ export default function Home() {
               whileInView="visible"
               viewport={{ once: true, margin: "-50px" }}
             >
-              <motion.h2 variants={fadeInRight} className="text-4xl font-bold text-primary mb-6">Our Mission & Vision</motion.h2>
-              <motion.p variants={fadeInRight} className="text-on-surface-variant mb-6 leading-relaxed">
+              <motion.h2 variants={fadeInRight} className="text-3xl sm:text-4xl font-bold text-primary mb-6">Our Mission & Vision</motion.h2>
+              <motion.p variants={fadeInRight} className="text-on-surface-variant mb-6 leading-relaxed text-sm sm:text-base">
                 We established our Maitri Foundation back in 2019. We started this foundation to assist the needy ones as well as help our mother nature in every possible way. Together, we strive to make a meaningful difference.
               </motion.p>
               <motion.p variants={fadeInRight} className="text-on-surface-variant mb-8 leading-relaxed">

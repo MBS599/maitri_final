@@ -3,6 +3,9 @@ import { motion } from 'motion/react';
 import { Heart, Target, Lightbulb, Users, Globe, Shield } from 'lucide-react';
 import aboutHero from '../assets/hero.png';
 import fullTeam from '../assets/team/full_team.jpeg';
+import about1 from '../assets/team/about1.jpg';
+import about2 from '../assets/team/about2.jpg';
+
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -46,13 +49,13 @@ export default function About() {
           >
             <motion.h1
               variants={fadeInUp}
-              className="text-5xl md:text-6xl font-extrabold mb-6 tracking-tight"
+              className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6 tracking-tight leading-[1.1]"
             >
               Who We Are
             </motion.h1>
             <motion.p
               variants={fadeInUp}
-              className="text-lg md:text-xl opacity-90 leading-relaxed font-medium"
+              className="text-base sm:text-lg md:text-xl opacity-90 leading-relaxed font-medium"
             >
               Maitri Welfare Foundation is dedicated to empowering communities through transparent, professional, and compassionate social welfare programs. We believe in creating sustainable change that lasts generations.
             </motion.p>
@@ -74,10 +77,10 @@ export default function About() {
             <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
               <Target className="w-32 h-32 text-primary" />
             </div>
-            <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-8">
-              <Target className="w-8 h-8 text-primary" />
+            <div className="w-12 h-12 sm:w-16 sm:h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-8">
+              <Target className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
             </div>
-            <h2 className="text-3xl font-bold text-primary mb-4">Our Mission</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-primary mb-4">Our Mission</h2>
             <p className="text-on-surface-variant leading-relaxed">
               To alleviate poverty, provide quality education, and offer essential healthcare services to the most vulnerable sections of society. We strive to create an ecosystem of equal opportunities where every individual has the resources they need to thrive and contribute to a better world.
             </p>
@@ -95,10 +98,10 @@ export default function About() {
             <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
               <Lightbulb className="w-32 h-32 text-secondary" />
             </div>
-            <div className="w-16 h-16 bg-secondary/10 rounded-2xl flex items-center justify-center mb-8">
-              <Lightbulb className="w-8 h-8 text-secondary" />
+            <div className="w-12 h-12 sm:w-16 sm:h-16 bg-secondary/10 rounded-2xl flex items-center justify-center mb-8">
+              <Lightbulb className="w-6 h-6 sm:w-8 sm:h-8 text-secondary" />
             </div>
-            <h2 className="text-3xl font-bold text-secondary mb-4">Our Vision</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-secondary mb-4">Our Vision</h2>
             <p className="text-on-surface-variant leading-relaxed">
               A world where compassion and systemic support eradicate inequality. We envision empowered communities that are self-reliant, educated, and healthy, paving the way for a brighter, more equitable future for all generations to come.
             </p>
@@ -110,12 +113,12 @@ export default function About() {
       <section className="py-32 bg-surface-container-lowest overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
-            className="text-center mb-24"
+            className="text-center mb-16 sm:mb-24"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl md:text-5xl font-extrabold text-primary mb-4">Our Journey</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-primary mb-4">Our Journey</h2>
             <div className="w-24 h-1.5 bg-secondary mx-auto rounded-full"></div>
           </motion.div>
 
@@ -127,9 +130,9 @@ export default function About() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <span className="text-secondary font-bold text-sm uppercase tracking-widest mb-4 block">How it all began</span>
-              <h3 className="text-3xl font-bold text-primary mb-6">A Vision Shared by Five Friends</h3>
-              <p className="text-on-surface-variant text-lg leading-relaxed mb-6">
+              <span className="text-secondary font-bold text-[10px] sm:text-sm uppercase tracking-widest mb-4 block">How it all began</span>
+              <h3 className="text-2xl sm:text-3xl font-bold text-primary mb-6">A Vision Shared by Five Friends</h3>
+              <p className="text-on-surface-variant text-base sm:text-lg leading-relaxed mb-6">
                 Maitri Welfare Foundation started as a small seed of an idea shared among five close friends. Driven by a mutual desire to give back to society, they began their journey with simple social awareness programs, educating local communities about their rights and environmental responsibilities.
               </p>
               <div className="flex gap-4 items-center text-primary font-bold">
@@ -146,7 +149,7 @@ export default function About() {
             >
               <div className="aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white">
                 <img
-                  src="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=1260"
+                  src={about1}
                   alt="Group of friends"
                   className="w-full h-full object-cover"
                 />
@@ -166,7 +169,7 @@ export default function About() {
             >
               <div className="aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white">
                 <img
-                  src="https://images.pexels.com/photos/6646917/pexels-photo-6646917.jpeg?auto=compress&cs=tinysrgb&w=1260"
+                  src={about2}
                   alt="Food donation"
                   className="w-full h-full object-cover"
                 />

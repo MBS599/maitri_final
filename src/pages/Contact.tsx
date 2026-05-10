@@ -99,13 +99,13 @@ export default function Contact() {
           >
             <motion.h1
               variants={fadeInUp}
-              className="text-5xl font-extrabold mb-6"
+              className="text-4xl sm:text-5xl font-extrabold mb-6 leading-[1.1]"
             >
               Let's Connect
             </motion.h1>
             <motion.p
               variants={fadeInUp}
-              className="text-lg opacity-90 leading-relaxed"
+              className="text-base sm:text-lg opacity-90 leading-relaxed"
             >
               Whether you have a question, want to volunteer, or just want to say hi, our team is always ready to hear from you.
             </motion.p>
@@ -120,7 +120,7 @@ export default function Contact() {
           viewport={{ once: true }}
           variants={fadeInUp}
         >
-          <motion.h2 className="text-4xl font-bold mb-10 text-primary text-center">Get in Touch</motion.h2>
+          <motion.h2 className="text-3xl sm:text-4xl font-bold mb-10 text-primary text-center">Get in Touch</motion.h2>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 text-center">
             <motion.div variants={itemVariants} className="bg-surface-container-low p-6 rounded-2xl border border-outline-variant/20 shadow-sm">
@@ -233,7 +233,7 @@ export default function Contact() {
       {/* Social Links */}
       <section className="pb-24 max-w-7xl mx-auto px-6 text-center">
         <motion.h2 
-          className="text-4xl font-bold text-primary mb-12"
+          className="text-3xl sm:text-4xl font-bold text-primary mb-12"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
