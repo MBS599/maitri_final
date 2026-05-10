@@ -1,11 +1,11 @@
 import React from 'react';
-import { motion } from 'motion/react';
-import { Sparkles, Heart, BookOpen, Scissors, TrendingUp, ArrowRight, Send, Loader2, Award, Youtube, Mic } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
+import { Sparkles, Heart, BookOpen, Scissors, TrendingUp, ArrowRight, Send, Loader2, Award, Youtube, Mic, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useState, useRef, useEffect } from 'react';
-import award2023 from '../assets/team/award_2023.png';
-import award2024 from '../assets/team/award_2024.png';
-import award2025 from '../assets/team/award_2025.png';
+import award2023 from '../assets/alka_gujnan.png';
+import award2024 from '../assets/shilpa_datar.png';
+import award2025 from '../assets/sapana_kakade.png';
 import { toast } from 'sonner';
 
 const containerVariants = {
@@ -47,6 +47,7 @@ const scaleIn = {
 
 export default function Kaushalya() {
   const [isSending, setIsSending] = useState(false);
+  const [selectedPhoto, setSelectedPhoto] = useState<string | null>(null);
   const [captcha, setCaptcha] = useState({ question: '', answer: 0 });
   const [userCaptcha, setUserCaptcha] = useState('');
   const formRef = useRef<HTMLFormElement>(null);
@@ -341,21 +342,22 @@ export default function Kaushalya() {
             viewport={{ once: true }}
           >
             {[
-              { year: '2025', img: award2025, title: 'Narishakti 2025' },
-              { year: '2024', img: award2024, title: 'Narishakti 2024' },
-              { year: '2023', img: award2023, title: 'Narishakti 2023' }
+              { year: '2025', img: award2025, title: 'Sapna Kakade', position: 'object-[25%_center]' },
+              { year: '2024', img: award2024, title: 'Shilpa Datar', position: 'object-center' },
+              { year: '2023', img: award2023, title: 'Alka Gujnan', position: 'object-center' }
             ].map((awardee, idx) => (
               <motion.div
                 key={idx}
                 variants={itemVariants}
                 whileHover={{ y: -10 }}
-                className="bg-white rounded-[2.5rem] overflow-hidden shadow-sm border border-outline-variant/30 group"
+                onClick={() => setSelectedPhoto(awardee.img)}
+                className="bg-white rounded-[2.5rem] overflow-hidden shadow-sm border border-outline-variant/30 group cursor-pointer"
               >
                 <div className="aspect-[3/4] overflow-hidden relative">
                   <motion.img
                     src={awardee.img}
                     alt={awardee.title}
-                    className="w-full h-full object-cover"
+                    className={`w-full h-full object-cover ${awardee.position}`}
                     whileHover={{ scale: 1.1 }}
                     transition={{ duration: 0.6 }}
                   />
@@ -627,6 +629,34 @@ export default function Kaushalya() {
           </motion.div>
         </motion.div>
       </section>
+      {/* Image Modal */}
+      <AnimatePresence>
+        {selectedPhoto && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedPhoto(null)}
+            className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 md:p-10 cursor-pointer"
+          >
+            <motion.button
+              className="absolute top-6 right-6 text-white hover:text-secondary-container transition-colors p-2 bg-white/10 rounded-full backdrop-blur-md"
+              onClick={() => setSelectedPhoto(null)}
+            >
+              <X className="w-8 h-8" />
+            </motion.button>
+            <motion.img
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              src={selectedPhoto}
+              alt="Full view"
+              className="max-w-full max-h-[90vh] object-contain rounded-2xl shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
