@@ -33,19 +33,6 @@ const newsItems = [
   }
 ];
 
-const newsletters = [
-  {
-    title: "Quarterly Newsletter - Q1 2024",
-    date: "Jan 2024",
-    preview: "https://images.pexels.com/photos/5185093/pexels-photo-5185093.jpeg?auto=compress&cs=tinysrgb&w=1260"
-  },
-  {
-    title: "Annual Impact Report 2023",
-    date: "Dec 2023",
-    preview: "https://images.pexels.com/photos/1586525/pexels-photo-1586525.jpeg?auto=compress&cs=tinysrgb&w=1260"
-  }
-];
-
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -78,7 +65,7 @@ export default function Media() {
           <motion.div initial="hidden" animate="visible" variants={containerVariants}>
             <motion.h1 variants={itemVariants} className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6 leading-[1.1]">News & Media</motion.h1>
             <motion.p variants={itemVariants} className="text-base sm:text-lg md:text-xl opacity-90 leading-relaxed max-w-2xl mx-auto font-medium">
-              Stay updated with our latest news coverage, newsletters, and media highlights as we continue to make a difference.
+              Stay updated with our latest news coverage and media highlights as we continue to make a difference.
             </motion.p>
           </motion.div>
         </div>
@@ -132,47 +119,7 @@ export default function Media() {
         </motion.div>
       </section>
 
-      {/* Newsletters Section */}
-      <section className="py-24 bg-surface-container-low">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-primary mb-4">Our Newsletters</h2>
-            <p className="text-sm sm:text-base text-on-surface-variant max-w-2xl mx-auto leading-relaxed font-medium">
-              Deep dives into our quarterly progress, success stories, and future plans.
-            </p>
-          </div>
 
-          <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 gap-8"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={containerVariants}
-          >
-            {newsletters.map((newsletter, idx) => (
-              <motion.div 
-                key={idx} 
-                variants={itemVariants}
-                className="bg-white p-6 rounded-3xl border border-outline-variant flex flex-col sm:flex-row gap-8 items-center group cursor-pointer hover:border-secondary transition-colors"
-              >
-                <div className="w-32 h-40 flex-shrink-0 bg-surface-container rounded-xl overflow-hidden shadow-md">
-                  <img src={newsletter.preview} alt="Newsletter" className="w-full h-full object-cover group-hover:scale-105 transition-transform" />
-                </div>
-                <div className="flex-grow">
-                  <span className="text-secondary font-bold text-[10px] uppercase tracking-widest mb-2 block">{newsletter.date}</span>
-                  <h3 className="text-xl font-bold text-primary mb-4">{newsletter.title}</h3>
-                  <p className="text-on-surface-variant text-sm mb-6 leading-relaxed">
-                    Download the latest issue to see how your support is changing lives on the ground.
-                  </p>
-                  <button className="bg-primary/5 text-primary px-6 py-2 rounded-full text-sm font-bold hover:bg-primary hover:text-on-primary transition-all">
-                    Download PDF
-                  </button>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
 
       {/* Media Interaction CTA */}
       <section className="py-24 max-w-7xl mx-auto px-6 pb-32">

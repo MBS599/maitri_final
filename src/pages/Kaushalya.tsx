@@ -343,8 +343,8 @@ export default function Kaushalya() {
           >
             {[
               { year: '2025', img: award2025, title: 'Sapna Kakade', position: 'object-[25%_center]' },
-              { year: '2024', img: award2024, title: 'Shilpa Datar', position: 'object-center' },
-              { year: '2023', img: award2023, title: 'Alka Gujnan', position: 'object-center' }
+              { year: '2025', img: award2024, title: 'Shilpa Datar', position: 'object-center' },
+              { year: '2025', img: award2023, title: 'Alka Gujnan', position: 'object-center' }
             ].map((awardee, idx) => (
               <motion.div
                 key={idx}
