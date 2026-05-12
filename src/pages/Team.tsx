@@ -168,11 +168,11 @@ export default function Team() {
           >
             <div className="aspect-square overflow-hidden relative">
               <motion.img
-                className="w-full h-full object-cover object-[78%_18%]"
+                className="w-full h-full object-cover object-[center_20%]"
                 alt="Pratik Sitapure"
                 src={pratik}
-                initial={{ scale: 2.4 }}
-                whileHover={{ scale: 2.55 }}
+                initial={{ scale: 1.15 }}
+                whileHover={{ scale: 1.2 }}
                 transition={{ duration: 0.6 }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
