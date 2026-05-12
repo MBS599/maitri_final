@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { Heart, Target, Lightbulb, Users, Globe, Shield } from 'lucide-react';
 import aboutHero from '../assets/hero.png';
+import { AnimatedCounter } from '../components/AnimatedCounter';
 import fullTeam from '../assets/team/full_team.jpeg';
 import about1 from '../assets/team/about1.jpg';
 import about2 from '../assets/team/about2.jpg';
@@ -310,8 +311,11 @@ export default function About() {
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1, type: "spring", stiffness: 200 }}
+                className="group cursor-pointer"
               >
-                <div className="text-4xl md:text-5xl font-extrabold text-secondary mb-2">{stat.number}</div>
+                <div className="text-4xl md:text-5xl font-extrabold text-secondary mb-2">
+                  <AnimatedCounter value={stat.number} />
+                </div>
                 <div className="text-xs font-bold uppercase tracking-widest text-on-surface-variant">{stat.label}</div>
               </motion.div>
             ))}

@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { Calendar, MapPin, Filter, ArrowRight, X, Send, Loader2, Sparkles, ClipboardList, Eye } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { AnimatedCounter } from '../components/AnimatedCounter';
 import { useState, useRef, useEffect } from 'react';
 import { toast } from 'sonner';
 import { AnimatePresence } from 'motion/react';
@@ -547,7 +548,7 @@ export default function Events() {
                 variants={itemVariants}
                 whileHover={{ scale: 1.08, y: -5 }}
                 transition={{ type: "spring", stiffness: 300 }}
-                className="bg-white/5 backdrop-blur-md p-8 rounded-2xl border border-on-primary/10"
+                className="bg-white/5 backdrop-blur-md p-8 rounded-2xl border border-on-primary/10 group cursor-pointer"
               >
                 <motion.div
                   className="text-secondary-container text-4xl font-extrabold mb-2"
@@ -556,7 +557,7 @@ export default function Events() {
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.1, type: "spring", stiffness: 200 }}
                 >
-                  {stat.val}
+                  <AnimatedCounter value={stat.val} />
                 </motion.div>
                 <div className="text-on-primary/70 text-xs font-bold uppercase tracking-widest">{stat.label}</div>
               </motion.div>

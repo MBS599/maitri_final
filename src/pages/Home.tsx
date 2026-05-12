@@ -2,6 +2,7 @@ import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { CheckCircle, Award, Users, Calendar, ArrowRight } from 'lucide-react';
 import heroImg from '../assets/hero.png';
+import { AnimatedCounter } from '../components/AnimatedCounter';
 
 export default function Home() {
   const containerVariants = {
@@ -112,7 +113,7 @@ export default function Home() {
                 variants={itemVariants}
                 whileHover={{ scale: 1.05, y: -5 }}
                 transition={{ type: "spring", stiffness: 300 }}
-                className="bg-surface p-10 rounded-2xl shadow-sm border border-outline-variant/30 text-center"
+                className="bg-surface p-10 rounded-2xl shadow-sm border border-outline-variant/30 text-center group cursor-pointer"
               >
                 <motion.span
                   className="text-4xl font-extrabold text-secondary mb-2 block"
@@ -121,7 +122,7 @@ export default function Home() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: idx * 0.15, type: "spring", stiffness: 200 }}
                 >
-                  {stat.value}
+                  <AnimatedCounter value={stat.value} />
                 </motion.span>
                 <p className="text-on-surface-variant font-medium">{stat.label}</p>
               </motion.div>

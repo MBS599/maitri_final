@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { ShieldCheck, Eye, Lock, Landmark } from 'lucide-react';
+import { AnimatedCounter } from '../components/AnimatedCounter';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -179,7 +180,7 @@ export default function Support() {
                 variants={itemVariants}
                 whileHover={{ scale: 1.08, y: -5 }}
                 transition={{ type: "spring", stiffness: 300 }}
-                className="p-8 bg-white rounded-2xl shadow-sm border border-outline-variant/10"
+                className="p-8 bg-white rounded-2xl shadow-sm border border-outline-variant/10 group cursor-pointer"
               >
                 <motion.div
                   className="text-4xl font-extrabold text-secondary mb-2"
@@ -188,7 +189,7 @@ export default function Support() {
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.1, type: "spring", stiffness: 200 }}
                 >
-                  {stat.val}
+                  <AnimatedCounter value={stat.val} />
                 </motion.div>
                 <p className="text-[10px] font-bold uppercase text-on-surface-variant tracking-widest">{stat.label}</p>
               </motion.div>
