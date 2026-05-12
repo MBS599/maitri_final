@@ -86,6 +86,7 @@ export function Navbar() {
           >
             <Link
               to="/contact"
+              onClick={() => setIsOpen(false)}
               className="border border-primary text-primary px-5 py-2 rounded-full text-xs font-bold transition-all hover:bg-primary/5"
             >
               Contact Us
@@ -100,6 +101,7 @@ export function Navbar() {
           >
             <Link
               to="/support"
+              onClick={() => setIsOpen(false)}
               className="bg-secondary-container text-on-secondary-container px-4 sm:px-6 py-2 rounded-full text-xs sm:text-sm font-bold shadow-sm transition-all whitespace-nowrap flex items-center justify-center min-w-fit"
             >
               <span className="hidden min-[410px]:inline">Donate Now</span>
