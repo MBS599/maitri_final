@@ -1,19 +1,20 @@
 import { motion } from 'motion/react';
 import { Mail, Link as LinkIcon, ArrowRight, Award } from 'lucide-react';
 import teamBg from '../assets/team.jpg';
-import siddhiKadam from '../assets/team/siddhi_kadam.png';
+import siddhiKadam from '../assets/team/sidhhi.png';
 import pranavPawar from '../assets/team/pranav.png';
 import sanikaPhadtare from '../assets/team/sanika phadtare.png';
 import nirajSharma from '../assets/team/niraj.png';
 import sid from '../assets/team/sid.png';
-import mayurSutar from '../assets/team/Mayur.png';
+import mayurSutar from '../assets/team/mayur.png';
 import divya from '../assets/team/divya.png';
 import jayesh from '../assets/team/jayesh.png';
 import ankita from '../assets/team/ankita.png';
 import piyush from '../assets/team/piyush.png';
 import shivam from '../assets/team/shivam.png';
-import awanti from '../assets/team/awanti gaikwad.png';
-import pranjal from '../assets/team/pranjal khalate.png';
+import awanti from '../assets/team/awanti.png';
+import pranjal from '../assets/team/pranjal.png';
+import reema from '../assets/team/reema.png';
 
 import awardJayesh from '../assets/awards/best_volunteer/jayesh_pachange.webp';
 import awardPranaw from '../assets/awards/best_volunteer/pranav_pawar.jpeg';
@@ -362,6 +363,29 @@ export default function Team() {
             </div>
           </motion.div>
 
+          {/* Reema Kalbhor */}
+          <motion.div
+            variants={itemVariants}
+            whileHover={{ y: -5 }}
+            className="bg-white rounded-[2rem] overflow-hidden shadow-sm border border-outline-variant/30 group transition-all hover:shadow-md"
+          >
+            <div className="aspect-square overflow-hidden relative">
+              <motion.img
+                className="w-full h-full object-cover object-[center_15%]"
+                alt="Reema Kalbhor"
+                src={reema}
+                initial={{ scale: 1.15 }}
+                whileHover={{ scale: 1.2 }}
+                transition={{ duration: 0.6 }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            </div>
+            <div className="p-6 text-center">
+              <h4 className="text-xl font-bold text-primary mb-1 leading-tight">Reema Kalbhor</h4>
+              <p className="text-secondary font-bold text-[10px] uppercase tracking-widest">Member</p>
+            </div>
+          </motion.div>
+
           {/* Ankita Aware */}
           <motion.div
             variants={itemVariants}
@@ -370,11 +394,11 @@ export default function Team() {
           >
             <div className="aspect-square overflow-hidden relative">
               <motion.img
-                className="w-full h-full object-cover object-[center_5%]"
+                className="w-full h-full object-cover object-top"
                 alt="Ankita Aware"
                 src={ankita}
-                initial={{ scale: 1.25 }}
-                whileHover={{ scale: 1.3 }}
+                initial={{ scale: 1.6 }}
+                whileHover={{ scale: 1.7 }}
                 transition={{ duration: 0.6 }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
