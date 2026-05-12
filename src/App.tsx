@@ -17,11 +17,28 @@ import Volunteer from './pages/Volunteer';
 import Kaushalya from './pages/Kaushalya';
 import Media from './pages/Media';
 import { Toaster } from 'sonner';
+import { Analytics } from '@vercel/analytics/react';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
+
+    // Dynamic SEO titles per route
+    const titles: Record<string, string> = {
+      '/': 'Maitri Welfare Foundation | Empowering Lives, Protecting Nature',
+      '/about': 'About Us | Maitri Welfare Foundation',
+      '/team': 'Our Team | Maitri Welfare Foundation',
+      '/awards': 'Awards & Recognition | Maitri Welfare Foundation',
+      '/events': 'Activities & Events | Maitri Welfare Foundation',
+      '/support': 'Support Our Cause | Maitri Welfare Foundation',
+      '/contact': 'Contact Us | Maitri Welfare Foundation',
+      '/volunteer': 'Volunteer Registration | Maitri Welfare Foundation',
+      '/kaushalya': 'Project Kaushalya | Maitri Welfare Foundation',
+      '/media': 'Media & Gallery | Maitri Welfare Foundation',
+    };
+
+    document.title = titles[pathname] || 'Maitri Welfare Foundation';
   }, [pathname]);
   return null;
 }
@@ -31,6 +48,7 @@ export default function App() {
     <Router>
       <ScrollToTop />
       <Toaster position="top-right" richColors />
+      <Analytics />
       <div className="flex flex-col min-h-screen overflow-x-hidden">
         <Navbar />
         <main className="flex-grow">

@@ -36,9 +36,14 @@ export function Navbar() {
             whileHover={{ scale: 1.1, rotate: 5 }}
             transition={{ type: "spring", stiffness: 400 }}
           />
-          <h1 className="text-sm min-[400px]:text-base sm:text-lg xl:text-xl font-extrabold text-primary tracking-tight leading-tight">
-            Maitri Welfare Foundation
-          </h1>
+          <div className="flex flex-col">
+            <h1 className="text-sm min-[400px]:text-base sm:text-lg xl:text-xl font-extrabold text-primary tracking-tight leading-tight">
+              Maitri Welfare Foundation
+            </h1>
+            <span className="text-[9px] sm:text-[10px] text-secondary font-extrabold tracking-wider uppercase">
+              "एक हात मैत्रीचा"
+            </span>
+          </div>
         </Link>
 
         {/* Desktop Nav */}
@@ -216,7 +221,12 @@ export function Footer() {
               whileHover={{ rotate: 10 }}
               transition={{ type: "spring", stiffness: 300 }}
             />
-            <h2 className="text-2xl font-extrabold tracking-tight">Maitri Welfare Foundation</h2>
+            <div className="flex flex-col">
+              <h2 className="text-2xl font-extrabold tracking-tight">Maitri Welfare Foundation</h2>
+              <span className="text-xs text-secondary font-bold tracking-widest uppercase mt-0.5">
+                "एक हात मैत्रीचा" • One Hand of Friendship
+              </span>
+            </div>
           </div>
           <p className="text-sm text-on-primary/70 leading-relaxed">
             Empowering communities through transparent and professional social welfare programs.

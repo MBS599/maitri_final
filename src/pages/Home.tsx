@@ -60,14 +60,13 @@ export default function Home() {
             variants={containerVariants}
             className="max-w-2xl text-on-primary"
           >
-            <motion.div variants={itemVariants} className="flex items-center gap-3 mb-6">
-              <motion.div
-                className="w-12 h-1 bg-secondary-container rounded-full"
-                initial={{ width: 0 }}
-                animate={{ width: 48 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-              />
-              <span className="font-bold tracking-widest uppercase text-xs">Established 2019</span>
+            <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-3 mb-6">
+              <span className="bg-secondary/20 text-secondary-container border border-secondary/30 px-4 py-1.5 rounded-full font-bold tracking-wider uppercase text-xs backdrop-blur-sm">
+                "एक हात मैत्रीचा" • One Hand of Friendship
+              </span>
+              <span className="text-on-primary/80 font-bold tracking-widest uppercase text-xs hidden sm:inline">
+                | &nbsp;Established 2019
+              </span>
             </motion.div>
             <motion.h1
               variants={itemVariants}
