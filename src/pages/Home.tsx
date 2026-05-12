@@ -1,8 +1,11 @@
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
-import { CheckCircle, Award, Users, Calendar, ArrowRight } from 'lucide-react';
+import { CheckCircle, Award, Users, Calendar, ArrowRight, MapPin } from 'lucide-react';
 import heroImg from '../assets/hero.png';
 import { AnimatedCounter } from '../components/AnimatedCounter';
+import news1 from '../assets/news/new1.jpeg';
+import news2 from '../assets/news/news2.jpeg';
+import about1 from '../assets/team/about1.jpg';
 
 export default function Home() {
   const containerVariants = {
@@ -144,9 +147,9 @@ export default function Home() {
             >
               <div className="aspect-square rounded-3xl overflow-hidden shadow-2xl">
                 <motion.img
-                  alt="Foundation Activities"
+                  alt="Foundation Activities in Slum Areas"
                   className="w-full h-full object-cover"
-                  src="https://images.pexels.com/photos/36739282/pexels-photo-36739282.jpeg?auto=compress&cs=tinysrgb&w=1260"
+                  src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1200&q=80"
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.6 }}
                 />
@@ -244,36 +247,64 @@ export default function Home() {
             </motion.div>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <motion.div
-              className="bg-surface rounded-2xl overflow-hidden shadow-md border border-outline-variant/20 group"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              whileHover={{ y: -8, boxShadow: "0 20px 40px rgba(0,0,0,0.1)" }}
-            >
-              <div className="h-48 overflow-hidden relative">
-                <img
-                  alt="Tree Plantation"
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                  src="https://images.pexels.com/photos/20356926/pexels-photo-20356926.jpeg?auto=compress&cs=tinysrgb&w=1260"
-                />
-              </div>
-              <div className="p-6">
-                <motion.span
-                  className="bg-primary-container text-on-primary-container text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider inline-block"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.3 }}
-                >
-                  Environment
-                </motion.span>
-                <h4 className="text-xl font-bold mt-4 mb-2">Tree Plantation Drive</h4>
-                <p className="text-on-surface-variant text-sm line-clamp-2">Join us for our annual mega plantation event in Mumbai suburbs.</p>
-              </div>
-            </motion.div>
-            {/* Additional cards would go here for a full list */}
+            {[
+              {
+                category: 'Environment',
+                title: 'Tree Plantation Drive',
+                desc: 'Join us for our annual mega plantation event in suburban green belts to foster environmental sustainability.',
+                location: 'Suburban Green Belt, Pune',
+                img: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80'
+              },
+              {
+                category: 'Social Welfare',
+                title: 'Community Food Distribution',
+                desc: 'Providing essential ration kits and healthy cooked meals to support underprivileged families and elderly citizens.',
+                location: 'Slum Communities, Pune',
+                img: news2
+              },
+              {
+                category: 'Health & Care',
+                title: 'Mega Blood Donation Camp',
+                desc: 'Organizing robust community blood donation drives to aid city hospitals during critical blood shortages.',
+                location: 'Central Auditorium Grounds, Pune',
+                img: news1
+              }
+            ].map((item, idx) => (
+              <motion.div
+                key={idx}
+                className="bg-surface rounded-2xl overflow-hidden shadow-md border border-outline-variant/20 group flex flex-col"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.15 }}
+                whileHover={{ y: -8, boxShadow: "0 20px 40px rgba(0,0,0,0.1)" }}
+              >
+                <div className="h-48 overflow-hidden relative shrink-0">
+                  <img
+                    alt={item.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    src={item.img}
+                  />
+                </div>
+                <div className="p-6 flex flex-col grow">
+                  <motion.span
+                    className="bg-primary-container text-on-primary-container text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider inline-block self-start"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.3 + idx * 0.1 }}
+                  >
+                    {item.category}
+                  </motion.span>
+                  <h4 className="text-xl font-bold mt-4 mb-2 text-primary">{item.title}</h4>
+                  <p className="text-on-surface-variant text-sm mb-4 line-clamp-2 leading-relaxed">{item.desc}</p>
+                  <div className="flex items-center gap-1.5 text-on-surface-variant text-xs font-medium uppercase tracking-wider mt-auto pt-4 border-t border-outline-variant/10">
+                    <MapPin className="w-4 h-4 text-secondary shrink-0" />
+                    <span className="truncate">{item.location}</span>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>

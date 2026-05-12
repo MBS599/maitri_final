@@ -129,11 +129,7 @@ export function Navbar() {
             className="lg:hidden bg-surface border-t border-outline-variant overflow-hidden"
           >
             <nav className="flex flex-col p-6 gap-5">
-              <Link to="/" onClick={() => setIsOpen(false)} className="flex items-center gap-3 px-2 mb-4 block">
-                <img src={logo} alt="Maitri Logo" className="w-10 h-10 object-contain" />
-                <span className="font-bold text-lg text-primary leading-tight">Maitri Welfare Foundation</span>
-              </Link>
-              <div className="grid grid-cols-2 gap-x-4 gap-y-6 px-2">
+              <div className="grid grid-cols-2 gap-x-4 gap-y-6 px-2 pt-2">
                 {navLinks.map((link, idx) => (
                   <motion.div
                     key={link.path}
@@ -215,17 +211,17 @@ export function Footer() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <div className="flex items-center gap-3 mb-6 group text-on-primary">
+          <div className="flex items-start gap-3 mb-6 group text-on-primary">
             <motion.img
               src={logo}
               alt="Maitri Logo"
-              className="w-10 h-10 object-contain"
+              className="w-10 h-10 sm:w-12 sm:h-12 object-contain shrink-0 mt-0.5"
               whileHover={{ rotate: 10 }}
               transition={{ type: "spring", stiffness: 300 }}
             />
             <div className="flex flex-col">
-              <h2 className="text-2xl font-extrabold tracking-tight">Maitri Welfare Foundation</h2>
-              <span className="text-xs text-secondary font-bold tracking-widest uppercase mt-0.5">
+              <h2 className="text-xl sm:text-2xl font-extrabold tracking-tight leading-tight">Maitri Welfare Foundation</h2>
+              <span className="text-[10px] sm:text-xs text-secondary font-bold tracking-widest uppercase mt-1.5 leading-normal">
                 "एक हात मैत्रीचा" • One Hand of Friendship
               </span>
             </div>
@@ -278,6 +274,20 @@ export function Footer() {
           <div className="flex flex-col gap-4">
             <h5 className="font-bold text-secondary-container uppercase text-xs tracking-wider">Socials</h5>
             <div className="flex gap-4">
+              <motion.a
+                href="https://chat.whatsapp.com/F46mGxCY15QHB3GE7aAFgR"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-on-primary/10 flex items-center justify-center hover:bg-secondary transition-all cursor-pointer fill-current"
+                whileHover={{ scale: 1.15, rotate: 5 }}
+                transition={{ type: "spring", stiffness: 400 }}
+                title="Join WhatsApp Community"
+              >
+                <svg className="w-5 h-5" viewBox="0 0 24 24">
+                  <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.414 2.534 1.196 3.568l-.801 2.923 3.013-.789c.96.657 2.094 1.008 3.361 1.008 3.182 0 5.769-2.586 5.77-5.767 0-3.181-2.587-5.767-5.771-5.767zm3.435 8.163c-.156.438-.918.843-1.28.887-.363.044-.814.11-2.454-.531-1.981-.774-3.254-2.793-3.354-2.926-.1-.133-.8-.106-.8-.106s.013-1.042.825-1.042c.163 0 .356.006.488.025.156.025.363-.062.556.406.206.5.7 1.713.763 1.838.063.125.106.269.025.431-.081.163-.125.263-.25.406-.125.144-.263.306-.375.406-.125.112-.263.238-.112.5.15.263.669 1.113 1.438 1.8 1.011.895 1.82 1.18 2.08 1.306.26.126.413.106.568-.069.155-.175.669-.781.85-1.05.181-.269.363-.225.6-.138.238.088 1.5.706 1.756.831.256.125.425.188.488.294.063.106.063.619-.093 1.057z" />
+                  <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-.031 19.387c-1.302 0-2.576-.35-3.69-1.013l-4.105 1.075 1.092-4.001c-.727-1.157-1.111-2.488-1.111-3.86 0-4.116 3.348-7.464 7.465-7.464 4.118 0 7.467 3.348 7.467 7.464s-3.349 7.464-7.467 7.464z" />
+                </svg>
+              </motion.a>
               <motion.a
                 href="https://www.instagram.com/maitri_welfare_foundation_"
                 target="_blank"

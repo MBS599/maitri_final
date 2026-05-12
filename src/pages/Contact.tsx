@@ -250,6 +250,23 @@ export default function Contact() {
         >
           <motion.a 
             variants={itemVariants}
+            href="https://chat.whatsapp.com/F46mGxCY15QHB3GE7aAFgR" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="flex items-center gap-3 bg-surface-container-low px-8 py-4 rounded-2xl shadow-sm hover:shadow-md transition-all group border border-outline-variant/20 cursor-pointer"
+            whileHover={{ y: -5, scale: 1.03 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
+            <div className="w-6 h-6 text-[#25D366] fill-current flex items-center justify-center">
+              <svg viewBox="0 0 24 24" className="w-full h-full">
+                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.414 2.534 1.196 3.568l-.801 2.923 3.013-.789c.96.657 2.094 1.008 3.361 1.008 3.182 0 5.769-2.586 5.77-5.767 0-3.181-2.587-5.767-5.771-5.767zm3.435 8.163c-.156.438-.918.843-1.28.887-.363.044-.814.11-2.454-.531-1.981-.774-3.254-2.793-3.354-2.926-.1-.133-.8-.106-.8-.106s.013-1.042.825-1.042c.163 0 .356.006.488.025.156.025.363-.062.556.406.206.5.7 1.713.763 1.838.063.125.106.269.025.431-.081.163-.125.263-.25.406-.125.144-.263.306-.375.406-.125.112-.263.238-.112.5.15.263.669 1.113 1.438 1.8 1.011.895 1.82 1.18 2.08 1.306.26.126.413.106.568-.069.155-.175.669-.781.85-1.05.181-.269.363-.225.6-.138.238.088 1.5.706 1.756.831.256.125.425.188.488.294.063.106.063.619-.093 1.057z" />
+                <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-.031 19.387c-1.302 0-2.576-.35-3.69-1.013l-4.105 1.075 1.092-4.001c-.727-1.157-1.111-2.488-1.111-3.86 0-4.116 3.348-7.464 7.465-7.464 4.118 0 7.467 3.348 7.467 7.464s-3.349 7.464-7.467 7.464z" />
+              </svg>
+            </div>
+            <span className="font-bold text-on-surface-variant group-hover:text-[#25D366]">WhatsApp Community</span>
+          </motion.a>
+          <motion.a 
+            variants={itemVariants}
             href="https://www.youtube.com/@maitriwelfarefoundation_" 
             target="_blank" 
             rel="noopener noreferrer" 

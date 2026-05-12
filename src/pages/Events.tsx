@@ -7,6 +7,21 @@ import { useState, useRef, useEffect } from 'react';
 import { toast } from 'sonner';
 import { AnimatePresence } from 'motion/react';
 
+// Local images to guarantee visibility and meaning
+import news1 from '../assets/news/new1.jpeg';
+import news2 from '../assets/news/news2.jpeg';
+import news3 from '../assets/news/news3.jpeg';
+import waariImg from '../assets/news/waari.png';
+import bloodDonationImg from '../assets/news/blood_donation.jpg';
+import aashramVisitImg from '../assets/news/aashram_visit.jpg';
+import educationImg from '../assets/news/education.jpg';
+import narishaktiImg from '../assets/news/narishakti.jpg';
+import blanketDonationImg from '../assets/news/blanket_donation.png';
+import about1 from '../assets/team/about1.jpg';
+import about2 from '../assets/team/about2.jpg';
+import samajSeva from '../assets/awards/samaj seva.jpeg';
+import heroImg from '../assets/hero.png';
+
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -40,34 +55,131 @@ const fadeInRight = {
 };
 
 const events = [
-  {
-    category: 'Environment',
-    date: 'Nov 24, 2024 • 09:00 AM',
-    title: 'Tree Plantation Drive',
-    desc: 'Help us restore the local green belt by planting 500 indigenous saplings. Tools and refreshments provided.',
-    location: 'City Central Park',
-    img: 'https://images.pexels.com/photos/20356926/pexels-photo-20356926.jpeg?auto=compress&cs=tinysrgb&w=1260'
-  },
+  // Upcoming Events
   {
     category: 'Social Welfare',
-    date: 'Dec 05, 2024 • 12:30 PM',
-    title: 'Food Distribution',
-    desc: 'Providing balanced meals to underprivileged families in the northern suburbs. Join as a server or logistics aid.',
-    location: 'North Community Center',
-    img: 'https://images.pexels.com/photos/5909876/pexels-photo-5909876.jpeg?auto=compress&cs=tinysrgb&w=1260'
+    date: 'May 17, 2026 • 10:00 AM',
+    title: 'Aashram Visit & Food Donation',
+    desc: 'Spending valuable time with elderly and underprivileged residents, alongside distributing healthy cooked meals and essential supplies.',
+    location: 'Pune',
+    status: 'upcoming',
+    img: aashramVisitImg
+  },
+  {
+    category: 'Education',
+    date: 'May 25, 2026 • 11:00 AM',
+    title: 'Educational Support for Children',
+    desc: 'To support the educational expenses, stationary kits, and school uniforms of deserving school-going children to keep their dreams alive.',
+    location: 'Pune',
+    status: 'upcoming',
+    img: educationImg
+  },
+  {
+    category: 'Culture & Care',
+    date: 'June 09, 2026 • 07:00 AM',
+    title: 'Wari - 2026 & Blood Donation',
+    desc: 'Serving the traditional Varkari pilgrims during the sacred annual Wari procession, coupled with a highly organized community Blood Donation drive.',
+    location: 'Pune',
+    status: 'upcoming',
+    img: waariImg
+  },
+  {
+    category: 'Environment',
+    date: 'July 12, 2026 • 08:30 AM',
+    title: 'Tree Plantation & Return Wari',
+    desc: 'Greening the landscape by planting indigenous deep-root trees along the Return Wari route to create long-term carbon sinks and shade.',
+    location: 'Pune',
+    status: 'upcoming',
+    img: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=1200&q=80'
   },
   {
     category: 'Health',
-    date: 'Dec 12, 2024 • 08:00 AM',
-    title: 'Community Health Camp',
-    desc: 'Free general check-ups, eye screenings, and basic medication distribution for senior citizens.',
-    location: 'Maitri Wellness Hub',
-    img: 'https://images.pexels.com/photos/14558560/pexels-photo-14558560.jpeg?auto=compress&cs=tinysrgb&w=1260'
+    date: 'August 15, 2026 • 09:00 AM',
+    title: 'Blood Donation (Dhol Tasha Pathak)',
+    desc: 'Partnering with energetic local Dhol Tasha groups to host a grand life-saving blood donation camp alongside self-defense workshops.',
+    location: 'Pune',
+    status: 'upcoming',
+    img: bloodDonationImg
+  },
+  {
+    category: 'Social Welfare',
+    date: 'September 20, 2026 • 05:00 PM',
+    title: 'Food Donation & Anniversary',
+    desc: 'Marking another historic year of Maitri Welfare Foundation with a massive open-to-all community meal distribution and future roadmapping.',
+    location: 'Pune',
+    status: 'upcoming',
+    img: about2
+  },
+  {
+    category: 'Women Empowerment',
+    date: 'October 18, 2026 • 10:30 AM',
+    title: 'Narishakti (Kaushalya Initiative)',
+    desc: 'Exhibiting handmade crafts and vocational success stories of our skilled women beneficiaries to open continuous direct market opportunities.',
+    location: 'Pune',
+    status: 'upcoming',
+    img: narishaktiImg
+  },
+  {
+    category: 'Social Welfare',
+    date: 'November 10, 2026 • 11:30 PM',
+    title: 'Blanket Donation Drive (Post 12 AM)',
+    desc: 'A special night-time drive to distribute premium thermal blankets to unsheltered street dwellers, preceded by a sunset city cleanliness drive.',
+    location: 'Pune',
+    status: 'upcoming',
+    img: blanketDonationImg
+  },
+  {
+    category: 'Education',
+    date: 'December 20, 2026 • 10:00 AM',
+    title: 'Career Counselling Workshops',
+    desc: 'Guiding secondary school students and job-seekers through career aptitude mapping, skill selection, and mock interviews by top industry leaders.',
+    location: 'Pune',
+    status: 'upcoming',
+    img: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1200&q=80'
+  },
+
+  // Past Events
+  {
+    category: 'Health',
+    date: 'August 24, 2025 • Completed',
+    title: 'Mega Blood Donation Camp 2025',
+    desc: 'Successfully collected 561 blood units in collaboration with local youth organizations to support city hospitals during emergency shortages.',
+    location: 'Pune',
+    status: 'past',
+    img: news3
+  },
+  {
+    category: 'Education',
+    date: 'June 15, 2025 • Completed',
+    title: 'Rural School Uniform & Kit Distribution',
+    desc: 'Distributed customized school bags, notebooks, and fresh uniforms to 350+ students across three remote village schools.',
+    location: 'Pune',
+    status: 'past',
+    img: 'https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&w=1200&q=80'
+  },
+  {
+    category: 'Environment',
+    date: 'July 10, 2024 • Completed',
+    title: 'Monsoon Indigenous Tree Plantation',
+    desc: 'Planted over 1,000 native banyan and peepal saplings with a committed 3-year nurturing plan to restore local green cover.',
+    location: 'Pune',
+    status: 'past',
+    img: 'https://images.unsplash.com/photo-1530507629858-e4977d30e9e0?auto=format&fit=crop&w=1200&q=80'
+  },
+  {
+    category: 'Social Welfare',
+    date: 'May 05, 2024 • Completed',
+    title: 'Pandemic Relief & Essential Ration Kits',
+    desc: 'Provided emergency monthly grocery survival kits to daily wage laborers and destitute families during challenging times.',
+    location: 'Pune',
+    status: 'past',
+    img: about1
   }
 ];
 
 export default function Events() {
   const [tab, setTab] = useState('upcoming');
+  const [selectedCategory, setSelectedCategory] = useState('All');
   const [isProposalModalOpen, setIsProposalModalOpen] = useState(false);
   const [isSending, setIsSending] = useState(false);
   const [attachmentPreview, setAttachmentPreview] = useState<string | null>(null);
@@ -183,8 +295,8 @@ export default function Events() {
       <section className="relative h-[450px] flex items-center justify-center overflow-hidden">
         <motion.img
           className="absolute inset-0 w-full h-full object-cover"
-          src="https://images.pexels.com/photos/1046820/pexels-photo-1046820.jpeg?auto=compress&cs=tinysrgb&w=1260"
-          alt="Forest"
+          src={heroImg}
+          alt="Maitri Events Hero"
           initial={{ scale: 1.1 }}
           animate={{ scale: 1 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
@@ -215,7 +327,7 @@ export default function Events() {
       {/* Tabs and Filter */}
       <section className="max-w-7xl mx-auto px-6 py-24">
         <motion.div
-          className="flex flex-col md:flex-row justify-between items-end gap-8 mb-12 border-b border-outline-variant/30"
+          className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12 border-b border-outline-variant/30"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -239,78 +351,109 @@ export default function Events() {
           </motion.div>
           <motion.div
             variants={fadeInRight}
-            whileHover={{ scale: 1.05 }}
-            className="mb-4 flex items-center gap-2 text-on-surface-variant font-semibold cursor-pointer hover:text-primary transition-colors"
+            className="flex flex-wrap items-center justify-start md:justify-end gap-2 pb-2 md:pb-0"
           >
-            <Filter className="w-5 h-5" />
-            <span>Filter by Category</span>
+            {['All', 'Social Welfare', 'Education', 'Environment', 'Health', 'Women Empowerment'].map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setSelectedCategory(cat)}
+                className={`px-3 sm:px-4 py-1.5 rounded-full text-xs sm:text-sm font-bold transition-all cursor-pointer ${selectedCategory === cat
+                    ? 'bg-primary text-on-primary shadow-md'
+                    : 'bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-primary'
+                  }`}
+              >
+                {cat}
+              </button>
+            ))}
           </motion.div>
         </motion.div>
 
         {/* Events Grid */}
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-        >
-          {events.map((event, idx) => (
+        {(() => {
+          const filteredEvents = events.filter(evt => {
+            const matchesTab = evt.status === tab;
+            const matchesCategory = selectedCategory === 'All' || evt.category === selectedCategory;
+            return matchesTab && matchesCategory;
+          });
+
+          if (filteredEvents.length === 0) {
+            return (
+              <div className="text-center py-16 bg-surface-container-low rounded-3xl border border-outline-variant/30">
+                <p className="text-lg font-bold text-on-surface-variant mb-2">No events found in this category</p>
+                <button onClick={() => setSelectedCategory('All')} className="text-sm font-bold text-secondary hover:underline cursor-pointer">
+                  Clear filter
+                </button>
+              </div>
+            );
+          }
+
+          return (
             <motion.div
-              key={idx}
-              variants={itemVariants}
-              whileHover={{ y: -10, boxShadow: "0 25px 50px rgba(0,0,0,0.12)" }}
-              transition={{ type: "spring", stiffness: 300 }}
-              className="bg-surface border border-outline-variant rounded-3xl overflow-hidden shadow-sm transition-all group"
+              key={`${tab}-${selectedCategory}`}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
             >
-              <div className="h-60 overflow-hidden relative">
-                <motion.img
-                  className="w-full h-full object-cover"
-                  src={event.img}
-                  alt={event.title}
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ duration: 0.7 }}
-                />
+              {filteredEvents.map((event, idx) => (
                 <motion.div
-                  className="absolute top-4 right-4 bg-secondary-container text-on-secondary-container px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.3 + idx * 0.1 }}
+                  key={event.title}
+                  layout
+                  variants={itemVariants}
+                  whileHover={{ y: -10, boxShadow: "0 25px 50px rgba(0,0,0,0.12)" }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                  className="bg-surface border border-outline-variant rounded-3xl overflow-hidden shadow-sm transition-all group flex flex-col"
                 >
-                  {event.category}
-                </motion.div>
-              </div>
-              <div className="p-8">
-                <motion.div
-                  className="flex items-center gap-2 text-secondary font-bold text-xs uppercase tracking-widest mb-3"
-                  initial={{ opacity: 0, x: -10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.2 + idx * 0.1 }}
-                >
-                  <Calendar className="w-4 h-4" />
-                  {event.date}
-                </motion.div>
-                <h3 className="text-2xl font-bold text-primary mb-3">{event.title}</h3>
-                <p className="text-on-surface-variant text-sm mb-8 line-clamp-2 leading-relaxed">
-                  {event.desc}
-                </p>
-                <div className="flex items-center justify-between mt-auto">
-                  <div className="flex items-center gap-2 text-on-surface-variant text-xs font-medium uppercase tracking-wider">
-                    <MapPin className="w-4 h-4 text-secondary" />
-                    {event.location}
+                  <div className="h-60 overflow-hidden relative shrink-0">
+                    <motion.img
+                      className="w-full h-full object-cover"
+                      src={event.img}
+                      alt={event.title}
+                      whileHover={{ scale: 1.1 }}
+                      transition={{ duration: 0.7 }}
+                    />
+                    <motion.div
+                      className="absolute top-4 right-4 bg-secondary-container text-on-secondary-container px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider"
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.3 + idx * 0.1 }}
+                    >
+                      {event.category}
+                    </motion.div>
                   </div>
-                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                    <Link to="/volunteer" className="bg-primary text-on-primary px-6 py-2 rounded-xl text-sm font-bold hover:bg-primary-container transition-all">
-                      Join Now
-                    </Link>
-                  </motion.div>
-                </div>
-              </div>
+                  <div className="p-8 flex flex-col grow">
+                    <motion.div
+                      className="flex items-center gap-2 text-secondary font-bold text-xs uppercase tracking-widest mb-3"
+                      initial={{ opacity: 0, x: -10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.2 + idx * 0.1 }}
+                    >
+                      <Calendar className="w-4 h-4" />
+                      {event.date}
+                    </motion.div>
+                    <h3 className="text-2xl font-bold text-primary mb-3">{event.title}</h3>
+                    <p className="text-on-surface-variant text-sm mb-8 line-clamp-2 leading-relaxed">
+                      {event.desc}
+                    </p>
+                    <div className="flex items-center justify-between gap-3 mt-auto pt-4 border-t border-outline-variant/10">
+                      <div className="flex items-center gap-1.5 text-on-surface-variant text-xs font-medium uppercase tracking-wider flex-1 min-w-0">
+                        <MapPin className="w-4 h-4 text-secondary shrink-0" />
+                        <span className="truncate">{event.location}</span>
+                      </div>
+                      <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="shrink-0">
+                        <Link to="/volunteer" className="bg-primary text-on-primary px-4 sm:px-6 py-2 rounded-xl text-xs sm:text-sm font-bold hover:bg-primary-container transition-all whitespace-nowrap block text-center">
+                          Join Now
+                        </Link>
+                      </motion.div>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
             </motion.div>
-          ))}
-        </motion.div>
+          );
+        })()}
 
         {/* Host an Event CTA */}
         <motion.div

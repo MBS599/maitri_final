@@ -247,46 +247,48 @@ export default function Volunteer() {
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeInLeft}
-            className="lg:sticky lg:top-32 self-start bg-surface-container-low p-8 md:p-12 rounded-[32px] border border-outline-variant/20 shadow-sm"
+            className="lg:h-[680px] flex flex-col justify-between bg-surface-container-low p-8 md:p-12 rounded-[32px] border border-outline-variant/20 shadow-sm"
           >
-            <motion.h2 
-              className="text-3xl sm:text-4xl font-bold text-primary mb-8"
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-            >
-              How You Can Help
-            </motion.h2>
-            <div className="space-y-8">
-              {[
-                { title: 'Environmental Drives', desc: 'Tree plantation, beach cleanups, and waste management workshops.' },
-                { title: 'Community Support', desc: 'Assisting in food distribution and educational camps for children.' },
-                { title: 'Digital Advocacy', desc: 'Helping us spread awareness through social media and content creation.' },
-                { title: 'Event Planning', desc: 'Organizing fundraising events and local community meetups.' }
-              ].map((role, idx) => (
-                <motion.div 
-                  key={idx} 
-                  className="flex gap-6 group"
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.15 * idx + 0.2 }}
-                  whileHover={{ x: 8 }}
-                >
+            <div>
+              <motion.h2 
+                className="text-3xl sm:text-4xl font-bold text-primary mb-8"
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 }}
+              >
+                How You Can Help
+              </motion.h2>
+              <div className="space-y-8">
+                {[
+                  { title: 'Environmental Drives', desc: 'Tree plantation, beach cleanups, and waste management workshops.' },
+                  { title: 'Community Support', desc: 'Assisting in food distribution and educational camps for children.' },
+                  { title: 'Digital Advocacy', desc: 'Helping us spread awareness through social media and content creation.' },
+                  { title: 'Event Planning', desc: 'Organizing fundraising events and local community meetups.' }
+                ].map((role, idx) => (
                   <motion.div 
-                    className="flex-shrink-0 w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-bold text-sm shadow-md"
-                    whileHover={{ scale: 1.2 }}
-                    transition={{ type: "spring", stiffness: 400 }}
+                    key={idx} 
+                    className="flex gap-6 group"
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.15 * idx + 0.2 }}
+                    whileHover={{ x: 8 }}
                   >
-                    {idx + 1}
+                    <motion.div 
+                      className="flex-shrink-0 w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-bold text-sm shadow-md"
+                      whileHover={{ scale: 1.2 }}
+                      transition={{ type: "spring", stiffness: 400 }}
+                    >
+                      {idx + 1}
+                    </motion.div>
+                    <div>
+                      <h4 className="text-lg font-bold text-on-surface mb-2">{role.title}</h4>
+                      <p className="text-on-surface-variant text-sm leading-relaxed">{role.desc}</p>
+                    </div>
                   </motion.div>
-                  <div>
-                    <h4 className="text-lg font-bold text-on-surface mb-2">{role.title}</h4>
-                    <p className="text-on-surface-variant text-sm leading-relaxed">{role.desc}</p>
-                  </div>
-                </motion.div>
-              ))}
+                ))}
+              </div>
             </div>
 
             <motion.div 
@@ -314,17 +316,19 @@ export default function Volunteer() {
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeInRight}
-            className="bg-white rounded-3xl p-10 shadow-2xl border border-outline-variant/30 relative"
+            className="lg:h-[680px] overflow-y-auto bg-white rounded-3xl p-8 md:p-10 shadow-2xl border border-outline-variant/30"
           >
-            <motion.div 
-              className="absolute top-0 right-10 -translate-y-1/2 bg-secondary text-on-secondary px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest shadow-xl"
-              initial={{ opacity: 0, y: -10, scale: 0.8 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3, type: "spring", stiffness: 300 }}
-            >
-              Registration Form
-            </motion.div>
+            <div className="flex flex-wrap justify-between items-center gap-2 mb-8 pb-4 border-b border-outline-variant/20">
+              <h3 className="text-xl sm:text-2xl font-bold text-primary">Volunteer Application</h3>
+              <motion.span 
+                className="bg-secondary text-on-secondary px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-sm shrink-0"
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+              >
+                Registration Form
+              </motion.span>
+            </div>
             <form ref={formRef} className="space-y-6" onSubmit={handleSubmit}>
               <motion.div 
                 className="grid grid-cols-1 sm:grid-cols-2 gap-6"
