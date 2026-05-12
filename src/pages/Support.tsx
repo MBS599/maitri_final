@@ -71,7 +71,7 @@ export default function Support() {
             >
               Every contribution fuels our mission to bring sustainable growth and social welfare to communities in need. Your trust is our greatest asset.
               <br />
-              <span className="text-xs sm:text-sm font-bold text-secondary-container mt-2 block">Reg No: PUNE/0000407/2023</span>
+              <span className="text-xs sm:text-sm font-bold text-secondary-container mt-2 block">Reg No: F-0062418(PUN)</span>
             </motion.p>
             <motion.div
               className="flex flex-wrap justify-center gap-4"
@@ -130,7 +130,8 @@ export default function Support() {
                 {[
                   { label: 'Bank Name', value: 'Canara Bank' },
                   { label: 'Account No.', value: '1200362614021' },
-                  { label: 'IFSC Code', value: 'CNRB0003265' }
+                  { label: 'IFSC Code', value: 'CNRB0003265' },
+                  { label: 'Branch', value: 'Dhankawadi, Pune - 411043' }
                 ].map((row, idx) => (
                   <motion.div
                     key={idx}

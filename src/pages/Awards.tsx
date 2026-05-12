@@ -2,6 +2,7 @@ import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { ShieldCheck, Users, Clock, Trophy } from 'lucide-react';
 import awardHero from '../assets/award_hero.jpg';
+import { AnimatedCounter } from '../components/AnimatedCounter';
 import samajSeva from '../assets/awards/samaj seva.jpeg';
 import visheshSanman from '../assets/awards/vishesh sanman.jpeg';
 import kakade from '../assets/awards/kakade.jpeg';
@@ -62,14 +63,14 @@ const awards = [
     year: '2025',
     title: 'Vishesh Sanman Award',
     desc: 'Awarded for extraordinary dedication to community development and visionary social leadership in the year 2025.',
-    org: 'Yuvraj Beldare Trust',
+    org: 'Sambhajinana Beldare Social Trust',
     img: visheshSanman
   },
   {
     year: '2025',
     title: 'Kartutva Gaurav Award',
     desc: 'Honored for exceptional leadership and significant contributions to social welfare and community empowerment.',
-    org: 'Sanyog Foundation',
+    org: 'Sayog Ventures',
     img: kakade
   }
 ];
@@ -202,6 +203,7 @@ export default function Awards() {
               variants={itemVariants}
               whileHover={{ scale: 1.08 }}
               transition={{ type: "spring", stiffness: 300 }}
+              className="group cursor-pointer"
             >
               <motion.div
                 className="text-5xl font-extrabold text-secondary mb-2"
@@ -210,7 +212,7 @@ export default function Awards() {
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.15, type: "spring", stiffness: 200 }}
               >
-                {stat.value}
+                <AnimatedCounter value={stat.value} />
               </motion.div>
               <p className="text-on-surface-variant font-medium">{stat.label}</p>
             </motion.div>

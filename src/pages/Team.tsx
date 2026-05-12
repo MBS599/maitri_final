@@ -20,6 +20,7 @@ import pratik from '../assets/team/pratik.png';
 import awardJayesh from '../assets/awards/best_volunteer/jayesh_pachange.webp';
 import awardPranaw from '../assets/awards/best_volunteer/pranav_pawar.jpeg';
 import awardShreya from '../assets/awards/best_volunteer/shreya deshpande.jpeg';
+import awardSocialMedia from '../assets/awards/best_volunteer/social_media.jpeg';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -361,7 +362,7 @@ export default function Team() {
             </div>
             <div className="p-6 text-center">
               <h4 className="text-xl font-bold text-primary mb-1 leading-tight">Pranjal Khalate</h4>
-              <p className="text-secondary font-bold text-[10px] uppercase tracking-widest">Member</p>
+              <p className="text-secondary font-bold text-[10px] uppercase tracking-widest">Committee Member</p>
             </div>
           </motion.div>
 
@@ -384,7 +385,7 @@ export default function Team() {
             </div>
             <div className="p-6 text-center">
               <h4 className="text-xl font-bold text-primary mb-1 leading-tight">Piyush Kadam</h4>
-              <p className="text-secondary font-bold text-[10px] uppercase tracking-widest">Member</p>
+              <p className="text-secondary font-bold text-[10px] uppercase tracking-widest">Committee Member</p>
             </div>
           </motion.div>
 
@@ -407,7 +408,7 @@ export default function Team() {
             </div>
             <div className="p-6 text-center">
               <h4 className="text-xl font-bold text-primary mb-1 leading-tight">Reema Kalbhor</h4>
-              <p className="text-secondary font-bold text-[10px] uppercase tracking-widest">Member</p>
+              <p className="text-secondary font-bold text-[10px] uppercase tracking-widest">Committee Member</p>
             </div>
           </motion.div>
 
@@ -430,7 +431,7 @@ export default function Team() {
             </div>
             <div className="p-6 text-center">
               <h4 className="text-xl font-bold text-primary mb-1 leading-tight">Ankita Aware</h4>
-              <p className="text-secondary font-bold text-[10px] uppercase tracking-widest">Member (Report Writing)</p>
+              <p className="text-secondary font-bold text-[10px] uppercase tracking-widest">Committee Member (Report Writing)</p>
             </div>
           </motion.div>
 
@@ -453,7 +454,7 @@ export default function Team() {
             </div>
             <div className="p-6 text-center">
               <h4 className="text-xl font-bold text-primary mb-1 leading-tight">Mayur Sutar</h4>
-              <p className="text-secondary font-bold text-[10px] uppercase tracking-widest">Member</p>
+              <p className="text-secondary font-bold text-[10px] uppercase tracking-widest">Committee Member</p>
             </div>
           </motion.div>
 
@@ -559,6 +560,84 @@ export default function Team() {
                 </div>
               </motion.div>
             ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Voices of Maitri (Award for Team) */}
+      <section className="bg-surface py-24 border-b border-outline-variant/30">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeInLeft}
+            >
+              <span className="text-secondary font-bold tracking-widest uppercase text-[10px] sm:text-xs">Collective Impact</span>
+              <h3 className="text-3xl sm:text-4xl font-bold text-primary mt-2">Voices of Maitri</h3>
+            </motion.div>
+            <motion.p
+              className="text-on-surface-variant max-w-md text-sm leading-relaxed"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeInRight}
+            >
+              Recognizing outstanding teamwork, exceptional outreach, and collective department excellence driving our mission forward.
+            </motion.p>
+          </div>
+
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            className="max-w-md mx-auto"
+          >
+            <motion.div
+              variants={itemVariants}
+              whileHover={{ y: -10 }}
+              className="bg-white rounded-[2.5rem] overflow-hidden border border-outline-variant/20 shadow-sm transition-all hover:shadow-xl group relative"
+            >
+              <div className="absolute top-6 right-6 z-20">
+                <motion.div
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  whileInView={{ scale: 1, opacity: 1 }}
+                  transition={{ delay: 0.3, type: "spring" }}
+                  className="bg-secondary text-on-secondary w-14 h-14 rounded-full flex items-center justify-center shadow-lg border-4 border-white"
+                >
+                  <Award className="w-6 h-6" />
+                </motion.div>
+              </div>
+
+              <div className="aspect-[4/5] overflow-hidden relative">
+                <motion.img
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  src={awardSocialMedia}
+                  alt="Social Media Team"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity"></div>
+
+                <div className="absolute bottom-0 left-0 right-0 p-8 text-on-primary">
+                  <motion.div
+                    initial={{ y: 20, opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.2 }}
+                  >
+                    <span className="text-secondary-container font-bold text-xs uppercase tracking-widest">Department Excellence</span>
+                    <h4 className="text-2xl font-bold mt-1 leading-tight">Social Media Team</h4>
+                  </motion.div>
+                </div>
+              </div>
+
+              <div className="p-8">
+                <h5 className="text-primary font-bold text-lg mb-2">Awarded Year: 2025</h5>
+                <p className="text-on-surface-variant text-sm leading-relaxed">
+                  Honored for brilliant digital storytelling, exceptional brand promotion, and expanding Maitri's digital footprint across the nation.
+                </p>
+              </div>
+            </motion.div>
           </motion.div>
         </div>
       </section>

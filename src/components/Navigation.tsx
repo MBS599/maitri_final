@@ -28,7 +28,7 @@ export function Navbar() {
       transition={{ duration: 0.5, ease: "easeOut" }}
     >
       <div className="flex justify-between items-center w-full px-3 sm:px-6 py-4 max-w-7xl mx-auto">
-        <Link to="/" className="flex items-center gap-1 sm:gap-3 group shrink-0">
+        <Link to="/" onClick={() => setIsOpen(false)} className="flex items-center gap-1 sm:gap-3 group shrink-0">
           <motion.img
             src={logo}
             alt="Maitri Logo"
@@ -127,10 +127,10 @@ export function Navbar() {
             className="lg:hidden bg-surface border-t border-outline-variant overflow-hidden"
           >
             <nav className="flex flex-col p-6 gap-5">
-              <div className="flex items-center gap-3 px-2 mb-4">
+              <Link to="/" onClick={() => setIsOpen(false)} className="flex items-center gap-3 px-2 mb-4 block">
                 <img src={logo} alt="Maitri Logo" className="w-10 h-10 object-contain" />
                 <span className="font-bold text-lg text-primary leading-tight">Maitri Welfare Foundation</span>
-              </div>
+              </Link>
               <div className="grid grid-cols-2 gap-x-4 gap-y-6 px-2">
                 {navLinks.map((link, idx) => (
                   <motion.div
@@ -230,7 +230,7 @@ export function Footer() {
           </div>
           <p className="text-sm text-on-primary/70 leading-relaxed">
             Empowering communities through transparent and professional social welfare programs.
-            Registered NGO PUNE/0000407/2023.
+            Registered NGO F-0062418(PUN).
             <br />
             <span className="inline-block mt-2 font-bold text-on-primary">
               Contact: +91 7447434373 <br />
