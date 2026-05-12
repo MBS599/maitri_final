@@ -62,7 +62,7 @@ const awards = [
     year: '2025',
     title: 'Vishesh Sanman Award',
     desc: 'Awarded for extraordinary dedication to community development and visionary social leadership in the year 2025.',
-    org: 'Sandip Beldare Trust',
+    org: 'Yuvraj Beldare Trust',
     img: visheshSanman
   },
   {

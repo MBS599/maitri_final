@@ -318,7 +318,7 @@ export default function Team() {
             </div>
           </motion.div>
 
-          {/* Pranjal Khalete */}
+          {/* Pranjal Khalate */}
           <motion.div
             variants={itemVariants}
             whileHover={{ y: -5 }}
@@ -327,7 +327,7 @@ export default function Team() {
             <div className="aspect-square overflow-hidden relative">
               <motion.img
                 className="w-full h-full object-cover object-[center_25%]"
-                alt="Pranjal Khalete"
+                alt="Pranjal Khalate"
                 src={pranjal}
                 initial={{ scale: 1.15 }}
                 whileHover={{ scale: 1.2 }}
@@ -336,7 +336,7 @@ export default function Team() {
               <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
             </div>
             <div className="p-6 text-center">
-              <h4 className="text-xl font-bold text-primary mb-1 leading-tight">Pranjal Khalete</h4>
+              <h4 className="text-xl font-bold text-primary mb-1 leading-tight">Pranjal Khalate</h4>
               <p className="text-secondary font-bold text-[10px] uppercase tracking-widest">Member</p>
             </div>
           </motion.div>
