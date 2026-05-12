@@ -344,7 +344,7 @@ export default function Kaushalya() {
             {[
               { year: '2025', img: award2025, title: 'Sapna Kakade', position: 'object-[25%_center]' },
               { year: '2025', img: award2024, title: 'Shilpa Datar', position: 'object-center' },
-              { year: '2025', img: award2023, title: 'Alka Gujnan', position: 'object-center' }
+              { year: '2025', img: award2023, title: 'Alka Gujnal', position: 'object-center' }
             ].map((awardee, idx) => (
               <motion.div
                 key={idx}
@@ -583,8 +583,8 @@ export default function Kaushalya() {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   className={`w-full py-5 rounded-2xl font-bold text-lg shadow-xl flex items-center justify-center gap-3 transition-all ${isSending
-                      ? 'bg-outline-variant text-on-surface-variant cursor-not-allowed'
-                      : 'bg-primary text-on-primary hover:bg-primary/90'
+                    ? 'bg-outline-variant text-on-surface-variant cursor-not-allowed'
+                    : 'bg-primary text-on-primary hover:bg-primary/90'
                     }`}
                 >
                   {isSending ? (
