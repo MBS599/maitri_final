@@ -15,6 +15,7 @@ import shivam from '../assets/team/shivam.png';
 import awanti from '../assets/team/awanti.png';
 import pranjal from '../assets/team/pranjal.png';
 import reema from '../assets/team/reema.png';
+import pratik from '../assets/team/pratik.png';
 
 import awardJayesh from '../assets/awards/best_volunteer/jayesh_pachange.webp';
 import awardPranaw from '../assets/awards/best_volunteer/pranav_pawar.jpeg';
@@ -156,6 +157,29 @@ export default function Team() {
             <div className="p-6 text-center">
               <h4 className="text-xl font-bold text-primary mb-1 leading-tight">Shivam Mhetre</h4>
               <p className="text-secondary font-bold text-[10px] uppercase tracking-widest">Vice President</p>
+            </div>
+          </motion.div>
+
+          {/* Pratik Sitapure */}
+          <motion.div
+            variants={itemVariants}
+            whileHover={{ y: -5 }}
+            className="bg-white rounded-[2rem] overflow-hidden shadow-sm border border-outline-variant/30 group transition-all hover:shadow-md"
+          >
+            <div className="aspect-square overflow-hidden relative">
+              <motion.img
+                className="w-full h-full object-cover object-[center_25%]"
+                alt="Pratik Sitapure"
+                src={pratik}
+                initial={{ scale: 1.15 }}
+                whileHover={{ scale: 1.2 }}
+                transition={{ duration: 0.6 }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            </div>
+            <div className="p-6 text-center">
+              <h4 className="text-xl font-bold text-primary mb-1 leading-tight">Pratik Sitapure</h4>
+              <p className="text-secondary font-bold text-[10px] uppercase tracking-widest">Secretary</p>
             </div>
           </motion.div>
 
