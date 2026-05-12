@@ -257,10 +257,11 @@ export default function Team() {
           >
             <div className="aspect-square overflow-hidden relative">
               <motion.img
-                className="w-full h-full object-cover object-[center_25%]"
+                className="w-full h-full object-cover object-[center_35%]"
                 alt="Divya"
                 src={divya}
-                whileHover={{ scale: 1.05 }}
+                initial={{ scale: 1.2 }}
+                whileHover={{ scale: 1.3 }}
                 transition={{ duration: 0.6 }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
