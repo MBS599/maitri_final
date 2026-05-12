@@ -15,7 +15,7 @@ import shivam from '../assets/team/shivam.png';
 import awanti from '../assets/team/awanti.png';
 import pranjal from '../assets/team/pranjal.png';
 import reema from '../assets/team/reema.png';
-import pratik from '../assets/team/pratik.png';
+import pratik from '../assets/team/pratik_s.png';
 
 import awardJayesh from '../assets/awards/best_volunteer/jayesh_pachange.webp';
 import awardPranaw from '../assets/awards/best_volunteer/pranav_pawar.jpeg';
@@ -169,11 +169,11 @@ export default function Team() {
           >
             <div className="aspect-square overflow-hidden relative">
               <motion.img
-                className="w-full h-full object-cover object-[center_20%]"
+                className="w-full h-full object-cover object-top"
                 alt="Pratik Sitapure"
                 src={pratik}
-                initial={{ scale: 1.15 }}
-                whileHover={{ scale: 1.2 }}
+                initial={{ scale: 1.6 }}
+                whileHover={{ scale: 1.7 }}
                 transition={{ duration: 0.6 }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
