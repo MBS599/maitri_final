@@ -3,7 +3,7 @@ import { Mail, Link as LinkIcon, ArrowRight, Award } from 'lucide-react';
 import teamBg from '../assets/team.jpg';
 import siddhiKadam from '../assets/team/sidhhi.png';
 import pranavPawar from '../assets/team/pranav.png';
-import sanikaPhadtare from '../assets/team/sanika phadtare.png';
+import sanikaPhadtare from '../assets/team/sanika.png';
 import nirajSharma from '../assets/team/niraj.png';
 import sid from '../assets/team/sid.png';
 import mayurSutar from '../assets/team/mayur.png';
