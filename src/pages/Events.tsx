@@ -264,7 +264,7 @@ export default function Events() {
         submitted_at: "'" + new Date().toLocaleString()
       };
 
-      const SHEETDB_URL = 'https://sheetdb.io/api/v1/szlyae3x9dd1o?sheet=Sheet2';
+      const SHEETDB_URL = 'https://sheetdb.io/api/v1/szlyae3x9dd1o?sheet=Event_Proposals';
 
       const response = await fetch(SHEETDB_URL, {
         method: 'POST',

@@ -91,7 +91,7 @@ export default function Kaushalya() {
         applied_at: "'" + new Date().toLocaleString()
       };
 
-      const SHEETDB_URL = 'https://sheetdb.io/api/v1/szlyae3x9dd1o?sheet=Sheet3';
+      const SHEETDB_URL = 'https://sheetdb.io/api/v1/szlyae3x9dd1o?sheet=Kaushalya_Mentors';
       const res = await fetch(SHEETDB_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

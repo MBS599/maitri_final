@@ -2,7 +2,6 @@ import React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Send, Youtube, Instagram, Share2, Loader2, MessageCircle, Mail, Copy, Check, X, MapPin } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
-import emailjs from '@emailjs/browser';
 import { toast } from 'sonner';
 
 const containerVariants = {
@@ -49,7 +48,7 @@ export default function Contact() {
     generateCaptcha();
   }, []);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!formRef.current) return;
 
@@ -60,24 +59,36 @@ export default function Contact() {
     }
 
     setIsSending(true);
+    const formData = new FormData(formRef.current);
 
-    const SERVICE_ID = 'service_nufl3ma';
-    const TEMPLATE_ID = 'template_c6cic55';
-    const PUBLIC_KEY = 'Tr5Y3se2HuCzSRTUV';
+    const contactData = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      message: formData.get('message'),
+      submitted_at: "'" + new Date().toLocaleString()
+    };
 
-    emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, PUBLIC_KEY)
-      .then(() => {
+    try {
+      const SHEETDB_URL = 'https://sheetdb.io/api/v1/szlyae3x9dd1o?sheet=Contact_Inquiries';
+      const res = await fetch(SHEETDB_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ data: [contactData] })
+      });
+
+      if (res.ok) {
         toast.success('Message sent successfully! We will get back to you soon.');
         formRef.current?.reset();
         generateCaptcha();
-      })
-      .catch((error) => {
-        console.error('EmailJS Error:', error);
-        toast.error('Failed to send message. Please try again later.');
-      })
-      .finally(() => {
-        setIsSending(false);
-      });
+      } else {
+        throw new Error('Failed to record contact query');
+      }
+    } catch (error) {
+      console.error('SheetDB Error:', error);
+      toast.error('Failed to send message. Please try again later.');
+    } finally {
+      setIsSending(false);
+    }
   };
 
   return (
