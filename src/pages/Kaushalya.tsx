@@ -436,7 +436,7 @@ export default function Kaushalya() {
               >
                 {[
                   { value: '100+', label: 'Women Trained' },
-                  { value: '50+', label: 'Micro-Enterprises' }
+                  { value: '5+', label: 'Micro-Enterprises' }
                 ].map((stat, idx) => (
                   <motion.div
                     key={idx}
