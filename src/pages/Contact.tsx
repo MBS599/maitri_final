@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Send, Youtube, Instagram, Share2, Loader2, MessageCircle, Mail, Copy, Check, X } from 'lucide-react';
+import { Send, Youtube, Instagram, Share2, Loader2, MessageCircle, Mail, Copy, Check, X, MapPin } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
 import { toast } from 'sonner';
@@ -122,13 +122,21 @@ export default function Contact() {
         >
           <motion.h2 className="text-3xl sm:text-4xl font-bold mb-10 text-primary text-center">Get in Touch</motion.h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 text-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12 text-center">
+            <motion.div variants={itemVariants} className="bg-surface-container-low p-6 rounded-2xl border border-outline-variant/20 shadow-sm">
+              <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <MapPin className="text-primary w-6 h-6" />
+              </div>
+              <h3 className="font-bold text-primary mb-1 text-sm">Our Location</h3>
+              <p className="text-xs text-on-surface-variant font-medium">Katraj, Pune - 411046, India</p>
+            </motion.div>
+
             <motion.div variants={itemVariants} className="bg-surface-container-low p-6 rounded-2xl border border-outline-variant/20 shadow-sm">
               <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4">
                 <Mail className="text-primary w-6 h-6" />
               </div>
               <h3 className="font-bold text-primary mb-1 text-sm">Email Us</h3>
-              <p className="text-xs text-on-surface-variant font-medium">maitrifoundation2019@gmail.com</p>
+              <p className="text-xs text-on-surface-variant font-medium truncate" title="maitrifoundation2019@gmail.com">maitrifoundation2019@gmail.com</p>
             </motion.div>
             
             <motion.div variants={itemVariants} className="bg-surface-container-low p-6 rounded-2xl border border-outline-variant/20 shadow-sm">

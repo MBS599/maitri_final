@@ -26,16 +26,16 @@ function ScrollToTop() {
 
     // Dynamic SEO titles per route
     const titles: Record<string, string> = {
-      '/': 'Maitri Welfare Foundation | Empowering Lives, Protecting Nature',
-      '/about': 'About Us | Maitri Welfare Foundation',
-      '/team': 'Our Team | Maitri Welfare Foundation',
-      '/awards': 'Awards & Recognition | Maitri Welfare Foundation',
-      '/events': 'Activities & Events | Maitri Welfare Foundation',
-      '/support': 'Support Our Cause | Maitri Welfare Foundation',
-      '/contact': 'Contact Us | Maitri Welfare Foundation',
-      '/volunteer': 'Volunteer Registration | Maitri Welfare Foundation',
-      '/kaushalya': 'Project Kaushalya | Maitri Welfare Foundation',
-      '/media': 'Media & Gallery | Maitri Welfare Foundation',
+      '/': 'Maitri Welfare Foundation | NGO in Katraj, Pune - 411046',
+      '/about': 'About Us | Maitri Welfare Foundation Katraj Pune 411046',
+      '/team': 'Our Team | Maitri Welfare Foundation Katraj Pune 411046',
+      '/awards': 'Awards & Recognition | Maitri Welfare Foundation Pune',
+      '/events': 'Activities & Events | Maitri Welfare Foundation Pune',
+      '/support': 'Support Our Cause | Maitri Welfare Foundation Pune',
+      '/contact': 'Contact Us | Maitri Welfare Foundation Katraj Pune 411046',
+      '/volunteer': 'Volunteer Registration | Maitri Welfare Foundation Pune',
+      '/kaushalya': 'Project Kaushalya | Women Empowerment Katraj Pune',
+      '/media': 'Media & Gallery | Maitri Welfare Foundation Pune',
     };
 
     document.title = titles[pathname] || 'Maitri Welfare Foundation';

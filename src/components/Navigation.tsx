@@ -231,6 +231,7 @@ export function Footer() {
             Registered NGO F-0062418(PUN).
             <br />
             <span className="inline-block mt-2 font-bold text-on-primary">
+              Address: Katraj, Pune - 411046, Maharashtra, India <br />
               Contact: +91 7447434373 <br />
               Email: maitrifoundation2019@gmail.com
             </span>
