@@ -155,7 +155,7 @@ export default function Home() {
                 />
               </div>
               <motion.div
-                className="absolute -bottom-6 -right-6 bg-primary-container text-on-primary-container p-8 rounded-2xl shadow-xl max-w-[280px]"
+                className="mt-6 lg:mt-0 lg:absolute lg:-bottom-6 lg:-right-6 bg-primary-container text-on-primary-container p-6 sm:p-8 rounded-2xl shadow-xl max-w-full lg:max-w-[280px] z-10"
                 initial={{ opacity: 0, y: 20, scale: 0.9 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true }}
@@ -252,21 +252,21 @@ export default function Home() {
                 category: 'Environment',
                 title: 'Tree Plantation Drive',
                 desc: 'Join us for our annual mega plantation event in suburban green belts to foster environmental sustainability.',
-                location: 'Suburban Green Belt, Pune',
+                location: 'Pune',
                 img: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80'
               },
               {
                 category: 'Social Welfare',
                 title: 'Community Food Distribution',
                 desc: 'Providing essential ration kits and healthy cooked meals to support underprivileged families and elderly citizens.',
-                location: 'Slum Communities, Pune',
+                location: 'Pune',
                 img: news2
               },
               {
                 category: 'Health & Care',
                 title: 'Mega Blood Donation Camp',
                 desc: 'Organizing robust community blood donation drives to aid city hospitals during critical blood shortages.',
-                location: 'Central Auditorium Grounds, Pune',
+                location: 'Pune',
                 img: news1
               }
             ].map((item, idx) => (

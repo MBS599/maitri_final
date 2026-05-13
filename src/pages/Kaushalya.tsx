@@ -6,6 +6,8 @@ import { useState, useRef, useEffect } from 'react';
 import award2023 from '../assets/alka_gujnan.png';
 import award2024 from '../assets/shilpa_datar.png';
 import award2025 from '../assets/sapana_kakade.png';
+// @ts-ignore
+import rangoliSheetImg from '../assets/news/rangoli_sheet.png';
 import { toast } from 'sonner';
 
 const containerVariants = {
@@ -199,7 +201,7 @@ export default function Kaushalya() {
               {
                 icon: Scissors,
                 title: 'Vocational Training',
-                desc: 'Tailoring, handicrafts, and small-scale manufacturing skills to enable home-based businesses.'
+                desc: 'Training in specialized handcrafting including sheet rangoli making, mombatti manufacturing, and traditional aari work to enable home-based businesses.'
               },
               {
                 icon: BookOpen,
@@ -390,15 +392,15 @@ export default function Kaushalya() {
             >
               <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
                 <motion.img
-                  alt="Women working together"
+                  alt="Lady displaying handcrafted sheet rangoli art"
                   className="w-full h-full object-cover"
-                  src="https://images.pexels.com/photos/14558560/pexels-photo-14558560.jpeg?auto=compress&cs=tinysrgb&w=1260"
+                  src={rangoliSheetImg}
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.6 }}
                 />
               </div>
               <motion.div
-                className="absolute -bottom-6 -right-6 bg-secondary text-on-secondary p-8 rounded-2xl shadow-xl max-w-[280px]"
+                className="mt-6 lg:mt-0 lg:absolute lg:-bottom-6 lg:-right-6 bg-secondary text-on-secondary p-6 sm:p-8 rounded-2xl shadow-xl max-w-full lg:max-w-[280px] z-10"
                 initial={{ opacity: 0, y: 30, scale: 0.9 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true }}
@@ -412,7 +414,7 @@ export default function Kaushalya() {
                   viewport={{ once: true }}
                   transition={{ delay: 0.8 }}
                 >
-                  — Meera, Batch of 2023
+                  — Sheet Rangoli Making, Batch of 2025
                 </motion.span>
               </motion.div>
             </motion.div>
@@ -425,7 +427,7 @@ export default function Kaushalya() {
             >
               <motion.h2 variants={fadeInRight} className="text-3xl sm:text-4xl font-bold text-primary mb-6">Our Impact So Far</motion.h2>
               <motion.p variants={fadeInRight} className="text-on-surface-variant mb-10 leading-relaxed">
-                Since its inception, Kaushalya has trained over 200 women in various skills. Many have started their own small ventures, while others have found stable employment in the local industry.
+                Since its inception, Kaushalya has trained over 100 women in various skills. Many have started their own small ventures, while others have found stable employment in the local industry.
               </motion.p>
 
               <motion.div
@@ -478,7 +480,7 @@ export default function Kaushalya() {
               </p>
               <div className="space-y-6">
                 {[
-                  { title: 'Share Your Expertise', desc: 'Guide students in tailoring, digital literacy, or business management.' },
+                  { title: 'Share Your Expertise', desc: 'Guide students in traditional handcrafting, aari work, or business management.' },
                   { title: 'Flexible Commitment', desc: 'Choose a schedule that works for you, from weekly to monthly sessions.' },
                   { title: 'Direct Impact', desc: 'See firsthand the transformation your mentorship brings to these women.' }
                 ].map((item, idx) => (
@@ -543,7 +545,7 @@ export default function Kaushalya() {
                       required
                       name="expertise"
                       type="text"
-                      placeholder="e.g. Tailoring, Finance"
+                      placeholder="e.g. Handcrafting, Finance"
                       className="w-full bg-surface border border-outline-variant/50 rounded-2xl px-5 py-4 focus:outline-none focus:border-primary transition-all text-sm"
                     />
                   </div>
@@ -616,7 +618,7 @@ export default function Kaushalya() {
         >
           <motion.h2 variants={fadeInUp} className="text-3xl sm:text-4xl font-bold text-on-primary mb-6">Help Us Expand Kaushalya</motion.h2>
           <motion.p variants={fadeInUp} className="text-on-primary/70 mb-12 text-lg">
-            We aim to reach 1000 women by 2025. Your donation can provide training kits, sewing machines, and expert mentorship.
+            We aim to reach 1000 women by 2025. Your donation can provide training kits, handcrafting materials, and expert mentorship.
           </motion.p>
           <motion.div
             variants={fadeInUp}
