@@ -124,6 +124,8 @@ export default function Home() {
         keywords="Maitri Welfare Foundation, NGO in Pune, Katraj NGO, Tree Plantation Pune, Women Empowerment NGO, Social Welfare Pune"
         canonical="/"
         ogImage="/og-image.png"
+        ogImageWidth="1200"
+        ogImageHeight="630"
         schemaData={combinedSchema}
       />
       {/* Hero Section */}

@@ -8,6 +8,8 @@ interface SEOProps {
   ogImage?: string;
   ogType?: string;
   twitterCard?: string;
+  ogImageWidth?: string;
+  ogImageHeight?: string;
   schemaData?: object | object[];
 }
 
@@ -17,6 +19,8 @@ const SEO: React.FC<SEOProps> = ({
   keywords,
   canonical,
   ogImage,
+  ogImageWidth,
+  ogImageHeight,
   ogType = 'website',
   twitterCard = 'summary_large_image',
   schemaData
@@ -38,7 +42,13 @@ const SEO: React.FC<SEOProps> = ({
       {description && <meta property="og:description" content={description} />}
       <meta property="og:url" content={fullCanonical} />
       <meta property="og:type" content={ogType} />
-      {ogImage && <meta property="og:image" content={`${siteUrl}${ogImage}`} />}
+      {ogImage && (
+        <>
+          <meta property="og:image" content={`${siteUrl}${ogImage}`} />
+          <meta property="og:image:width" content={ogImageWidth || "1200"} />
+          <meta property="og:image:height" content={ogImageHeight || "630"} />
+        </>
+      )}
       <meta property="og:site_name" content={siteName} />
 
       {/* Twitter */}
