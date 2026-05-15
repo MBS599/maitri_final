@@ -37,9 +37,9 @@ export function Navbar() {
             transition={{ type: "spring", stiffness: 400 }}
           />
           <div className="flex flex-col">
-            <h1 className="text-sm min-[400px]:text-base sm:text-lg xl:text-xl font-extrabold text-primary tracking-tight leading-tight">
+            <span className="text-sm min-[400px]:text-base sm:text-lg xl:text-xl font-extrabold text-primary tracking-tight leading-tight block">
               Maitri Welfare Foundation
-            </h1>
+            </span>
             <span className="text-[9px] sm:text-[10px] text-secondary font-extrabold tracking-wider uppercase">
               "एक हात मैत्रीचा"
             </span>
@@ -220,7 +220,7 @@ export function Footer() {
               transition={{ type: "spring", stiffness: 300 }}
             />
             <div className="flex flex-col">
-              <h2 className="text-xl sm:text-2xl font-extrabold tracking-tight leading-tight">Maitri Welfare Foundation</h2>
+              <span className="text-xl sm:text-2xl font-extrabold tracking-tight leading-tight block">Maitri Welfare Foundation</span>
               <span className="text-[10px] sm:text-xs text-secondary font-bold tracking-widest uppercase mt-1.5 leading-normal">
                 "एक हात मैत्रीचा" • One Hand of Friendship
               </span>

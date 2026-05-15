@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { ShieldCheck, Eye, Lock, Landmark } from 'lucide-react';
 import { AnimatedCounter } from '../components/AnimatedCounter';
+import SEO from '../components/SEO';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -44,13 +45,19 @@ export default function Support() {
 
   return (
     <div className="pt-20">
+      <SEO 
+        title="Support Our Cause | Donate for Social Welfare"
+        description="Support Maitri Welfare Foundation through direct contributions. Your donations help us fuel our mission for sustainable growth, women empowerment, and environmental conservation."
+        keywords="donate NGO Pune, support Maitri Foundation, NGO bank details, charity Pune, social welfare donation"
+        canonical="/support"
+      />
       {/* Hero Section */}
       <section className="bg-primary py-24 text-center text-on-primary relative overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-10">
           <img
             src="https://images.pexels.com/photos/36739282/pexels-photo-36739282.jpeg?auto=compress&cs=tinysrgb&w=1260"
             className="w-full h-full object-cover"
-            alt="Hero bg"
+            alt="Supporting community welfare initiatives"
           />
         </div>
         <div className="relative z-10 max-w-3xl mx-auto px-6">

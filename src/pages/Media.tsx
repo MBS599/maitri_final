@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import SEO from '../components/SEO';
 import { motion, AnimatePresence } from 'motion/react';
 import { Newspaper, Camera, ExternalLink, Calendar, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -55,6 +56,12 @@ export default function Media() {
 
   return (
     <div className="pt-20">
+      <SEO 
+        title="News & Media | Latest Coverage"
+        description="Stay updated with the latest news coverage and media highlights of Maitri Welfare Foundation's social and environmental initiatives in Pune and beyond."
+        keywords="NGO media coverage, news Pune, Maitri Foundation news, social work highlights"
+        canonical="/media"
+      />
       {/* Hero Section */}
       <section className="bg-primary py-24 text-center text-on-primary relative overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-10">

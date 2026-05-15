@@ -1,4 +1,5 @@
 import { motion } from 'motion/react';
+import SEO from '../components/SEO';
 import { Mail, Link as LinkIcon, ArrowRight, Award } from 'lucide-react';
 import teamBg from '../assets/team.jpg';
 import siddhiKadam from '../assets/team/sidhhi.png';
@@ -62,6 +63,12 @@ const scaleIn = {
 export default function Team() {
   return (
     <div className="pt-20">
+      <SEO 
+        title="Our Team | Meet the Compassionate Leaders"
+        description="Meet the dedicated team behind Maitri Welfare Foundation. Our core committee and volunteers are committed to social change and community welfare in Pune."
+        keywords="Maitri Foundation team, NGO leaders Pune, social work volunteers, Siddhesh Nikam, Maitri Foundation committee"
+        canonical="/team"
+      />
       {/* Hero Section */}
       <section className="bg-primary py-48 text-center text-on-primary relative overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-50">

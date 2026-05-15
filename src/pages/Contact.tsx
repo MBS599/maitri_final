@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Send, Youtube, Instagram, Share2, Loader2, MessageCircle, Mail, Copy, Check, X, MapPin } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
 import { toast } from 'sonner';
+import SEO from '../components/SEO';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -93,13 +94,19 @@ export default function Contact() {
 
   return (
     <div className="pt-20">
+      <SEO 
+        title="Contact Us | Get in Touch with Maitri Foundation"
+        description="Have questions? Want to volunteer? Contact Maitri Welfare Foundation in Katraj, Pune. Reach us via email, phone, or visit our office."
+        keywords="contact NGO Pune, Maitri Foundation contact, volunteer Pune NGO, NGO office Pune"
+        canonical="/contact"
+      />
       {/* Hero Section */}
       <section className="bg-primary py-24 text-center text-on-primary relative overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-10">
           <img
             src="https://images.pexels.com/photos/8882791/pexels-photo-8882791.jpeg?auto=compress&cs=tinysrgb&w=1260"
             className="w-full h-full object-cover"
-            alt="Hero bg"
+            alt="Maitri Welfare Foundation office contact background"
           />
         </div>
         <div className="relative z-10 max-w-3xl mx-auto px-6">

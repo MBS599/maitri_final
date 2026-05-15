@@ -1,4 +1,5 @@
 import { motion } from 'motion/react';
+import SEO from '../components/SEO';
 import { Link } from 'react-router-dom';
 import { ShieldCheck, Users, Clock, Trophy } from 'lucide-react';
 import awardHero from '../assets/award_hero.jpg';
@@ -78,6 +79,12 @@ const awards = [
 export default function Awards() {
   return (
     <div className="pt-20">
+      <SEO
+        title="Awards & Recognition | Our Social Impact"
+        description="Explore the awards and recognition received by Maitri Welfare Foundation, including the Corona Yoddha Award and Samaj Seva Gaurav Award. Our impact recognized by the community."
+        keywords="NGO awards, Maitri Foundation recognition, Corona Yoddha Award, social service awards Pune"
+        canonical="/awards"
+      />
       {/* Hero */}
       <section className="relative py-32 overflow-hidden bg-primary text-on-primary">
         <div className="absolute inset-0 opacity-50">
@@ -194,9 +201,9 @@ export default function Awards() {
           viewport={{ once: true }}
         >
           {[
-            { value: '25+', label: 'National & State Level Awards' },
-            { value: '100k', label: 'Lives Impacted Annually' },
-            { value: '10y', label: 'Of Continuous Service' }
+            { value: '5+', label: 'Awards' },
+            { value: '5k', label: 'Lives Impacted Annually' },
+            { value: '8y', label: 'Of Continuous Service' }
           ].map((stat, idx) => (
             <motion.div
               key={idx}

@@ -23,22 +23,6 @@ function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
-
-    // Dynamic SEO titles per route
-    const titles: Record<string, string> = {
-      '/': 'Maitri Welfare Foundation | NGO in Katraj, Pune - 411046',
-      '/about': 'About Us | Maitri Welfare Foundation Katraj Pune 411046',
-      '/team': 'Our Team | Maitri Welfare Foundation Katraj Pune 411046',
-      '/awards': 'Awards & Recognition | Maitri Welfare Foundation Pune',
-      '/events': 'Activities & Events | Maitri Welfare Foundation Pune',
-      '/support': 'Support Our Cause | Maitri Welfare Foundation Pune',
-      '/contact': 'Contact Us | Maitri Welfare Foundation Katraj Pune 411046',
-      '/volunteer': 'Volunteer Registration | Maitri Welfare Foundation Pune',
-      '/kaushalya': 'Project Kaushalya | Women Empowerment Katraj Pune',
-      '/media': 'Media & Gallery | Maitri Welfare Foundation Pune',
-    };
-
-    document.title = titles[pathname] || 'Maitri Welfare Foundation';
   }, [pathname]);
   return null;
 }

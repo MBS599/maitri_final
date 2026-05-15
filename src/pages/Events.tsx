@@ -6,6 +6,7 @@ import { AnimatedCounter } from '../components/AnimatedCounter';
 import { useState, useRef, useEffect } from 'react';
 import { toast } from 'sonner';
 import { AnimatePresence } from 'motion/react';
+import SEO from '../components/SEO';
 
 // Local images to guarantee visibility and meaning
 import news1 from '../assets/news/new1.jpeg';
@@ -291,6 +292,12 @@ export default function Events() {
 
   return (
     <div className="pt-20">
+      <SEO 
+        title="Upcoming & Past Events | Community Drives"
+        description="Stay updated with Maitri Welfare Foundation's upcoming events, including blood donation camps, tree plantations, and food drives. Explore our past achievements in Pune."
+        keywords="NGO events Pune, blood donation camp Pune, community service events, Maitri Foundation activities"
+        canonical="/events"
+      />
       {/* Background Hero */}
       <section className="relative h-[450px] flex items-center justify-center overflow-hidden">
         <motion.img

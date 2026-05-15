@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Send, Loader2, Heart, Users, Globe, Sparkles, Upload, Eye, ArrowRight } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
 import { toast } from 'sonner';
+import SEO from '../components/SEO';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -164,6 +165,12 @@ export default function Volunteer() {
 
   return (
     <div className="pt-20">
+      <SEO 
+        title="Become a Volunteer | Join Our Mission"
+        description="Join Maitri Welfare Foundation as a volunteer. Contribute your skills in environmental drives, community support, or digital advocacy and make a real difference in Pune."
+        keywords="volunteer NGO Pune, join Maitri Foundation, community service Pune, environmental volunteer, NGO volunteer registration"
+        canonical="/volunteer"
+      />
       {/* Hero Section */}
       <section className="bg-primary-container py-24 relative overflow-hidden text-on-primary-container">
         <motion.div 
@@ -175,7 +182,7 @@ export default function Volunteer() {
           <img
             src="https://images.pexels.com/photos/1046820/pexels-photo-1046820.jpeg?auto=compress&cs=tinysrgb&w=1260"
             className="w-full h-full object-cover"
-            alt="Nature bg"
+            alt="Nature and environmental conservation background"
           />
         </motion.div>
         <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">

@@ -6,8 +6,30 @@ import { AnimatedCounter } from '../components/AnimatedCounter';
 import news1 from '../assets/news/new1.jpeg';
 import news2 from '../assets/news/news2.jpeg';
 import about1 from '../assets/team/about1.jpg';
+import SEO from '../components/SEO';
 
 export default function Home() {
+  const homeSchema = {
+    "@context": "https://schema.org",
+    "@type": "NGO",
+    "name": "Maitri Welfare Foundation",
+    "url": "https://maitriwelfarefoundation.org",
+    "logo": "https://maitriwelfarefoundation.org/favicon.ico",
+    "description": "Maitri Welfare Foundation is a non-profit NGO in Katraj, Pune, dedicated to environmental conservation, women empowerment through Kaushalya project, and community welfare.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Katraj, Pune",
+      "addressRegion": "Maharashtra",
+      "postalCode": "411046",
+      "addressCountry": "IN"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+91-7447434373",
+      "contactType": "customer service"
+    }
+  };
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -47,6 +69,13 @@ export default function Home() {
 
   return (
     <div className="pt-20">
+      <SEO 
+        title="Empowering Lives & Protecting Nature"
+        description="Maitri Welfare Foundation is a prominent NGO in Katraj, Pune working on tree plantation, women empowerment (Kaushalya), and community social welfare."
+        keywords="Maitri Welfare Foundation, NGO in Pune, Katraj NGO, Tree Plantation Pune, Women Empowerment NGO, Social Welfare Pune"
+        canonical="/"
+        schemaData={homeSchema}
+      />
       {/* Hero Section */}
       <section className="relative h-[600px] flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">

@@ -6,6 +6,7 @@ import { AnimatedCounter } from '../components/AnimatedCounter';
 import fullTeam from '../assets/team/full_team.jpeg';
 import about1 from '../assets/team/about1.jpg';
 import about2 from '../assets/team/about2.jpg';
+import SEO from '../components/SEO';
 
 
 const containerVariants = {
@@ -33,13 +34,19 @@ const itemVariants = {
 export default function About() {
   return (
     <div className="pt-20">
+      <SEO 
+        title="About Us | Our Mission, Vision & Journey"
+        description="Learn about Maitri Welfare Foundation's journey since 2019, our mission to alleviate poverty, and our vision for an equitable future through social welfare and environmental conservation."
+        keywords="about Maitri Foundation, NGO mission vision, social service history, Maitri Welfare Foundation team"
+        canonical="/about"
+      />
       {/* Hero Section */}
       <section className="bg-primary py-24 text-center text-on-primary relative overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-20">
           <img
             src={aboutHero}
             className="w-full h-full object-cover"
-            alt="About us background"
+            alt="Maitri Welfare Foundation social work background"
           />
         </div>
         <div className="relative z-10 max-w-4xl mx-auto px-6">
@@ -151,7 +158,7 @@ export default function About() {
               <div className="aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white">
                 <img
                   src={about1}
-                  alt="Group of friends"
+                  alt="Maitri Welfare Foundation founders and early team members"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -171,7 +178,7 @@ export default function About() {
               <div className="aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white">
                 <img
                   src={about2}
-                  alt="Food donation"
+                  alt="Maitri Welfare Foundation food donation drive for the needy"
                   className="w-full h-full object-cover"
                 />
               </div>

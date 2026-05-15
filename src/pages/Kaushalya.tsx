@@ -9,6 +9,7 @@ import award2025 from '../assets/sapana_kakade.png';
 // @ts-ignore
 import rangoliSheetImg from '../assets/news/rangoli_sheet.png';
 import { toast } from 'sonner';
+import SEO from '../components/SEO';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -115,6 +116,12 @@ export default function Kaushalya() {
 
   return (
     <div className="pt-20">
+      <SEO 
+        title="Kaushalya Project | Women Empowerment & Vocational Training"
+        description="Kaushalya is a dedicated women empowerment initiative by Maitri Welfare Foundation, providing vocational training in handcrafts, financial literacy, and leadership."
+        keywords="Kaushalya project, women empowerment Pune, vocational training for women, skill development NGO, Maitri Foundation Kaushalya"
+        canonical="/kaushalya"
+      />
       {/* Hero Section */}
       <section className="relative h-[550px] flex items-center overflow-hidden bg-primary text-on-primary">
         <motion.div
