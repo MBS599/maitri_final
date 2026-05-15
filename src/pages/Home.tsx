@@ -111,7 +111,7 @@ export default function Home() {
               variants={itemVariants}
               className="text-base sm:text-lg opacity-90 mb-8 leading-relaxed"
             >
-              Dedicated to sustainable social impact through environmental conservation and community welfare initiatives across India.
+              We are dedicated to <strong>empowering lives</strong> and <strong>protecting nature</strong> through sustainable social impact, environmental conservation, and community welfare initiatives across India.
             </motion.p>
             <motion.div variants={itemVariants} className="flex flex-wrap gap-4">
               <Link to="/support" className="bg-secondary-container text-on-secondary-container px-8 py-3 rounded-full font-bold active:scale-95 hover:shadow-xl hover:scale-105 transition-all">

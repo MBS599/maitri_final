@@ -118,7 +118,7 @@ export default function Kaushalya() {
     <div className="pt-20">
       <SEO 
         title="Kaushalya Project | Women Empowerment & Vocational Training"
-        description="Kaushalya is a dedicated women empowerment initiative by Maitri Welfare Foundation, providing vocational training in handcrafts, financial literacy, and leadership."
+        description="Kaushalya is a women empowerment initiative by Maitri Welfare Foundation, providing vocational training in handcrafts, financial literacy, and leadership."
         keywords="Kaushalya project, women empowerment Pune, vocational training for women, skill development NGO, Maitri Foundation Kaushalya"
         canonical="/kaushalya"
       />
@@ -156,7 +156,7 @@ export default function Kaushalya() {
               variants={itemVariants}
               className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6 leading-[1.1]"
             >
-              Kaushalya: Skill, Strength & Success
+              Project Kaushalya: Skill, Strength & Success
             </motion.h1>
             <motion.p
               variants={itemVariants}

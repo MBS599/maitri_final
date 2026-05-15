@@ -81,7 +81,7 @@ export default function Awards() {
     <div className="pt-20">
       <SEO
         title="Awards & Recognition | Our Social Impact"
-        description="Explore the awards and recognition received by Maitri Welfare Foundation, including the Corona Yoddha Award and Samaj Seva Gaurav Award. Our impact recognized by the community."
+        description="Explore awards received by Maitri Welfare Foundation, including the Corona Yoddha and Samaj Seva Gaurav awards. Our social impact recognized by the community."
         keywords="NGO awards, Maitri Foundation recognition, Corona Yoddha Award, social service awards Pune"
         canonical="/awards"
       />
@@ -110,7 +110,7 @@ export default function Awards() {
               variants={fadeInUp}
               className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6 leading-[1.1]"
             >
-              Recognizing Our Impact
+              Awards & Recognition: Our Social Impact
             </motion.h1>
             <motion.p
               variants={fadeInUp}

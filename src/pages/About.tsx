@@ -34,9 +34,9 @@ const itemVariants = {
 export default function About() {
   return (
     <div className="pt-20">
-      <SEO 
+      <SEO
         title="About Us | Our Mission, Vision & Journey"
-        description="Learn about Maitri Welfare Foundation's journey since 2019, our mission to alleviate poverty, and our vision for an equitable future through social welfare and environmental conservation."
+        description="Learn about Maitri Welfare Foundation's journey since 2019, our mission to alleviate poverty, and our vision for an equitable future through social welfare."
         keywords="about Maitri Foundation, NGO mission vision, social service history, Maitri Welfare Foundation team"
         canonical="/about"
       />
@@ -59,7 +59,7 @@ export default function About() {
               variants={fadeInUp}
               className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6 tracking-tight leading-[1.1]"
             >
-              Who We Are
+              About Us: Our Mission & Journey
             </motion.h1>
             <motion.p
               variants={fadeInUp}
@@ -310,7 +310,7 @@ export default function About() {
               { number: "5k+", label: "Lives Impacted" },
               { number: "120+", label: "Projects Done" },
               { number: "5+", label: "Cities Reached" },
-              { number: "200s+", label: "Volunteers" }
+              { number: "200+", label: "Volunteers" }
             ].map((stat, idx) => (
               <motion.div
                 key={idx}

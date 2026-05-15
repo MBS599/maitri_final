@@ -294,7 +294,7 @@ export default function Events() {
     <div className="pt-20">
       <SEO 
         title="Upcoming & Past Events | Community Drives"
-        description="Stay updated with Maitri Welfare Foundation's upcoming events, including blood donation camps, tree plantations, and food drives. Explore our past achievements in Pune."
+        description="Stay updated with Maitri Welfare Foundation's upcoming events, including blood donation camps and tree plantations. Explore our past achievements in Pune."
         keywords="NGO events Pune, blood donation camp Pune, community service events, Maitri Foundation activities"
         canonical="/events"
       />
@@ -319,7 +319,7 @@ export default function Events() {
               variants={fadeInUp}
               className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6 leading-[1.1]"
             >
-              Our Collective Journey
+              Events & Community Drives: Our Collective Journey
             </motion.h1>
             <motion.p
               variants={fadeInUp}
