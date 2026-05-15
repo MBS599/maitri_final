@@ -296,6 +296,7 @@ export function Footer() {
                 className="w-10 h-10 rounded-full bg-on-primary/10 flex items-center justify-center hover:bg-secondary transition-all cursor-pointer"
                 whileHover={{ scale: 1.15, rotate: 5 }}
                 transition={{ type: "spring", stiffness: 400 }}
+                aria-label="Follow us on Instagram"
               >
                 <Instagram className="w-5 h-5" />
               </motion.a>
@@ -306,6 +307,7 @@ export function Footer() {
                 className="w-10 h-10 rounded-full bg-on-primary/10 flex items-center justify-center hover:bg-secondary transition-all cursor-pointer"
                 whileHover={{ scale: 1.15, rotate: -5 }}
                 transition={{ type: "spring", stiffness: 400 }}
+                aria-label="Subscribe to our YouTube channel"
               >
                 <Youtube className="w-5 h-5" />
               </motion.a>

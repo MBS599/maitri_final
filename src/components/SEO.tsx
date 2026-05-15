@@ -8,7 +8,7 @@ interface SEOProps {
   ogImage?: string;
   ogType?: string;
   twitterCard?: string;
-  schemaData?: object;
+  schemaData?: object | object[];
 }
 
 const SEO: React.FC<SEOProps> = ({
@@ -49,9 +49,17 @@ const SEO: React.FC<SEOProps> = ({
 
       {/* Structured Data */}
       {schemaData && (
-        <script type="application/ld+json">
-          {JSON.stringify(schemaData)}
-        </script>
+        Array.isArray(schemaData) ? (
+          schemaData.map((schema, i) => (
+            <script key={i} type="application/ld+json">
+              {JSON.stringify(schema)}
+            </script>
+          ))
+        ) : (
+          <script type="application/ld+json">
+            {JSON.stringify(schemaData)}
+          </script>
+        )
       )}
     </>
   );

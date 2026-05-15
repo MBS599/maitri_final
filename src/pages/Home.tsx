@@ -30,6 +30,55 @@ export default function Home() {
     }
   };
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the primary mission of Maitri Welfare Foundation?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Our primary mission is to empower communities through sustainable social welfare programs, including environmental conservation, tree plantation drives, and women empowerment through our Project Kaushalya."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Where is Maitri Welfare Foundation located?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We are based in Katraj, Pune (Maharashtra), and our primary on-ground activities are centered around the Pune region, though our digital community spans across India."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How can I contribute to the foundation's work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You can contribute by donating through our secure payment channels, volunteering your time for our various drives, or spreading awareness about our social and environmental initiatives."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is Project Kaushalya?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Project Kaushalya is our flagship women empowerment initiative that provides vocational training, financial literacy, and leadership skills to women from underprivileged backgrounds to help them become self-reliant."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is Maitri Welfare Foundation a registered NGO?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, we are a legally registered non-profit organization (NGO) under the registration number F-0062418(PUN)."
+        }
+      }
+    ]
+  };
+
+  const combinedSchema = [homeSchema, faqSchema];
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -74,7 +123,8 @@ export default function Home() {
         description="Maitri Welfare Foundation is a prominent NGO in Katraj, Pune working on tree plantation, women empowerment (Kaushalya), and community social welfare."
         keywords="Maitri Welfare Foundation, NGO in Pune, Katraj NGO, Tree Plantation Pune, Women Empowerment NGO, Social Welfare Pune"
         canonical="/"
-        schemaData={homeSchema}
+        ogImage="/og-image.png"
+        schemaData={combinedSchema}
       />
       {/* Hero Section */}
       <section className="relative h-[600px] flex items-center overflow-hidden">
@@ -332,6 +382,64 @@ export default function Home() {
                     <span className="truncate">{item.location}</span>
                   </div>
                 </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-24 bg-surface-container-lowest">
+        <div className="max-w-4xl mx-auto px-6">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={containerVariants}
+            className="text-center mb-16"
+          >
+            <motion.span variants={fadeInUp} className="text-secondary font-bold tracking-widest uppercase text-xs">Got Questions?</motion.span>
+            <motion.h2 variants={fadeInUp} className="text-3xl sm:text-4xl font-bold text-primary mt-2">Frequently Asked Questions</motion.h2>
+          </motion.div>
+
+          <div className="space-y-6">
+            {[
+              {
+                q: "What is the primary mission of Maitri Welfare Foundation?",
+                a: "Our primary mission is to empower communities through sustainable social welfare programs, including environmental conservation, tree plantation drives, and women empowerment through our Project Kaushalya."
+              },
+              {
+                q: "Where is Maitri Welfare Foundation located?",
+                a: "We are based in Katraj, Pune (Maharashtra), and our primary on-ground activities are centered around the Pune region, though our digital community spans across India."
+              },
+              {
+                q: "How can I contribute to the foundation's work?",
+                a: "You can contribute by donating through our secure payment channels, volunteering your time for our various drives, or spreading awareness about our social and environmental initiatives."
+              },
+              {
+                q: "What is Project Kaushalya?",
+                a: "Project Kaushalya is our flagship women empowerment initiative that provides vocational training, financial literacy, and leadership skills to women from underprivileged backgrounds to help them become self-reliant."
+              },
+              {
+                q: "Is Maitri Welfare Foundation a registered NGO?",
+                a: "Yes, we are a legally registered non-profit organization (NGO) under the registration number F-0062418(PUN)."
+              }
+            ].map((faq, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                className="bg-white p-8 rounded-3xl border border-outline-variant/30 shadow-sm hover:shadow-md transition-shadow"
+              >
+                <h4 className="text-lg font-bold text-primary mb-3 flex items-start gap-3">
+                  <span className="text-secondary-container">Q.</span>
+                  {faq.q}
+                </h4>
+                <p className="text-on-surface-variant text-sm leading-relaxed pl-7">
+                  {faq.a}
+                </p>
               </motion.div>
             ))}
           </div>
