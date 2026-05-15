@@ -18,6 +18,7 @@ import Kaushalya from './pages/Kaushalya';
 import Media from './pages/Media';
 import { Toaster } from 'sonner';
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -33,6 +34,7 @@ export default function App() {
       <ScrollToTop />
       <Toaster position="top-right" richColors />
       <Analytics />
+      <SpeedInsights />
       <div className="flex flex-col min-h-screen overflow-x-hidden">
         <Navbar />
         <main className="flex-grow">
