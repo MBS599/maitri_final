@@ -166,9 +166,9 @@ export default function Volunteer() {
   return (
     <div className="pt-20">
       <SEO 
-        title="Become a Volunteer | Join Our Mission"
-        description="Join Maitri Welfare Foundation as a volunteer. Contribute your skills in environmental drives, community support, or digital advocacy and make a real difference in Pune."
-        keywords="volunteer NGO Pune, join Maitri Foundation, community service Pune, environmental volunteer, NGO volunteer registration"
+        title="Volunteer with NGO in Pune | Join Our Mission"
+        description="Volunteer with Maitri Welfare Foundation, a leading NGO in Pune. Help in tree plantation drives, women empowerment, and child education in Katraj, Pune."
+        keywords="volunteer NGO Pune, NGO in Pune, join Maitri Foundation, community service Pune, environmental volunteer, NGO volunteer registration"
         canonical="/volunteer"
       />
       {/* Hero Section */}

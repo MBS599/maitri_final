@@ -26,7 +26,7 @@ const SEO: React.FC<SEOProps> = ({
   schemaData
 }) => {
   const siteName = 'Maitri Welfare Foundation';
-  const fullTitle = title ? `${title} | ${siteName}` : `${siteName} | NGO in Katraj, Pune`;
+  const fullTitle = title ? `${title} | ${siteName}` : `${siteName} | Best NGO in Pune | NGO in Katraj`;
   const siteUrl = 'https://maitriwelfarefoundation.org';
   const fullCanonical = canonical ? `${siteUrl}${canonical}` : siteUrl;
 

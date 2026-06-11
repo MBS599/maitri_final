@@ -57,9 +57,9 @@ export default function Media() {
   return (
     <div className="pt-20">
       <SEO 
-        title="News & Media | Latest Coverage"
-        description="Stay updated with the latest news coverage and media highlights of Maitri Welfare Foundation's social and environmental initiatives in Pune and beyond."
-        keywords="NGO media coverage, news Pune, Maitri Foundation news, social work highlights"
+        title="News & Media Coverage | NGO in Pune"
+        description="Explore the latest news coverage, press releases, and media highlights of Maitri Welfare Foundation, a prominent NGO in Pune (Katraj)."
+        keywords="NGO in Pune, NGO media coverage, news Pune, Maitri Foundation news, social work highlights"
         canonical="/media"
       />
       {/* Hero Section */}

@@ -117,9 +117,9 @@ export default function Kaushalya() {
   return (
     <div className="pt-20">
       <SEO 
-        title="Kaushalya Project | Women Empowerment & Vocational Training"
-        description="Kaushalya is a women empowerment initiative by Maitri Welfare Foundation, providing vocational training in handcrafts, financial literacy, and leadership."
-        keywords="Kaushalya project, women empowerment Pune, vocational training for women, skill development NGO, Maitri Foundation Kaushalya"
+        title="Kaushalya Project | Women Empowerment NGO in Pune"
+        description="Kaushalya is a women empowerment initiative by Maitri Welfare Foundation, offering vocational training, financial literacy, and skill development in Katraj, Pune."
+        keywords="women empowerment NGO Pune, vocational training for women, Kaushalya project, skill development NGO Pune, Maitri Foundation Kaushalya"
         canonical="/kaushalya"
       />
       {/* Hero Section */}

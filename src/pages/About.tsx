@@ -35,9 +35,9 @@ export default function About() {
   return (
     <div className="pt-20">
       <SEO
-        title="About Us | Our Mission, Vision & Journey"
-        description="Learn about Maitri Welfare Foundation's journey since 2019, our mission to alleviate poverty, and our vision for an equitable future through social welfare."
-        keywords="about Maitri Foundation, NGO mission vision, social service history, Maitri Welfare Foundation team"
+        title="About Our Pune NGO | Mission & Vision"
+        description="Learn about Maitri Welfare Foundation's journey since 2019. We are a dedicated NGO in Pune working on environmental conservation, women empowerment, and child education."
+        keywords="about Maitri Foundation, NGO in Pune, best NGO in Pune, social work Pune, Maitri Welfare Foundation team"
         canonical="/about"
       />
       {/* Hero Section */}

@@ -46,9 +46,9 @@ export default function Support() {
   return (
     <div className="pt-20">
       <SEO 
-        title="Support Our Cause | Donate for Social Welfare"
-        description="Support Maitri Welfare Foundation through direct contributions. Your donations help us fuel our mission for sustainable growth, women empowerment, and environmental conservation."
-        keywords="donate NGO Pune, support Maitri Foundation, NGO bank details, charity Pune, social welfare donation"
+        title="Support Best NGO in Pune | Donate for Social Welfare"
+        description="Donate to Maitri Welfare Foundation, a registered NGO in Pune. Support our community programs, tree plantation drives, and Project Kaushalya."
+        keywords="donate NGO Pune, support Maitri Foundation, NGO bank details, charity Pune, social welfare donation, donation for NGO in Pune"
         canonical="/support"
       />
       {/* Hero Section */}

@@ -64,9 +64,9 @@ export default function Team() {
   return (
     <div className="pt-20">
       <SEO 
-        title="Our Team | Meet the Compassionate Leaders"
-        description="Meet the dedicated team behind Maitri Welfare Foundation. Our core committee and volunteers are committed to social change and community welfare in Pune."
-        keywords="Maitri Foundation team, NGO leaders Pune, social work volunteers, Siddhesh Nikam, Maitri Foundation committee"
+        title="Our Team & Leaders | NGO in Pune"
+        description="Meet the dedicated leaders and committee members of Maitri Welfare Foundation. Our core team and volunteers drive social change in Pune."
+        keywords="Maitri Foundation team, NGO in Pune, NGO leaders Pune, social work volunteers, Siddhesh Nikam, Maitri Foundation committee"
         canonical="/team"
       />
       {/* Hero Section */}

@@ -293,9 +293,9 @@ export default function Events() {
   return (
     <div className="pt-20">
       <SEO 
-        title="Upcoming & Past Events | Community Drives"
+        title="Upcoming & Past Events | NGO in Pune | Community Drives"
         description="Stay updated with Maitri Welfare Foundation's upcoming events, including blood donation camps and tree plantations. Explore our past achievements in Pune."
-        keywords="NGO events Pune, blood donation camp Pune, community service events, Maitri Foundation activities"
+        keywords="NGO events Pune, blood donation camp Pune, community service events, Maitri Foundation activities, best NGO in Pune events"
         canonical="/events"
       />
       {/* Background Hero */}

@@ -119,9 +119,9 @@ export default function Home() {
   return (
     <div className="pt-20">
       <SEO 
-        title="Empowering Lives & Protecting Nature"
-        description="Maitri Welfare Foundation is a prominent NGO in Katraj, Pune working on tree plantation, women empowerment (Kaushalya), and community social welfare."
-        keywords="Maitri Welfare Foundation, NGO in Pune, Katraj NGO, Tree Plantation Pune, Women Empowerment NGO, Social Welfare Pune"
+        title="Best NGO in Pune | Empowering Lives & Protecting Nature"
+        description="Maitri Welfare Foundation is one of the best NGOs in Pune (Katraj), dedicated to tree plantation, women empowerment (Project Kaushalya), and community social welfare."
+        keywords="NGO in Pune, Best NGO in Pune, NGO in Katraj Pune, Tree Plantation Pune, Women Empowerment NGO, Social Welfare Pune, Maitri Welfare Foundation"
         canonical="/"
         ogImage="/og-image.png"
         ogImageWidth="1200"

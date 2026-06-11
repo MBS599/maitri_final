@@ -95,9 +95,9 @@ export default function Contact() {
   return (
     <div className="pt-20">
       <SEO 
-        title="Contact Us | Get in Touch with Maitri Foundation"
-        description="Have questions? Want to volunteer? Contact Maitri Welfare Foundation in Katraj, Pune. Reach us via email, phone, or visit our office."
-        keywords="contact NGO Pune, Maitri Foundation contact, volunteer Pune NGO, NGO office Pune"
+        title="Contact Best NGO in Pune | Get in Touch"
+        description="Contact Maitri Welfare Foundation, one of the best NGOs in Pune. Reach us for volunteering, tree plantation events, donations, or local community support in Katraj."
+        keywords="contact NGO Pune, NGO in Pune, Maitri Foundation contact, volunteer Pune NGO, NGO office Pune"
         canonical="/contact"
       />
       {/* Hero Section */}
@@ -154,7 +154,7 @@ export default function Contact() {
                 <Mail className="text-primary w-6 h-6" />
               </div>
               <h3 className="font-bold text-primary mb-1 text-sm">Email Us</h3>
-              <p className="text-xs text-on-surface-variant font-medium truncate" title="maitrifoundation2019@gmail.com">maitrifoundation2019@gmail.com</p>
+              <p className="text-xs text-on-surface-variant font-medium truncate" title="support@maitriwelfarefoundation.org">support@maitriwelfarefoundation.org</p>
             </motion.div>
             
             <motion.div variants={itemVariants} className="bg-surface-container-low p-6 rounded-2xl border border-outline-variant/20 shadow-sm">
@@ -279,7 +279,7 @@ export default function Contact() {
             href="https://chat.whatsapp.com/F46mGxCY15QHB3GE7aAFgR" 
             target="_blank" 
             rel="noopener noreferrer" 
-            className="flex items-center gap-3 bg-surface-container-low px-8 py-4 rounded-2xl shadow-sm hover:shadow-md transition-all group border border-outline-variant/20 cursor-pointer"
+            className="w-full sm:w-[260px] flex items-center justify-center gap-3 bg-surface-container-low px-8 py-4 rounded-2xl shadow-sm hover:shadow-md transition-all group border border-outline-variant/20 cursor-pointer"
             whileHover={{ y: -5, scale: 1.03 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
@@ -296,7 +296,7 @@ export default function Contact() {
             href="https://www.youtube.com/@maitriwelfarefoundation_" 
             target="_blank" 
             rel="noopener noreferrer" 
-            className="flex items-center gap-3 bg-surface-container-low px-8 py-4 rounded-2xl shadow-sm hover:shadow-md transition-all group border border-outline-variant/20 cursor-pointer"
+            className="w-full sm:w-[260px] flex items-center justify-center gap-3 bg-surface-container-low px-8 py-4 rounded-2xl shadow-sm hover:shadow-md transition-all group border border-outline-variant/20 cursor-pointer"
             whileHover={{ y: -5, scale: 1.03 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
@@ -308,7 +308,7 @@ export default function Contact() {
             href="https://www.instagram.com/maitri_welfare_foundation_" 
             target="_blank" 
             rel="noopener noreferrer" 
-            className="flex items-center gap-3 bg-surface-container-low px-8 py-4 rounded-2xl shadow-sm hover:shadow-md transition-all group border border-outline-variant/20 cursor-pointer"
+            className="w-full sm:w-[260px] flex items-center justify-center gap-3 bg-surface-container-low px-8 py-4 rounded-2xl shadow-sm hover:shadow-md transition-all group border border-outline-variant/20 cursor-pointer"
             whileHover={{ y: -5, scale: 1.03 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
@@ -318,7 +318,7 @@ export default function Contact() {
           <motion.button 
             variants={itemVariants}
             onClick={() => setShowShareMenu(true)}
-            className="flex items-center gap-3 bg-surface-container-low px-8 py-4 rounded-2xl shadow-sm hover:shadow-md transition-all group border border-outline-variant/20 cursor-pointer"
+            className="w-full sm:w-[260px] flex items-center justify-center gap-3 bg-surface-container-low px-8 py-4 rounded-2xl shadow-sm hover:shadow-md transition-all group border border-outline-variant/20 cursor-pointer"
             whileHover={{ y: -5, scale: 1.03 }}
             transition={{ type: "spring", stiffness: 300 }}
           >

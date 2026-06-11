@@ -7,6 +7,7 @@ import { AnimatedCounter } from '../components/AnimatedCounter';
 import samajSeva from '../assets/awards/samaj seva.jpeg';
 import visheshSanman from '../assets/awards/vishesh sanman.jpeg';
 import kakade from '../assets/awards/kakade.jpeg';
+import maharashtraVisheshGaurav from '../assets/awards/maharashtra_vishesh_gaurav.jpg';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -73,6 +74,13 @@ const awards = [
     desc: 'Honored for exceptional leadership and significant contributions to social welfare and community empowerment.',
     org: 'Sayog Ventures',
     img: kakade
+  },
+  {
+    year: '2026',
+    title: 'Maharashtra Vishesh Gaurav Award',
+    desc: 'Recognized for outstanding contributions to public welfare, social upliftment, and community service initiatives.',
+    org: 'Ajinkya Social Foundation, Pune',
+    img: maharashtraVisheshGaurav
   }
 ];
 
@@ -80,9 +88,9 @@ export default function Awards() {
   return (
     <div className="pt-20">
       <SEO
-        title="Awards & Recognition | Our Social Impact"
-        description="Explore awards received by Maitri Welfare Foundation, including the Corona Yoddha and Samaj Seva Gaurav awards. Our social impact recognized by the community."
-        keywords="NGO awards, Maitri Foundation recognition, Corona Yoddha Award, social service awards Pune"
+        title="Awards & Recognition | Best NGO in Pune"
+        description="Explore awards received by Maitri Welfare Foundation, one of the best NGOs in Pune, including the Corona Yoddha and Samaj Seva Gaurav awards."
+        keywords="best NGO in Pune awards, NGO awards, Maitri Foundation recognition, Corona Yoddha Award, social service awards Pune"
         canonical="/awards"
       />
       {/* Hero */}
