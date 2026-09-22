@@ -52,7 +52,7 @@ export default function Support() {
         canonical="/support"
       />
       {/* Hero Section */}
-      <section className="bg-primary py-24 text-center text-on-primary relative overflow-hidden">
+      <section className="grain mx-3 sm:mx-5 mt-3 rounded-[2rem] sm:rounded-[2.5rem] min-[1440px]:mx-auto min-[1440px]:max-w-[1400px] bg-ink py-24 text-center text-on-ink relative overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-10">
           <img
             src="https://images.pexels.com/photos/36739282/pexels-photo-36739282.jpeg?auto=compress&cs=tinysrgb&w=1260"
@@ -94,7 +94,7 @@ export default function Support() {
                   variants={itemVariants}
                   whileHover={{ scale: 1.05, y: -3 }}
                   transition={{ type: "spring", stiffness: 400 }}
-                  className="flex items-center gap-2 bg-on-primary/10 backdrop-blur-md px-5 py-2 rounded-full border border-on-primary/20"
+                  className="flex items-center gap-2 bg-on-ink/10 backdrop-blur-md px-5 py-2 rounded-full border border-on-ink/20"
                 >
                   <badge.icon className="w-5 h-5 text-secondary-container" />
                   <span className="text-[10px] font-bold uppercase tracking-widest">{badge.label}</span>
@@ -188,7 +188,7 @@ export default function Support() {
                 variants={itemVariants}
                 whileHover={{ scale: 1.08, y: -5 }}
                 transition={{ type: "spring", stiffness: 300 }}
-                className="p-8 bg-white rounded-2xl shadow-sm border border-outline-variant/10 group cursor-pointer"
+                className="p-8 bg-surface-container-low rounded-2xl shadow-sm border border-outline-variant/10 group cursor-pointer"
               >
                 <motion.div
                   className="text-4xl font-extrabold text-secondary mb-2"

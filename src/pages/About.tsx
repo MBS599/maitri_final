@@ -41,7 +41,7 @@ export default function About() {
         canonical="/about"
       />
       {/* Hero Section */}
-      <section className="bg-primary py-24 text-center text-on-primary relative overflow-hidden">
+      <section className="grain mx-3 sm:mx-5 mt-3 rounded-[2rem] sm:rounded-[2.5rem] min-[1440px]:mx-auto min-[1440px]:max-w-[1400px] bg-ink py-24 text-center text-on-ink relative overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-20">
           <img
             src={aboutHero}
@@ -228,7 +228,7 @@ export default function About() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <div className="aspect-video rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white bg-white">
+              <div className="aspect-video rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white bg-surface-container-low">
                 <img
                   src={fullTeam}
                   alt="Maitri Welfare Foundation Team"
@@ -242,7 +242,7 @@ export default function About() {
       </section>
 
       {/* Core Values */}
-      <section className="bg-primary text-on-primary py-24">
+      <section className="grain bg-ink text-on-ink py-24">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             className="text-center max-w-2xl mx-auto mb-16"
@@ -252,7 +252,7 @@ export default function About() {
             variants={fadeInUp}
           >
             <h2 className="text-4xl font-bold mb-6">Our Core Values</h2>
-            <p className="text-on-primary/80">
+            <p className="text-on-ink/80">
               The principles that guide every decision we make and every project we undertake.
             </p>
           </motion.div>
@@ -284,11 +284,14 @@ export default function About() {
               <motion.div
                 key={idx}
                 variants={itemVariants}
-                className="bg-on-primary/5 p-8 rounded-3xl border border-on-primary/10 hover:bg-on-primary/10 transition-colors"
+                className="group relative overflow-hidden bg-on-ink/[0.04] p-8 sm:p-10 rounded-[2rem] border border-on-ink/10 hover:border-secondary-container/40 hover:bg-on-ink/[0.07] transition-all duration-300"
               >
-                <value.icon className="w-10 h-10 text-secondary-container mb-6" />
-                <h3 className="text-xl font-bold mb-4">{value.title}</h3>
-                <p className="text-on-primary/70 leading-relaxed">{value.desc}</p>
+                <span className="absolute top-6 right-8 font-display text-6xl italic text-on-ink/10 select-none" aria-hidden="true">0{idx + 1}</span>
+                <span className="w-14 h-14 rounded-2xl bg-secondary-container text-on-secondary-container flex items-center justify-center mb-8 transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-105">
+                  <value.icon className="w-6 h-6" />
+                </span>
+                <h3 className="text-2xl font-medium mb-3">{value.title}</h3>
+                <p className="text-on-ink/75 leading-relaxed">{value.desc}</p>
               </motion.div>
             ))}
           </motion.div>

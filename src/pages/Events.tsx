@@ -299,7 +299,7 @@ export default function Events() {
         canonical="/events"
       />
       {/* Background Hero */}
-      <section className="relative h-[450px] flex items-center justify-center overflow-hidden">
+      <section className="grain mx-3 sm:mx-5 mt-3 rounded-[2rem] sm:rounded-[2.5rem] min-[1440px]:mx-auto min-[1440px]:max-w-[1400px] relative h-[450px] flex items-center justify-center overflow-hidden">
         <motion.img
           className="absolute inset-0 w-full h-full object-cover"
           src={heroImg}
@@ -309,7 +309,7 @@ export default function Events() {
           transition={{ duration: 1.2, ease: "easeOut" }}
         />
         <div className="absolute inset-0 bg-primary/60 backdrop-blur-[2px]"></div>
-        <div className="relative z-10 text-center px-6 max-w-4xl text-on-primary">
+        <div className="relative z-10 text-center px-6 max-w-4xl text-on-ink">
           <motion.div
             initial="hidden"
             animate="visible"
@@ -507,7 +507,7 @@ export default function Events() {
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="relative bg-white rounded-[1.5rem] shadow-2xl w-full max-w-2xl overflow-hidden max-h-[90vh] flex flex-col"
+              className="relative bg-surface-container-low rounded-[1.5rem] shadow-2xl w-full max-w-2xl overflow-hidden max-h-[90vh] flex flex-col"
             >
               <div className="flex justify-between items-center p-6 border-b border-outline-variant/30 flex-shrink-0">
                 <div className="flex items-center gap-3">
@@ -576,7 +576,7 @@ export default function Events() {
                     <select
                       name="category"
                       required
-                      className="w-full rounded-xl border-2 border-outline-variant/50 focus:border-primary focus:ring-0 px-4 py-3 text-sm font-semibold outline-none transition-all bg-white cursor-pointer"
+                      className="w-full rounded-xl border-2 border-outline-variant/50 focus:border-primary focus:ring-0 px-4 py-3 text-sm font-semibold outline-none transition-all bg-surface-container-low cursor-pointer"
                     >
                       <option value="Environment">Environment</option>
                       <option value="Social Welfare">Social Welfare</option>
@@ -669,10 +669,10 @@ export default function Events() {
       </AnimatePresence>
 
       {/* Impact Numbers */}
-      <section className="bg-primary-container py-24">
+      <section className="grain bg-ink text-on-ink py-24">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <motion.h2
-            className="text-3xl sm:text-4xl font-bold text-on-primary mb-12"
+            className="text-3xl sm:text-4xl font-bold text-on-ink mb-12"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -698,7 +698,7 @@ export default function Events() {
                 variants={itemVariants}
                 whileHover={{ scale: 1.08, y: -5 }}
                 transition={{ type: "spring", stiffness: 300 }}
-                className="bg-white/5 backdrop-blur-md p-8 rounded-2xl border border-on-primary/10 group cursor-pointer"
+                className="bg-on-ink/5 backdrop-blur-md p-8 rounded-2xl border border-on-ink/10 group cursor-pointer"
               >
                 <motion.div
                   className="text-secondary-container text-4xl font-extrabold mb-2"
@@ -709,7 +709,7 @@ export default function Events() {
                 >
                   <AnimatedCounter value={stat.val} />
                 </motion.div>
-                <div className="text-on-primary/70 text-xs font-bold uppercase tracking-widest">{stat.label}</div>
+                <div className="text-on-ink/70 text-xs font-bold uppercase tracking-widest">{stat.label}</div>
               </motion.div>
             ))}
           </motion.div>

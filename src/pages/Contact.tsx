@@ -101,7 +101,7 @@ export default function Contact() {
         canonical="/contact"
       />
       {/* Hero Section */}
-      <section className="bg-primary py-24 text-center text-on-primary relative overflow-hidden">
+      <section className="grain mx-3 sm:mx-5 mt-3 rounded-[2rem] sm:rounded-[2.5rem] min-[1440px]:mx-auto min-[1440px]:max-w-[1400px] bg-ink py-24 text-center text-on-ink relative overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-10">
           <img
             src="https://images.pexels.com/photos/8882791/pexels-photo-8882791.jpeg?auto=compress&cs=tinysrgb&w=1260"
@@ -175,7 +175,7 @@ export default function Contact() {
           </div>
 
           <motion.div 
-            className="bg-white rounded-3xl p-10 shadow-xl border border-outline-variant/30"
+            className="bg-surface-container-low rounded-3xl p-10 shadow-xl border border-outline-variant/30"
             whileHover={{ boxShadow: "0 20px 50px rgba(0,0,0,0.1)" }}
             transition={{ duration: 0.3 }}
           >
@@ -337,7 +337,7 @@ export default function Contact() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
               onClick={(e) => e.stopPropagation()}
-              className="bg-white rounded-3xl p-8 max-w-sm w-full shadow-2xl relative"
+              className="bg-surface-container-low rounded-3xl p-8 max-w-sm w-full shadow-2xl relative"
             >
               <button 
                 onClick={() => setShowShareMenu(false)}
@@ -396,10 +396,10 @@ export default function Contact() {
                   }} 
                   className="flex flex-col items-center gap-3 group"
                 >
-                  <div className="w-14 h-14 rounded-full bg-gray-500/10 flex items-center justify-center group-hover:bg-gray-500/20 transition-all group-hover:scale-110">
-                    {copied ? <Check className="w-7 h-7 text-green-500" /> : <Copy className="w-7 h-7 text-gray-500" />}
+                  <div className="w-14 h-14 rounded-full bg-surface-container/10 flex items-center justify-center group-hover:bg-surface-container/20 transition-all group-hover:scale-110">
+                    {copied ? <Check className="w-7 h-7 text-green-500" /> : <Copy className="w-7 h-7 text-on-surface-variant" />}
                   </div>
-                  <span className="text-xs font-bold text-on-surface-variant group-hover:text-gray-700 transition-colors">{copied ? 'Copied' : 'Copy'}</span>
+                  <span className="text-xs font-bold text-on-surface-variant group-hover:text-on-surface-variant transition-colors">{copied ? 'Copied' : 'Copy'}</span>
                 </button>
               </div>
             </motion.div>

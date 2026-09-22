@@ -94,7 +94,7 @@ export default function Awards() {
         canonical="/awards"
       />
       {/* Hero */}
-      <section className="relative py-32 overflow-hidden bg-primary text-on-primary">
+      <section className="grain mx-3 sm:mx-5 mt-3 rounded-[2rem] sm:rounded-[2.5rem] min-[1440px]:mx-auto min-[1440px]:max-w-[1400px] relative py-32 overflow-hidden bg-ink text-on-ink">
         <div className="absolute inset-0 opacity-50">
           <img
             className="w-full h-full object-cover object-[center_40%]"
@@ -238,7 +238,7 @@ export default function Awards() {
       {/* CTA Box */}
       <section className="py-24 max-w-7xl mx-auto px-6">
         <motion.div
-          className="bg-primary-container text-on-primary-container rounded-3xl p-12 md:p-20 flex flex-col md:flex-row items-center justify-between gap-12 relative overflow-hidden shadow-2xl"
+          className="grain bg-ink text-on-ink rounded-3xl p-12 md:p-20 flex flex-col md:flex-row items-center justify-between gap-12 relative overflow-hidden shadow-2xl"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -251,7 +251,7 @@ export default function Awards() {
             viewport={{ once: true }}
             variants={containerVariants}
           >
-            <motion.h2 variants={fadeInLeft} className="text-4xl font-bold text-on-primary mb-4">Be Part of the Success</motion.h2>
+            <motion.h2 variants={fadeInLeft} className="text-4xl font-bold text-on-ink mb-4">Be Part of the Success</motion.h2>
             <motion.p variants={fadeInLeft} className="text-lg opacity-80 max-w-xl leading-relaxed">
               Every award we win is shared with our supporters. Your contribution fuels the impact that makes these recognitions possible.
             </motion.p>
@@ -269,7 +269,7 @@ export default function Awards() {
               </Link>
             </motion.div>
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Link to="/volunteer" className="border-2 border-on-primary text-on-primary px-10 py-4 rounded-full text-lg font-bold hover:bg-on-primary/10 transition-all text-center inline-block">
+              <Link to="/volunteer" className="border-2 border-on-ink text-on-ink px-10 py-4 rounded-full text-lg font-bold hover:bg-on-ink/10 transition-all text-center inline-block">
                 Volunteer
               </Link>
             </motion.div>

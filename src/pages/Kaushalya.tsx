@@ -123,7 +123,7 @@ export default function Kaushalya() {
         canonical="/kaushalya"
       />
       {/* Hero Section */}
-      <section className="relative h-[550px] flex items-center overflow-hidden bg-primary text-on-primary">
+      <section className="grain mx-3 sm:mx-5 mt-3 rounded-[2rem] sm:rounded-[2.5rem] min-[1440px]:mx-auto min-[1440px]:max-w-[1400px] relative h-[550px] flex items-center overflow-hidden bg-ink text-on-ink">
         <motion.div
           className="absolute inset-0 z-0 opacity-20"
           initial={{ scale: 1.15 }}
@@ -310,7 +310,7 @@ export default function Kaushalya() {
               </div>
               {/* Floating element */}
               <motion.div
-                className="absolute -bottom-10 -left-10 bg-white p-6 rounded-3xl shadow-xl border border-outline-variant/30 hidden md:block"
+                className="absolute -bottom-10 -left-10 bg-surface-container-low p-6 rounded-3xl shadow-xl border border-outline-variant/30 hidden md:block"
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
               >
@@ -360,7 +360,7 @@ export default function Kaushalya() {
                 variants={itemVariants}
                 whileHover={{ y: -10 }}
                 onClick={() => setSelectedPhoto(awardee.img)}
-                className="bg-white rounded-[2.5rem] overflow-hidden shadow-sm border border-outline-variant/30 group cursor-pointer"
+                className="bg-surface-container-low rounded-[2.5rem] overflow-hidden shadow-sm border border-outline-variant/30 group cursor-pointer"
               >
                 <div className="aspect-[3/4] overflow-hidden relative">
                   <motion.img
@@ -509,12 +509,12 @@ export default function Kaushalya() {
               whileInView="visible"
               viewport={{ once: true }}
               variants={fadeInRight}
-              className="bg-white p-8 md:p-12 rounded-[32px] border border-outline-variant/20 shadow-xl"
+              className="bg-surface-container-low p-8 md:p-12 rounded-[32px] border border-outline-variant/20 shadow-xl"
             >
               <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label className="text-xs font-bold uppercase tracking-wider text-primary">Full Name <span className="text-red-500">*</span></label>
+                    <label className="text-xs font-bold uppercase tracking-wider text-primary">Full Name <span className="text-red-700 dark:text-red-400">*</span></label>
                     <input
                       required
                       name="name"
@@ -524,7 +524,7 @@ export default function Kaushalya() {
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-xs font-bold uppercase tracking-wider text-primary">Email Address <span className="text-red-500">*</span></label>
+                    <label className="text-xs font-bold uppercase tracking-wider text-primary">Email Address <span className="text-red-700 dark:text-red-400">*</span></label>
                     <input
                       required
                       name="email"
@@ -537,7 +537,7 @@ export default function Kaushalya() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label className="text-xs font-bold uppercase tracking-wider text-primary">Phone Number <span className="text-red-500">*</span></label>
+                    <label className="text-xs font-bold uppercase tracking-wider text-primary">Phone Number <span className="text-red-700 dark:text-red-400">*</span></label>
                     <input
                       required
                       name="phone"
@@ -547,7 +547,7 @@ export default function Kaushalya() {
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-xs font-bold uppercase tracking-wider text-primary">Expertise / Skill <span className="text-red-500">*</span></label>
+                    <label className="text-xs font-bold uppercase tracking-wider text-primary">Expertise / Skill <span className="text-red-700 dark:text-red-400">*</span></label>
                     <input
                       required
                       name="expertise"
@@ -559,7 +559,7 @@ export default function Kaushalya() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-xs font-bold uppercase tracking-wider text-primary">Message / Motivation <span className="text-red-500">*</span></label>
+                  <label className="text-xs font-bold uppercase tracking-wider text-primary">Message / Motivation <span className="text-red-700 dark:text-red-400">*</span></label>
                   <textarea
                     required
                     name="message"
@@ -572,7 +572,7 @@ export default function Kaushalya() {
                 <div className="bg-primary-container/30 p-6 rounded-2xl border border-primary-container/50">
                   <label className="text-xs font-bold uppercase tracking-wider text-primary block mb-3">Security Check</label>
                   <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-                    <span className="text-lg font-bold text-primary bg-white px-6 py-3 rounded-xl border border-primary-container shadow-sm">
+                    <span className="text-lg font-bold text-primary bg-surface-container-low px-6 py-3 rounded-xl border border-primary-container shadow-sm">
                       {captcha.question}
                     </span>
                     <input
@@ -581,7 +581,7 @@ export default function Kaushalya() {
                       value={userCaptcha}
                       onChange={(e) => setUserCaptcha(e.target.value)}
                       placeholder="Your answer"
-                      className="w-full sm:w-40 bg-white border border-outline-variant/50 rounded-xl px-5 py-3 focus:outline-none focus:border-primary transition-all font-bold text-center"
+                      className="w-full sm:w-40 bg-surface-container-low border border-outline-variant/50 rounded-xl px-5 py-3 focus:outline-none focus:border-primary transition-all font-bold text-center"
                     />
                   </div>
                 </div>
@@ -615,7 +615,7 @@ export default function Kaushalya() {
       </section>
 
       {/* CTA */}
-      <section className="bg-primary py-24 text-center">
+      <section className="grain bg-ink py-24 text-center">
         <motion.div
           className="max-w-4xl mx-auto px-6"
           initial="hidden"
@@ -623,8 +623,8 @@ export default function Kaushalya() {
           viewport={{ once: true }}
           variants={containerVariants}
         >
-          <motion.h2 variants={fadeInUp} className="text-3xl sm:text-4xl font-bold text-on-primary mb-6">Help Us Expand Kaushalya</motion.h2>
-          <motion.p variants={fadeInUp} className="text-on-primary/70 mb-12 text-lg">
+          <motion.h2 variants={fadeInUp} className="text-3xl sm:text-4xl font-bold text-on-ink mb-6">Help Us Expand Kaushalya</motion.h2>
+          <motion.p variants={fadeInUp} className="text-on-ink/70 mb-12 text-lg">
             We aim to reach 1000 women by 2025. Your donation can provide training kits, handcrafting materials, and expert mentorship.
           </motion.p>
           <motion.div
@@ -649,7 +649,7 @@ export default function Kaushalya() {
             className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 md:p-10 cursor-pointer"
           >
             <motion.button
-              className="absolute top-6 right-6 text-white hover:text-secondary-container transition-colors p-2 bg-white/10 rounded-full backdrop-blur-md"
+              className="absolute top-6 right-6 text-white hover:text-secondary-container transition-colors p-2 bg-surface-container-low/10 rounded-full backdrop-blur-md"
               onClick={() => setSelectedPhoto(null)}
             >
               <X className="w-8 h-8" />

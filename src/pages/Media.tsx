@@ -63,7 +63,7 @@ export default function Media() {
         canonical="/media"
       />
       {/* Hero Section */}
-      <section className="bg-primary py-24 text-center text-on-primary relative overflow-hidden">
+      <section className="grain mx-3 sm:mx-5 mt-3 rounded-[2rem] sm:rounded-[2.5rem] min-[1440px]:mx-auto min-[1440px]:max-w-[1400px] bg-ink py-24 text-center text-on-ink relative overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-10">
           <Newspaper className="w-[500px] h-[500px] absolute -top-24 -left-24 rotate-12" />
           <Camera className="w-[400px] h-[400px] absolute -bottom-24 -right-24 -rotate-12" />
@@ -97,7 +97,7 @@ export default function Media() {
               key={idx} 
               variants={itemVariants}
               whileHover={{ y: -10 }}
-              className="bg-white rounded-3xl overflow-hidden border border-outline-variant shadow-sm hover:shadow-xl transition-all group"
+              className="bg-surface-container-low rounded-3xl overflow-hidden border border-outline-variant shadow-sm hover:shadow-xl transition-all group"
             >
               <div className="aspect-video overflow-hidden relative">
                 <img src={item.image} alt={item.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
@@ -131,7 +131,7 @@ export default function Media() {
       {/* Media Interaction CTA */}
       <section className="py-24 max-w-7xl mx-auto px-6 pb-32">
         <motion.div 
-          className="bg-primary text-on-primary rounded-[3rem] p-12 md:p-20 text-center relative overflow-hidden"
+          className="grain bg-ink text-on-ink rounded-[3rem] p-12 md:p-20 text-center relative overflow-hidden"
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
@@ -163,11 +163,11 @@ export default function Media() {
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="relative bg-white rounded-[2.5rem] shadow-2xl w-full max-w-5xl overflow-hidden flex flex-col lg:flex-row max-h-[90vh]"
+              className="relative bg-surface-container-low rounded-[2.5rem] shadow-2xl w-full max-w-5xl overflow-hidden flex flex-col lg:flex-row max-h-[90vh]"
             >
               <button 
                 onClick={() => setSelectedNews(null)}
-                className="absolute top-6 right-6 p-2 bg-white/80 backdrop-blur-md rounded-full shadow-lg z-10 hover:bg-white transition-colors cursor-pointer"
+                className="absolute top-6 right-6 p-2 bg-surface-container-low/80 backdrop-blur-md rounded-full shadow-lg z-10 hover:bg-surface-container-low transition-colors cursor-pointer"
               >
                 <X className="w-6 h-6 text-primary" />
               </button>
@@ -178,7 +178,7 @@ export default function Media() {
                   className="max-w-full max-h-full object-contain rounded-2xl shadow-xl" 
                 />
               </div>
-              <div className="w-full lg:w-2/5 p-8 lg:p-12 overflow-y-auto bg-white">
+              <div className="w-full lg:w-2/5 p-8 lg:p-12 overflow-y-auto bg-surface-container-low">
                 <div className="flex items-center gap-3 text-secondary font-bold text-[10px] mb-6 uppercase tracking-widest">
                   <Calendar className="w-5 h-5" />
                   {selectedNews.date}

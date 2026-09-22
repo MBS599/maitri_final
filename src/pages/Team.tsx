@@ -70,7 +70,7 @@ export default function Team() {
         canonical="/team"
       />
       {/* Hero Section */}
-      <section className="bg-primary py-48 text-center text-on-primary relative overflow-hidden">
+      <section className="grain mx-3 sm:mx-5 mt-3 rounded-[2rem] sm:rounded-[2.5rem] min-[1440px]:mx-auto min-[1440px]:max-w-[1400px] bg-ink py-48 text-center text-on-ink relative overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-50">
           <img
             src={teamBg}
@@ -93,7 +93,7 @@ export default function Team() {
             </motion.h2>
             <motion.p
               variants={fadeInUp}
-              className="text-base sm:text-lg text-on-primary/90 max-w-2xl mx-auto leading-relaxed"
+              className="text-base sm:text-lg text-on-ink/90 max-w-2xl mx-auto leading-relaxed"
             >
               A dedicated group of professionals and community leaders united by a single mission: creating sustainable social change through empathy and action.
             </motion.p>
@@ -126,7 +126,7 @@ export default function Team() {
           <motion.div
             variants={itemVariants}
             whileHover={{ y: -5 }}
-            className="bg-white rounded-[2rem] overflow-hidden shadow-sm border border-outline-variant/30 group transition-all hover:shadow-md"
+            className="bg-surface-container-low rounded-[2rem] overflow-hidden shadow-sm border border-outline-variant/30 group transition-all hover:shadow-md"
           >
             <div className="aspect-square overflow-hidden relative">
               <motion.img
@@ -149,7 +149,7 @@ export default function Team() {
           <motion.div
             variants={itemVariants}
             whileHover={{ y: -5 }}
-            className="bg-white rounded-[2rem] overflow-hidden shadow-sm border border-outline-variant/30 group transition-all hover:shadow-md"
+            className="bg-surface-container-low rounded-[2rem] overflow-hidden shadow-sm border border-outline-variant/30 group transition-all hover:shadow-md"
           >
             <div className="aspect-square overflow-hidden relative">
               <motion.img
@@ -172,7 +172,7 @@ export default function Team() {
           <motion.div
             variants={itemVariants}
             whileHover={{ y: -5 }}
-            className="bg-white rounded-[2rem] overflow-hidden shadow-sm border border-outline-variant/30 group transition-all hover:shadow-md"
+            className="bg-surface-container-low rounded-[2rem] overflow-hidden shadow-sm border border-outline-variant/30 group transition-all hover:shadow-md"
           >
             <div className="aspect-square overflow-hidden relative">
               <motion.img
@@ -195,7 +195,7 @@ export default function Team() {
           <motion.div
             variants={itemVariants}
             whileHover={{ y: -5 }}
-            className="bg-white rounded-[2rem] overflow-hidden shadow-sm border border-outline-variant/30 group transition-all hover:shadow-md"
+            className="bg-surface-container-low rounded-[2rem] overflow-hidden shadow-sm border border-outline-variant/30 group transition-all hover:shadow-md"
           >
             <div className="aspect-square overflow-hidden relative">
               <motion.img
@@ -218,7 +218,7 @@ export default function Team() {
           <motion.div
             variants={itemVariants}
             whileHover={{ y: -5 }}
-            className="bg-white rounded-[2rem] overflow-hidden shadow-sm border border-outline-variant/30 group transition-all hover:shadow-md"
+            className="bg-surface-container-low rounded-[2rem] overflow-hidden shadow-sm border border-outline-variant/30 group transition-all hover:shadow-md"
           >
             <div className="aspect-square overflow-hidden relative">
               <motion.img
@@ -241,7 +241,7 @@ export default function Team() {
           <motion.div
             variants={itemVariants}
             whileHover={{ y: -5 }}
-            className="bg-white rounded-[2rem] overflow-hidden shadow-sm border border-outline-variant/30 group transition-all hover:shadow-md"
+            className="bg-surface-container-low rounded-[2rem] overflow-hidden shadow-sm border border-outline-variant/30 group transition-all hover:shadow-md"
           >
             <div className="aspect-square overflow-hidden relative">
               <motion.img
@@ -263,7 +263,7 @@ export default function Team() {
           <motion.div
             variants={itemVariants}
             whileHover={{ y: -5 }}
-            className="bg-white rounded-[2rem] overflow-hidden shadow-sm border border-outline-variant/30 group transition-all hover:shadow-md"
+            className="bg-surface-container-low rounded-[2rem] overflow-hidden shadow-sm border border-outline-variant/30 group transition-all hover:shadow-md"
           >
             <div className="aspect-square overflow-hidden relative">
               <motion.img
@@ -285,7 +285,7 @@ export default function Team() {
           <motion.div
             variants={itemVariants}
             whileHover={{ y: -5 }}
-            className="bg-white rounded-[2rem] overflow-hidden shadow-sm border border-outline-variant/30 group transition-all hover:shadow-md"
+            className="bg-surface-container-low rounded-[2rem] overflow-hidden shadow-sm border border-outline-variant/30 group transition-all hover:shadow-md"
           >
             <div className="aspect-square overflow-hidden relative">
               <motion.img
@@ -308,7 +308,7 @@ export default function Team() {
           <motion.div
             variants={itemVariants}
             whileHover={{ y: -5 }}
-            className="bg-white rounded-[2rem] overflow-hidden shadow-sm border border-outline-variant/30 group transition-all hover:shadow-md"
+            className="bg-surface-container-low rounded-[2rem] overflow-hidden shadow-sm border border-outline-variant/30 group transition-all hover:shadow-md"
           >
             <div className="aspect-square overflow-hidden relative">
               <motion.img
@@ -332,7 +332,7 @@ export default function Team() {
           <motion.div
             variants={itemVariants}
             whileHover={{ y: -5 }}
-            className="bg-white rounded-[2rem] overflow-hidden shadow-sm border border-outline-variant/30 group transition-all hover:shadow-md"
+            className="bg-surface-container-low rounded-[2rem] overflow-hidden shadow-sm border border-outline-variant/30 group transition-all hover:shadow-md"
           >
             <div className="aspect-square overflow-hidden relative">
               <motion.img
@@ -354,7 +354,7 @@ export default function Team() {
           <motion.div
             variants={itemVariants}
             whileHover={{ y: -5 }}
-            className="bg-white rounded-[2rem] overflow-hidden shadow-sm border border-outline-variant/30 group transition-all hover:shadow-md"
+            className="bg-surface-container-low rounded-[2rem] overflow-hidden shadow-sm border border-outline-variant/30 group transition-all hover:shadow-md"
           >
             <div className="aspect-square overflow-hidden relative">
               <motion.img
@@ -377,7 +377,7 @@ export default function Team() {
           <motion.div
             variants={itemVariants}
             whileHover={{ y: -5 }}
-            className="bg-white rounded-[2rem] overflow-hidden shadow-sm border border-outline-variant/30 group transition-all hover:shadow-md"
+            className="bg-surface-container-low rounded-[2rem] overflow-hidden shadow-sm border border-outline-variant/30 group transition-all hover:shadow-md"
           >
             <div className="aspect-square overflow-hidden relative">
               <motion.img
@@ -400,7 +400,7 @@ export default function Team() {
           <motion.div
             variants={itemVariants}
             whileHover={{ y: -5 }}
-            className="bg-white rounded-[2rem] overflow-hidden shadow-sm border border-outline-variant/30 group transition-all hover:shadow-md"
+            className="bg-surface-container-low rounded-[2rem] overflow-hidden shadow-sm border border-outline-variant/30 group transition-all hover:shadow-md"
           >
             <div className="aspect-square overflow-hidden relative">
               <motion.img
@@ -423,7 +423,7 @@ export default function Team() {
           <motion.div
             variants={itemVariants}
             whileHover={{ y: -5 }}
-            className="bg-white rounded-[2rem] overflow-hidden shadow-sm border border-outline-variant/30 group transition-all hover:shadow-md"
+            className="bg-surface-container-low rounded-[2rem] overflow-hidden shadow-sm border border-outline-variant/30 group transition-all hover:shadow-md"
           >
             <div className="aspect-square overflow-hidden relative">
               <motion.img
@@ -446,7 +446,7 @@ export default function Team() {
           <motion.div
             variants={itemVariants}
             whileHover={{ y: -5 }}
-            className="bg-white rounded-[2rem] overflow-hidden shadow-sm border border-outline-variant/30 group transition-all hover:shadow-md"
+            className="bg-surface-container-low rounded-[2rem] overflow-hidden shadow-sm border border-outline-variant/30 group transition-all hover:shadow-md"
           >
             <div className="aspect-square overflow-hidden relative">
               <motion.img
@@ -528,7 +528,7 @@ export default function Team() {
                 key={idx}
                 variants={itemVariants}
                 whileHover={{ y: -10 }}
-                className="bg-white rounded-[2.5rem] overflow-hidden border border-outline-variant/20 shadow-sm transition-all hover:shadow-xl group relative"
+                className="bg-surface-container-low rounded-[2.5rem] overflow-hidden border border-outline-variant/20 shadow-sm transition-all hover:shadow-xl group relative"
               >
                 <div className="absolute top-6 right-6 z-20">
                   <motion.div
@@ -605,7 +605,7 @@ export default function Team() {
             <motion.div
               variants={itemVariants}
               whileHover={{ y: -10 }}
-              className="bg-white rounded-[2.5rem] overflow-hidden border border-outline-variant/20 shadow-sm transition-all hover:shadow-xl group relative"
+              className="bg-surface-container-low rounded-[2.5rem] overflow-hidden border border-outline-variant/20 shadow-sm transition-all hover:shadow-xl group relative"
             >
               <div className="absolute top-6 right-6 z-20">
                 <motion.div

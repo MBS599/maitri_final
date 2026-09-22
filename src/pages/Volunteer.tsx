@@ -172,7 +172,7 @@ export default function Volunteer() {
         canonical="/volunteer"
       />
       {/* Hero Section */}
-      <section className="bg-primary-container py-24 relative overflow-hidden text-on-primary-container">
+      <section className="grain mx-3 sm:mx-5 mt-3 rounded-[2rem] sm:rounded-[2.5rem] min-[1440px]:mx-auto min-[1440px]:max-w-[1400px] bg-primary-container py-24 relative overflow-hidden text-on-primary-container">
         <motion.div 
           className="absolute inset-0 opacity-10"
           initial={{ scale: 1.15 }}
@@ -323,7 +323,7 @@ export default function Volunteer() {
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeInRight}
-            className="lg:h-[680px] overflow-y-auto bg-white rounded-3xl p-8 md:p-10 shadow-2xl border border-outline-variant/30"
+            className="lg:h-[680px] overflow-y-auto bg-surface-container-low rounded-3xl p-8 md:p-10 shadow-2xl border border-outline-variant/30"
           >
             <div className="flex flex-wrap justify-between items-center gap-2 mb-8 pb-4 border-b border-outline-variant/20">
               <h3 className="text-xl sm:text-2xl font-bold text-primary">Volunteer Application</h3>
@@ -345,11 +345,11 @@ export default function Volunteer() {
                 transition={{ delay: 0.1 }}
               >
                 <div>
-                  <label className="block text-[10px] uppercase font-bold text-on-surface-variant mb-2 tracking-widest">Full Name <span className="text-red-500">*</span></label>
+                  <label className="block text-[10px] uppercase font-bold text-on-surface-variant mb-2 tracking-widest">Full Name <span className="text-red-700 dark:text-red-400">*</span></label>
                   <input name="name" required className="w-full rounded-xl border-2 border-outline-variant/50 focus:border-primary focus:ring-0 px-4 py-3 text-sm font-semibold outline-none transition-all" placeholder="Jane Doe" type="text" />
                 </div>
                 <div>
-                  <label className="block text-[10px] uppercase font-bold text-on-surface-variant mb-2 tracking-widest">Date of Birth <span className="text-red-500">*</span></label>
+                  <label className="block text-[10px] uppercase font-bold text-on-surface-variant mb-2 tracking-widest">Date of Birth <span className="text-red-700 dark:text-red-400">*</span></label>
                   <input name="dob" required className="w-full rounded-xl border-2 border-outline-variant/50 focus:border-primary focus:ring-0 px-4 py-3 text-sm font-semibold outline-none transition-all" type="date" />
                 </div>
               </motion.div>
@@ -362,11 +362,11 @@ export default function Volunteer() {
                 transition={{ delay: 0.2 }}
               >
                 <div>
-                  <label className="block text-[10px] uppercase font-bold text-on-surface-variant mb-2 tracking-widest">Email Address <span className="text-red-500">*</span></label>
+                  <label className="block text-[10px] uppercase font-bold text-on-surface-variant mb-2 tracking-widest">Email Address <span className="text-red-700 dark:text-red-400">*</span></label>
                   <input name="email" required className="w-full rounded-xl border-2 border-outline-variant/50 focus:border-primary focus:ring-0 px-4 py-3 text-sm font-semibold outline-none transition-all" placeholder="jane@example.com" type="email" />
                 </div>
                 <div>
-                  <label className="block text-[10px] uppercase font-bold text-on-surface-variant mb-2 tracking-widest">Phone Number <span className="text-red-500">*</span></label>
+                  <label className="block text-[10px] uppercase font-bold text-on-surface-variant mb-2 tracking-widest">Phone Number <span className="text-red-700 dark:text-red-400">*</span></label>
                   <input name="phone" required className="w-full rounded-xl border-2 border-outline-variant/50 focus:border-primary focus:ring-0 px-4 py-3 text-sm font-semibold outline-none transition-all" placeholder="+91 98765 43210" type="tel" />
                 </div>
               </motion.div>
@@ -377,7 +377,7 @@ export default function Volunteer() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.3 }}
               >
-                <label className="block text-[10px] uppercase font-bold text-on-surface-variant mb-4 tracking-widest">Skills & Expertise <span className="text-red-500">*</span></label>
+                <label className="block text-[10px] uppercase font-bold text-on-surface-variant mb-4 tracking-widest">Skills & Expertise <span className="text-red-700 dark:text-red-400">*</span></label>
                 <div className="grid grid-cols-2 gap-4 bg-surface-container-low p-4 rounded-2xl border border-outline-variant/30">
                   {[
                     'Photography', 'Social Media',
@@ -406,7 +406,7 @@ export default function Volunteer() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.4 }}
               >
-                <label className="block text-[10px] uppercase font-bold text-on-surface-variant mb-2 tracking-widest">Required Documents (PDF/JPG) <span className="text-red-500">*</span></label>
+                <label className="block text-[10px] uppercase font-bold text-on-surface-variant mb-2 tracking-widest">Required Documents (PDF/JPG) <span className="text-red-700 dark:text-red-400">*</span></label>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {[
                     { name: 'aadhaar_pan', label: 'Aadhaar / PAN Card' },
@@ -488,7 +488,7 @@ export default function Volunteer() {
                     }}
                     className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-20" 
                   />
-                  <div className={`bg-white border-2 border-dashed ${previews.payment_screenshot ? 'border-primary' : 'border-primary/50'} group-hover:border-primary rounded-2xl px-6 py-6 text-center transition-all shadow-sm relative`}>
+                  <div className={`bg-surface-container-low border-2 border-dashed ${previews.payment_screenshot ? 'border-primary' : 'border-primary/50'} group-hover:border-primary rounded-2xl px-6 py-6 text-center transition-all shadow-sm relative`}>
                     {previews.payment_screenshot ? (
                       <div className="flex flex-col items-center gap-2">
                         <div className="flex items-center gap-3">
@@ -501,8 +501,8 @@ export default function Volunteer() {
                     ) : (
                       <>
                         <Upload className="w-6 h-6 mx-auto mb-2 text-primary" />
-                        <p className="text-xs font-bold text-primary uppercase tracking-widest">Upload Payment Screenshot <span className="text-red-500">*</span></p>
-                        <p className="text-[10px] text-on-surface-variant/60 mt-1">Proof of Bank Transfer</p>
+                        <p className="text-xs font-bold text-primary uppercase tracking-widest">Upload Payment Screenshot <span className="text-red-700 dark:text-red-400">*</span></p>
+                        <p className="text-[10px] text-on-surface-variant mt-1">Proof of Bank Transfer</p>
                       </>
                     )}
                   </div>
@@ -525,7 +525,7 @@ export default function Volunteer() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.6 }}
               >
-                <label className="block text-[10px] uppercase font-bold text-on-surface-variant mb-2 tracking-widest">Motivation & Message <span className="text-red-500">*</span></label>
+                <label className="block text-[10px] uppercase font-bold text-on-surface-variant mb-2 tracking-widest">Motivation & Message <span className="text-red-700 dark:text-red-400">*</span></label>
                 <textarea name="message" required rows={3} className="w-full rounded-xl border-2 border-outline-variant/50 focus:border-primary focus:ring-0 px-4 py-3 text-sm font-semibold outline-none transition-all resize-none" placeholder="How do you wish to contribute?"></textarea>
               </motion.div>
 
