@@ -82,7 +82,7 @@ export default function Home() {
   const stats = [
     { label: 'Needy Helped', value: '5k+' },
     { label: 'Environmental Events', value: '150+' },
-    { label: 'Established', value: '2019' }
+    { label: 'Years of Impact', value: '7+' }
   ];
 
   const pillars = [
