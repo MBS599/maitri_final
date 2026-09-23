@@ -1,12 +1,13 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Calendar, MapPin, Filter, ArrowRight, X, Send, Loader2, Sparkles, ClipboardList, Eye } from 'lucide-react';
+import { Calendar, MapPin, Filter, ArrowRight, X, Send, Loader2, Sparkles, ClipboardList, Eye, Instagram, Heart, ExternalLink, Play } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { AnimatedCounter } from '../components/AnimatedCounter';
 import { useState, useRef, useEffect } from 'react';
 import { toast } from 'sonner';
 import { AnimatePresence } from 'motion/react';
 import SEO from '../components/SEO';
+import instagramEventsData from '../data/pastEventsInstagram.json';
 
 // Local images to guarantee visibility and meaning
 import news1 from '../assets/news/new1.jpeg';
@@ -181,12 +182,19 @@ const events = [
 export default function Events() {
   const [tab, setTab] = useState('upcoming');
   const [selectedCategory, setSelectedCategory] = useState('All');
+  const [selectedYear, setSelectedYear] = useState('All');
+  const [activeVideoModal, setActiveVideoModal] = useState<any | null>(null);
   const [isProposalModalOpen, setIsProposalModalOpen] = useState(false);
   const [isSending, setIsSending] = useState(false);
   const [attachmentPreview, setAttachmentPreview] = useState<string | null>(null);
   const [captcha, setCaptcha] = useState({ question: '', answer: 0 });
   const [userCaptcha, setUserCaptcha] = useState('');
   const proposalFormRef = useRef<HTMLFormElement>(null);
+
+  const availableYears = [
+    'All',
+    ...Array.from(new Set(instagramEventsData.map((item: any) => String(item.year)))).sort((a, b) => Number(b) - Number(a))
+  ];
 
   const generateCaptcha = () => {
     const num1 = Math.floor(Math.random() * 10) + 1;
@@ -358,25 +366,184 @@ export default function Events() {
           </motion.div>
           <motion.div
             variants={fadeInRight}
-            className="flex flex-wrap items-center justify-start md:justify-end gap-2 pb-2 md:pb-0"
+            className="flex flex-col items-start md:items-end gap-3 pb-2 md:pb-0 w-full md:w-auto"
           >
-            {['All', 'Social Welfare', 'Education', 'Environment', 'Health', 'Women Empowerment'].map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setSelectedCategory(cat)}
-                className={`px-3 sm:px-4 py-1.5 rounded-full text-xs sm:text-sm font-bold transition-all cursor-pointer ${selectedCategory === cat
-                    ? 'bg-primary text-on-primary shadow-md'
-                    : 'bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-primary'
-                  }`}
-              >
-                {cat}
-              </button>
-            ))}
+            {/* Category Filter */}
+            <div className="flex flex-wrap items-center justify-start md:justify-end gap-2 w-full md:w-auto">
+              {['All', 'Social Welfare', 'Education', 'Environment', 'Health', 'Women Empowerment'].map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setSelectedCategory(cat)}
+                  className={`px-3.5 sm:px-4 py-1.5 rounded-full text-xs sm:text-sm font-bold transition-all cursor-pointer ${selectedCategory === cat
+                      ? 'bg-primary text-on-primary shadow-md'
+                      : 'bg-surface-container-low dark:bg-surface-container text-on-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-high hover:text-primary dark:hover:text-primary border border-outline-variant/20 dark:border-outline-variant/10'
+                    }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+
+            {/* Year Filter for Past Events */}
+            {tab === 'past' && availableYears.length > 1 && (
+              <div className="flex flex-wrap items-center justify-start md:justify-end gap-1.5 pt-1 w-full md:w-auto">
+                <span className="text-xs font-bold uppercase tracking-wider text-on-surface-variant/80 mr-1.5">
+                  Year:
+                </span>
+                {availableYears.map((yr) => (
+                  <button
+                    key={yr}
+                    onClick={() => setSelectedYear(yr)}
+                    className={`px-3 py-1 rounded-xl text-xs font-bold transition-all cursor-pointer ${selectedYear === yr
+                        ? 'bg-secondary text-on-secondary shadow-sm ring-2 ring-secondary/30'
+                        : 'bg-surface-container-low dark:bg-surface-container text-on-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-high hover:text-secondary dark:hover:text-secondary border border-outline-variant/20 dark:border-outline-variant/10'
+                      }`}
+                  >
+                    {yr}
+                  </button>
+                ))}
+              </div>
+            )}
           </motion.div>
         </motion.div>
 
         {/* Events Grid */}
         {(() => {
+          if (tab === 'past' && instagramEventsData && instagramEventsData.length > 0) {
+            const filteredPast = (instagramEventsData as any[]).filter(evt => {
+              const matchesYear = selectedYear === 'All' || String(evt.year) === selectedYear;
+              const matchesCategory = selectedCategory === 'All' || evt.category === selectedCategory;
+              return matchesYear && matchesCategory;
+            });
+
+            if (filteredPast.length === 0) {
+              return (
+                <div className="text-center py-16 bg-surface-container-low dark:bg-surface-container-low/60 rounded-3xl border border-outline-variant/30 dark:border-outline-variant/20">
+                  <p className="text-lg font-bold text-on-surface-variant mb-2">No past events found matching your filter</p>
+                  <button
+                    onClick={() => { setSelectedCategory('All'); setSelectedYear('All'); }}
+                    className="text-sm font-bold text-secondary hover:underline cursor-pointer"
+                  >
+                    Clear filters
+                  </button>
+                </div>
+              );
+            }
+
+            return (
+              <motion.div
+                key={`${tab}-${selectedCategory}-${selectedYear}`}
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
+                variants={containerVariants}
+                initial="hidden"
+                animate="visible"
+              >
+                {filteredPast.map((event, idx) => (
+                  <motion.div
+                    key={event.shortcode || idx}
+                    layout
+                    variants={itemVariants}
+                    whileHover={{ y: -8, boxShadow: "0 25px 50px rgba(0,0,0,0.15)" }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                    className="bg-surface dark:bg-surface-container-low border border-outline-variant/50 dark:border-outline-variant/30 rounded-3xl overflow-hidden shadow-card dark:shadow-none hover:shadow-card-hover dark:hover:border-secondary/40 transition-all duration-300 group flex flex-col"
+                  >
+                    <div
+                      className={`h-64 sm:h-72 overflow-hidden relative shrink-0 bg-surface-container dark:bg-surface-container-high ${event.video ? 'cursor-pointer group/vid' : ''}`}
+                      onClick={() => {
+                        if (event.video) {
+                          setActiveVideoModal(event);
+                        }
+                      }}
+                    >
+                      <motion.img
+                        className="w-full h-full object-cover"
+                        src={event.img}
+                        alt={event.title}
+                        whileHover={{ scale: 1.08 }}
+                        transition={{ duration: 0.6 }}
+                        onError={(e: any) => {
+                          e.currentTarget.src = news3;
+                        }}
+                      />
+                      <motion.div
+                        className="absolute top-3.5 right-3.5 bg-secondary-container text-on-secondary-container border border-black/5 dark:border-white/10 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider shadow-md"
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.2 }}
+                      >
+                        {event.category}
+                      </motion.div>
+                      <div className="absolute top-3.5 left-3.5 bg-black/65 dark:bg-black/80 backdrop-blur-md text-white border border-white/10 px-3 py-1 rounded-full text-xs font-bold tracking-wider shadow-md">
+                        {event.year}
+                      </div>
+                      {event.isVideo && (
+                        <div className="absolute inset-0 flex items-center justify-center bg-black/35 group-hover/vid:bg-black/20 transition-colors">
+                          <motion.div
+                            whileHover={{ scale: 1.15 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="w-14 h-14 rounded-full bg-white/95 dark:bg-white text-primary flex items-center justify-center shadow-2xl backdrop-blur-sm cursor-pointer"
+                          >
+                            <Play className="w-6 h-6 fill-primary ml-0.5 text-primary" />
+                          </motion.div>
+                        </div>
+                      )}
+                    </div>
+                    <div className="p-6 sm:p-7 flex flex-col grow">
+                      <div className="flex items-center justify-between gap-2 mb-3">
+                        <span className="flex items-center gap-1.5 text-secondary font-bold text-xs uppercase tracking-wider font-sans">
+                          <Calendar className="w-4 h-4 shrink-0" />
+                          {event.date}
+                        </span>
+                        {event.likes > 0 && (
+                          <span className="flex items-center gap-1 text-xs font-bold text-rose-500 bg-rose-500/10 dark:bg-rose-500/15 border border-rose-500/20 dark:border-rose-500/30 px-2.5 py-0.5 rounded-full">
+                            <Heart className="w-3.5 h-3.5 fill-rose-500" />
+                            {event.likes}
+                          </span>
+                        )}
+                      </div>
+                      <h3 className="font-display text-xl sm:text-2xl font-bold text-primary dark:text-primary mb-2 line-clamp-2 leading-snug tracking-tight">
+                        {event.title}
+                      </h3>
+                      <p className="font-sans text-on-surface-variant dark:text-on-surface-variant text-sm mb-6 line-clamp-3 leading-relaxed">
+                        {event.caption || event.title}
+                      </p>
+                      <div className="mt-auto pt-4 border-t border-outline-variant/30 dark:border-outline-variant/20 flex items-center justify-between gap-3">
+                        <span className="text-xs font-medium text-on-surface-variant/80 dark:text-on-surface-variant/70 truncate font-sans">
+                          Maitri Welfare Foundation
+                        </span>
+                        {event.video ? (
+                          <motion.button
+                            type="button"
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            onClick={() => setActiveVideoModal(event)}
+                            className="inline-flex items-center gap-2 bg-gradient-to-r from-[#833AB4] via-[#FD1D1D] to-[#FCAF45] text-white px-4 py-2 sm:px-5 sm:py-2 rounded-xl text-xs sm:text-sm font-bold shadow-md hover:shadow-lg hover:brightness-105 active:scale-95 transition-all shrink-0 cursor-pointer font-sans"
+                          >
+                            <Play className="w-4 h-4 fill-white" />
+                            <span>Watch Video</span>
+                          </motion.button>
+                        ) : (
+                          <motion.a
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            href={event.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 bg-gradient-to-r from-[#833AB4] via-[#FD1D1D] to-[#FCAF45] text-white px-4 py-2 sm:px-5 sm:py-2 rounded-xl text-xs sm:text-sm font-bold shadow-md hover:shadow-lg hover:brightness-105 active:scale-95 transition-all shrink-0 cursor-pointer font-sans"
+                          >
+                            <Instagram className="w-4 h-4" />
+                            <span>View on Instagram</span>
+                          </motion.a>
+                        )}
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            );
+          }
+
           const filteredEvents = events.filter(evt => {
             const matchesTab = evt.status === tab;
             const matchesCategory = selectedCategory === 'All' || evt.category === selectedCategory;
@@ -662,6 +829,89 @@ export default function Events() {
                   )}
                   {isSending ? 'Submitting...' : 'Submit Proposal'}
                 </motion.button>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
+      {/* Reel Video Player Modal */}
+      <AnimatePresence>
+        {activeVideoModal && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-md">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="absolute inset-0"
+              onClick={() => setActiveVideoModal(null)}
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.92, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.92, y: 20 }}
+              transition={{ type: "spring", duration: 0.4 }}
+              className="bg-surface dark:bg-surface-container border border-outline-variant/60 dark:border-outline-variant/30 rounded-3xl overflow-hidden shadow-2xl max-w-4xl w-full flex flex-col md:flex-row relative z-10 max-h-[92vh]"
+            >
+              {/* Video Player */}
+              <div className="md:w-1/2 bg-black flex items-center justify-center relative min-h-[300px] sm:min-h-[380px] md:min-h-[500px]">
+                <video
+                  src={activeVideoModal.video}
+                  poster={activeVideoModal.img}
+                  controls
+                  autoPlay
+                  playsInline
+                  className="w-full h-full max-h-[500px] object-contain"
+                />
+              </div>
+
+              {/* Video Details */}
+              <div className="md:w-1/2 p-6 sm:p-8 flex flex-col justify-between overflow-y-auto bg-surface dark:bg-surface-container">
+                <div>
+                  <div className="flex items-center justify-between gap-3 mb-4">
+                    <span className="bg-secondary-container text-on-secondary-container px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+                      {activeVideoModal.category}
+                    </span>
+                    <button
+                      onClick={() => setActiveVideoModal(null)}
+                      className="w-9 h-9 rounded-full bg-surface-container dark:bg-surface-container-high flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors cursor-pointer border border-outline-variant/30 dark:border-outline-variant/20"
+                      aria-label="Close"
+                    >
+                      <X className="w-5 h-5" />
+                    </button>
+                  </div>
+
+                  <div className="flex items-center gap-2 text-secondary font-bold text-xs uppercase tracking-wider mb-2 font-sans">
+                    <Calendar className="w-4 h-4" />
+                    {activeVideoModal.date}
+                  </div>
+
+                  <h3 className="font-display text-xl sm:text-2xl font-bold text-primary dark:text-primary mb-3 leading-snug tracking-tight">
+                    {activeVideoModal.title}
+                  </h3>
+
+                  <div className="font-sans text-sm text-on-surface-variant leading-relaxed whitespace-pre-line max-h-52 overflow-y-auto pr-2 border-t border-outline-variant/20 pt-3">
+                    {activeVideoModal.caption}
+                  </div>
+                </div>
+
+                <div className="mt-6 pt-4 border-t border-outline-variant/20 flex items-center justify-between gap-3">
+                  {activeVideoModal.likes > 0 && (
+                    <span className="flex items-center gap-1.5 text-rose-500 font-bold text-sm bg-rose-500/10 dark:bg-rose-500/15 border border-rose-500/20 px-3 py-1 rounded-full">
+                      <Heart className="w-4 h-4 fill-rose-500" />
+                      {activeVideoModal.likes} likes
+                    </span>
+                  )}
+                  <a
+                    href={activeVideoModal.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 bg-gradient-to-r from-[#833AB4] via-[#FD1D1D] to-[#FCAF45] text-white px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold shadow hover:brightness-105 active:scale-95 transition-all ml-auto font-sans"
+                  >
+                    <Instagram className="w-4 h-4" />
+                    <span>Open on Instagram</span>
+                  </a>
+                </div>
               </div>
             </motion.div>
           </div>
