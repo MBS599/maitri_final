@@ -5,7 +5,7 @@ import heroImg from '../assets/hero.png';
 import { AnimatedCounter } from '../components/AnimatedCounter';
 import news1 from '../assets/news/new1.jpeg';
 import news2 from '../assets/news/news2.jpeg';
-import about1 from '../assets/team/about1.jpg';
+import conservationImg from '../assets/conservation.jpg';
 import SEO from '../components/SEO';
 
 export default function Home() {
@@ -308,9 +308,9 @@ export default function Home() {
               className="lg:col-span-4 relative rounded-[2rem] overflow-hidden min-h-[260px] group"
             >
               <img
-                alt="Maitri Foundation volunteers together"
+                alt="Hands holding a green plant seedling in fertile soil representing community conservation"
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-105"
-                src={about1}
+                src={conservationImg}
                 loading="lazy"
               />
             </motion.div>
