@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Calendar, MapPin, Filter, ArrowRight, X, Send, Loader2, Sparkles, ClipboardList, Eye, Instagram, Heart, ExternalLink, Play } from 'lucide-react';
+import { Calendar, MapPin, Filter, ArrowRight, ArrowLeft, X, Send, Loader2, Sparkles, ClipboardList, Eye, Instagram, Heart, ExternalLink, Play } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { AnimatedCounter } from '../components/AnimatedCounter';
 import { useState, useRef, useEffect } from 'react';
@@ -195,6 +195,51 @@ export default function Events() {
     'All',
     ...Array.from(new Set(instagramEventsData.map((item: any) => String(item.year)))).sort((a, b) => Number(b) - Number(a))
   ];
+
+  const openVideoModal = (event: any) => {
+    try {
+      window.history.pushState({ videoModal: true }, '');
+    } catch {
+      // safe fallback
+    }
+    setActiveVideoModal(event);
+  };
+
+  const closeVideoModal = () => {
+    setActiveVideoModal(null);
+    if (window.history.state?.videoModal) {
+      window.history.back();
+    }
+  };
+
+  useEffect(() => {
+    if (!activeVideoModal) return;
+
+    // Lock background scrolling on mobile & desktop
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    // Handle mobile/browser back button
+    const handlePopState = () => {
+      setActiveVideoModal(null);
+    };
+
+    // Handle Escape key
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        closeVideoModal();
+      }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      window.removeEventListener('popstate', handlePopState);
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [activeVideoModal]);
 
   const generateCaptcha = () => {
     const num1 = Math.floor(Math.random() * 10) + 1;
@@ -451,7 +496,7 @@ export default function Events() {
                       className={`h-64 sm:h-72 overflow-hidden relative shrink-0 bg-surface-container dark:bg-surface-container-high ${event.video ? 'cursor-pointer group/vid' : ''}`}
                       onClick={() => {
                         if (event.video) {
-                          setActiveVideoModal(event);
+                          openVideoModal(event);
                         }
                       }}
                     >
@@ -517,7 +562,7 @@ export default function Events() {
                             type="button"
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
-                            onClick={() => setActiveVideoModal(event)}
+                            onClick={() => openVideoModal(event)}
                             className="inline-flex items-center gap-2 bg-gradient-to-r from-[#833AB4] via-[#FD1D1D] to-[#FCAF45] text-white px-4 py-2 sm:px-5 sm:py-2 rounded-xl text-xs sm:text-sm font-bold shadow-md hover:shadow-lg hover:brightness-105 active:scale-95 transition-all shrink-0 cursor-pointer font-sans"
                           >
                             <Play className="w-4 h-4 fill-white" />
@@ -838,79 +883,106 @@ export default function Events() {
       {/* Reel Video Player Modal */}
       <AnimatePresence>
         {activeVideoModal && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-md">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 md:p-6 bg-black/85 backdrop-blur-md">
+            {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="absolute inset-0"
-              onClick={() => setActiveVideoModal(null)}
+              className="absolute inset-0 cursor-pointer"
+              onClick={closeVideoModal}
+              aria-label="Close modal backdrop"
             />
+
+            {/* Modal Card */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.92, y: 20 }}
+              initial={{ opacity: 0, scale: 0.94, y: 15 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.92, y: 20 }}
-              transition={{ type: "spring", duration: 0.4 }}
-              className="bg-surface dark:bg-surface-container border border-outline-variant/60 dark:border-outline-variant/30 rounded-3xl overflow-hidden shadow-2xl max-w-4xl w-full flex flex-col md:flex-row relative z-10 max-h-[92vh]"
+              exit={{ opacity: 0, scale: 0.94, y: 15 }}
+              transition={{ type: "spring", duration: 0.35 }}
+              className="bg-surface dark:bg-surface-container border border-outline-variant/60 dark:border-outline-variant/30 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl max-w-4xl w-full flex flex-col md:flex-row relative z-10 max-h-[92dvh] sm:max-h-[88vh]"
             >
+              {/* Floating Top Controls (Sticky over video on mobile & desktop) */}
+              <div className="absolute top-3 left-3 right-3 z-30 flex items-center justify-between pointer-events-none">
+                <button
+                  type="button"
+                  onClick={closeVideoModal}
+                  className="pointer-events-auto inline-flex items-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-full bg-black/80 hover:bg-black text-white text-xs sm:text-sm font-bold backdrop-blur-md border border-white/20 shadow-xl transition-all active:scale-95 cursor-pointer"
+                  aria-label="Back to Events"
+                >
+                  <ArrowLeft className="w-4 h-4" />
+                  <span>Back</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={closeVideoModal}
+                  className="pointer-events-auto w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-black/80 hover:bg-black text-white flex items-center justify-center backdrop-blur-md border border-white/20 shadow-xl transition-all active:scale-95 cursor-pointer"
+                  aria-label="Close video"
+                >
+                  <X className="w-4 h-4 sm:w-5 sm:h-5" />
+                </button>
+              </div>
+
               {/* Video Player */}
-              <div className="md:w-1/2 bg-black flex items-center justify-center relative min-h-[300px] sm:min-h-[380px] md:min-h-[500px]">
+              <div className="md:w-1/2 bg-black flex items-center justify-center relative h-[36vh] sm:h-[44vh] md:h-auto md:min-h-[500px] shrink-0">
                 <video
                   src={activeVideoModal.video}
                   poster={activeVideoModal.img}
                   controls
                   autoPlay
                   playsInline
-                  className="w-full h-full max-h-[500px] object-contain"
+                  className="w-full h-full object-contain"
                 />
               </div>
 
               {/* Video Details */}
-              <div className="md:w-1/2 p-6 sm:p-8 flex flex-col justify-between overflow-y-auto bg-surface dark:bg-surface-container">
+              <div className="md:w-1/2 p-4 sm:p-6 md:p-8 flex flex-col justify-between overflow-y-auto bg-surface dark:bg-surface-container min-h-0 grow">
                 <div>
-                  <div className="flex items-center justify-between gap-3 mb-4">
-                    <span className="bg-secondary-container text-on-secondary-container px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+                  <div className="flex items-center justify-between gap-3 mb-3 pt-1">
+                    <span className="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
                       {activeVideoModal.category}
                     </span>
-                    <button
-                      onClick={() => setActiveVideoModal(null)}
-                      className="w-9 h-9 rounded-full bg-surface-container dark:bg-surface-container-high flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors cursor-pointer border border-outline-variant/30 dark:border-outline-variant/20"
-                      aria-label="Close"
-                    >
-                      <X className="w-5 h-5" />
-                    </button>
+                    <span className="inline-flex items-center gap-1.5 text-secondary font-bold text-xs uppercase tracking-wider font-sans">
+                      <Calendar className="w-3.5 h-3.5" />
+                      {activeVideoModal.date}
+                    </span>
                   </div>
 
-                  <div className="flex items-center gap-2 text-secondary font-bold text-xs uppercase tracking-wider mb-2 font-sans">
-                    <Calendar className="w-4 h-4" />
-                    {activeVideoModal.date}
-                  </div>
-
-                  <h3 className="font-display text-xl sm:text-2xl font-bold text-primary dark:text-primary mb-3 leading-snug tracking-tight">
+                  <h3 className="font-display text-lg sm:text-xl md:text-2xl font-bold text-primary dark:text-primary mb-2 sm:mb-3 leading-snug tracking-tight">
                     {activeVideoModal.title}
                   </h3>
 
-                  <div className="font-sans text-sm text-on-surface-variant leading-relaxed whitespace-pre-line max-h-52 overflow-y-auto pr-2 border-t border-outline-variant/20 pt-3">
+                  <div className="font-sans text-xs sm:text-sm text-on-surface-variant leading-relaxed whitespace-pre-line max-h-40 sm:max-h-52 overflow-y-auto pr-2 border-t border-outline-variant/20 pt-2.5 sm:pt-3">
                     {activeVideoModal.caption}
                   </div>
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-outline-variant/20 flex items-center justify-between gap-3">
+                <div className="mt-4 sm:mt-6 pt-3 sm:pt-4 border-t border-outline-variant/20 flex flex-wrap items-center justify-between gap-2.5">
                   {activeVideoModal.likes > 0 && (
-                    <span className="flex items-center gap-1.5 text-rose-500 font-bold text-sm bg-rose-500/10 dark:bg-rose-500/15 border border-rose-500/20 px-3 py-1 rounded-full">
-                      <Heart className="w-4 h-4 fill-rose-500" />
+                    <span className="flex items-center gap-1.5 text-rose-500 font-bold text-xs sm:text-sm bg-rose-500/10 dark:bg-rose-500/15 border border-rose-500/20 px-2.5 py-1 sm:px-3 rounded-full">
+                      <Heart className="w-3.5 h-3.5 fill-rose-500" />
                       {activeVideoModal.likes} likes
                     </span>
                   )}
-                  <a
-                    href={activeVideoModal.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 bg-gradient-to-r from-[#833AB4] via-[#FD1D1D] to-[#FCAF45] text-white px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold shadow hover:brightness-105 active:scale-95 transition-all ml-auto font-sans"
-                  >
-                    <Instagram className="w-4 h-4" />
-                    <span>Open on Instagram</span>
-                  </a>
+                  <div className="flex items-center gap-2 ml-auto">
+                    <button
+                      type="button"
+                      onClick={closeVideoModal}
+                      className="px-3.5 py-2 rounded-xl border border-outline-variant/60 dark:border-outline-variant/30 text-on-surface-variant hover:text-primary text-xs font-bold transition-all active:scale-95 cursor-pointer"
+                    >
+                      Close
+                    </button>
+                    <a
+                      href={activeVideoModal.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 sm:gap-2 bg-gradient-to-r from-[#833AB4] via-[#FD1D1D] to-[#FCAF45] text-white px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-xl text-xs sm:text-sm font-bold shadow hover:brightness-105 active:scale-95 transition-all font-sans"
+                    >
+                      <Instagram className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                      <span>Instagram</span>
+                    </a>
+                  </div>
                 </div>
               </div>
             </motion.div>
