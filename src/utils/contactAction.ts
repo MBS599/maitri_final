@@ -7,20 +7,27 @@ export const handleContactEmail = (e?: React.MouseEvent) => {
     e.stopPropagation();
   }
 
+  const email = 'support@maitriwelfarefoundation.org';
+
+  if (navigator?.clipboard?.writeText) {
+    navigator.clipboard.writeText(email).catch(() => { });
+  }
+
   const isMobile =
     typeof window !== 'undefined' &&
     (window.innerWidth < 768 ||
       /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
 
+  const mailtoUrl = `mailto:${email}?subject=${encodeURIComponent(
+    'Inquiry: Maitri Welfare Foundation'
+  )}`;
+
   if (isMobile) {
-    window.location.href = 'tel:+917447434373';
+    window.location.href = mailtoUrl;
+    toast.success('Email copied & opening mail app', {
+      description: email
+    });
     return;
-  }
-
-  const email = 'support@maitriwelfarefoundation.org';
-
-  if (navigator?.clipboard?.writeText) {
-    navigator.clipboard.writeText(email).catch(() => { });
   }
 
   const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
@@ -30,9 +37,7 @@ export const handleContactEmail = (e?: React.MouseEvent) => {
   const win = window.open(gmailUrl, '_blank', 'noopener,noreferrer');
 
   if (!win || win.closed || typeof win.closed === 'undefined') {
-    window.location.href = `mailto:${email}?subject=${encodeURIComponent(
-      'Inquiry: Maitri Welfare Foundation'
-    )}`;
+    window.location.href = mailtoUrl;
   }
 
   toast.success('Email copied & opening mail: ' + email, {

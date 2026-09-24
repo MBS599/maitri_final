@@ -325,7 +325,7 @@ export function Footer() {
                   href="mailto:support@maitriwelfarefoundation.org"
                   onClick={handleContactEmail}
                   className="flex items-start gap-3 text-on-ink/85 hover:text-secondary-container transition-colors cursor-pointer group"
-                  title="On desktop: open email / copy | On mobile: call us"
+                  title="Send email or copy address"
                 >
                   <Mail className="w-4 h-4 mt-0.5 text-secondary-container shrink-0 group-hover:scale-110 transition-transform" />
                   <span className="break-all"><span className="sr-only">Email: </span>support@maitriwelfarefoundation.org</span>

@@ -168,7 +168,7 @@ export default function Contact() {
               whileHover={{ y: -4, scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               className="bg-surface-container-low p-6 rounded-2xl border border-outline-variant/20 shadow-sm hover:border-primary/40 hover:shadow-md transition-all text-center block group cursor-pointer"
-              title="On desktop: open email / copy | On mobile: call us"
+              title="Send email or copy address"
             >
               <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-primary group-hover:text-white transition-colors">
                 <Mail className="text-primary group-hover:text-white w-6 h-6 transition-colors" />
@@ -177,10 +177,7 @@ export default function Contact() {
               <p className="text-xs text-on-surface-variant font-medium truncate group-hover:text-primary transition-colors" title="support@maitriwelfarefoundation.org">
                 support@maitriwelfarefoundation.org
               </p>
-              <span className="inline-block mt-2 text-[10px] font-bold text-secondary uppercase tracking-wider md:hidden">
-                Tap to Call
-              </span>
-              <span className="hidden md:inline-block mt-2 text-[10px] font-bold text-secondary uppercase tracking-wider">
+              <span className="inline-block mt-2 text-[10px] font-bold text-secondary uppercase tracking-wider">
                 Click to Email
               </span>
             </motion.a>
