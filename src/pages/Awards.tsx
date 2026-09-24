@@ -2,12 +2,12 @@ import { motion } from 'motion/react';
 import SEO from '../components/SEO';
 import { Link } from 'react-router-dom';
 import { ShieldCheck, Users, Clock, Trophy } from 'lucide-react';
-import awardHero from '../assets/award_hero.jpg';
+import awardHero from '../assets/award_hero.webp';
 import { AnimatedCounter } from '../components/AnimatedCounter';
-import samajSeva from '../assets/awards/samaj seva.jpeg';
-import visheshSanman from '../assets/awards/vishesh sanman.jpeg';
-import kakade from '../assets/awards/kakade.jpeg';
-import maharashtraVisheshGaurav from '../assets/awards/maharashtra_vishesh_gaurav.jpg';
+import samajSeva from '../assets/awards/samaj seva.webp';
+import visheshSanman from '../assets/awards/vishesh sanman.webp';
+import kakade from '../assets/awards/kakade.webp';
+import maharashtraVisheshGaurav from '../assets/awards/maharashtra_vishesh_gaurav.webp';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -211,7 +211,7 @@ export default function Awards() {
           {[
             { value: '5+', label: 'Awards' },
             { value: '5k', label: 'Lives Impacted Annually' },
-            { value: '8y', label: 'Of Continuous Service' }
+            { value: '7y', label: 'Of Continuous Service' }
           ].map((stat, idx) => (
             <motion.div
               key={idx}

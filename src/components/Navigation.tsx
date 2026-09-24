@@ -1,9 +1,11 @@
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Instagram, Youtube, Sun, Moon, ArrowUpRight, MapPin, Phone, Mail, Heart } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'motion/react';
-import logo from '../assets/logo.png';
+import logo from '../assets/logo.webp';
 import { useTheme } from '../hooks/useTheme';
+import { handleContactEmail } from '../utils/contactAction';
 
 function ThemeToggle({ theme, toggleTheme }: { theme: 'light' | 'dark'; toggleTheme: () => void }) {
   const isDark = theme === 'dark';
@@ -214,9 +216,16 @@ export function Footer() {
 
   useEffect(() => {
     if (!modalType) return;
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
     const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setModalType(null);
     window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      window.removeEventListener('keydown', onKey);
+    };
   }, [modalType]);
 
   const policyContent = {
@@ -302,13 +311,25 @@ export function Footer() {
                 <MapPin className="w-4 h-4 mt-0.5 text-secondary-container shrink-0" />
                 <span><span className="sr-only">Address: </span>Katraj, Pune - 411046, Maharashtra, India</span>
               </li>
-              <li className="flex items-start gap-3 text-on-ink/85">
-                <Phone className="w-4 h-4 mt-0.5 text-secondary-container shrink-0" />
-                <span><span className="sr-only">Contact: </span>+91 7447434373</span>
+              <li>
+                <a
+                  href="tel:+917447434373"
+                  className="flex items-start gap-3 text-on-ink/85 hover:text-secondary-container transition-colors cursor-pointer group"
+                >
+                  <Phone className="w-4 h-4 mt-0.5 text-secondary-container shrink-0 group-hover:scale-110 transition-transform" />
+                  <span><span className="sr-only">Contact: </span>+91 7447434373</span>
+                </a>
               </li>
-              <li className="flex items-start gap-3 text-on-ink/85">
-                <Mail className="w-4 h-4 mt-0.5 text-secondary-container shrink-0" />
-                <span className="break-all"><span className="sr-only">Email: </span>support@maitriwelfarefoundation.org</span>
+              <li>
+                <a
+                  href="mailto:support@maitriwelfarefoundation.org"
+                  onClick={handleContactEmail}
+                  className="flex items-start gap-3 text-on-ink/85 hover:text-secondary-container transition-colors cursor-pointer group"
+                  title="On desktop: open email / copy | On mobile: call us"
+                >
+                  <Mail className="w-4 h-4 mt-0.5 text-secondary-container shrink-0 group-hover:scale-110 transition-transform" />
+                  <span className="break-all"><span className="sr-only">Email: </span>support@maitriwelfarefoundation.org</span>
+                </a>
               </li>
             </ul>
           </div>
@@ -396,52 +417,59 @@ export function Footer() {
         </div>
       </div>
 
-      <AnimatePresence>
-        {modalType && (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setModalType(null)}
-              className="absolute inset-0 bg-ink/60 backdrop-blur-sm cursor-pointer"
-            />
-            <motion.div
-              role="dialog"
-              aria-modal="true"
-              aria-labelledby="policy-title"
-              initial={{ opacity: 0, scale: 0.96, y: 16 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.96, y: 16 }}
-              className="relative bg-surface text-on-surface rounded-3xl shadow-card-hover w-full max-w-lg max-h-[85vh] overflow-y-auto p-7 md:p-10 border border-outline-variant"
-            >
-              <button
-                type="button"
+      {typeof document !== 'undefined' && createPortal(
+        <AnimatePresence>
+          {modalType && (
+            <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 bg-black/75 backdrop-blur-md">
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
                 onClick={() => setModalType(null)}
-                aria-label="Close"
-                className="absolute top-5 right-5 w-9 h-9 flex items-center justify-center hover:bg-surface-container rounded-full transition-colors cursor-pointer"
+                className="absolute inset-0 cursor-pointer"
+                aria-label="Close modal backdrop"
+              />
+              <motion.div
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="policy-title"
+                initial={{ opacity: 0, scale: 0.95, y: 16 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95, y: 16 }}
+                transition={{ type: "spring", duration: 0.35 }}
+                className="relative z-10 bg-surface dark:bg-surface-container text-on-surface rounded-3xl shadow-2xl w-full max-w-lg max-h-[85dvh] overflow-y-auto p-6 sm:p-8 md:p-10 border border-outline-variant/60 dark:border-outline-variant/30"
               >
-                <X className="w-5 h-5 text-on-surface-variant" />
-              </button>
-              <h3 id="policy-title" className="text-2xl font-semibold text-on-surface mb-6 pr-10">{policyContent[modalType].title}</h3>
-              <div className="space-y-4">
-                {policyContent[modalType].content.map((text, i) => (
-                  <p key={i} className="text-sm text-on-surface-variant leading-relaxed">
-                    {text}
-                  </p>
-                ))}
-              </div>
-              <button
-                type="button"
-                onClick={() => setModalType(null)}
-                className="w-full mt-8 bg-primary text-on-primary py-3.5 rounded-full font-bold hover:opacity-90 transition-opacity cursor-pointer"
-              >
-                Close
-              </button>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
+                <button
+                  type="button"
+                  onClick={() => setModalType(null)}
+                  aria-label="Close"
+                  className="absolute top-4 right-4 sm:top-5 sm:right-5 w-9 h-9 flex items-center justify-center hover:bg-surface-container rounded-full transition-colors cursor-pointer border border-outline-variant/30 dark:border-outline-variant/20"
+                >
+                  <X className="w-5 h-5 text-on-surface-variant" />
+                </button>
+                <h3 id="policy-title" className="text-2xl font-bold text-primary dark:text-primary mb-6 pr-10">
+                  {policyContent[modalType].title}
+                </h3>
+                <div className="space-y-4">
+                  {policyContent[modalType].content.map((text, i) => (
+                    <p key={i} className="text-sm text-on-surface-variant leading-relaxed">
+                      {text}
+                    </p>
+                  ))}
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setModalType(null)}
+                  className="w-full mt-8 bg-primary text-on-primary py-3.5 rounded-full font-bold hover:opacity-90 active:scale-98 transition-all cursor-pointer shadow-md"
+                >
+                  Close
+                </button>
+              </motion.div>
+            </div>
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
     </footer>
   );
 }

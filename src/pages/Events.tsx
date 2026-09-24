@@ -10,19 +10,19 @@ import SEO from '../components/SEO';
 import instagramEventsData from '../data/pastEventsInstagram.json';
 
 // Local images to guarantee visibility and meaning
-import news1 from '../assets/news/new1.jpeg';
-import news2 from '../assets/news/news2.jpeg';
-import news3 from '../assets/news/news3.jpeg';
-import waariImg from '../assets/news/waari.png';
-import bloodDonationImg from '../assets/news/blood_donation.jpg';
-import aashramVisitImg from '../assets/news/aashram_visit.jpg';
-import educationImg from '../assets/news/education.jpg';
-import narishaktiImg from '../assets/news/narishakti.jpg';
-import blanketDonationImg from '../assets/news/blanket_donation.png';
-import about1 from '../assets/team/about1.jpg';
-import about2 from '../assets/team/about2.jpg';
-import samajSeva from '../assets/awards/samaj seva.jpeg';
-import heroImg from '../assets/hero.png';
+import news1 from '../assets/news/new1.webp';
+import news2 from '../assets/news/news2.webp';
+import news3 from '../assets/news/news3.webp';
+import waariImg from '../assets/news/waari.webp';
+import bloodDonationImg from '../assets/news/blood_donation.webp';
+import aashramVisitImg from '../assets/news/aashram_visit.webp';
+import educationImg from '../assets/news/education.webp';
+import narishaktiImg from '../assets/news/narishakti.webp';
+import blanketDonationImg from '../assets/news/blanket_donation.webp';
+import about1 from '../assets/team/about1.webp';
+import about2 from '../assets/team/about2.webp';
+import samajSeva from '../assets/awards/samaj seva.webp';
+import heroImg from '../assets/hero.webp';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -179,11 +179,25 @@ const events = [
   }
 ];
 
+export interface InstagramEvent {
+  title: string;
+  category: string;
+  date: string;
+  year: number;
+  likes: number;
+  caption: string;
+  url: string;
+  shortcode: string;
+  isVideo: boolean;
+  video: string | null;
+  img: string;
+}
+
 export default function Events() {
-  const [tab, setTab] = useState('upcoming');
+  const [tab, setTab] = useState<'upcoming' | 'past'>('upcoming');
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [selectedYear, setSelectedYear] = useState('All');
-  const [activeVideoModal, setActiveVideoModal] = useState<any | null>(null);
+  const [activeVideoModal, setActiveVideoModal] = useState<InstagramEvent | null>(null);
   const [isProposalModalOpen, setIsProposalModalOpen] = useState(false);
   const [isSending, setIsSending] = useState(false);
   const [attachmentPreview, setAttachmentPreview] = useState<string | null>(null);
@@ -193,10 +207,10 @@ export default function Events() {
 
   const availableYears = [
     'All',
-    ...Array.from(new Set(instagramEventsData.map((item: any) => String(item.year)))).sort((a, b) => Number(b) - Number(a))
+    ...Array.from(new Set((instagramEventsData as InstagramEvent[]).map((item) => String(item.year)))).sort((a, b) => Number(b) - Number(a))
   ];
 
-  const openVideoModal = (event: any) => {
+  const openVideoModal = (event: InstagramEvent) => {
     try {
       window.history.pushState({ videoModal: true }, '');
     } catch {
@@ -455,7 +469,7 @@ export default function Events() {
         {/* Events Grid */}
         {(() => {
           if (tab === 'past' && instagramEventsData && instagramEventsData.length > 0) {
-            const filteredPast = (instagramEventsData as any[]).filter(evt => {
+            const filteredPast = (instagramEventsData as InstagramEvent[]).filter(evt => {
               const matchesYear = selectedYear === 'All' || String(evt.year) === selectedYear;
               const matchesCategory = selectedCategory === 'All' || evt.category === selectedCategory;
               return matchesYear && matchesCategory;
@@ -506,7 +520,7 @@ export default function Events() {
                         alt={event.title}
                         whileHover={{ scale: 1.08 }}
                         transition={{ duration: 0.6 }}
-                        onError={(e: any) => {
+                        onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
                           e.currentTarget.src = news3;
                         }}
                       />

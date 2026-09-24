@@ -3,11 +3,11 @@ import SEO from '../components/SEO';
 import { motion, AnimatePresence } from 'motion/react';
 import { Newspaper, Camera, ExternalLink, Calendar, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import samajSeva from '../assets/awards/samaj seva.jpeg';
-import kakade from '../assets/awards/kakade.jpeg';
-import news1 from '../assets/news/new1.jpeg';
-import news2 from '../assets/news/news2.jpeg';
-import news3 from '../assets/news/news3.jpeg';
+import samajSeva from '../assets/awards/samaj seva.webp';
+import kakade from '../assets/awards/kakade.webp';
+import news1 from '../assets/news/new1.webp';
+import news2 from '../assets/news/news2.webp';
+import news3 from '../assets/news/news3.webp';
 
 // Sample data for News & Newsletters
 const newsItems = [

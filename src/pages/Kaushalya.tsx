@@ -3,11 +3,10 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Sparkles, Heart, BookOpen, Scissors, TrendingUp, ArrowRight, Send, Loader2, Award, Youtube, Mic, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useState, useRef, useEffect } from 'react';
-import award2023 from '../assets/alka_gujnan.png';
-import award2024 from '../assets/shilpa_datar.png';
-import award2025 from '../assets/sapana_kakade.png';
-// @ts-ignore
-import rangoliSheetImg from '../assets/news/rangoli_sheet.png';
+import award2023 from '../assets/alka_gujnan.webp';
+import award2024 from '../assets/shilpa_datar.webp';
+import award2025 from '../assets/sapana_kakade.webp';
+import rangoliSheetImg from '../assets/news/rangoli_sheet.webp';
 import { toast } from 'sonner';
 import SEO from '../components/SEO';
 

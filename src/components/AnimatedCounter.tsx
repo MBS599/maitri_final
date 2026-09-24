@@ -50,7 +50,6 @@ export function AnimatedCounter({ value, className = "" }: AnimatedCounterProps)
 
       if (progress < 1) {
         if (isKFormatted) {
-          // Display integer count up rapidly before settling on formatted string
           setDisplayString(`${currentNum}+`);
         } else if (finalDisplayString.includes('+')) {
           setDisplayString(`${currentNum}+`);

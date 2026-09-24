@@ -1,11 +1,11 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Heart, Target, Lightbulb, Users, Globe, Shield } from 'lucide-react';
-import aboutHero from '../assets/hero.png';
+import aboutHero from '../assets/hero.webp';
 import { AnimatedCounter } from '../components/AnimatedCounter';
-import fullTeam from '../assets/team/full_team.jpeg';
-import about1 from '../assets/team/about1.jpg';
-import about2 from '../assets/team/about2.jpg';
+import fullTeam from '../assets/team/full_team.webp';
+import about1 from '../assets/team/about1.webp';
+import about2 from '../assets/team/about2.webp';
 import SEO from '../components/SEO';
 
 

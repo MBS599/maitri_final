@@ -1,11 +1,11 @@
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { CheckCircle, ArrowRight, ArrowUpRight, MapPin, Plus, Heart, Leaf, Users } from 'lucide-react';
-import heroImg from '../assets/hero.png';
+import heroImg from '../assets/hero.webp';
 import { AnimatedCounter } from '../components/AnimatedCounter';
-import news1 from '../assets/news/new1.jpeg';
-import news2 from '../assets/news/news2.jpeg';
-import conservationImg from '../assets/conservation.jpg';
+import news1 from '../assets/news/new1.webp';
+import news2 from '../assets/news/news2.webp';
+import conservationImg from '../assets/conservation.webp';
 import SEO from '../components/SEO';
 
 export default function Home() {
@@ -47,7 +47,7 @@ export default function Home() {
         "name": "Where is Maitri Welfare Foundation located?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "We are based in Katraj, Pune (Maharashtra), and our primary on-ground activities are centered around the Pune region, though our digital community spans across India."
+          "text": "We are based in Katraj, Pune (Maharashtra), and our primary on-ground activities are centered around the Pune region, though our digital community spans across Maharashtra."
         }
       },
       {
@@ -55,7 +55,7 @@ export default function Home() {
         "name": "How can I contribute to the foundation's work?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "You can contribute by donating through our secure payment channels, volunteering your time for our various drives, or spreading awareness about our social and environmental initiatives."
+          "text": "You can contribute by donating directly via our verified bank account details (available on our Support page), volunteering your time for our various drives, or spreading awareness about our social and environmental initiatives."
         }
       },
       {
@@ -126,7 +126,7 @@ export default function Home() {
     },
     {
       q: "How can I contribute to the foundation's work?",
-      a: "You can contribute by donating through our secure payment channels, volunteering your time for our various drives, or spreading awareness about our social and environmental initiatives."
+      a: "You can contribute by donating directly via our verified bank account details (available on our Support page), volunteering your time for our various drives, or spreading awareness about our social and environmental initiatives."
     },
     {
       q: "What is Project Kaushalya?",
@@ -165,7 +165,7 @@ export default function Home() {
 
       {/* Hero */}
       <section className="px-3 sm:px-5 pt-3">
-        <div className="relative max-w-[1400px] mx-auto min-h-[640px] sm:min-h-[720px] lg:min-h-[calc(100vh-7rem)] rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden flex items-end">
+        <div className="relative max-w-[1400px] mx-auto min-h-[660px] sm:min-h-[780px] lg:min-h-[calc(100vh-5rem)] rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden flex items-end">
           <motion.img
             alt="Volunteers of Maitri Foundation amid lush green trees"
             className="absolute inset-0 w-full h-full object-cover"
@@ -182,7 +182,7 @@ export default function Home() {
             initial="hidden"
             animate="visible"
             variants={containerVariants}
-            className="relative z-10 w-full px-6 sm:px-10 lg:px-14 pt-12 pb-10 sm:pb-14 lg:pb-16 text-on-ink"
+            className="relative z-10 w-full px-6 sm:px-10 lg:px-14 pt-12 pb-14 sm:pb-32 lg:pb-36 text-on-ink"
           >
             <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-2.5 mb-6 sm:mb-8">
               <span className="inline-flex items-center gap-2 bg-on-ink/10 border border-on-ink/20 backdrop-blur-md px-4 py-2 rounded-full text-xs sm:text-sm font-semibold">
@@ -207,11 +207,11 @@ export default function Home() {
               </span>
             </motion.h1>
 
-            <div className="mt-8 sm:mt-10 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
+            <div className="mt-8 sm:mt-10 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-4 sm:mb-6">
               <motion.p variants={itemVariants} className="max-w-xl text-base sm:text-lg text-on-ink/80 leading-relaxed">
                 We are dedicated to <strong className="text-on-ink">empowering lives</strong> and <strong className="text-on-ink">protecting nature</strong> through sustainable social impact, environmental conservation, and community welfare initiatives across India.
               </motion.p>
-              <motion.div variants={itemVariants} className="flex flex-wrap gap-3">
+              <motion.div variants={itemVariants} className="flex flex-wrap gap-3 shrink-0">
                 <Link
                   to="/support"
                   className="group inline-flex items-center gap-2 bg-secondary-container text-on-secondary-container pl-7 pr-6 py-4 rounded-full font-bold text-base hover:brightness-105 active:scale-95 transition-all shadow-[0_10px_30px_-10px_rgba(244,182,63,0.7)]"

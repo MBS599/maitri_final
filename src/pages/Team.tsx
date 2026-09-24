@@ -1,27 +1,27 @@
 import { motion } from 'motion/react';
 import SEO from '../components/SEO';
 import { Mail, Link as LinkIcon, ArrowRight, Award } from 'lucide-react';
-import teamBg from '../assets/team.jpg';
-import siddhiKadam from '../assets/team/sidhhi.png';
-import pranavPawar from '../assets/team/pranav.png';
-import sanikaPhadtare from '../assets/team/sanika.png';
-import nirajSharma from '../assets/team/niraj.png';
-import sid from '../assets/team/sid.png';
-import mayurSutar from '../assets/team/mayur.png';
-import divya from '../assets/team/divya.png';
-import jayesh from '../assets/team/jayesh.png';
-import ankita from '../assets/team/ankita.png';
-import piyush from '../assets/team/piyush.png';
-import shivam from '../assets/team/shivam.png';
-import awanti from '../assets/team/awanti.png';
-import pranjal from '../assets/team/pranjal.png';
-import reema from '../assets/team/reema.png';
-import pratik from '../assets/team/pratik_s.png';
+import teamBg from '../assets/team.webp';
+import siddhiKadam from '../assets/team/sidhhi.webp';
+import pranavPawar from '../assets/team/pranav.webp';
+import sanikaPhadtare from '../assets/team/sanika.webp';
+import nirajSharma from '../assets/team/niraj.webp';
+import sid from '../assets/team/sid.webp';
+import mayurSutar from '../assets/team/mayur.webp';
+import divya from '../assets/team/divya.webp';
+import jayesh from '../assets/team/jayesh.webp';
+import ankita from '../assets/team/ankita.webp';
+import piyush from '../assets/team/piyush.webp';
+import shivam from '../assets/team/shivam.webp';
+import awanti from '../assets/team/awanti.webp';
+import pranjal from '../assets/team/pranjal.webp';
+import reema from '../assets/team/reema.webp';
+import pratik from '../assets/team/pratik_s.webp';
 
 import awardJayesh from '../assets/awards/best_volunteer/jayesh_pachange.webp';
-import awardPranaw from '../assets/awards/best_volunteer/pranav_pawar.jpeg';
-import awardShreya from '../assets/awards/best_volunteer/shreya deshpande.jpeg';
-import awardSocialMedia from '../assets/awards/best_volunteer/social_media.jpeg';
+import awardPranaw from '../assets/awards/best_volunteer/pranav_pawar.webp';
+import awardShreya from '../assets/awards/best_volunteer/shreya deshpande.webp';
+import awardSocialMedia from '../assets/awards/best_volunteer/social_media.webp';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -464,8 +464,6 @@ export default function Team() {
               <p className="text-secondary font-bold text-[10px] uppercase tracking-widest">Committee Member</p>
             </div>
           </motion.div>
-
-          {/* Add more members here as needed */}
         </motion.div>
       </section>
 

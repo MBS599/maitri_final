@@ -4,6 +4,7 @@ import { Send, Youtube, Instagram, Share2, Loader2, MessageCircle, Mail, Copy, C
 import { useState, useRef, useEffect } from 'react';
 import { toast } from 'sonner';
 import SEO from '../components/SEO';
+import { handleContactEmail } from '../utils/contactAction';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -141,29 +142,65 @@ export default function Contact() {
           <motion.h2 className="text-3xl sm:text-4xl font-bold mb-10 text-primary text-center">Get in Touch</motion.h2>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12 text-center">
-            <motion.div variants={itemVariants} className="bg-surface-container-low p-6 rounded-2xl border border-outline-variant/20 shadow-sm">
-              <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4">
-                <MapPin className="text-primary w-6 h-6" />
+            <motion.a
+              variants={itemVariants}
+              href="https://maps.google.com/?q=Katraj,+Pune+-+411046"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ y: -4, scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="bg-surface-container-low p-6 rounded-2xl border border-outline-variant/20 shadow-sm hover:border-primary/40 hover:shadow-md transition-all text-center block group cursor-pointer"
+            >
+              <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-primary group-hover:text-white transition-colors">
+                <MapPin className="text-primary group-hover:text-white w-6 h-6 transition-colors" />
               </div>
               <h3 className="font-bold text-primary mb-1 text-sm">Our Location</h3>
               <p className="text-xs text-on-surface-variant font-medium">Katraj, Pune - 411046, India</p>
-            </motion.div>
+              <span className="inline-block mt-2 text-[10px] font-bold text-secondary uppercase tracking-wider">
+                View on Map
+              </span>
+            </motion.a>
 
-            <motion.div variants={itemVariants} className="bg-surface-container-low p-6 rounded-2xl border border-outline-variant/20 shadow-sm">
-              <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4">
-                <Mail className="text-primary w-6 h-6" />
+            <motion.a
+              variants={itemVariants}
+              href="mailto:support@maitriwelfarefoundation.org"
+              onClick={handleContactEmail}
+              whileHover={{ y: -4, scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="bg-surface-container-low p-6 rounded-2xl border border-outline-variant/20 shadow-sm hover:border-primary/40 hover:shadow-md transition-all text-center block group cursor-pointer"
+              title="On desktop: open email / copy | On mobile: call us"
+            >
+              <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-primary group-hover:text-white transition-colors">
+                <Mail className="text-primary group-hover:text-white w-6 h-6 transition-colors" />
               </div>
               <h3 className="font-bold text-primary mb-1 text-sm">Email Us</h3>
-              <p className="text-xs text-on-surface-variant font-medium truncate" title="support@maitriwelfarefoundation.org">support@maitriwelfarefoundation.org</p>
-            </motion.div>
+              <p className="text-xs text-on-surface-variant font-medium truncate group-hover:text-primary transition-colors" title="support@maitriwelfarefoundation.org">
+                support@maitriwelfarefoundation.org
+              </p>
+              <span className="inline-block mt-2 text-[10px] font-bold text-secondary uppercase tracking-wider md:hidden">
+                Tap to Call
+              </span>
+              <span className="hidden md:inline-block mt-2 text-[10px] font-bold text-secondary uppercase tracking-wider">
+                Click to Email
+              </span>
+            </motion.a>
             
-            <motion.div variants={itemVariants} className="bg-surface-container-low p-6 rounded-2xl border border-outline-variant/20 shadow-sm">
-              <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4">
-                <MessageCircle className="text-primary w-6 h-6" />
+            <motion.a
+              variants={itemVariants}
+              href="tel:+917447434373"
+              whileHover={{ y: -4, scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="bg-surface-container-low p-6 rounded-2xl border border-outline-variant/20 shadow-sm hover:border-primary/40 hover:shadow-md transition-all text-center block group cursor-pointer"
+            >
+              <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-primary group-hover:text-white transition-colors">
+                <MessageCircle className="text-primary group-hover:text-white w-6 h-6 transition-colors" />
               </div>
               <h3 className="font-bold text-primary mb-1 text-sm">Call / WhatsApp</h3>
-              <p className="text-xs text-on-surface-variant font-medium">+91 7447434373</p>
-            </motion.div>
+              <p className="text-xs text-on-surface-variant font-medium group-hover:text-primary transition-colors">+91 7447434373</p>
+              <span className="inline-block mt-2 text-[10px] font-bold text-secondary uppercase tracking-wider">
+                Tap to Call
+              </span>
+            </motion.a>
 
             <motion.div variants={itemVariants} className="bg-surface-container-low p-6 rounded-2xl border border-outline-variant/20 shadow-sm">
               <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4">
@@ -171,6 +208,9 @@ export default function Contact() {
               </div>
               <h3 className="font-bold text-primary mb-1 text-sm">Response Time</h3>
               <p className="text-xs text-on-surface-variant font-medium">Within 24 Hours</p>
+              <span className="inline-block mt-2 text-[10px] font-bold text-primary uppercase tracking-wider">
+                Dedicated Team
+              </span>
             </motion.div>
           </div>
 
@@ -375,15 +415,17 @@ export default function Contact() {
                   <span className="text-xs font-bold text-on-surface-variant group-hover:text-[#E1306C] transition-colors">Instagram</span>
                 </button>
 
-                {/* Mail */}
+                {/* Mail / Call */}
                 <button 
-                  onClick={() => window.open(`mailto:?subject=Support Maitri Welfare Foundation&body=${encodeURIComponent('Check out the amazing work Maitri Welfare Foundation is doing for the community and nature! ' + window.location.origin)}`, '_blank')} 
-                  className="flex flex-col items-center gap-3 group"
+                  onClick={handleContactEmail} 
+                  className="flex flex-col items-center gap-3 group cursor-pointer"
                 >
                   <div className="w-14 h-14 rounded-full bg-blue-500/10 flex items-center justify-center group-hover:bg-blue-500/20 transition-all group-hover:scale-110">
                     <Mail className="w-7 h-7 text-blue-500" />
                   </div>
-                  <span className="text-xs font-bold text-on-surface-variant group-hover:text-blue-500 transition-colors">Mail</span>
+                  <span className="text-xs font-bold text-on-surface-variant group-hover:text-blue-500 transition-colors">
+                    Mail
+                  </span>
                 </button>
                 
                 {/* Copy */}
