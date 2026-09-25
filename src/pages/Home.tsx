@@ -467,8 +467,8 @@ export default function Home() {
           transition={{ duration: 0.7 }}
           className="grain relative max-w-[1400px] mx-auto rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden bg-ink text-on-ink px-6 py-16 sm:px-12 sm:py-24 text-center"
         >
-          <div className="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-secondary-container/25 blur-3xl" />
-          <div className="absolute -bottom-24 -left-24 w-72 h-72 rounded-full bg-accent/20 blur-3xl" />
+          <div className="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-secondary-container/25 dark:bg-secondary-container/12 blur-3xl" />
+          <div className="absolute -bottom-24 -left-24 w-72 h-72 rounded-full bg-accent/20 dark:bg-primary/15 blur-3xl" />
           <div className="relative">
             <h2 className="text-5xl sm:text-7xl font-medium tracking-[-0.03em]">Stay Connected</h2>
             <p className="mt-6 opacity-80 max-w-2xl mx-auto text-lg leading-relaxed">

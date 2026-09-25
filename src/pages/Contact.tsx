@@ -151,8 +151,8 @@ export default function Contact() {
               whileTap={{ scale: 0.98 }}
               className="bg-surface-container-low p-6 rounded-2xl border border-outline-variant/20 shadow-sm hover:border-primary/40 hover:shadow-md transition-all text-center block group cursor-pointer"
             >
-              <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-primary group-hover:text-white transition-colors">
-                <MapPin className="text-primary group-hover:text-white w-6 h-6 transition-colors" />
+              <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-primary group-hover:text-on-primary transition-colors">
+                <MapPin className="text-primary group-hover:text-on-primary w-6 h-6 transition-colors" />
               </div>
               <h3 className="font-bold text-primary mb-1 text-sm">Our Location</h3>
               <p className="text-xs text-on-surface-variant font-medium">Katraj, Pune - 411046, India</p>
@@ -170,8 +170,8 @@ export default function Contact() {
               className="bg-surface-container-low p-6 rounded-2xl border border-outline-variant/20 shadow-sm hover:border-primary/40 hover:shadow-md transition-all text-center block group cursor-pointer"
               title="Send email or copy address"
             >
-              <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-primary group-hover:text-white transition-colors">
-                <Mail className="text-primary group-hover:text-white w-6 h-6 transition-colors" />
+              <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-primary group-hover:text-on-primary transition-colors">
+                <Mail className="text-primary group-hover:text-on-primary w-6 h-6 transition-colors" />
               </div>
               <h3 className="font-bold text-primary mb-1 text-sm">Email Us</h3>
               <p className="text-xs text-on-surface-variant font-medium truncate group-hover:text-primary transition-colors" title="support@maitriwelfarefoundation.org">
@@ -189,8 +189,8 @@ export default function Contact() {
               whileTap={{ scale: 0.98 }}
               className="bg-surface-container-low p-6 rounded-2xl border border-outline-variant/20 shadow-sm hover:border-primary/40 hover:shadow-md transition-all text-center block group cursor-pointer"
             >
-              <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-primary group-hover:text-white transition-colors">
-                <MessageCircle className="text-primary group-hover:text-white w-6 h-6 transition-colors" />
+              <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-primary group-hover:text-on-primary transition-colors">
+                <MessageCircle className="text-primary group-hover:text-on-primary w-6 h-6 transition-colors" />
               </div>
               <h3 className="font-bold text-primary mb-1 text-sm">Call / WhatsApp</h3>
               <p className="text-xs text-on-surface-variant font-medium group-hover:text-primary transition-colors">+91 7447434373</p>

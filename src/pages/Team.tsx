@@ -137,7 +137,7 @@ export default function Team() {
                 whileHover={{ scale: 1.2 }}
                 transition={{ duration: 0.6 }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent dark:from-ink/50 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             </div>
             <div className="p-6 text-center">
               <h4 className="text-xl font-bold text-primary mb-1 leading-tight">Siddhesh Nikam</h4>
@@ -160,7 +160,7 @@ export default function Team() {
                 whileHover={{ scale: 1.2 }}
                 transition={{ duration: 0.6 }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent dark:from-ink/50 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             </div>
             <div className="p-6 text-center">
               <h4 className="text-xl font-bold text-primary mb-1 leading-tight">Shivam Mhetre</h4>
@@ -183,7 +183,7 @@ export default function Team() {
                 whileHover={{ scale: 1.7 }}
                 transition={{ duration: 0.6 }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent dark:from-ink/50 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             </div>
             <div className="p-6 text-center">
               <h4 className="text-xl font-bold text-primary mb-1 leading-tight">Pratik Sitapure</h4>
@@ -206,7 +206,7 @@ export default function Team() {
                 whileHover={{ scale: 1.2 }}
                 transition={{ duration: 0.6 }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent dark:from-ink/50 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             </div>
             <div className="p-6 text-center">
               <h4 className="text-xl font-bold text-primary mb-1 leading-tight">Awanti Gaikwad</h4>
@@ -229,7 +229,7 @@ export default function Team() {
                 whileHover={{ scale: 1.15 }}
                 transition={{ duration: 0.6 }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent dark:from-ink/50 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             </div>
             <div className="p-6 text-center">
               <h4 className="text-xl font-bold text-primary mb-1 leading-tight">Jayesh Pachange</h4>
@@ -251,7 +251,7 @@ export default function Team() {
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.6 }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent dark:from-ink/50 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             </div>
             <div className="p-6 text-center">
               <h4 className="text-xl font-bold text-primary mb-1 leading-tight">Niraj Sharma</h4>
@@ -273,7 +273,7 @@ export default function Team() {
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.6 }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent dark:from-ink/50 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             </div>
             <div className="p-6 text-center">
               <h4 className="text-xl font-bold text-primary mb-1 leading-tight">Pranav Pawar</h4>
@@ -296,7 +296,7 @@ export default function Team() {
                 whileHover={{ scale: 1.3 }}
                 transition={{ duration: 0.6 }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent dark:from-ink/50 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             </div>
             <div className="p-6 text-center">
               <h4 className="text-xl font-bold text-primary mb-1 leading-tight">Divya</h4>
@@ -318,7 +318,7 @@ export default function Team() {
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.6 }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent dark:from-ink/50 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             </div>
             <div className="p-6 text-center">
               <h4 className="text-xl font-bold text-primary mb-1 leading-tight">Sanika Phadtare</h4>
@@ -342,7 +342,7 @@ export default function Team() {
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.6 }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent dark:from-ink/50 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             </div>
             <div className="p-6 text-center">
               <h4 className="text-xl font-bold text-primary mb-1">Siddhi Kadam</h4>
@@ -365,7 +365,7 @@ export default function Team() {
                 whileHover={{ scale: 1.2 }}
                 transition={{ duration: 0.6 }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent dark:from-ink/50 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             </div>
             <div className="p-6 text-center">
               <h4 className="text-xl font-bold text-primary mb-1 leading-tight">Pranjal Khalate</h4>
@@ -388,7 +388,7 @@ export default function Team() {
                 whileHover={{ scale: 1.15 }}
                 transition={{ duration: 0.6 }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent dark:from-ink/50 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             </div>
             <div className="p-6 text-center">
               <h4 className="text-xl font-bold text-primary mb-1 leading-tight">Piyush Kadam</h4>
@@ -411,7 +411,7 @@ export default function Team() {
                 whileHover={{ scale: 1.2 }}
                 transition={{ duration: 0.6 }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent dark:from-ink/50 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             </div>
             <div className="p-6 text-center">
               <h4 className="text-xl font-bold text-primary mb-1 leading-tight">Reema Kalbhor</h4>
@@ -434,7 +434,7 @@ export default function Team() {
                 whileHover={{ scale: 1.75 }}
                 transition={{ duration: 0.6 }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent dark:from-ink/50 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             </div>
             <div className="p-6 text-center">
               <h4 className="text-xl font-bold text-primary mb-1 leading-tight">Ankita Aware</h4>
@@ -457,7 +457,7 @@ export default function Team() {
                 whileHover={{ scale: 1.2 }}
                 transition={{ duration: 0.6 }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent dark:from-ink/50 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             </div>
             <div className="p-6 text-center">
               <h4 className="text-xl font-bold text-primary mb-1 leading-tight">Mayur Sutar</h4>
@@ -533,7 +533,7 @@ export default function Team() {
                     initial={{ scale: 0.8, opacity: 0 }}
                     whileInView={{ scale: 1, opacity: 1 }}
                     transition={{ delay: 0.5, type: "spring" }}
-                    className="bg-secondary text-on-secondary w-14 h-14 rounded-full flex items-center justify-center shadow-lg border-4 border-white"
+                    className="bg-secondary text-on-secondary w-14 h-14 rounded-full flex items-center justify-center shadow-lg border-4 border-white dark:border-surface-container-low"
                   >
                     <Award className="w-6 h-6" />
                   </motion.div>
@@ -545,7 +545,7 @@ export default function Team() {
                     src={award.img}
                     alt={award.name}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent dark:from-ink/90 dark:via-ink/30 opacity-60 group-hover:opacity-80 transition-opacity"></div>
 
                   <div className="absolute bottom-0 left-0 right-0 p-8 text-on-primary">
                     <motion.div
@@ -610,7 +610,7 @@ export default function Team() {
                   initial={{ scale: 0.8, opacity: 0 }}
                   whileInView={{ scale: 1, opacity: 1 }}
                   transition={{ delay: 0.3, type: "spring" }}
-                  className="bg-secondary text-on-secondary w-14 h-14 rounded-full flex items-center justify-center shadow-lg border-4 border-white"
+                  className="bg-secondary text-on-secondary w-14 h-14 rounded-full flex items-center justify-center shadow-lg border-4 border-white dark:border-surface-container-low"
                 >
                   <Award className="w-6 h-6" />
                 </motion.div>
@@ -622,7 +622,7 @@ export default function Team() {
                   src={awardSocialMedia}
                   alt="Social Media Team"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent dark:from-ink/90 dark:via-ink/30 opacity-60 group-hover:opacity-80 transition-opacity"></div>
 
                 <div className="absolute bottom-0 left-0 right-0 p-8 text-on-primary">
                   <motion.div

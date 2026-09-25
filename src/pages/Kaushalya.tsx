@@ -297,7 +297,7 @@ export default function Kaushalya() {
               viewport={{ once: true }}
               variants={fadeInRight}
             >
-              <div className="relative aspect-video rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white group bg-black">
+              <div className="relative aspect-video rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white dark:border-surface-container-high group bg-black">
                 <iframe
                   className="w-full h-full"
                   src="https://www.youtube.com/embed/2DuyvmW4I6s?autoplay=1&mute=1&loop=1&playlist=2DuyvmW4I6s"

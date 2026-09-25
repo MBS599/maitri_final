@@ -155,7 +155,7 @@ export default function About() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <div className="aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white">
+              <div className="aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white dark:border-surface-container-high">
                 <img
                   src={about1}
                   alt="Maitri Welfare Foundation founders and early team members"
@@ -175,7 +175,7 @@ export default function About() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <div className="aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white">
+              <div className="aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white dark:border-surface-container-high">
                 <img
                   src={about2}
                   alt="Maitri Welfare Foundation food donation drive for the needy"
@@ -228,7 +228,7 @@ export default function About() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <div className="aspect-video rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white bg-surface-container-low">
+              <div className="aspect-video rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white dark:border-surface-container-high bg-surface-container-low">
                 <img
                   src={fullTeam}
                   alt="Maitri Welfare Foundation Team"
