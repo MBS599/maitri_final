@@ -7,6 +7,8 @@ import { useState, useRef, useEffect } from 'react';
 import { toast } from 'sonner';
 import { AnimatePresence } from 'motion/react';
 import SEO from '../components/SEO';
+import { useT } from '../i18n/LanguageContext';
+import { eventsDict } from '../i18n/pages/events';
 import instagramEventsData from '../data/pastEventsInstagram.json';
 
 // Local images to guarantee visibility and meaning
@@ -59,6 +61,7 @@ const fadeInRight = {
 const events = [
   // Upcoming Events
   {
+    id: 'aashram',
     category: 'Social Welfare',
     date: 'May 17, 2026 • 10:00 AM',
     title: 'Aashram Visit & Food Donation',
@@ -68,6 +71,7 @@ const events = [
     img: aashramVisitImg
   },
   {
+    id: 'eduSupport',
     category: 'Education',
     date: 'May 25, 2026 • 11:00 AM',
     title: 'Educational Support for Children',
@@ -77,6 +81,7 @@ const events = [
     img: educationImg
   },
   {
+    id: 'wari',
     category: 'Culture & Care',
     date: 'June 09, 2026 • 07:00 AM',
     title: 'Wari - 2026 & Blood Donation',
@@ -86,6 +91,7 @@ const events = [
     img: waariImg
   },
   {
+    id: 'treeWari',
     category: 'Environment',
     date: 'July 12, 2026 • 08:30 AM',
     title: 'Tree Plantation & Return Wari',
@@ -95,6 +101,7 @@ const events = [
     img: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=1200&q=80'
   },
   {
+    id: 'dholTasha',
     category: 'Health',
     date: 'August 15, 2026 • 09:00 AM',
     title: 'Blood Donation (Dhol Tasha Pathak)',
@@ -104,6 +111,7 @@ const events = [
     img: bloodDonationImg
   },
   {
+    id: 'anniversary',
     category: 'Social Welfare',
     date: 'September 20, 2026 • 05:00 PM',
     title: 'Food Donation & Anniversary',
@@ -113,6 +121,7 @@ const events = [
     img: about2
   },
   {
+    id: 'narishakti',
     category: 'Women Empowerment',
     date: 'October 18, 2026 • 10:30 AM',
     title: 'Narishakti (Kaushalya Initiative)',
@@ -122,6 +131,7 @@ const events = [
     img: narishaktiImg
   },
   {
+    id: 'blanket',
     category: 'Social Welfare',
     date: 'November 10, 2026 • 11:30 PM',
     title: 'Blanket Donation Drive (Post 12 AM)',
@@ -131,6 +141,7 @@ const events = [
     img: blanketDonationImg
   },
   {
+    id: 'career',
     category: 'Education',
     date: 'December 20, 2026 • 10:00 AM',
     title: 'Career Counselling Workshops',
@@ -142,6 +153,7 @@ const events = [
 
   // Past Events
   {
+    id: 'megaBlood',
     category: 'Health',
     date: 'August 24, 2025 • Completed',
     title: 'Mega Blood Donation Camp 2025',
@@ -151,6 +163,7 @@ const events = [
     img: news3
   },
   {
+    id: 'uniform',
     category: 'Education',
     date: 'June 15, 2025 • Completed',
     title: 'Rural School Uniform & Kit Distribution',
@@ -160,6 +173,7 @@ const events = [
     img: 'https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&w=1200&q=80'
   },
   {
+    id: 'monsoonTrees',
     category: 'Environment',
     date: 'July 10, 2024 • Completed',
     title: 'Monsoon Indigenous Tree Plantation',
@@ -169,6 +183,7 @@ const events = [
     img: 'https://images.unsplash.com/photo-1530507629858-e4977d30e9e0?auto=format&fit=crop&w=1200&q=80'
   },
   {
+    id: 'pandemic',
     category: 'Social Welfare',
     date: 'May 05, 2024 • Completed',
     title: 'Pandemic Relief & Essential Ration Kits',
@@ -204,6 +219,9 @@ export default function Events() {
   const [captcha, setCaptcha] = useState({ question: '', answer: 0 });
   const [userCaptcha, setUserCaptcha] = useState('');
   const proposalFormRef = useRef<HTMLFormElement>(null);
+  const t = useT(eventsDict);
+  const catLabel = (c: string) => t.categories[c] ?? c;
+  const captchaMatch = captcha.question.match(/(\d+) \+ (\d+)/);
 
   const availableYears = [
     'All',
@@ -287,7 +305,7 @@ export default function Events() {
     if (!proposalFormRef.current) return;
 
     if (parseInt(userCaptcha) !== captcha.answer) {
-      toast.error('Incorrect CAPTCHA answer. Please try again.');
+      toast.error(t.toast.captchaWrong);
       generateCaptcha();
       return;
     }
@@ -318,7 +336,7 @@ export default function Events() {
     };
 
     try {
-      toast.info('Uploading attachment...');
+      toast.info(t.toast.uploading);
       const attachmentUrl = await uploadToCloudinary(formData.get('attachment') as File);
 
       const proposalData = {
@@ -341,7 +359,7 @@ export default function Events() {
       });
 
       if (response.ok) {
-        toast.success('Proposal submitted successfully!');
+        toast.success(t.toast.success);
         setIsProposalModalOpen(false);
         setAttachmentPreview(null);
         proposalFormRef.current.reset();
@@ -351,7 +369,7 @@ export default function Events() {
       }
     } catch (error) {
       console.error('Proposal Error:', error);
-      toast.error('Failed to submit proposal.');
+      toast.error(t.toast.failed);
     } finally {
       setIsSending(false);
     }
@@ -370,7 +388,7 @@ export default function Events() {
         <motion.img
           className="absolute inset-0 w-full h-full object-cover"
           src={heroImg}
-          alt="Maitri Events Hero"
+          alt={t.hero.alt}
           initial={{ scale: 1.1 }}
           animate={{ scale: 1 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
@@ -386,13 +404,13 @@ export default function Events() {
               variants={fadeInUp}
               className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6 leading-[1.1]"
             >
-              Events & Community Drives: Our Collective Journey
+              {t.hero.title}
             </motion.h1>
             <motion.p
               variants={fadeInUp}
               className="text-base sm:text-lg opacity-90 max-w-2xl mx-auto leading-relaxed"
             >
-              Join our upcoming initiatives or explore our past achievements. Every action counts towards a more compassionate world.
+              {t.hero.subtitle}
             </motion.p>
           </motion.div>
         </div>
@@ -413,14 +431,14 @@ export default function Events() {
               className={`pb-4 text-lg sm:text-2xl font-bold transition-all border-b-4 cursor-pointer ${tab === 'upcoming' ? 'border-secondary text-primary' : 'border-transparent text-on-surface-variant hover:text-primary'
                 }`}
             >
-              Upcoming
+              {t.tabs.upcoming}
             </button>
             <button
               onClick={() => setTab('past')}
               className={`pb-4 text-lg sm:text-2xl font-bold transition-all border-b-4 cursor-pointer ${tab === 'past' ? 'border-secondary text-primary' : 'border-transparent text-on-surface-variant hover:text-primary'
                 }`}
             >
-              Past
+              {t.tabs.past}
             </button>
           </motion.div>
           <motion.div
@@ -438,7 +456,7 @@ export default function Events() {
                       : 'bg-surface-container-low dark:bg-surface-container text-on-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-high hover:text-primary dark:hover:text-primary border border-outline-variant/20 dark:border-outline-variant/10'
                     }`}
                 >
-                  {cat}
+                  {catLabel(cat)}
                 </button>
               ))}
             </div>
@@ -447,7 +465,7 @@ export default function Events() {
             {tab === 'past' && availableYears.length > 1 && (
               <div className="flex flex-wrap items-center justify-start md:justify-end gap-1.5 pt-1 w-full md:w-auto">
                 <span className="text-xs font-bold uppercase tracking-wider text-on-surface-variant/80 mr-1.5">
-                  Year:
+                  {t.yearLabel}
                 </span>
                 {availableYears.map((yr) => (
                   <button
@@ -458,7 +476,7 @@ export default function Events() {
                         : 'bg-surface-container-low dark:bg-surface-container text-on-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-high hover:text-secondary dark:hover:text-secondary border border-outline-variant/20 dark:border-outline-variant/10'
                       }`}
                   >
-                    {yr}
+                    {yr === 'All' ? t.allYears : yr}
                   </button>
                 ))}
               </div>
@@ -478,12 +496,12 @@ export default function Events() {
             if (filteredPast.length === 0) {
               return (
                 <div className="text-center py-16 bg-surface-container-low dark:bg-surface-container-low/60 rounded-3xl border border-outline-variant/30 dark:border-outline-variant/20">
-                  <p className="text-lg font-bold text-on-surface-variant mb-2">No past events found matching your filter</p>
+                  <p className="text-lg font-bold text-on-surface-variant mb-2">{t.empty.past}</p>
                   <button
                     onClick={() => { setSelectedCategory('All'); setSelectedYear('All'); }}
                     className="text-sm font-bold text-secondary hover:underline cursor-pointer"
                   >
-                    Clear filters
+                    {t.empty.clearFilters}
                   </button>
                 </div>
               );
@@ -531,7 +549,7 @@ export default function Events() {
                         viewport={{ once: true }}
                         transition={{ delay: 0.2 }}
                       >
-                        {event.category}
+                        {catLabel(event.category)}
                       </motion.div>
                       <div className="absolute top-3.5 left-3.5 bg-black/65 dark:bg-black/80 backdrop-blur-md text-white border border-white/10 px-3 py-1 rounded-full text-xs font-bold tracking-wider shadow-md">
                         {event.year}
@@ -561,15 +579,15 @@ export default function Events() {
                           </span>
                         )}
                       </div>
-                      <h3 className="font-display text-xl sm:text-2xl font-bold text-primary dark:text-primary mb-2 line-clamp-2 leading-snug tracking-tight">
+                      <h3 className="font-display text-xl sm:text-2xl font-bold text-primary dark:text-primary mb-2 line-clamp-2 leading-snug tracking-tight" title={event.title}>
                         {event.title}
                       </h3>
-                      <p className="font-sans text-on-surface-variant dark:text-on-surface-variant text-sm mb-6 line-clamp-3 leading-relaxed">
+                      <p className="font-sans text-on-surface-variant dark:text-on-surface-variant text-sm mb-6 line-clamp-3 leading-relaxed" title={event.caption || event.title}>
                         {event.caption || event.title}
                       </p>
                       <div className="mt-auto pt-4 border-t border-outline-variant/30 dark:border-outline-variant/20 flex items-center justify-between gap-3">
                         <span className="text-xs font-medium text-on-surface-variant/80 dark:text-on-surface-variant/70 truncate font-sans">
-                          Maitri Welfare Foundation
+                          {t.card.org}
                         </span>
                         {event.video ? (
                           <motion.button
@@ -580,7 +598,7 @@ export default function Events() {
                             className="inline-flex items-center gap-2 bg-gradient-to-r from-[#833AB4] via-[#FD1D1D] to-[#FCAF45] text-white px-4 py-2 sm:px-5 sm:py-2 rounded-xl text-xs sm:text-sm font-bold shadow-md hover:shadow-lg hover:brightness-105 active:scale-95 transition-all shrink-0 cursor-pointer font-sans"
                           >
                             <Play className="w-4 h-4 fill-white" />
-                            <span>Watch Video</span>
+                            <span>{t.card.watchVideo}</span>
                           </motion.button>
                         ) : (
                           <motion.a
@@ -592,7 +610,7 @@ export default function Events() {
                             className="inline-flex items-center gap-2 bg-gradient-to-r from-[#833AB4] via-[#FD1D1D] to-[#FCAF45] text-white px-4 py-2 sm:px-5 sm:py-2 rounded-xl text-xs sm:text-sm font-bold shadow-md hover:shadow-lg hover:brightness-105 active:scale-95 transition-all shrink-0 cursor-pointer font-sans"
                           >
                             <Instagram className="w-4 h-4" />
-                            <span>View on Instagram</span>
+                            <span>{t.card.viewInstagram}</span>
                           </motion.a>
                         )}
                       </div>
@@ -612,9 +630,9 @@ export default function Events() {
           if (filteredEvents.length === 0) {
             return (
               <div className="text-center py-16 bg-surface-container-low rounded-3xl border border-outline-variant/30">
-                <p className="text-lg font-bold text-on-surface-variant mb-2">No events found in this category</p>
+                <p className="text-lg font-bold text-on-surface-variant mb-2">{t.empty.category}</p>
                 <button onClick={() => setSelectedCategory('All')} className="text-sm font-bold text-secondary hover:underline cursor-pointer">
-                  Clear filter
+                  {t.empty.clearFilter}
                 </button>
               </div>
             );
@@ -641,7 +659,7 @@ export default function Events() {
                     <motion.img
                       className="w-full h-full object-cover"
                       src={event.img}
-                      alt={event.title}
+                      alt={t.events[event.id]?.title ?? event.title}
                       whileHover={{ scale: 1.1 }}
                       transition={{ duration: 0.7 }}
                     />
@@ -652,7 +670,7 @@ export default function Events() {
                       viewport={{ once: true }}
                       transition={{ delay: 0.3 + idx * 0.1 }}
                     >
-                      {event.category}
+                      {catLabel(event.category)}
                     </motion.div>
                   </div>
                   <div className="p-8 flex flex-col grow">
@@ -664,20 +682,20 @@ export default function Events() {
                       transition={{ delay: 0.2 + idx * 0.1 }}
                     >
                       <Calendar className="w-4 h-4" />
-                      {event.date}
+                      {t.events[event.id]?.date ?? event.date}
                     </motion.div>
-                    <h3 className="text-2xl font-bold text-primary mb-3">{event.title}</h3>
-                    <p className="text-on-surface-variant text-sm mb-8 line-clamp-2 leading-relaxed">
-                      {event.desc}
+                    <h3 className="text-2xl font-bold text-primary mb-3">{t.events[event.id]?.title ?? event.title}</h3>
+                    <p className="text-on-surface-variant text-sm mb-8 line-clamp-2 leading-relaxed" title={t.events[event.id]?.desc ?? event.desc}>
+                      {t.events[event.id]?.desc ?? event.desc}
                     </p>
                     <div className="flex items-center justify-between gap-3 mt-auto pt-4 border-t border-outline-variant/10">
                       <div className="flex items-center gap-1.5 text-on-surface-variant text-xs font-medium uppercase tracking-wider flex-1 min-w-0">
                         <MapPin className="w-4 h-4 text-secondary shrink-0" />
-                        <span className="truncate">{event.location}</span>
+                        <span className="truncate">{t.locations[event.location] ?? event.location}</span>
                       </div>
                       <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="shrink-0">
                         <Link to="/volunteer" className="bg-primary text-on-primary px-4 sm:px-6 py-2 rounded-xl text-xs sm:text-sm font-bold hover:bg-primary-container transition-all whitespace-nowrap block text-center">
-                          Join Now
+                          {t.card.joinNow}
                         </Link>
                       </motion.div>
                     </div>
@@ -704,15 +722,15 @@ export default function Events() {
             viewport={{ once: true }}
             variants={fadeInLeft}
           >
-            <h2 className="text-2xl sm:text-3xl font-bold text-primary mb-2">Host an Event</h2>
-            <p className="text-sm sm:text-base text-on-surface-variant leading-relaxed">Do you have a cause or an idea for a community drive? Partner with Maitri to bring it to life.</p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-primary mb-2">{t.host.title}</h2>
+            <p className="text-sm sm:text-base text-on-surface-variant leading-relaxed">{t.host.desc}</p>
           </motion.div>
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <button
               onClick={() => setIsProposalModalOpen(true)}
               className="border-2 border-primary text-primary px-10 py-3 rounded-full font-bold hover:bg-primary hover:text-on-primary transition-all text-center inline-block cursor-pointer"
             >
-              Submit Proposal
+              {t.host.submit}
             </button>
           </motion.div>
         </motion.div>
@@ -741,12 +759,14 @@ export default function Events() {
                     <ClipboardList className="w-5 h-5 text-primary" />
                   </div>
                   <div>
-                    <h2 className="text-xl font-bold text-primary leading-tight">Event Proposal</h2>
-                    <p className="text-[10px] text-on-surface-variant font-medium tracking-wide">Partner with us</p>
+                    <h2 className="text-xl font-bold text-primary leading-tight">{t.modal.title}</h2>
+                    <p className="text-[10px] text-on-surface-variant font-medium tracking-wide">{t.modal.subtitle}</p>
                   </div>
                 </div>
                 <button
                   onClick={() => setIsProposalModalOpen(false)}
+                  aria-label={t.modal.close}
+                  title={t.modal.close}
                   className="p-1.5 hover:bg-surface-container rounded-full transition-colors cursor-pointer"
                 >
                   <X className="w-5 h-5 text-on-surface-variant" />
@@ -756,16 +776,16 @@ export default function Events() {
               <form ref={proposalFormRef} onSubmit={handleProposalSubmit} className="p-6 space-y-5 overflow-y-auto custom-scrollbar flex-grow max-h-[50vh]">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label className="text-[10px] uppercase font-bold text-on-surface-variant tracking-widest px-1">Full Name <span className="text-red-500">*</span></label>
+                    <label className="text-[10px] uppercase font-bold text-on-surface-variant tracking-widest px-1">{t.modal.fullName} <span className="text-red-500">*</span></label>
                     <input
                       name="name"
                       required
                       className="w-full rounded-xl border-2 border-outline-variant/50 focus:border-primary focus:ring-0 px-4 py-3 text-sm font-semibold outline-none transition-all"
-                      placeholder="Enter your name"
+                      placeholder={t.modal.namePh}
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[10px] uppercase font-bold text-on-surface-variant tracking-widest px-1">Phone Number <span className="text-red-500">*</span></label>
+                    <label className="text-[10px] uppercase font-bold text-on-surface-variant tracking-widest px-1">{t.modal.phone} <span className="text-red-500">*</span></label>
                     <input
                       name="phone"
                       required
@@ -777,7 +797,7 @@ export default function Events() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-[10px] uppercase font-bold text-on-surface-variant tracking-widest px-1">Email Address <span className="text-red-500">*</span></label>
+                  <label className="text-[10px] uppercase font-bold text-on-surface-variant tracking-widest px-1">{t.modal.email} <span className="text-red-500">*</span></label>
                   <input
                     name="email"
                     required
@@ -789,43 +809,43 @@ export default function Events() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label className="text-[10px] uppercase font-bold text-on-surface-variant tracking-widest px-1">Proposed Event Title <span className="text-red-500">*</span></label>
+                    <label className="text-[10px] uppercase font-bold text-on-surface-variant tracking-widest px-1">{t.modal.eventTitle} <span className="text-red-500">*</span></label>
                     <input
                       name="event_title"
                       required
                       className="w-full rounded-xl border-2 border-outline-variant/50 focus:border-primary focus:ring-0 px-4 py-3 text-sm font-semibold outline-none transition-all"
-                      placeholder="e.g. Beach Cleanup Drive"
+                      placeholder={t.modal.eventTitlePh}
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[10px] uppercase font-bold text-on-surface-variant tracking-widest px-1">Category <span className="text-red-500">*</span></label>
+                    <label className="text-[10px] uppercase font-bold text-on-surface-variant tracking-widest px-1">{t.modal.category} <span className="text-red-500">*</span></label>
                     <select
                       name="category"
                       required
                       className="w-full rounded-xl border-2 border-outline-variant/50 focus:border-primary focus:ring-0 px-4 py-3 text-sm font-semibold outline-none transition-all bg-surface-container-low cursor-pointer"
                     >
-                      <option value="Environment">Environment</option>
-                      <option value="Social Welfare">Social Welfare</option>
-                      <option value="Education">Education</option>
-                      <option value="Health">Health</option>
-                      <option value="Other">Other</option>
+                      <option value="Environment">{catLabel('Environment')}</option>
+                      <option value="Social Welfare">{catLabel('Social Welfare')}</option>
+                      <option value="Education">{catLabel('Education')}</option>
+                      <option value="Health">{catLabel('Health')}</option>
+                      <option value="Other">{catLabel('Other')}</option>
                     </select>
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-[10px] uppercase font-bold text-on-surface-variant tracking-widest px-1">Proposal Details <span className="text-red-500">*</span></label>
+                  <label className="text-[10px] uppercase font-bold text-on-surface-variant tracking-widest px-1">{t.modal.details} <span className="text-red-500">*</span></label>
                   <textarea
                     name="description"
                     required
                     rows={3}
                     className="w-full rounded-xl border-2 border-outline-variant/50 focus:border-primary focus:ring-0 px-4 py-3 text-sm font-semibold outline-none transition-all resize-none"
-                    placeholder="Describe your event idea..."
+                    placeholder={t.modal.detailsPh}
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-[10px] uppercase font-bold text-on-surface-variant tracking-widest px-1">Attachments <span className="text-red-500">*</span></label>
+                  <label className="text-[10px] uppercase font-bold text-on-surface-variant tracking-widest px-1">{t.modal.attachments} <span className="text-red-500">*</span></label>
                   <div className="relative group">
                     <input
                       name="attachment"
@@ -839,13 +859,13 @@ export default function Events() {
                       {attachmentPreview ? (
                         <div className="flex items-center gap-3">
                           <ClipboardList className="w-6 h-6 text-primary" />
-                          <span className="text-xs font-bold text-primary">Document Selected</span>
+                          <span className="text-xs font-bold text-primary">{t.modal.docSelected}</span>
                           <Eye className="w-4 h-4 text-primary" />
                         </div>
                       ) : (
                         <>
                           <Send className="w-5 h-5 text-on-surface-variant/40 rotate-[-45deg]" />
-                          <p className="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">Upload Proposal PDF or Image (Required)</p>
+                          <p className="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">{t.modal.upload}</p>
                         </>
                       )}
                     </div>
@@ -858,8 +878,8 @@ export default function Events() {
                       ?
                     </div>
                     <div>
-                      <p className="text-[10px] uppercase font-bold text-on-surface-variant tracking-widest">Security Check</p>
-                      <p className="text-sm font-bold text-primary">{captcha.question}</p>
+                      <p className="text-[10px] uppercase font-bold text-on-surface-variant tracking-widest">{t.modal.security}</p>
+                      <p className="text-sm font-bold text-primary">{captchaMatch ? t.modal.captcha(captchaMatch[1], captchaMatch[2]) : captcha.question}</p>
                     </div>
                   </div>
                   <input
@@ -868,7 +888,7 @@ export default function Events() {
                     value={userCaptcha}
                     onChange={(e) => setUserCaptcha(e.target.value)}
                     className="w-full sm:w-32 rounded-xl border-2 border-outline-variant/50 focus:border-primary focus:ring-0 px-4 py-2 text-sm font-bold outline-none transition-all text-center"
-                    placeholder="Answer"
+                    placeholder={t.modal.answerPh}
                   />
                 </div>
               </form>
@@ -886,7 +906,7 @@ export default function Events() {
                   ) : (
                     <Send className="w-4 h-4" />
                   )}
-                  {isSending ? 'Submitting...' : 'Submit Proposal'}
+                  {isSending ? t.modal.submitting : t.host.submit}
                 </motion.button>
               </div>
             </motion.div>
@@ -905,7 +925,7 @@ export default function Events() {
               exit={{ opacity: 0 }}
               className="absolute inset-0 cursor-pointer"
               onClick={closeVideoModal}
-              aria-label="Close modal backdrop"
+              aria-label={t.video.backdrop}
             />
 
             {/* Modal Card */}
@@ -922,17 +942,17 @@ export default function Events() {
                   type="button"
                   onClick={closeVideoModal}
                   className="pointer-events-auto inline-flex items-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-full bg-black/80 hover:bg-black text-white text-xs sm:text-sm font-bold backdrop-blur-md border border-white/20 shadow-xl transition-all active:scale-95 cursor-pointer"
-                  aria-label="Back to Events"
+                  aria-label={t.video.backAria}
                 >
                   <ArrowLeft className="w-4 h-4" />
-                  <span>Back</span>
+                  <span>{t.video.back}</span>
                 </button>
 
                 <button
                   type="button"
                   onClick={closeVideoModal}
                   className="pointer-events-auto w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-black/80 hover:bg-black text-white flex items-center justify-center backdrop-blur-md border border-white/20 shadow-xl transition-all active:scale-95 cursor-pointer"
-                  aria-label="Close video"
+                  aria-label={t.video.closeAria}
                 >
                   <X className="w-4 h-4 sm:w-5 sm:h-5" />
                 </button>
@@ -955,7 +975,7 @@ export default function Events() {
                 <div>
                   <div className="flex items-center justify-between gap-3 mb-3 pt-1">
                     <span className="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
-                      {activeVideoModal.category}
+                      {catLabel(activeVideoModal.category)}
                     </span>
                     <span className="inline-flex items-center gap-1.5 text-secondary font-bold text-xs uppercase tracking-wider font-sans">
                       <Calendar className="w-3.5 h-3.5" />
@@ -976,7 +996,7 @@ export default function Events() {
                   {activeVideoModal.likes > 0 && (
                     <span className="flex items-center gap-1.5 text-rose-500 font-bold text-xs sm:text-sm bg-rose-500/10 dark:bg-rose-500/15 border border-rose-500/20 px-2.5 py-1 sm:px-3 rounded-full">
                       <Heart className="w-3.5 h-3.5 fill-rose-500" />
-                      {activeVideoModal.likes} likes
+                      {activeVideoModal.likes} {t.video.likes}
                     </span>
                   )}
                   <div className="flex items-center gap-2 ml-auto">
@@ -985,7 +1005,7 @@ export default function Events() {
                       onClick={closeVideoModal}
                       className="px-3.5 py-2 rounded-xl border border-outline-variant/60 dark:border-outline-variant/30 text-on-surface-variant hover:text-primary text-xs font-bold transition-all active:scale-95 cursor-pointer"
                     >
-                      Close
+                      {t.video.close}
                     </button>
                     <a
                       href={activeVideoModal.url}
@@ -1014,7 +1034,7 @@ export default function Events() {
             viewport={{ once: true }}
             variants={fadeInUp}
           >
-            Our Impact in Numbers
+            {t.impact.title}
           </motion.h2>
           <motion.div
             className="grid grid-cols-2 md:grid-cols-4 gap-8"
@@ -1024,10 +1044,10 @@ export default function Events() {
             viewport={{ once: true }}
           >
             {[
-              { val: '150+', label: 'Events Hosted' },
-              { val: '5K', label: 'Lives Touched' },
-              { val: '200+', label: 'Volunteers' },
-              { val: '10+', label: 'Partner NGOs' }
+              { val: '150+', label: t.impact.events },
+              { val: '5K', label: t.impact.lives },
+              { val: '200+', label: t.impact.volunteers },
+              { val: '10+', label: t.impact.partners }
             ].map((stat, idx) => (
               <motion.div
                 key={idx}

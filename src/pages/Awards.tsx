@@ -1,6 +1,8 @@
 import { motion } from 'motion/react';
 import SEO from '../components/SEO';
 import { Link } from 'react-router-dom';
+import { useT } from '../i18n/LanguageContext';
+import { awardsDict } from '../i18n/pages/awards';
 import { ShieldCheck, Users, Clock, Trophy } from 'lucide-react';
 import awardHero from '../assets/award_hero.webp';
 import { AnimatedCounter } from '../components/AnimatedCounter';
@@ -85,6 +87,7 @@ const awards = [
 ];
 
 export default function Awards() {
+  const t = useT(awardsDict);
   return (
     <div className="pt-20">
       <SEO
@@ -99,7 +102,7 @@ export default function Awards() {
           <img
             className="w-full h-full object-cover object-[center_40%]"
             src={awardHero}
-            alt="Awards Background"
+            alt={t.heroAlt}
           />
         </div>
         <div className="relative max-w-7xl mx-auto px-6 text-center">
@@ -112,19 +115,19 @@ export default function Awards() {
               variants={scaleIn}
               className="inline-block px-4 py-1.5 bg-secondary-container text-on-secondary-container rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-widest mb-6"
             >
-              Our Achievements
+              {t.badge}
             </motion.span>
             <motion.h1
               variants={fadeInUp}
               className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6 leading-[1.1]"
             >
-              Awards & Recognition: Our Social Impact
+              {t.heroTitle}
             </motion.h1>
             <motion.p
               variants={fadeInUp}
               className="text-base sm:text-lg max-w-2xl mx-auto opacity-90 leading-relaxed"
             >
-              A decade of dedicated service recognized by esteemed institutions. These awards are a testament to our volunteers, donors, and the communities we serve.
+              {t.heroText}
             </motion.p>
           </motion.div>
         </div>
@@ -151,7 +154,7 @@ export default function Awards() {
                 <motion.img
                   className="w-full h-full object-cover"
                   src={award.img}
-                  alt={award.title}
+                  alt={t.awards[idx]?.title ?? award.title}
                   whileHover={{ scale: 1.1 }}
                   transition={{ duration: 0.7 }}
                 />
@@ -173,10 +176,10 @@ export default function Awards() {
                   viewport={{ once: true }}
                   transition={{ delay: 0.2 + idx * 0.1 }}
                 >
-                  {award.title}
+                  {t.awards[idx]?.title ?? award.title}
                 </motion.h3>
                 <p className="text-on-surface-variant text-sm mb-6 leading-relaxed flex-grow">
-                  {award.desc}
+                  {t.awards[idx]?.desc ?? award.desc}
                 </p>
                 <motion.div
                   className="pt-6 border-t border-outline-variant/30 flex items-center gap-2 text-secondary font-bold text-xs uppercase"
@@ -209,9 +212,9 @@ export default function Awards() {
           viewport={{ once: true }}
         >
           {[
-            { value: '5+', label: 'Awards' },
-            { value: '5k', label: 'Lives Impacted Annually' },
-            { value: '7y', label: 'Of Continuous Service' }
+            { value: '5+', label: t.stats[0] },
+            { value: '5k', label: t.stats[1] },
+            { value: '7y', label: t.stats[2] }
           ].map((stat, idx) => (
             <motion.div
               key={idx}
@@ -251,9 +254,9 @@ export default function Awards() {
             viewport={{ once: true }}
             variants={containerVariants}
           >
-            <motion.h2 variants={fadeInLeft} className="text-4xl font-bold text-on-ink mb-4">Be Part of the Success</motion.h2>
+            <motion.h2 variants={fadeInLeft} className="text-4xl font-bold text-on-ink mb-4">{t.ctaTitle}</motion.h2>
             <motion.p variants={fadeInLeft} className="text-lg opacity-80 max-w-xl leading-relaxed">
-              Every award we win is shared with our supporters. Your contribution fuels the impact that makes these recognitions possible.
+              {t.ctaText}
             </motion.p>
           </motion.div>
           <motion.div
@@ -265,12 +268,12 @@ export default function Awards() {
           >
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link to="/support" className="bg-secondary-container text-on-secondary-container px-10 py-4 rounded-full text-lg font-bold hover:shadow-xl transition-all shadow-lg active:scale-95 inline-block">
-                Donate Now
+                {t.donate}
               </Link>
             </motion.div>
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link to="/volunteer" className="border-2 border-on-ink text-on-ink px-10 py-4 rounded-full text-lg font-bold hover:bg-on-ink/10 transition-all text-center inline-block">
-                Volunteer
+                {t.volunteer}
               </Link>
             </motion.div>
           </motion.div>

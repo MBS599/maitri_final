@@ -3,8 +3,8 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", "Hind", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", "Martel", ui-serif, Georgia, serif;
 
   --color-primary: #1f4d36;
   --color-on-primary: #fdfbf6;
@@ -360,4 +360,25 @@ svg.lucide,
   transform: scale(0.8) !important;
   animation: none !important;
   transition: transform 0.08s ease-out !important;
+}
+/* Devanagari: tracking breaks conjunct shaping, and tight leading clips matras */
+html:lang(hi) *,
+html:lang(mr) * {
+  letter-spacing: normal !important;
+}
+
+html:lang(hi) :is(h1, h2, h3, h4),
+html:lang(mr) :is(h1, h2, h3, h4) {
+  line-height: 1.3 !important;
+}
+
+/* Martel only reads well at heavier weights */
+html:lang(hi) :is(h1, h2, h3, .font-display),
+html:lang(mr) :is(h1, h2, h3, .font-display) {
+  font-weight: 700 !important;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }

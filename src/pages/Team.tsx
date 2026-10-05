@@ -22,6 +22,8 @@ import awardJayesh from '../assets/awards/best_volunteer/jayesh_pachange.webp';
 import awardPranaw from '../assets/awards/best_volunteer/pranav_pawar.webp';
 import awardShreya from '../assets/awards/best_volunteer/shreya deshpande.webp';
 import awardSocialMedia from '../assets/awards/best_volunteer/social_media.webp';
+import { useT } from '../i18n/LanguageContext';
+import { teamDict } from '../i18n/pages/team';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -61,6 +63,7 @@ const scaleIn = {
 };
 
 export default function Team() {
+  const t = useT(teamDict);
   return (
     <div className="pt-20">
       <SEO 
@@ -74,7 +77,7 @@ export default function Team() {
         <div className="absolute inset-0 z-0 opacity-50">
           <img
             src={teamBg}
-            alt="Team background"
+            alt={t.hero.bgAlt}
             className="w-full h-full object-cover object-center"
           />
           <div className="absolute inset-0 bg-primary/40"></div>
@@ -89,13 +92,13 @@ export default function Team() {
               variants={fadeInUp}
               className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6 leading-[1.1]"
             >
-              Meet Our Compassionate Team
+              {t.hero.title}
             </motion.h2>
             <motion.p
               variants={fadeInUp}
               className="text-base sm:text-lg text-on-ink/90 max-w-2xl mx-auto leading-relaxed"
             >
-              A dedicated group of professionals and community leaders united by a single mission: creating sustainable social change through empathy and action.
+              {t.hero.subtitle}
             </motion.p>
           </motion.div>
         </div>
@@ -110,9 +113,9 @@ export default function Team() {
           viewport={{ once: true }}
           variants={fadeInUp}
         >
-          <span className="text-secondary font-bold tracking-widest uppercase text-[10px]">Governance</span>
-          <h3 className="text-3xl sm:text-4xl font-bold text-primary mt-2">Core Committee</h3>
-          <p className="text-on-surface-variant text-xs sm:text-sm mt-4 max-w-2xl mx-auto">The dedicated individuals guiding Maitri's mission and strategic decisions.</p>
+          <span className="text-secondary font-bold tracking-widest uppercase text-[10px]">{t.core.eyebrow}</span>
+          <h3 className="text-3xl sm:text-4xl font-bold text-primary mt-2">{t.core.title}</h3>
+          <p className="text-on-surface-variant text-xs sm:text-sm mt-4 max-w-2xl mx-auto">{t.core.subtitle}</p>
         </motion.div>
 
         <motion.div
@@ -141,7 +144,7 @@ export default function Team() {
             </div>
             <div className="p-6 text-center">
               <h4 className="text-xl font-bold text-primary mb-1 leading-tight">Siddhesh Nikam</h4>
-              <p className="text-secondary font-bold text-[10px] uppercase tracking-widest">President</p>
+              <p className="text-secondary font-bold text-[10px] uppercase tracking-widest">{t.roles.president}</p>
             </div>
           </motion.div>
 
@@ -164,7 +167,7 @@ export default function Team() {
             </div>
             <div className="p-6 text-center">
               <h4 className="text-xl font-bold text-primary mb-1 leading-tight">Shivam Mhetre</h4>
-              <p className="text-secondary font-bold text-[10px] uppercase tracking-widest">Vice President</p>
+              <p className="text-secondary font-bold text-[10px] uppercase tracking-widest">{t.roles.vicePresident}</p>
             </div>
           </motion.div>
 
@@ -187,7 +190,7 @@ export default function Team() {
             </div>
             <div className="p-6 text-center">
               <h4 className="text-xl font-bold text-primary mb-1 leading-tight">Pratik Sitapure</h4>
-              <p className="text-secondary font-bold text-[10px] uppercase tracking-widest">Secretary</p>
+              <p className="text-secondary font-bold text-[10px] uppercase tracking-widest">{t.roles.secretary}</p>
             </div>
           </motion.div>
 
@@ -210,7 +213,7 @@ export default function Team() {
             </div>
             <div className="p-6 text-center">
               <h4 className="text-xl font-bold text-primary mb-1 leading-tight">Awanti Gaikwad</h4>
-              <p className="text-secondary font-bold text-[10px] uppercase tracking-widest">Joint Secretary</p>
+              <p className="text-secondary font-bold text-[10px] uppercase tracking-widest">{t.roles.jointSecretary}</p>
             </div>
           </motion.div>
 
@@ -233,7 +236,7 @@ export default function Team() {
             </div>
             <div className="p-6 text-center">
               <h4 className="text-xl font-bold text-primary mb-1 leading-tight">Jayesh Pachange</h4>
-              <p className="text-secondary font-bold text-[10px] uppercase tracking-widest">Treasurer</p>
+              <p className="text-secondary font-bold text-[10px] uppercase tracking-widest">{t.roles.treasurer}</p>
             </div>
           </motion.div>
 
@@ -255,7 +258,7 @@ export default function Team() {
             </div>
             <div className="p-6 text-center">
               <h4 className="text-xl font-bold text-primary mb-1 leading-tight">Niraj Sharma</h4>
-              <p className="text-secondary font-bold text-[10px] uppercase tracking-widest">Director (Event Management)</p>
+              <p className="text-secondary font-bold text-[10px] uppercase tracking-widest">{t.roles.directorEvents}</p>
             </div>
           </motion.div>
 
@@ -277,7 +280,7 @@ export default function Team() {
             </div>
             <div className="p-6 text-center">
               <h4 className="text-xl font-bold text-primary mb-1 leading-tight">Pranav Pawar</h4>
-              <p className="text-secondary font-bold text-[10px] uppercase tracking-widest">Director (Social Media)</p>
+              <p className="text-secondary font-bold text-[10px] uppercase tracking-widest">{t.roles.directorSocial}</p>
             </div>
           </motion.div>
 
@@ -300,7 +303,7 @@ export default function Team() {
             </div>
             <div className="p-6 text-center">
               <h4 className="text-xl font-bold text-primary mb-1 leading-tight">Divya</h4>
-              <p className="text-secondary font-bold text-[10px] uppercase tracking-widest">Director (Kaushalya)</p>
+              <p className="text-secondary font-bold text-[10px] uppercase tracking-widest">{t.roles.directorKaushalya}</p>
             </div>
           </motion.div>
 
@@ -323,7 +326,7 @@ export default function Team() {
             <div className="p-6 text-center">
               <h4 className="text-xl font-bold text-primary mb-1 leading-tight">Sanika Phadtare</h4>
               <p className="text-secondary font-bold text-[10px] uppercase tracking-widest leading-relaxed">
-                Joint Director (Kaushalya),<br />Team Leader (Promotion & Marketing)
+                {t.roles.jointDirectorKaushalya}<br />{t.roles.teamLeaderPromotion}
               </p>
             </div>
           </motion.div>
@@ -346,7 +349,7 @@ export default function Team() {
             </div>
             <div className="p-6 text-center">
               <h4 className="text-xl font-bold text-primary mb-1">Siddhi Kadam</h4>
-              <p className="text-secondary font-bold text-[10px] uppercase tracking-widest">Executive Representative</p>
+              <p className="text-secondary font-bold text-[10px] uppercase tracking-widest">{t.roles.executiveRep}</p>
             </div>
           </motion.div>
 
@@ -369,7 +372,7 @@ export default function Team() {
             </div>
             <div className="p-6 text-center">
               <h4 className="text-xl font-bold text-primary mb-1 leading-tight">Pranjal Khalate</h4>
-              <p className="text-secondary font-bold text-[10px] uppercase tracking-widest">Committee Member</p>
+              <p className="text-secondary font-bold text-[10px] uppercase tracking-widest">{t.roles.committeeMember}</p>
             </div>
           </motion.div>
 
@@ -392,7 +395,7 @@ export default function Team() {
             </div>
             <div className="p-6 text-center">
               <h4 className="text-xl font-bold text-primary mb-1 leading-tight">Piyush Kadam</h4>
-              <p className="text-secondary font-bold text-[10px] uppercase tracking-widest">Committee Member</p>
+              <p className="text-secondary font-bold text-[10px] uppercase tracking-widest">{t.roles.committeeMember}</p>
             </div>
           </motion.div>
 
@@ -415,7 +418,7 @@ export default function Team() {
             </div>
             <div className="p-6 text-center">
               <h4 className="text-xl font-bold text-primary mb-1 leading-tight">Reema Kalbhor</h4>
-              <p className="text-secondary font-bold text-[10px] uppercase tracking-widest">Committee Member</p>
+              <p className="text-secondary font-bold text-[10px] uppercase tracking-widest">{t.roles.committeeMember}</p>
             </div>
           </motion.div>
 
@@ -438,7 +441,7 @@ export default function Team() {
             </div>
             <div className="p-6 text-center">
               <h4 className="text-xl font-bold text-primary mb-1 leading-tight">Ankita Aware</h4>
-              <p className="text-secondary font-bold text-[10px] uppercase tracking-widest">Committee Member (Report Writing)</p>
+              <p className="text-secondary font-bold text-[10px] uppercase tracking-widest">{t.roles.committeeMemberReport}</p>
             </div>
           </motion.div>
 
@@ -461,7 +464,7 @@ export default function Team() {
             </div>
             <div className="p-6 text-center">
               <h4 className="text-xl font-bold text-primary mb-1 leading-tight">Mayur Sutar</h4>
-              <p className="text-secondary font-bold text-[10px] uppercase tracking-widest">Committee Member</p>
+              <p className="text-secondary font-bold text-[10px] uppercase tracking-widest">{t.roles.committeeMember}</p>
             </div>
           </motion.div>
         </motion.div>
@@ -478,8 +481,8 @@ export default function Team() {
               viewport={{ once: true }}
               variants={fadeInLeft}
             >
-              <span className="text-secondary font-bold tracking-widest uppercase text-[10px] sm:text-xs">Excellence in Service</span>
-              <h3 className="text-3xl sm:text-4xl font-bold text-primary mt-2">Best Volunteer Award</h3>
+              <span className="text-secondary font-bold tracking-widest uppercase text-[10px] sm:text-xs">{t.awards.eyebrow}</span>
+              <h3 className="text-3xl sm:text-4xl font-bold text-primary mt-2">{t.awards.title}</h3>
             </motion.div>
             <motion.p
               className="text-on-surface-variant max-w-md text-sm leading-relaxed"
@@ -488,7 +491,7 @@ export default function Team() {
               viewport={{ once: true }}
               variants={fadeInRight}
             >
-              Honoring the dedicated individuals who have gone above and beyond to serve the community through the Maitri Welfare Foundation.
+              {t.awards.subtitle}
             </motion.p>
           </div>
 
@@ -553,15 +556,15 @@ export default function Team() {
                       whileInView={{ y: 0, opacity: 1 }}
                       transition={{ delay: 0.2 }}
                     >
-                      <span className="text-secondary-container font-bold text-xs uppercase tracking-widest">Maitrian of the Year</span>
+                      <span className="text-secondary-container font-bold text-xs uppercase tracking-widest">{t.awards.maitrianOfYear}</span>
                       <h4 className="text-2xl font-bold mt-1 leading-tight">{award.name}</h4>
                     </motion.div>
                   </div>
                 </div>
 
                 <div className="p-8">
-                  <h5 className="text-primary font-bold text-lg mb-2">Awarded Year: {award.year}</h5>
-                  <p className="text-on-surface-variant text-sm leading-relaxed">{award.desc}</p>
+                  <h5 className="text-primary font-bold text-lg mb-2">{t.awards.awardedYear} {award.year}</h5>
+                  <p className="text-on-surface-variant text-sm leading-relaxed">{t.awards.descs[idx] ?? award.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -579,8 +582,8 @@ export default function Team() {
               viewport={{ once: true }}
               variants={fadeInLeft}
             >
-              <span className="text-secondary font-bold tracking-widest uppercase text-[10px] sm:text-xs">Collective Impact</span>
-              <h3 className="text-3xl sm:text-4xl font-bold text-primary mt-2">Voices of Maitri</h3>
+              <span className="text-secondary font-bold tracking-widest uppercase text-[10px] sm:text-xs">{t.voices.eyebrow}</span>
+              <h3 className="text-3xl sm:text-4xl font-bold text-primary mt-2">{t.voices.title}</h3>
             </motion.div>
             <motion.p
               className="text-on-surface-variant max-w-md text-sm leading-relaxed"
@@ -589,7 +592,7 @@ export default function Team() {
               viewport={{ once: true }}
               variants={fadeInRight}
             >
-              Recognizing outstanding teamwork, exceptional outreach, and collective department excellence driving our mission forward.
+              {t.voices.subtitle}
             </motion.p>
           </div>
 
@@ -620,7 +623,7 @@ export default function Team() {
                 <motion.img
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   src={awardSocialMedia}
-                  alt="Social Media Team"
+                  alt={t.voices.teamName}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent dark:from-ink/90 dark:via-ink/30 opacity-60 group-hover:opacity-80 transition-opacity"></div>
 
@@ -630,16 +633,16 @@ export default function Team() {
                     whileInView={{ y: 0, opacity: 1 }}
                     transition={{ delay: 0.2 }}
                   >
-                    <span className="text-secondary-container font-bold text-xs uppercase tracking-widest">Department Excellence</span>
-                    <h4 className="text-2xl font-bold mt-1 leading-tight">Social Media Team</h4>
+                    <span className="text-secondary-container font-bold text-xs uppercase tracking-widest">{t.voices.badge}</span>
+                    <h4 className="text-2xl font-bold mt-1 leading-tight">{t.voices.teamName}</h4>
                   </motion.div>
                 </div>
               </div>
 
               <div className="p-8">
-                <h5 className="text-primary font-bold text-lg mb-2">Awarded Year: 2025</h5>
+                <h5 className="text-primary font-bold text-lg mb-2">{t.awards.awardedYear} 2025</h5>
                 <p className="text-on-surface-variant text-sm leading-relaxed">
-                  Honored for brilliant digital storytelling, exceptional brand promotion, and expanding Maitri's digital footprint across the nation.
+                  {t.voices.desc}
                 </p>
               </div>
             </motion.div>
@@ -655,8 +658,8 @@ export default function Team() {
           viewport={{ once: true }}
           variants={containerVariants}
         >
-          <motion.span variants={fadeInUp} className="text-secondary font-bold tracking-widest uppercase text-xs">Governance</motion.span>
-          <motion.h3 variants={fadeInUp} className="text-4xl font-bold text-primary mt-2 mb-12">The Steering Committee</motion.h3>
+          <motion.span variants={fadeInUp} className="text-secondary font-bold tracking-widest uppercase text-xs">{t.steering.eyebrow}</motion.span>
+          <motion.h3 variants={fadeInUp} className="text-4xl font-bold text-primary mt-2 mb-12">{t.steering.title}</motion.h3>
         </motion.div>
         <motion.div
           className="grid grid-cols-1 md:grid-cols-3 gap-12"
@@ -680,8 +683,8 @@ export default function Team() {
               >
                 <Award className="w-8 h-8" />
               </motion.div>
-              <h6 className="text-lg font-bold text-primary mb-2">{title}</h6>
-              <p className="text-sm text-on-surface-variant leading-relaxed">Strategic oversight and guidance ensuring the foundation's long-term sustainability.</p>
+              <h6 className="text-lg font-bold text-primary mb-2">{t.steering.items[idx] ?? title}</h6>
+              <p className="text-sm text-on-surface-variant leading-relaxed">{t.steering.desc}</p>
             </motion.div>
           ))}
         </motion.div>

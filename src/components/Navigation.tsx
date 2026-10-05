@@ -6,14 +6,19 @@ import { motion, AnimatePresence } from 'motion/react';
 import logo from '../assets/logo.webp';
 import { useTheme } from '../hooks/useTheme';
 import { handleContactEmail } from '../utils/contactAction';
+import { useT } from '../i18n/LanguageContext';
+import { common } from '../i18n/common';
+import LanguageSwitcher from './LanguageSwitcher';
 
 function ThemeToggle({ theme, toggleTheme }: { theme: 'light' | 'dark'; toggleTheme: () => void }) {
   const isDark = theme === 'dark';
+  const t = useT(common);
   return (
     <button
       type="button"
       onClick={toggleTheme}
-      aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+      aria-label={isDark ? t.toLight : t.toDark}
+      title={isDark ? t.toLight : t.toDark}
       className="relative w-10 h-10 rounded-full flex items-center justify-center text-on-surface hover:bg-surface-container transition-colors cursor-pointer overflow-hidden"
     >
       <AnimatePresence mode="wait" initial={false}>
@@ -33,22 +38,23 @@ function ThemeToggle({ theme, toggleTheme }: { theme: 'light' | 'dark'; toggleTh
 }
 
 const navLinks = [
-  { name: 'Home', path: '/' },
-  { name: 'About', path: '/about' },
-  { name: 'Our Team', path: '/team' },
-  { name: 'Awards', path: '/awards' },
-  { name: 'Events', path: '/events' },
-  { name: 'Support', path: '/support' },
-  { name: 'Volunteer', path: '/volunteer' },
-  { name: 'Kaushalya', path: '/kaushalya' },
-  { name: 'Media', path: '/media' },
-];
+  { key: 'home', path: '/' },
+  { key: 'about', path: '/about' },
+  { key: 'team', path: '/team' },
+  { key: 'awards', path: '/awards' },
+  { key: 'events', path: '/events' },
+  { key: 'support', path: '/support' },
+  { key: 'volunteer', path: '/volunteer' },
+  { key: 'kaushalya', path: '/kaushalya' },
+  { key: 'media', path: '/media' },
+] as const;
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const { theme, toggleTheme } = useTheme();
+  const t = useT(common);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -80,19 +86,19 @@ export function Navbar() {
       >
         <Link to="/" onClick={() => setIsOpen(false)} className="flex items-center gap-2.5 shrink-0 rounded-full pr-2">
           <span className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-surface-container-lowest ring-1 ring-outline-variant flex items-center justify-center shrink-0">
-            <img src={logo} alt="Maitri Welfare Foundation logo" className="w-8 h-8 sm:w-9 sm:h-9 object-contain" />
+            <img src={logo} alt={t.logoAlt} className="w-8 h-8 sm:w-9 sm:h-9 object-contain" />
           </span>
-          <span className="flex flex-col leading-none">
-            <span className="font-display text-sm min-[400px]:text-base sm:text-lg font-semibold text-on-surface tracking-tight whitespace-nowrap">
-              Maitri Welfare Foundation
+          <span className="flex flex-col">
+            <span className="font-display text-sm min-[400px]:text-base sm:text-lg font-semibold text-on-surface tracking-tight whitespace-nowrap leading-tight">
+              {t.brand}
             </span>
-            <span className="text-[10px] sm:text-[11px] text-secondary font-bold mt-1 whitespace-nowrap">
+            <span className="text-[10px] sm:text-[11px] text-secondary font-bold whitespace-nowrap leading-normal">
               "एक हात मैत्रीचा"
             </span>
           </span>
         </Link>
 
-        <nav aria-label="Primary" className="hidden min-[1360px]:flex items-center gap-0.5 whitespace-nowrap">
+        <nav aria-label={t.nav.primary} className="hidden min-[1360px]:flex items-center gap-0.5 whitespace-nowrap">
           {navLinks.map((link) => {
             const active = location.pathname === link.path;
             return (
@@ -111,29 +117,31 @@ export function Navbar() {
                     transition={{ type: 'spring', stiffness: 400, damping: 32 }}
                   />
                 )}
-                <span className="relative">{link.name}</span>
+                <span className="relative">{t.nav[link.key]}</span>
               </Link>
             );
           })}
         </nav>
 
         <div className="flex items-center gap-1 sm:gap-1.5 shrink-0">
+          <div className="hidden sm:block"><LanguageSwitcher /></div>
           <div className="hidden sm:block"><ThemeToggle theme={theme} toggleTheme={toggleTheme} /></div>
           <Link
             to="/contact"
             onClick={() => setIsOpen(false)}
             className="hidden 2xl:inline-flex items-center px-4 py-2.5 rounded-full text-sm font-semibold text-on-surface hover:bg-surface-container transition-colors whitespace-nowrap"
           >
-            Contact Us
+            {t.contactUs}
           </Link>
           <Link
             to="/support"
             onClick={() => setIsOpen(false)}
-            aria-label="Donate Now"
+            aria-label={t.donateNow}
+            title={t.donateNow}
             className="group inline-flex items-center justify-center gap-1.5 bg-secondary-container text-on-secondary-container w-10 h-10 min-[440px]:w-auto min-[440px]:h-auto min-[440px]:pl-4 min-[440px]:pr-4 sm:pl-5 min-[440px]:py-2.5 rounded-full text-sm font-bold whitespace-nowrap hover:brightness-105 active:scale-95 transition-all"
           >
             <Heart className="w-4 h-4 fill-current" />
-            <span className="hidden min-[440px]:inline">Donate Now</span>
+            <span className="hidden min-[440px]:inline">{t.donateNow}</span>
           </Link>
           <button
             type="button"
@@ -141,7 +149,8 @@ export function Navbar() {
             onClick={() => setIsOpen(!isOpen)}
             aria-expanded={isOpen}
             aria-controls="mobile-menu"
-            aria-label={isOpen ? 'Close menu' : 'Open menu'}
+            aria-label={isOpen ? t.closeMenu : t.openMenu}
+            title={isOpen ? t.closeMenu : t.openMenu}
           >
             {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
@@ -158,7 +167,7 @@ export function Navbar() {
             transition={{ duration: 0.22, ease: 'easeOut' }}
             className="min-[1360px]:hidden max-w-[1400px] mx-auto mt-2 rounded-3xl border border-outline-variant bg-surface/95 backdrop-blur-xl shadow-card-hover overflow-hidden"
           >
-            <nav aria-label="Mobile" className="p-3 sm:p-4">
+            <nav aria-label={t.nav.mobile} className="p-3 sm:p-4">
               <ul className="grid grid-cols-2 sm:grid-cols-3 gap-1.5">
                 {navLinks.map((link, idx) => {
                   const active = location.pathname === link.path;
@@ -177,14 +186,18 @@ export function Navbar() {
                           active ? 'bg-primary text-on-primary' : 'text-on-surface hover:bg-surface-container'
                         }`}
                       >
-                        {link.name}
+                        {t.nav[link.key]}
                       </Link>
                     </motion.li>
                   );
                 })}
               </ul>
+              <div className="sm:hidden flex flex-wrap items-center justify-between gap-2 mt-3 pt-3 px-2 border-t border-outline-variant">
+                <span className="text-sm font-semibold text-on-surface-variant">{t.language}</span>
+                <LanguageSwitcher variant="inline" />
+              </div>
               <div className="sm:hidden flex items-center justify-between mt-3 pt-3 px-2 border-t border-outline-variant">
-                <span className="text-sm font-semibold text-on-surface-variant">Appearance</span>
+                <span className="text-sm font-semibold text-on-surface-variant">{t.appearance}</span>
                 <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
               </div>
               <div className="grid grid-cols-2 gap-2 mt-3 pt-3 border-t border-outline-variant">
@@ -193,14 +206,14 @@ export function Navbar() {
                   onClick={() => setIsOpen(false)}
                   className="text-center py-3.5 rounded-2xl font-bold border border-outline-variant text-on-surface hover:bg-surface-container transition-colors"
                 >
-                  Contact Us
+                  {t.contactUs}
                 </Link>
                 <Link
                   to="/support"
                   onClick={() => setIsOpen(false)}
                   className="text-center py-3.5 rounded-2xl font-bold bg-primary text-on-primary hover:opacity-90 transition-opacity"
                 >
-                  Donate Now
+                  {t.donateNow}
                 </Link>
               </div>
             </nav>
@@ -213,6 +226,7 @@ export function Navbar() {
 
 export function Footer() {
   const [modalType, setModalType] = useState<'privacy' | 'terms' | null>(null);
+  const t = useT(common);
 
   useEffect(() => {
     if (!modalType) return;
@@ -228,39 +242,20 @@ export function Footer() {
     };
   }, [modalType]);
 
-  const policyContent = {
-    privacy: {
-      title: "Privacy Policy",
-      content: [
-        "Maitri Welfare Foundation is committed to protecting your personal information. We collect data such as name, email, and phone number only for volunteering, event proposals, and donation receipts.",
-        "Your data is stored securely and never shared with third-party commercial entities. We use this information solely to communicate our impact and coordinate our social welfare programs.",
-        "All financial transactions are handled through secure channels, and we maintain 100% transparency in our fund utilization as a registered NGO (PUNE/0000407/2023).",
-        "Our website uses standard security measures, including mathematical CAPTCHAs, to prevent automated spam and protect user submissions."
-      ]
-    },
-    terms: {
-      title: "Terms of Service",
-      content: [
-        "By using this website, you agree to support the mission and values of Maitri Welfare Foundation. All content, logos, and assets are property of the foundation and may not be used without prior written consent.",
-        "Donations made through this portal are voluntary and non-refundable, as they are immediately allocated to ongoing social welfare projects including food distribution and healthcare camps.",
-        "Volunteers must adhere to our code of conduct, ensuring compassionate professionalism and respect for all community members during on-ground initiatives.",
-        "Any misuse of our official communication channels or submission of false information through our forms may lead to suspension of volunteer status or legal action where applicable."
-      ]
-    }
-  };
+  const policyContent = t.policy;
 
   const orgLinks = [
-    { name: 'About Us', path: '/about' },
-    { name: 'Our Team', path: '/team' },
-    { name: 'Awards', path: '/awards' },
-    { name: 'Media', path: '/media' }
+    { name: t.footer.aboutUs, path: '/about' },
+    { name: t.nav.team, path: '/team' },
+    { name: t.nav.awards, path: '/awards' },
+    { name: t.nav.media, path: '/media' }
   ];
   const engageLinks = [
-    { name: 'Kaushalya', path: '/kaushalya' },
-    { name: 'Volunteer', path: '/volunteer' },
-    { name: 'Events', path: '/events' },
-    { name: 'Contact Us', path: '/contact' },
-    { name: 'Donate', path: '/support' }
+    { name: t.nav.kaushalya, path: '/kaushalya' },
+    { name: t.nav.volunteer, path: '/volunteer' },
+    { name: t.nav.events, path: '/events' },
+    { name: t.contactUs, path: '/contact' },
+    { name: t.donate, path: '/support' }
   ];
 
   const socialClass =
@@ -271,20 +266,20 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-5 sm:px-8 pt-16 sm:pt-20">
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 pb-12 border-b border-on-ink/10">
           <h2 className="font-display text-3xl sm:text-5xl font-medium leading-[1.05] max-w-2xl">
-            Compassionate Professionalism in <em className="text-secondary-container italic">Social Change.</em>
+            {t.footer.tagline1} <em className="text-secondary-container italic">{t.footer.tagline2}</em>
           </h2>
           <div className="flex flex-wrap gap-3">
             <Link
               to="/volunteer"
               className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-on-ink/20 font-semibold hover:bg-on-ink/10 transition-colors"
             >
-              Volunteer <ArrowUpRight className="w-4 h-4" />
+              {t.footer.volunteer} <ArrowUpRight className="w-4 h-4" />
             </Link>
             <Link
               to="/support"
               className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-secondary-container text-on-secondary-container font-bold hover:brightness-105 transition-all"
             >
-              <Heart className="w-4 h-4 fill-current" /> Donate
+              <Heart className="w-4 h-4 fill-current" /> {t.donate}
             </Link>
           </div>
         </div>
@@ -293,23 +288,22 @@ export function Footer() {
           <div className="col-span-2 md:col-span-5">
             <div className="flex items-center gap-3 mb-5">
               <span className="w-12 h-12 rounded-full bg-on-ink flex items-center justify-center shrink-0">
-                <img src={logo} alt="Maitri Welfare Foundation logo" className="w-9 h-9 object-contain" />
+                <img src={logo} alt={t.logoAlt} className="w-9 h-9 object-contain" />
               </span>
               <div>
-                <p className="font-display text-xl font-semibold leading-tight">Maitri Welfare Foundation</p>
+                <p className="font-display text-xl font-semibold leading-tight">{t.brand}</p>
                 <p className="text-xs text-secondary-container font-bold tracking-wide mt-1">
-                  "एक हात मैत्रीचा" • One Hand of Friendship
+                  {t.footer.motto}
                 </p>
               </div>
             </div>
             <p className="text-sm text-on-ink/65 leading-relaxed max-w-sm">
-              Empowering communities through transparent and professional social welfare programs.
-              Registered NGO F-0062418(PUN).
+              {t.footer.blurb}
             </p>
             <ul className="mt-6 space-y-3 text-sm">
               <li className="flex items-start gap-3 text-on-ink/85">
                 <MapPin className="w-4 h-4 mt-0.5 text-secondary-container shrink-0" />
-                <span><span className="sr-only">Address: </span>Katraj, Pune - 411046, Maharashtra, India</span>
+                <span><span className="sr-only">{t.footer.addressLabel}</span>{t.footer.address}</span>
               </li>
               <li>
                 <a
@@ -317,7 +311,7 @@ export function Footer() {
                   className="flex items-start gap-3 text-on-ink/85 hover:text-secondary-container transition-colors cursor-pointer group"
                 >
                   <Phone className="w-4 h-4 mt-0.5 text-secondary-container shrink-0 group-hover:scale-110 transition-transform" />
-                  <span><span className="sr-only">Contact: </span>+91 7447434373</span>
+                  <span><span className="sr-only">{t.footer.contactLabel}</span>+91 7447434373</span>
                 </a>
               </li>
               <li>
@@ -325,17 +319,17 @@ export function Footer() {
                   href="mailto:support@maitriwelfarefoundation.org"
                   onClick={handleContactEmail}
                   className="flex items-start gap-3 text-on-ink/85 hover:text-secondary-container transition-colors cursor-pointer group"
-                  title="Send email or copy address"
+                  title={t.footer.emailTitle}
                 >
                   <Mail className="w-4 h-4 mt-0.5 text-secondary-container shrink-0 group-hover:scale-110 transition-transform" />
-                  <span className="break-all"><span className="sr-only">Email: </span>support@maitriwelfarefoundation.org</span>
+                  <span className="break-all"><span className="sr-only">{t.footer.emailLabel}</span>support@maitriwelfarefoundation.org</span>
                 </a>
               </li>
             </ul>
           </div>
 
           <div className="md:col-span-2">
-            <h3 className="font-sans text-xs font-bold uppercase tracking-[0.18em] text-on-ink/60 mb-5">Organization</h3>
+            <h3 className="font-sans text-xs font-bold uppercase tracking-[0.18em] text-on-ink/60 mb-5">{t.footer.organization}</h3>
             <ul className="space-y-3">
               {orgLinks.map((link) => (
                 <li key={link.path}>
@@ -345,7 +339,7 @@ export function Footer() {
             </ul>
           </div>
           <div className="md:col-span-2">
-            <h3 className="font-sans text-xs font-bold uppercase tracking-[0.18em] text-on-ink/60 mb-5">Engage</h3>
+            <h3 className="font-sans text-xs font-bold uppercase tracking-[0.18em] text-on-ink/60 mb-5">{t.footer.engage}</h3>
             <ul className="space-y-3">
               {engageLinks.map((link) => (
                 <li key={link.path}>
@@ -355,15 +349,15 @@ export function Footer() {
             </ul>
           </div>
           <div className="col-span-2 md:col-span-3">
-            <h3 className="font-sans text-xs font-bold uppercase tracking-[0.18em] text-on-ink/60 mb-5">Socials</h3>
+            <h3 className="font-sans text-xs font-bold uppercase tracking-[0.18em] text-on-ink/60 mb-5">{t.footer.socials}</h3>
             <div className="flex gap-3">
               <a
                 href="https://chat.whatsapp.com/F46mGxCY15QHB3GE7aAFgR"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={socialClass}
-                title="Join WhatsApp Community"
-                aria-label="Join WhatsApp Community"
+                title={t.footer.whatsapp}
+                aria-label={t.footer.whatsapp}
               >
                 <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.414 2.534 1.196 3.568l-.801 2.923 3.013-.789c.96.657 2.094 1.008 3.361 1.008 3.182 0 5.769-2.586 5.77-5.767 0-3.181-2.587-5.767-5.771-5.767zm3.435 8.163c-.156.438-.918.843-1.28.887-.363.044-.814.11-2.454-.531-1.981-.774-3.254-2.793-3.354-2.926-.1-.133-.8-.106-.8-.106s.013-1.042.825-1.042c.163 0 .356.006.488.025.156.025.363-.062.556.406.206.5.7 1.713.763 1.838.063.125.106.269.025.431-.081.163-.125.263-.25.406-.125.144-.263.306-.375.406-.125.112-.263.238-.112.5.15.263.669 1.113 1.438 1.8 1.011.895 1.82 1.18 2.08 1.306.26.126.413.106.568-.069.155-.175.669-.781.85-1.05.181-.269.363-.225.6-.138.238.088 1.5.706 1.756.831.256.125.425.188.488.294.063.106.063.619-.093 1.057z" />
@@ -375,7 +369,8 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={socialClass}
-                aria-label="Follow us on Instagram"
+                aria-label={t.footer.instagram}
+                title={t.footer.instagram}
               >
                 <Instagram className="w-5 h-5" />
               </a>
@@ -384,7 +379,8 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={socialClass}
-                aria-label="Subscribe to our YouTube channel"
+                aria-label={t.footer.youtube}
+                title={t.footer.youtube}
               >
                 <Youtube className="w-5 h-5" />
               </a>
@@ -396,7 +392,7 @@ export function Footer() {
       <div className="border-t border-on-ink/10">
         <div className="max-w-7xl mx-auto px-5 sm:px-8 py-6 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-xs text-on-ink/55 text-center md:text-left">
-            © 2026 Maitri Welfare Foundation. Compassionate Professionalism in Social Change.
+            {t.footer.copyright}
           </p>
           <div className="flex gap-2">
             <button
@@ -404,14 +400,14 @@ export function Footer() {
               onClick={() => setModalType('privacy')}
               className="px-3 py-1.5 rounded-full text-xs font-semibold text-on-ink/60 hover:text-on-ink hover:bg-on-ink/10 transition-colors cursor-pointer"
             >
-              Privacy
+              {t.footer.privacy}
             </button>
             <button
               type="button"
               onClick={() => setModalType('terms')}
               className="px-3 py-1.5 rounded-full text-xs font-semibold text-on-ink/60 hover:text-on-ink hover:bg-on-ink/10 transition-colors cursor-pointer"
             >
-              Terms
+              {t.footer.terms}
             </button>
           </div>
         </div>
@@ -427,7 +423,7 @@ export function Footer() {
                 exit={{ opacity: 0 }}
                 onClick={() => setModalType(null)}
                 className="absolute inset-0 cursor-pointer"
-                aria-label="Close modal backdrop"
+                aria-label={t.footer.closeBackdrop}
               />
               <motion.div
                 role="dialog"
@@ -442,7 +438,8 @@ export function Footer() {
                 <button
                   type="button"
                   onClick={() => setModalType(null)}
-                  aria-label="Close"
+                  aria-label={t.footer.close}
+                  title={t.footer.close}
                   className="absolute top-4 right-4 sm:top-5 sm:right-5 w-9 h-9 flex items-center justify-center hover:bg-surface-container rounded-full transition-colors cursor-pointer border border-outline-variant/30 dark:border-outline-variant/20"
                 >
                   <X className="w-5 h-5 text-on-surface-variant" />
@@ -462,7 +459,7 @@ export function Footer() {
                   onClick={() => setModalType(null)}
                   className="w-full mt-8 bg-primary text-on-primary py-3.5 rounded-full font-bold hover:opacity-90 active:scale-98 transition-all cursor-pointer shadow-md"
                 >
-                  Close
+                  {t.footer.close}
                 </button>
               </motion.div>
             </div>

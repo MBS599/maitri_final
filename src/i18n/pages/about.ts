@@ -1,0 +1,126 @@
+import type { Dict } from '../LanguageContext';
+
+const en = {
+  heroAlt: 'Maitri Welfare Foundation social work background',
+  heroTitle: 'About Us: Our Mission & Journey',
+  heroText: 'Maitri Welfare Foundation is dedicated to empowering communities through transparent, professional, and compassionate social welfare programs. We believe in creating sustainable change that lasts generations.',
+  missionTitle: 'Our Mission',
+  missionText: 'To alleviate poverty, provide quality education, and offer essential healthcare services to the most vulnerable sections of society. We strive to create an ecosystem of equal opportunities where every individual has the resources they need to thrive and contribute to a better world.',
+  visionTitle: 'Our Vision',
+  visionText: 'A world where compassion and systemic support eradicate inequality. We envision empowered communities that are self-reliant, educated, and healthy, paving the way for a brighter, more equitable future for all generations to come.',
+  journeyTitle: 'Our Journey',
+  ch1: {
+    eyebrow: 'How it all began',
+    title: 'A Vision Shared by Five Friends',
+    text: 'Maitri Welfare Foundation started as a small seed of an idea shared among five close friends. Driven by a mutual desire to give back to society, they began their journey with simple social awareness programs, educating local communities about their rights and environmental responsibilities.',
+    tag: 'The Foundation of Friendship',
+    alt: 'Maitri Welfare Foundation founders and early team members',
+  },
+  ch2: {
+    eyebrow: 'Next Chapter',
+    title: 'Expanding Our Reach',
+    text: 'As the group witnessed the profound impact of their awareness drives, they realized the need for more direct action. The foundation soon expanded its horizons into critical areas such as food donation, healthcare support, and sustainable development, touching thousands of lives every year.',
+    tag: 'Direct Impact on the Ground',
+    alt: 'Maitri Welfare Foundation food donation drive for the needy',
+  },
+  ch3: {
+    eyebrow: 'Our Team Today',
+    title: 'A Growing Community of Scholars',
+    text: 'What began with five friends has now blossomed into a massive network of over 100+ dedicated individuals. Our team is uniquely powered by a vibrant community of scholars, bachelors, and young professionals who bring fresh energy, academic excellence, and a modern approach to social service.',
+    tag: 'Driven by Youth & Intelligence',
+    alt: 'Maitri Welfare Foundation Team',
+  },
+  valuesTitle: 'Our Core Values',
+  valuesText: 'The principles that guide every decision we make and every project we undertake.',
+  values: [
+    { title: 'Transparency', desc: 'We maintain 100% financial and operational transparency with our donors and beneficiaries.' },
+    { title: 'Compassion', desc: 'Empathy drives our initiatives. We listen, understand, and act with genuine care.' },
+    { title: 'Sustainability', desc: 'Our solutions are designed to be long-lasting and environmentally conscious.' },
+  ],
+  impactTitle: "The Impact We've Made",
+  stats: ['Lives Impacted', 'Projects Done', 'Cities Reached', 'Volunteers'],
+};
+
+const hi: typeof en = {
+  heroAlt: 'मैत्री वेलफेयर फाउंडेशन के सामाजिक कार्य की पृष्ठभूमि',
+  heroTitle: 'हमारे बारे में: हमारा मिशन और सफ़र',
+  heroText: 'मैत्री वेलफेयर फाउंडेशन पारदर्शी, पेशेवर और संवेदनशील समाज कल्याण कार्यक्रमों के माध्यम से समुदायों को सशक्त बनाने के लिए समर्पित है। हम ऐसे स्थायी बदलाव में विश्वास रखते हैं जो पीढ़ियों तक कायम रहे।',
+  missionTitle: 'हमारा मिशन',
+  missionText: 'गरीबी कम करना, गुणवत्तापूर्ण शिक्षा देना और समाज के सबसे कमज़ोर वर्गों तक ज़रूरी स्वास्थ्य सेवाएँ पहुँचाना। हम समान अवसरों का ऐसा माहौल बनाने का प्रयास करते हैं जहाँ हर व्यक्ति के पास आगे बढ़ने और एक बेहतर दुनिया में योगदान देने के लिए आवश्यक संसाधन हों।',
+  visionTitle: 'हमारी दृष्टि',
+  visionText: 'एक ऐसी दुनिया जहाँ करुणा और व्यवस्थित सहयोग असमानता को मिटा दें। हम आत्मनिर्भर, शिक्षित और स्वस्थ सशक्त समुदायों की कल्पना करते हैं, जो आने वाली सभी पीढ़ियों के लिए उज्ज्वल और अधिक न्यायपूर्ण भविष्य का मार्ग प्रशस्त करें।',
+  journeyTitle: 'हमारा सफ़र',
+  ch1: {
+    eyebrow: 'शुरुआत कैसे हुई',
+    title: 'पाँच दोस्तों का एक साझा सपना',
+    text: 'मैत्री वेलफेयर फाउंडेशन की शुरुआत पाँच करीबी दोस्तों के बीच साझा किए गए एक छोटे से विचार के बीज से हुई। समाज को कुछ लौटाने की साझा इच्छा से प्रेरित होकर उन्होंने सरल सामाजिक जागरूकता कार्यक्रमों से अपना सफ़र शुरू किया और स्थानीय समुदायों को उनके अधिकारों व पर्यावरण के प्रति ज़िम्मेदारियों के बारे में जागरूक किया।',
+    tag: 'दोस्ती की नींव',
+    alt: 'मैत्री वेलफेयर फाउंडेशन के संस्थापक और शुरुआती टीम सदस्य',
+  },
+  ch2: {
+    eyebrow: 'अगला अध्याय',
+    title: 'अपनी पहुँच का विस्तार',
+    text: 'जागरूकता अभियानों का गहरा असर देखकर टीम ने महसूस किया कि अब सीधे ज़मीनी काम की ज़रूरत है। जल्द ही फाउंडेशन ने अन्न दान, स्वास्थ्य सहायता और सतत विकास जैसे अहम क्षेत्रों में कदम रखा, और हर साल हज़ारों जीवन को छुआ।',
+    tag: 'ज़मीनी स्तर पर सीधा प्रभाव',
+    alt: 'ज़रूरतमंदों के लिए मैत्री वेलफेयर फाउंडेशन का अन्न दान अभियान',
+  },
+  ch3: {
+    eyebrow: 'आज हमारी टीम',
+    title: 'विद्वानों का बढ़ता हुआ समुदाय',
+    text: 'पाँच दोस्तों से शुरू हुआ यह प्रयास आज 100 से अधिक समर्पित लोगों के विशाल नेटवर्क में बदल चुका है। हमारी टीम की असली ताक़त विद्यार्थियों, स्नातकों और युवा पेशेवरों का जीवंत समुदाय है, जो समाज सेवा में नई ऊर्जा, शैक्षणिक उत्कृष्टता और आधुनिक दृष्टिकोण लेकर आते हैं।',
+    tag: 'युवा शक्ति और बुद्धिमत्ता से प्रेरित',
+    alt: 'मैत्री वेलफेयर फाउंडेशन की टीम',
+  },
+  valuesTitle: 'हमारे मूल मूल्य',
+  valuesText: 'वे सिद्धांत जो हमारे हर निर्णय और हर परियोजना का मार्गदर्शन करते हैं।',
+  values: [
+    { title: 'पारदर्शिता', desc: 'हम अपने दानदाताओं और लाभार्थियों के साथ 100% वित्तीय और परिचालन पारदर्शिता बनाए रखते हैं।' },
+    { title: 'करुणा', desc: 'सहानुभूति हमारी हर पहल की प्रेरणा है। हम सुनते हैं, समझते हैं और सच्ची परवाह के साथ काम करते हैं।' },
+    { title: 'स्थिरता', desc: 'हमारे समाधान लंबे समय तक टिकने वाले और पर्यावरण के प्रति सजग होने के लिए बनाए जाते हैं।' },
+  ],
+  impactTitle: 'हमारा अब तक का प्रभाव',
+  stats: ['लाभान्वित जीवन', 'पूर्ण परियोजनाएँ', 'शहरों तक पहुँच', 'स्वयंसेवक'],
+};
+
+const mr: typeof en = {
+  heroAlt: 'मैत्री वेलफेअर फाउंडेशनच्या सामाजिक कार्याची पार्श्वभूमी',
+  heroTitle: 'आमच्याबद्दल: आमचे ध्येय आणि वाटचाल',
+  heroText: 'मैत्री वेलफेअर फाउंडेशन पारदर्शक, व्यावसायिक आणि संवेदनशील समाजकल्याण उपक्रमांद्वारे समाजाला सक्षम करण्यासाठी समर्पित आहे. पिढ्यानपिढ्या टिकणाऱ्या शाश्वत बदलावर आमचा विश्वास आहे.',
+  missionTitle: 'आमचे ध्येय',
+  missionText: 'गरिबी कमी करणे, दर्जेदार शिक्षण देणे आणि समाजातील सर्वात दुर्बल घटकांपर्यंत आवश्यक आरोग्य सेवा पोहोचवणे. प्रत्येक व्यक्तीला प्रगतीसाठी आणि चांगल्या जगाच्या उभारणीत योगदान देण्यासाठी आवश्यक संसाधने मिळतील, अशी समान संधींची व्यवस्था निर्माण करण्याचा आमचा प्रयत्न आहे.',
+  visionTitle: 'आमची दृष्टी',
+  visionText: 'असे जग जिथे करुणा आणि सुसंघटित आधार विषमता दूर करतील. स्वावलंबी, सुशिक्षित आणि निरोगी सक्षम समाजाचे आमचे स्वप्न आहे, जो येणाऱ्या सर्व पिढ्यांसाठी उज्ज्वल आणि अधिक न्याय्य भविष्याचा मार्ग खुला करेल.',
+  journeyTitle: 'आमची वाटचाल',
+  ch1: {
+    eyebrow: 'सुरुवात कशी झाली',
+    title: 'पाच मित्रांचे एक समान स्वप्न',
+    text: 'मैत्री वेलफेअर फाउंडेशनची सुरुवात पाच जवळच्या मित्रांमध्ये रुजलेल्या एका छोट्याशा कल्पनेतून झाली. समाजाचे ऋण फेडण्याच्या समान इच्छेने प्रेरित होऊन त्यांनी साध्या सामाजिक जनजागृती उपक्रमांतून वाटचाल सुरू केली आणि स्थानिक समाजाला त्यांचे हक्क व पर्यावरणाविषयीच्या जबाबदाऱ्यांबद्दल जागरूक केले.',
+    tag: 'मैत्रीचा पाया',
+    alt: 'मैत्री वेलफेअर फाउंडेशनचे संस्थापक आणि सुरुवातीचे सहकारी',
+  },
+  ch2: {
+    eyebrow: 'पुढचा अध्याय',
+    title: 'आमच्या कार्याचा विस्तार',
+    text: 'जनजागृती मोहिमांचा खोल परिणाम पाहून गटाला प्रत्यक्ष कृतीची गरज जाणवली. लवकरच फाउंडेशनने अन्नदान, आरोग्य सहाय्य आणि शाश्वत विकास यांसारख्या महत्त्वाच्या क्षेत्रांत काम सुरू केले आणि दरवर्षी हजारो लोकांच्या आयुष्याला स्पर्श केला.',
+    tag: 'प्रत्यक्ष जमिनीवरचा प्रभाव',
+    alt: 'गरजूंसाठी मैत्री वेलफेअर फाउंडेशनची अन्नदान मोहीम',
+  },
+  ch3: {
+    eyebrow: 'आजची आमची टीम',
+    title: 'विद्वानांचा वाढता परिवार',
+    text: 'पाच मित्रांपासून सुरू झालेले हे कार्य आज 100 हून अधिक समर्पित व्यक्तींच्या मोठ्या नेटवर्कमध्ये बहरले आहे. विद्यार्थी, पदवीधर आणि तरुण व्यावसायिकांचा उत्साही समुदाय हीच आमच्या टीमची खरी ताकद आहे, जो समाजसेवेत नवी ऊर्जा, शैक्षणिक उत्कृष्टता आणि आधुनिक दृष्टिकोन घेऊन येतो.',
+    tag: 'तरुणाई आणि बुद्धिमत्तेची प्रेरणा',
+    alt: 'मैत्री वेलफेअर फाउंडेशनची टीम',
+  },
+  valuesTitle: 'आमची मूलभूत मूल्ये',
+  valuesText: 'आमच्या प्रत्येक निर्णयाला आणि प्रत्येक उपक्रमाला दिशा देणारी तत्त्वे.',
+  values: [
+    { title: 'पारदर्शकता', desc: 'आमचे देणगीदार आणि लाभार्थी यांच्याशी आम्ही 100% आर्थिक आणि कार्यपद्धतीतील पारदर्शकता राखतो.' },
+    { title: 'करुणा', desc: 'सहानुभूती हीच आमच्या उपक्रमांची प्रेरणा आहे. आम्ही ऐकतो, समजून घेतो आणि मनापासून काळजीने कृती करतो.' },
+    { title: 'शाश्वतता', desc: 'आमचे उपाय दीर्घकाळ टिकणारे आणि पर्यावरणपूरक असावेत, अशा पद्धतीने आखले जातात.' },
+  ],
+  impactTitle: 'आम्ही घडवलेला प्रभाव',
+  stats: ['लाभार्थी जीवने', 'पूर्ण प्रकल्प', 'शहरांपर्यंत पोहोच', 'स्वयंसेवक'],
+};
+
+export const aboutDict: Dict<typeof en> = { en, hi, mr };

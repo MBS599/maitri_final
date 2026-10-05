@@ -3,6 +3,8 @@ import { motion } from 'motion/react';
 import { ShieldCheck, Eye, Lock, Landmark } from 'lucide-react';
 import { AnimatedCounter } from '../components/AnimatedCounter';
 import SEO from '../components/SEO';
+import { useT } from '../i18n/LanguageContext';
+import { supportDict } from '../i18n/pages/support';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -42,6 +44,7 @@ const scaleIn = {
 };
 
 export default function Support() {
+  const t = useT(supportDict);
 
   return (
     <div className="pt-20">
@@ -57,7 +60,7 @@ export default function Support() {
           <img
             src="https://images.pexels.com/photos/36739282/pexels-photo-36739282.jpeg?auto=compress&cs=tinysrgb&w=1260"
             className="w-full h-full object-cover"
-            alt="Supporting community welfare initiatives"
+            alt={t.heroAlt}
           />
         </div>
         <div className="relative z-10 max-w-3xl mx-auto px-6">
@@ -70,24 +73,24 @@ export default function Support() {
               variants={fadeInUp}
               className="text-4xl sm:text-5xl font-extrabold mb-6 leading-[1.1]"
             >
-              Empower Change with Your Kindness
+              {t.heroTitle}
             </motion.h1>
             <motion.p
               variants={fadeInUp}
               className="text-base sm:text-lg opacity-90 mb-12 leading-relaxed"
             >
-              Every contribution fuels our mission to bring sustainable growth and social welfare to communities in need. Your trust is our greatest asset.
+              {t.heroBody}
               <br />
-              <span className="text-xs sm:text-sm font-bold text-secondary-container mt-2 block">Reg No: F-0062418(PUN)</span>
+              <span className="text-xs sm:text-sm font-bold text-secondary-container mt-2 block">{t.regNo}F-0062418(PUN)</span>
             </motion.p>
             <motion.div
               className="flex flex-wrap justify-center gap-4"
               variants={containerVariants}
             >
               {[
-                { icon: ShieldCheck, label: 'NGO Verified' },
-                { icon: Eye, label: 'Transparent Impact' },
-                { icon: Lock, label: 'Safe & Secure' }
+                { icon: ShieldCheck, label: t.badges[0] },
+                { icon: Eye, label: t.badges[1] },
+                { icon: Lock, label: t.badges[2] }
               ].map((badge, idx) => (
                 <motion.div
                   key={idx}
@@ -116,7 +119,7 @@ export default function Support() {
             className="text-3xl sm:text-4xl font-bold mb-6 text-primary text-center"
             variants={fadeInUp}
           >
-            Direct Contribution
+            {t.directTitle}
           </motion.h2>
           <motion.div
             className="bg-surface-container-low rounded-3xl p-10 shadow-sm border border-outline-variant/30 max-w-lg mx-auto"
@@ -131,14 +134,14 @@ export default function Support() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
               >
-                Bank Transfer Details
+                {t.bankTitle}
               </motion.h3>
               <div className="space-y-4 max-w-sm mx-auto">
                 {[
-                  { label: 'Bank Name', value: 'Canara Bank' },
-                  { label: 'Account No.', value: '1200362614021' },
-                  { label: 'IFSC Code', value: 'CNRB0003265' },
-                  { label: 'Branch', value: 'Dhankawadi, Pune - 411043' }
+                  { label: t.bankLabels[0], value: t.bankName },
+                  { label: t.bankLabels[1], value: '1200362614021' },
+                  { label: t.bankLabels[2], value: 'CNRB0003265' },
+                  { label: t.bankLabels[3], value: t.branch }
                 ].map((row, idx) => (
                   <motion.div
                     key={idx}
@@ -168,7 +171,7 @@ export default function Support() {
             viewport={{ once: true }}
             variants={fadeInUp}
           >
-            Our Transparency Report
+            {t.transparencyTitle}
           </motion.h3>
           <motion.div
             className="grid grid-cols-2 md:grid-cols-4 gap-8"
@@ -178,10 +181,10 @@ export default function Support() {
             viewport={{ once: true }}
           >
             {[
-              { val: '100%', label: 'Funds Allocation' },
-              { val: '5k+', label: 'Lives Impacted' },
-              { val: '150+', label: 'Projects Completed' },
-              { val: '24/7', label: 'Donor Support' }
+              { val: '100%', label: t.stats[0] },
+              { val: '5k+', label: t.stats[1] },
+              { val: '150+', label: t.stats[2] },
+              { val: '24/7', label: t.stats[3] }
             ].map((stat, idx) => (
               <motion.div
                 key={idx}

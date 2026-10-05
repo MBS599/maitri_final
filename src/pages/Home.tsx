@@ -7,8 +7,11 @@ import news1 from '../assets/news/new1.webp';
 import news2 from '../assets/news/news2.webp';
 import conservationImg from '../assets/conservation.webp';
 import SEO from '../components/SEO';
+import { useT } from '../i18n/LanguageContext';
+import { homeDict } from '../i18n/pages/home';
 
 export default function Home() {
+  const t = useT(homeDict);
   const homeSchema = {
     "@context": "https://schema.org",
     "@type": "NGO",
@@ -80,63 +83,29 @@ export default function Home() {
   const combinedSchema = [homeSchema, faqSchema];
 
   const stats = [
-    { label: 'Needy Helped', value: '5k+' },
-    { label: 'Environmental Events', value: '150+' },
-    { label: 'Years of Impact', value: '7+' }
+    { label: t.stats[0], value: '5k+' },
+    { label: t.stats[1], value: '150+' },
+    { label: t.stats[2], value: '7+' }
   ];
 
-  const pillars = [
-    'Transparent and Accountable Operations',
-    'Community-Driven Conservation Projects',
-    'Direct Support for Marginalized Families'
-  ];
+  const pillars = t.pillars;
 
   const highlights = [
     {
-      category: 'Environment',
-      title: 'Tree Plantation Drive',
-      desc: 'Join us for our annual mega plantation event in suburban green belts to foster environmental sustainability.',
-      location: 'Pune',
+      ...t.highlights[0],
       img: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80'
     },
     {
-      category: 'Social Welfare',
-      title: 'Community Food Distribution',
-      desc: 'Providing essential ration kits and healthy cooked meals to support underprivileged families and elderly citizens.',
-      location: 'Pune',
+      ...t.highlights[1],
       img: news2
     },
     {
-      category: 'Health & Care',
-      title: 'Mega Blood Donation Camp',
-      desc: 'Organizing robust community blood donation drives to aid city hospitals during critical blood shortages.',
-      location: 'Pune',
+      ...t.highlights[2],
       img: news1
     }
   ];
 
-  const faqs = [
-    {
-      q: "What is the primary mission of Maitri Welfare Foundation?",
-      a: "Our primary mission is to empower communities through sustainable social welfare programs, including environmental conservation, tree plantation drives, and women empowerment through our Project Kaushalya."
-    },
-    {
-      q: "Where is Maitri Welfare Foundation located?",
-      a: "We are based in Katraj, Pune (Maharashtra), and our primary on-ground activities are centered around the Pune region, though our digital community spans across India."
-    },
-    {
-      q: "How can I contribute to the foundation's work?",
-      a: "You can contribute by donating directly via our verified bank account details (available on our Support page), volunteering your time for our various drives, or spreading awareness about our social and environmental initiatives."
-    },
-    {
-      q: "What is Project Kaushalya?",
-      a: "Project Kaushalya is our flagship women empowerment initiative that provides vocational training, financial literacy, and leadership skills to women from underprivileged backgrounds to help them become self-reliant."
-    },
-    {
-      q: "Is Maitri Welfare Foundation a registered NGO?",
-      a: "Yes, we are a legally registered non-profit organization (NGO) under the registration number F-0062418(PUN)."
-    }
-  ];
+  const faqs = t.faqs;
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -148,7 +117,7 @@ export default function Home() {
     visible: { y: 0, opacity: 1, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } }
   };
 
-  const marqueeItems = [...pillars, '"एक हात मैत्रीचा" • One Hand of Friendship'];
+  const marqueeItems = [...pillars, t.motto];
 
   return (
     <div className="pt-20">
@@ -167,7 +136,7 @@ export default function Home() {
       <section className="px-3 sm:px-5 pt-3">
         <div className="relative max-w-[1400px] mx-auto min-h-[660px] sm:min-h-[780px] lg:min-h-[calc(100vh-5rem)] rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden flex items-end">
           <motion.img
-            alt="Volunteers of Maitri Foundation amid lush green trees"
+            alt={t.heroAlt}
             className="absolute inset-0 w-full h-full object-cover"
             src={heroImg}
             fetchPriority="high"
@@ -187,10 +156,10 @@ export default function Home() {
             <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-2.5 mb-6 sm:mb-8">
               <span className="inline-flex items-center gap-2 bg-on-ink/10 border border-on-ink/20 backdrop-blur-md px-4 py-2 rounded-full text-xs sm:text-sm font-semibold">
                 <span className="w-1.5 h-1.5 rounded-full bg-secondary-container" />
-                "एक हात मैत्रीचा" • One Hand of Friendship
+                {t.motto}
               </span>
               <span className="inline-flex bg-on-ink/10 border border-on-ink/20 backdrop-blur-md px-4 py-2 rounded-full text-xs sm:text-sm font-semibold">
-                Established 2019
+                {t.established}
               </span>
             </motion.div>
 
@@ -199,31 +168,31 @@ export default function Home() {
               className="max-w-5xl font-display font-medium leading-[0.98] tracking-[-0.03em]"
             >
               <span className="block text-lg sm:text-2xl font-sans font-semibold tracking-normal text-on-ink/80 mb-4">
-                Maitri Welfare Foundation:
+                {t.heroKicker}
               </span>
               <span className="block text-[2.75rem] min-[400px]:text-5xl sm:text-7xl lg:text-8xl">
-                Empowering Lives,{' '}
-                <span className="italic text-secondary-container">Protecting Nature</span>
+                {t.heroTitle1}{' '}
+                <span className="italic text-secondary-container">{t.heroTitle2}</span>
               </span>
             </motion.h1>
 
             <div className="mt-8 sm:mt-10 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-4 sm:mb-6">
               <motion.p variants={itemVariants} className="max-w-xl text-base sm:text-lg text-on-ink/80 leading-relaxed">
-                We are dedicated to <strong className="text-on-ink">empowering lives</strong> and <strong className="text-on-ink">protecting nature</strong> through sustainable social impact, environmental conservation, and community welfare initiatives across India.
+                {t.heroP1}<strong className="text-on-ink">{t.heroStrong1}</strong>{t.heroP2}<strong className="text-on-ink">{t.heroStrong2}</strong>{t.heroP3}
               </motion.p>
               <motion.div variants={itemVariants} className="flex flex-wrap gap-3 shrink-0">
                 <Link
                   to="/support"
                   className="group inline-flex items-center gap-2 bg-secondary-container text-on-secondary-container pl-7 pr-6 py-4 rounded-full font-bold text-base hover:brightness-105 active:scale-95 transition-all shadow-[0_10px_30px_-10px_rgba(244,182,63,0.7)]"
                 >
-                  Donate Now
+                  {t.donateNow}
                   <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
                 </Link>
                 <Link
                   to="/volunteer"
                   className="inline-flex items-center gap-2 bg-on-ink/10 border border-on-ink/30 backdrop-blur-md text-on-ink px-7 py-4 rounded-full font-bold text-base hover:bg-on-ink hover:text-ink active:scale-95 transition-all"
                 >
-                  Join Us
+                  {t.joinUs}
                 </Link>
               </motion.div>
             </div>
@@ -267,17 +236,17 @@ export default function Home() {
               className="lg:col-span-5 flex flex-col justify-between rounded-[2rem] bg-primary-container text-on-primary-container p-8 sm:p-10"
             >
               <div>
-                <p className="text-xs font-bold uppercase tracking-[0.2em] opacity-70 mb-5">Who we are</p>
-                <h2 className="text-4xl sm:text-5xl font-medium leading-[1.05]">Our Mission &amp; Vision</h2>
+                <p className="text-xs font-bold uppercase tracking-[0.2em] opacity-70 mb-5">{t.whoWeAre}</p>
+                <h2 className="text-4xl sm:text-5xl font-medium leading-[1.05]">{t.missionTitle}</h2>
                 <p className="mt-6 leading-relaxed opacity-90">
-                  We established our Maitri Foundation back in 2019. We started this foundation to assist the needy ones as well as help our mother nature in every possible way. Together, we strive to make a meaningful difference.
+                  {t.missionBody}
                 </p>
               </div>
               <Link
                 to="/about"
                 className="group mt-10 inline-flex items-center gap-2 self-start font-bold border-b-2 border-current pb-1"
               >
-                About Us <ArrowUpRight className="w-4 h-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                {t.aboutUs} <ArrowUpRight className="w-4 h-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
               </Link>
             </motion.div>
 
@@ -289,14 +258,14 @@ export default function Home() {
               className="lg:col-span-7 relative rounded-[2rem] overflow-hidden min-h-[320px] sm:min-h-[420px] group"
             >
               <img
-                alt="Foundation Activities in Slum Areas"
+                alt={t.slumAlt}
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-105"
                 src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1200&q=80"
                 loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/10 to-transparent" />
               <p className="absolute left-6 right-6 bottom-6 sm:left-10 sm:bottom-10 sm:right-auto max-w-sm font-display text-2xl sm:text-3xl italic leading-snug text-on-ink">
-                "Making a meaningful difference, one step at a time."
+                {t.quote}
               </p>
             </motion.div>
 
@@ -308,7 +277,7 @@ export default function Home() {
               className="lg:col-span-4 relative rounded-[2rem] overflow-hidden min-h-[260px] group"
             >
               <img
-                alt="Hands holding a green plant seedling in fertile soil representing community conservation"
+                alt={t.seedlingAlt}
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-105"
                 src={conservationImg}
                 loading="lazy"
@@ -323,7 +292,7 @@ export default function Home() {
               className="lg:col-span-8 rounded-[2rem] border border-outline-variant bg-surface-container-lowest p-8 sm:p-10"
             >
               <p className="text-on-surface-variant leading-relaxed text-lg max-w-2xl">
-                Our approach balances the urgent, high-impact nature of environmental and social welfare with a warm, human-centric focus. We believe that by protecting our environment, we create a better world for everyone to thrive in.
+                {t.approach}
               </p>
               <ul className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3">
                 {pillars.map((item, idx) => (
@@ -368,14 +337,14 @@ export default function Home() {
             transition={{ duration: 0.6 }}
           >
             <div>
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-secondary mb-4">Events</p>
-              <h2 className="text-4xl sm:text-5xl font-medium text-on-surface">Latest Highlights</h2>
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-secondary mb-4">{t.eventsKicker}</p>
+              <h2 className="text-4xl sm:text-5xl font-medium text-on-surface">{t.highlightsTitle}</h2>
             </div>
             <Link
               to="/events"
               className="group inline-flex items-center gap-2 self-start sm:self-auto px-5 py-3 rounded-full border border-outline-variant font-semibold hover:bg-on-surface hover:text-surface hover:border-transparent transition-all"
             >
-              View All <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              {t.viewAll} <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </Link>
           </motion.div>
 
@@ -424,13 +393,13 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="lg:col-span-4 lg:sticky lg:top-28 self-start"
           >
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-secondary mb-4">Got Questions?</p>
-            <h2 className="text-4xl sm:text-5xl font-medium text-on-surface leading-[1.05]">Frequently Asked Questions</h2>
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-secondary mb-4">{t.gotQuestions}</p>
+            <h2 className="text-4xl sm:text-5xl font-medium text-on-surface leading-[1.05]">{t.faqTitle}</h2>
             <Link
               to="/contact"
               className="group mt-8 inline-flex items-center gap-2 font-bold text-primary border-b-2 border-current pb-1"
             >
-              Contact Us <ArrowUpRight className="w-4 h-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              {t.contactUs} <ArrowUpRight className="w-4 h-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             </Link>
           </motion.div>
 
@@ -470,23 +439,22 @@ export default function Home() {
           <div className="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-secondary-container/25 dark:bg-secondary-container/12 blur-3xl" />
           <div className="absolute -bottom-24 -left-24 w-72 h-72 rounded-full bg-accent/20 dark:bg-primary/15 blur-3xl" />
           <div className="relative">
-            <h2 className="text-5xl sm:text-7xl font-medium tracking-[-0.03em]">Stay Connected</h2>
+            <h2 className="text-5xl sm:text-7xl font-medium tracking-[-0.03em]">{t.stayConnected}</h2>
             <p className="mt-6 opacity-80 max-w-2xl mx-auto text-lg leading-relaxed">
-              Follow our journey and become part of the change.
-              We are always looking for passionate volunteers to help us grow our impact.
+              {t.ctaBody}
             </p>
             <div className="mt-10 flex flex-col sm:flex-row gap-3 justify-center">
               <Link
                 to="/support"
                 className="inline-flex items-center justify-center gap-2 bg-secondary-container text-on-secondary-container px-8 py-4 rounded-full font-bold text-lg hover:brightness-105 active:scale-95 transition-all"
               >
-                <Heart className="w-5 h-5 fill-current" /> Support Our Mission
+                <Heart className="w-5 h-5 fill-current" /> {t.supportMission}
               </Link>
               <Link
                 to="/team"
                 className="inline-flex items-center justify-center gap-2 border border-current/30 px-8 py-4 rounded-full font-bold text-lg hover:bg-white/10 active:scale-95 transition-all"
               >
-                Meet The Team
+                {t.meetTeam}
               </Link>
             </div>
           </div>

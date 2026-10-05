@@ -9,6 +9,8 @@ import award2025 from '../assets/sapana_kakade.webp';
 import rangoliSheetImg from '../assets/news/rangoli_sheet.webp';
 import { toast } from 'sonner';
 import SEO from '../components/SEO';
+import { useT } from '../i18n/LanguageContext';
+import { kaushalyaDict } from '../i18n/pages/kaushalya';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -48,6 +50,7 @@ const scaleIn = {
 };
 
 export default function Kaushalya() {
+  const t = useT(kaushalyaDict);
   const [isSending, setIsSending] = useState(false);
   const [selectedPhoto, setSelectedPhoto] = useState<string | null>(null);
   const [captcha, setCaptcha] = useState({ question: '', answer: 0 });
@@ -73,7 +76,7 @@ export default function Kaushalya() {
     if (!formRef.current) return;
 
     if (parseInt(userCaptcha) !== captcha.answer) {
-      toast.error('Incorrect CAPTCHA answer. Please try again.');
+      toast.error(t.toast.captchaWrong);
       generateCaptcha();
       return;
     }
@@ -99,7 +102,7 @@ export default function Kaushalya() {
       });
 
       if (res.ok) {
-        toast.success('Mentorship application submitted successfully!');
+        toast.success(t.toast.success);
         formRef.current?.reset();
         generateCaptcha();
       } else {
@@ -107,7 +110,7 @@ export default function Kaushalya() {
       }
     } catch (error) {
       console.error('Submission Error:', error);
-      toast.error('Failed to submit application. Please try again.');
+      toast.error(t.toast.error);
     } finally {
       setIsSending(false);
     }
@@ -130,7 +133,7 @@ export default function Kaushalya() {
           transition={{ duration: 1.5, ease: "easeOut" }}
         >
           <img
-            alt="Kaushalya Hero"
+            alt={t.hero.imgAlt}
             className="w-full h-full object-cover object-[center_30%]"
             src="https://images.pexels.com/photos/5909876/pexels-photo-5909876.jpeg?auto=compress&cs=tinysrgb&w=1260"
           />
@@ -149,24 +152,24 @@ export default function Kaushalya() {
               >
                 <Sparkles className="text-secondary-container w-6 h-6" />
               </motion.div>
-              <span className="font-bold tracking-widest uppercase text-xs">Women Empowerment Initiative</span>
+              <span className="font-bold tracking-widest uppercase text-xs">{t.hero.eyebrow}</span>
             </motion.div>
             <motion.h1
               variants={itemVariants}
               className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6 leading-[1.1]"
             >
-              Project Kaushalya: Skill, Strength & Success
+              {t.hero.title}
             </motion.h1>
             <motion.p
               variants={itemVariants}
               className="text-base sm:text-lg opacity-90 mb-8 leading-relaxed"
             >
-              Empowering women through vocational training, financial independence, and community leadership to build a more equitable future.
+              {t.hero.lead}
             </motion.p>
             <motion.div variants={itemVariants} className="flex flex-wrap gap-4">
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Link to="/support" className="bg-secondary-container text-on-secondary-container px-8 py-3 rounded-full font-bold transition-all shadow-xl inline-block">
-                  Support This Cause
+                  {t.hero.cta}
                 </Link>
               </motion.div>
             </motion.div>
@@ -184,10 +187,10 @@ export default function Kaushalya() {
             variants={containerVariants}
             className="max-w-3xl mx-auto"
           >
-            <motion.h2 variants={fadeInUp} className="text-3xl sm:text-4xl font-bold text-primary mb-6">Empowering Half the Sky</motion.h2>
+            <motion.h2 variants={fadeInUp} className="text-3xl sm:text-4xl font-bold text-primary mb-6">{t.mission.title}</motion.h2>
             <motion.p variants={fadeInUp} className="text-on-surface-variant leading-relaxed text-base sm:text-lg">
-              The 'Kaushalya' initiative focuses on bridging the skill gap for women in marginalized communities.
-              We believe that when you empower a woman, you empower an entire family and ultimately, the nation.
+              {t.mission.body1}
+              {' '}{t.mission.body2}
             </motion.p>
           </motion.div>
         </div>
@@ -203,23 +206,7 @@ export default function Kaushalya() {
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
           >
-            {[
-              {
-                icon: Scissors,
-                title: 'Vocational Training',
-                desc: 'Training in specialized handcrafting including sheet rangoli making, mombatti manufacturing, and traditional aari work to enable home-based businesses.'
-              },
-              {
-                icon: BookOpen,
-                title: 'Financial Literacy',
-                desc: 'Workshops on banking, savings, and micro-entrepreneurship to foster economic independence.'
-              },
-              {
-                icon: TrendingUp,
-                title: 'Leadership Dev',
-                desc: 'Building confidence and community organizing skills to create local women leaders.'
-              }
-            ].map((program, idx) => (
+            {[Scissors, BookOpen, TrendingUp].map((icon, i) => ({ icon, ...t.programs[i] })).map((program, idx) => (
               <motion.div
                 key={idx}
                 variants={itemVariants}
@@ -257,19 +244,14 @@ export default function Kaushalya() {
                 <div className="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center">
                   <Youtube className="w-5 h-5" />
                 </div>
-                <span className="text-secondary font-bold tracking-widest uppercase text-xs">Annual Navratri Event</span>
+                <span className="text-secondary font-bold tracking-widest uppercase text-xs">{t.podcast.eyebrow}</span>
               </div>
-              <h2 className="text-3xl sm:text-4xl font-bold text-primary mb-6">Naarishakti: Celebrating the Goddess Within</h2>
+              <h2 className="text-3xl sm:text-4xl font-bold text-primary mb-6">{t.podcast.title}</h2>
               <p className="text-on-surface-variant text-base sm:text-lg leading-relaxed mb-8">
-                Every year during the auspicious days of Navratri, we host <strong>Naarishakti</strong>—a tribute to the women who tirelessly serve society. We facilitate these extraordinary women and share their inspiring life journeys through our dedicated YouTube podcast series.
+                {t.podcast.bodyBefore}<strong>{t.podcast.bodyName}</strong>{t.podcast.bodyAfter}
               </p>
               <div className="space-y-4">
-                {[
-                  "Annual Felicitation of Social Workers",
-                  "Deep-dive Podcast Interviews",
-                  "Spreading Inspiration Worldwide",
-                  "Community-driven Recognition"
-                ].map((point, i) => (
+                {t.podcast.points.map((point, i) => (
                   <div key={i} className="flex items-center gap-3">
                     <div className="w-2 h-2 rounded-full bg-secondary"></div>
                     <span className="text-on-surface font-medium">{point}</span>
@@ -286,7 +268,7 @@ export default function Kaushalya() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-3 text-primary font-bold hover:text-secondary transition-colors"
                 >
-                  Watch our Podcast Series <ArrowRight className="w-5 h-5" />
+                  {t.podcast.watch} <ArrowRight className="w-5 h-5" />
                 </a>
               </motion.div>
             </motion.div>
@@ -301,7 +283,7 @@ export default function Kaushalya() {
                 <iframe
                   className="w-full h-full"
                   src="https://www.youtube.com/embed/2DuyvmW4I6s?autoplay=1&mute=1&loop=1&playlist=2DuyvmW4I6s"
-                  title="Naarishakti Podcast"
+                  title={t.podcast.iframeTitle}
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowFullScreen
@@ -318,8 +300,8 @@ export default function Kaushalya() {
                     <Mic className="w-6 h-6" />
                   </div>
                   <div>
-                    <div className="text-xs font-bold text-on-surface-variant uppercase">Latest Episode</div>
-                    <div className="text-sm font-bold text-primary">Voices of Resilience</div>
+                    <div className="text-xs font-bold text-on-surface-variant uppercase">{t.podcast.latest}</div>
+                    <div className="text-sm font-bold text-primary">{t.podcast.episode}</div>
                   </div>
                 </div>
               </motion.div>
@@ -338,8 +320,8 @@ export default function Kaushalya() {
             variants={containerVariants}
             className="text-center mb-16"
           >
-            <span className="text-secondary font-bold tracking-widest uppercase text-xs">Hall of Fame</span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-primary mt-2">Our Narishakti Awardees</h2>
+            <span className="text-secondary font-bold tracking-widest uppercase text-xs">{t.awardees.eyebrow}</span>
+            <h2 className="text-3xl sm:text-4xl font-bold text-primary mt-2">{t.awardees.title}</h2>
           </motion.div>
 
           <motion.div
@@ -373,7 +355,7 @@ export default function Kaushalya() {
                     {awardee.year}
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-8">
-                    <p className="text-white text-sm font-medium italic">"Recognized for exceptional service to society"</p>
+                    <p className="text-white text-sm font-medium italic">{t.awardees.caption}</p>
                   </div>
                 </div>
                 <div className="p-8 text-center">
@@ -398,7 +380,7 @@ export default function Kaushalya() {
             >
               <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
                 <motion.img
-                  alt="Lady displaying handcrafted sheet rangoli art"
+                  alt={t.impact.imgAlt}
                   className="w-full h-full object-cover"
                   src={rangoliSheetImg}
                   whileHover={{ scale: 1.05 }}
@@ -412,7 +394,7 @@ export default function Kaushalya() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.5, duration: 0.5, type: "spring" }}
               >
-                <p className="text-sm italic font-medium">"Kaushalya gave me the wings to fly and the skills to feed my family."</p>
+                <p className="text-sm italic font-medium">{t.impact.quote}</p>
                 <motion.span
                   className="block mt-4 font-bold text-xs"
                   initial={{ opacity: 0 }}
@@ -420,7 +402,7 @@ export default function Kaushalya() {
                   viewport={{ once: true }}
                   transition={{ delay: 0.8 }}
                 >
-                  — Sheet Rangoli Making, Batch of 2025
+                  {t.impact.quoteBy}
                 </motion.span>
               </motion.div>
             </motion.div>
@@ -431,9 +413,9 @@ export default function Kaushalya() {
               whileInView="visible"
               viewport={{ once: true }}
             >
-              <motion.h2 variants={fadeInRight} className="text-3xl sm:text-4xl font-bold text-primary mb-6">Our Impact So Far</motion.h2>
+              <motion.h2 variants={fadeInRight} className="text-3xl sm:text-4xl font-bold text-primary mb-6">{t.impact.title}</motion.h2>
               <motion.p variants={fadeInRight} className="text-on-surface-variant mb-10 leading-relaxed">
-                Since its inception, Kaushalya has trained over 100 women in various skills. Many have started their own small ventures, while others have found stable employment in the local industry.
+                {t.impact.body}
               </motion.p>
 
               <motion.div
@@ -441,8 +423,8 @@ export default function Kaushalya() {
                 variants={containerVariants}
               >
                 {[
-                  { value: '100+', label: 'Women Trained' },
-                  { value: '5+', label: 'Micro-Enterprises' }
+                  { value: '100+', label: t.impact.stats[0] },
+                  { value: '5+', label: t.impact.stats[1] }
                 ].map((stat, idx) => (
                   <motion.div
                     key={idx}
@@ -479,17 +461,13 @@ export default function Kaushalya() {
               viewport={{ once: true }}
               variants={fadeInLeft}
             >
-              <span className="text-secondary font-bold tracking-widest uppercase text-xs">Join Us</span>
-              <h2 className="text-3xl sm:text-4xl font-bold text-primary mt-2 mb-6">Become a Mentor</h2>
+              <span className="text-secondary font-bold tracking-widest uppercase text-xs">{t.mentor.eyebrow}</span>
+              <h2 className="text-3xl sm:text-4xl font-bold text-primary mt-2 mb-6">{t.mentor.title}</h2>
               <p className="text-on-surface-variant mb-8 leading-relaxed">
-                Your expertise can change lives. Share your skills and experience with our students to help them achieve their dreams of independence.
+                {t.mentor.body}
               </p>
               <div className="space-y-6">
-                {[
-                  { title: 'Share Your Expertise', desc: 'Guide students in traditional handcrafting, aari work, or business management.' },
-                  { title: 'Flexible Commitment', desc: 'Choose a schedule that works for you, from weekly to monthly sessions.' },
-                  { title: 'Direct Impact', desc: 'See firsthand the transformation your mentorship brings to these women.' }
-                ].map((item, idx) => (
+                {t.mentor.perks.map((item, idx) => (
                   <div key={idx} className="flex gap-4">
                     <div className="w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center shrink-0">
                       <Award className="w-5 h-5" />
@@ -513,17 +491,17 @@ export default function Kaushalya() {
               <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label className="text-xs font-bold uppercase tracking-wider text-primary">Full Name <span className="text-red-700 dark:text-red-400">*</span></label>
+                    <label className="text-xs font-bold uppercase tracking-wider text-primary">{t.form.name} <span className="text-red-700 dark:text-red-400">*</span></label>
                     <input
                       required
                       name="name"
                       type="text"
-                      placeholder="John Doe"
+                      placeholder={t.form.namePh}
                       className="w-full bg-surface border border-outline-variant/50 rounded-2xl px-5 py-4 focus:outline-none focus:border-primary transition-all text-sm"
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-xs font-bold uppercase tracking-wider text-primary">Email Address <span className="text-red-700 dark:text-red-400">*</span></label>
+                    <label className="text-xs font-bold uppercase tracking-wider text-primary">{t.form.email} <span className="text-red-700 dark:text-red-400">*</span></label>
                     <input
                       required
                       name="email"
@@ -536,7 +514,7 @@ export default function Kaushalya() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label className="text-xs font-bold uppercase tracking-wider text-primary">Phone Number <span className="text-red-700 dark:text-red-400">*</span></label>
+                    <label className="text-xs font-bold uppercase tracking-wider text-primary">{t.form.phone} <span className="text-red-700 dark:text-red-400">*</span></label>
                     <input
                       required
                       name="phone"
@@ -546,40 +524,40 @@ export default function Kaushalya() {
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-xs font-bold uppercase tracking-wider text-primary">Expertise / Skill <span className="text-red-700 dark:text-red-400">*</span></label>
+                    <label className="text-xs font-bold uppercase tracking-wider text-primary">{t.form.expertise} <span className="text-red-700 dark:text-red-400">*</span></label>
                     <input
                       required
                       name="expertise"
                       type="text"
-                      placeholder="e.g. Handcrafting, Finance"
+                      placeholder={t.form.expertisePh}
                       className="w-full bg-surface border border-outline-variant/50 rounded-2xl px-5 py-4 focus:outline-none focus:border-primary transition-all text-sm"
                     />
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-xs font-bold uppercase tracking-wider text-primary">Message / Motivation <span className="text-red-700 dark:text-red-400">*</span></label>
+                  <label className="text-xs font-bold uppercase tracking-wider text-primary">{t.form.message} <span className="text-red-700 dark:text-red-400">*</span></label>
                   <textarea
                     required
                     name="message"
                     rows={4}
-                    placeholder="Tell us why you'd like to join as a mentor..."
+                    placeholder={t.form.messagePh}
                     className="w-full bg-surface border border-outline-variant/50 rounded-2xl px-5 py-4 focus:outline-none focus:border-primary transition-all text-sm resize-none"
                   ></textarea>
                 </div>
 
                 <div className="bg-primary-container/30 p-6 rounded-2xl border border-primary-container/50">
-                  <label className="text-xs font-bold uppercase tracking-wider text-primary block mb-3">Security Check</label>
+                  <label className="text-xs font-bold uppercase tracking-wider text-primary block mb-3">{t.form.security}</label>
                   <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
                     <span className="text-lg font-bold text-primary bg-surface-container-low px-6 py-3 rounded-xl border border-primary-container shadow-sm">
-                      {captcha.question}
+                      {(() => { const n = captcha.question.match(/\d+/g); return n && n.length >= 2 ? t.form.captchaQ(n[0], n[1]) : captcha.question; })()}
                     </span>
                     <input
                       required
                       type="number"
                       value={userCaptcha}
                       onChange={(e) => setUserCaptcha(e.target.value)}
-                      placeholder="Your answer"
+                      placeholder={t.form.answerPh}
                       className="w-full sm:w-40 bg-surface-container-low border border-outline-variant/50 rounded-xl px-5 py-3 focus:outline-none focus:border-primary transition-all font-bold text-center"
                     />
                   </div>
@@ -598,12 +576,12 @@ export default function Kaushalya() {
                   {isSending ? (
                     <>
                       <Loader2 className="w-6 h-6 animate-spin" />
-                      Submitting Application...
+                      {t.form.submitting}
                     </>
                   ) : (
                     <>
                       <Send className="w-5 h-5" />
-                      Apply as Mentor
+                      {t.form.submit}
                     </>
                   )}
                 </motion.button>
@@ -622,9 +600,9 @@ export default function Kaushalya() {
           viewport={{ once: true }}
           variants={containerVariants}
         >
-          <motion.h2 variants={fadeInUp} className="text-3xl sm:text-4xl font-bold text-on-ink mb-6">Help Us Expand Kaushalya</motion.h2>
+          <motion.h2 variants={fadeInUp} className="text-3xl sm:text-4xl font-bold text-on-ink mb-6">{t.cta.title}</motion.h2>
           <motion.p variants={fadeInUp} className="text-on-ink/70 mb-12 text-lg">
-            We aim to reach 1000 women by 2025. Your donation can provide training kits, handcrafting materials, and expert mentorship.
+            {t.cta.body}
           </motion.p>
           <motion.div
             variants={fadeInUp}
@@ -632,7 +610,7 @@ export default function Kaushalya() {
             whileTap={{ scale: 0.95 }}
           >
             <Link to="/support" className="bg-secondary-container text-on-secondary-container px-12 py-4 rounded-full font-bold text-lg shadow-2xl transition-all inline-block">
-              Donate to Kaushalya
+              {t.cta.button}
             </Link>
           </motion.div>
         </motion.div>
@@ -650,6 +628,8 @@ export default function Kaushalya() {
             <motion.button
               className="absolute top-6 right-6 text-white hover:text-secondary-container transition-colors p-2 bg-surface-container-low/10 rounded-full backdrop-blur-md"
               onClick={() => setSelectedPhoto(null)}
+              aria-label={t.modal.close}
+              title={t.modal.close}
             >
               <X className="w-8 h-8" />
             </motion.button>
@@ -658,7 +638,7 @@ export default function Kaushalya() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               src={selectedPhoto}
-              alt="Full view"
+              alt={t.modal.imgAlt}
               className="max-w-full max-h-[90vh] object-contain rounded-2xl shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             />

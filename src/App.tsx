@@ -19,6 +19,8 @@ import Media from './pages/Media';
 import { Toaster } from 'sonner';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
+import { LanguageProvider } from './i18n/LanguageContext';
+import GlobalTooltip from './components/GlobalTooltip';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -30,9 +32,11 @@ function ScrollToTop() {
 
 export default function App() {
   return (
+    <LanguageProvider>
     <Router>
       <ScrollToTop />
       <Toaster position="top-right" richColors />
+      <GlobalTooltip />
       <Analytics />
       <SpeedInsights />
       <div className="flex flex-col min-h-screen overflow-x-hidden">
@@ -54,6 +58,7 @@ export default function App() {
         <Footer />
       </div>
     </Router>
+    </LanguageProvider>
   );
 }
 

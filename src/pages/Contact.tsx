@@ -5,6 +5,8 @@ import { useState, useRef, useEffect } from 'react';
 import { toast } from 'sonner';
 import SEO from '../components/SEO';
 import { handleContactEmail } from '../utils/contactAction';
+import { useT } from '../i18n/LanguageContext';
+import { contactDict } from '../i18n/pages/contact';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -29,10 +31,11 @@ const fadeInUp = {
 };
 
 export default function Contact() {
+  const t = useT(contactDict);
   const [isSending, setIsSending] = useState(false);
   const [showShareMenu, setShowShareMenu] = useState(false);
   const [copied, setCopied] = useState(false);
-  const [captcha, setCaptcha] = useState({ question: '', answer: 0 });
+  const [captcha, setCaptcha] = useState({ question: '', answer: 0, num1: 0, num2: 0 });
   const [userCaptcha, setUserCaptcha] = useState('');
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -41,7 +44,9 @@ export default function Contact() {
     const num2 = Math.floor(Math.random() * 10) + 1;
     setCaptcha({
       question: `What is ${num1} + ${num2}?`,
-      answer: num1 + num2
+      answer: num1 + num2,
+      num1,
+      num2
     });
     setUserCaptcha('');
   };
@@ -55,7 +60,7 @@ export default function Contact() {
     if (!formRef.current) return;
 
     if (parseInt(userCaptcha) !== captcha.answer) {
-      toast.error('Incorrect CAPTCHA answer. Please try again.');
+      toast.error(t.toast.captchaWrong);
       generateCaptcha();
       return;
     }
@@ -79,7 +84,7 @@ export default function Contact() {
       });
 
       if (res.ok) {
-        toast.success('Message sent successfully! We will get back to you soon.');
+        toast.success(t.toast.success);
         formRef.current?.reset();
         generateCaptcha();
       } else {
@@ -87,7 +92,7 @@ export default function Contact() {
       }
     } catch (error) {
       console.error('SheetDB Error:', error);
-      toast.error('Failed to send message. Please try again later.');
+      toast.error(t.toast.error);
     } finally {
       setIsSending(false);
     }
@@ -107,7 +112,7 @@ export default function Contact() {
           <img
             src="https://images.pexels.com/photos/8882791/pexels-photo-8882791.jpeg?auto=compress&cs=tinysrgb&w=1260"
             className="w-full h-full object-cover"
-            alt="Maitri Welfare Foundation office contact background"
+            alt={t.heroAlt}
           />
         </div>
         <div className="relative z-10 max-w-3xl mx-auto px-6">
@@ -120,13 +125,13 @@ export default function Contact() {
               variants={fadeInUp}
               className="text-4xl sm:text-5xl font-extrabold mb-6 leading-[1.1]"
             >
-              Let's Connect
+              {t.heroTitle}
             </motion.h1>
             <motion.p
               variants={fadeInUp}
               className="text-base sm:text-lg opacity-90 leading-relaxed"
             >
-              Whether you have a question, want to volunteer, or just want to say hi, our team is always ready to hear from you.
+              {t.heroText}
             </motion.p>
           </motion.div>
         </div>
@@ -139,7 +144,7 @@ export default function Contact() {
           viewport={{ once: true }}
           variants={fadeInUp}
         >
-          <motion.h2 className="text-3xl sm:text-4xl font-bold mb-10 text-primary text-center">Get in Touch</motion.h2>
+          <motion.h2 className="text-3xl sm:text-4xl font-bold mb-10 text-primary text-center">{t.getInTouch}</motion.h2>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12 text-center">
             <motion.a
@@ -154,10 +159,10 @@ export default function Contact() {
               <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-primary group-hover:text-on-primary transition-colors">
                 <MapPin className="text-primary group-hover:text-on-primary w-6 h-6 transition-colors" />
               </div>
-              <h3 className="font-bold text-primary mb-1 text-sm">Our Location</h3>
-              <p className="text-xs text-on-surface-variant font-medium">Katraj, Pune - 411046, India</p>
+              <h3 className="font-bold text-primary mb-1 text-sm">{t.location}</h3>
+              <p className="text-xs text-on-surface-variant font-medium">{t.address}</p>
               <span className="inline-block mt-2 text-[10px] font-bold text-secondary uppercase tracking-wider">
-                View on Map
+                {t.viewMap}
               </span>
             </motion.a>
 
@@ -168,17 +173,17 @@ export default function Contact() {
               whileHover={{ y: -4, scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               className="bg-surface-container-low p-6 rounded-2xl border border-outline-variant/20 shadow-sm hover:border-primary/40 hover:shadow-md transition-all text-center block group cursor-pointer"
-              title="Send email or copy address"
+              title={t.emailTitle}
             >
               <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-primary group-hover:text-on-primary transition-colors">
                 <Mail className="text-primary group-hover:text-on-primary w-6 h-6 transition-colors" />
               </div>
-              <h3 className="font-bold text-primary mb-1 text-sm">Email Us</h3>
+              <h3 className="font-bold text-primary mb-1 text-sm">{t.emailUs}</h3>
               <p className="text-xs text-on-surface-variant font-medium truncate group-hover:text-primary transition-colors" title="support@maitriwelfarefoundation.org">
                 support@maitriwelfarefoundation.org
               </p>
               <span className="inline-block mt-2 text-[10px] font-bold text-secondary uppercase tracking-wider">
-                Click to Email
+                {t.clickEmail}
               </span>
             </motion.a>
             
@@ -192,10 +197,10 @@ export default function Contact() {
               <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-primary group-hover:text-on-primary transition-colors">
                 <MessageCircle className="text-primary group-hover:text-on-primary w-6 h-6 transition-colors" />
               </div>
-              <h3 className="font-bold text-primary mb-1 text-sm">Call / WhatsApp</h3>
+              <h3 className="font-bold text-primary mb-1 text-sm">{t.callWhatsapp}</h3>
               <p className="text-xs text-on-surface-variant font-medium group-hover:text-primary transition-colors">+91 7447434373</p>
               <span className="inline-block mt-2 text-[10px] font-bold text-secondary uppercase tracking-wider">
-                Tap to Call
+                {t.tapCall}
               </span>
             </motion.a>
 
@@ -203,10 +208,10 @@ export default function Contact() {
               <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4">
                 <Check className="text-primary w-6 h-6" />
               </div>
-              <h3 className="font-bold text-primary mb-1 text-sm">Response Time</h3>
-              <p className="text-xs text-on-surface-variant font-medium">Within 24 Hours</p>
+              <h3 className="font-bold text-primary mb-1 text-sm">{t.responseTime}</h3>
+              <p className="text-xs text-on-surface-variant font-medium">{t.within24}</p>
               <span className="inline-block mt-2 text-[10px] font-bold text-primary uppercase tracking-wider">
-                Dedicated Team
+                {t.dedicatedTeam}
               </span>
             </motion.div>
           </div>
@@ -223,8 +228,8 @@ export default function Contact() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
               >
-                <label className="block text-[10px] uppercase font-bold text-on-surface-variant mb-2 tracking-widest">Full Name</label>
-                <input name="name" required className="w-full rounded-xl border-2 border-outline-variant/50 focus:border-primary focus:ring-0 px-4 py-3 text-sm font-semibold outline-none transition-all" placeholder="John Doe" type="text" />
+                <label className="block text-[10px] uppercase font-bold text-on-surface-variant mb-2 tracking-widest">{t.fullName}</label>
+                <input name="name" required className="w-full rounded-xl border-2 border-outline-variant/50 focus:border-primary focus:ring-0 px-4 py-3 text-sm font-semibold outline-none transition-all" placeholder={t.namePh} type="text" />
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
@@ -232,8 +237,8 @@ export default function Contact() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.3 }}
               >
-                <label className="block text-[10px] uppercase font-bold text-on-surface-variant mb-2 tracking-widest">Email Address</label>
-                <input name="email" required className="w-full rounded-xl border-2 border-outline-variant/50 focus:border-primary focus:ring-0 px-4 py-3 text-sm font-semibold outline-none transition-all" placeholder="john@example.com" type="email" />
+                <label className="block text-[10px] uppercase font-bold text-on-surface-variant mb-2 tracking-widest">{t.email}</label>
+                <input name="email" required className="w-full rounded-xl border-2 border-outline-variant/50 focus:border-primary focus:ring-0 px-4 py-3 text-sm font-semibold outline-none transition-all" placeholder={t.emailPh} type="email" />
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
@@ -241,8 +246,8 @@ export default function Contact() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.4 }}
               >
-                <label className="block text-[10px] uppercase font-bold text-on-surface-variant mb-2 tracking-widest">Your Message</label>
-                <textarea name="message" required rows={4} className="w-full rounded-xl border-2 border-outline-variant/50 focus:border-primary focus:ring-0 px-4 py-3 text-sm font-semibold outline-none transition-all resize-none" placeholder="How can we help?"></textarea>
+                <label className="block text-[10px] uppercase font-bold text-on-surface-variant mb-2 tracking-widest">{t.message}</label>
+                <textarea name="message" required rows={4} className="w-full rounded-xl border-2 border-outline-variant/50 focus:border-primary focus:ring-0 px-4 py-3 text-sm font-semibold outline-none transition-all resize-none" placeholder={t.messagePh}></textarea>
               </motion.div>
 
               <motion.div
@@ -257,8 +262,8 @@ export default function Contact() {
                     ?
                   </div>
                   <div>
-                    <p className="text-[10px] uppercase font-bold text-on-surface-variant tracking-widest">Security Check</p>
-                    <p className="text-sm font-bold text-primary">{captcha.question}</p>
+                    <p className="text-[10px] uppercase font-bold text-on-surface-variant tracking-widest">{t.securityCheck}</p>
+                    <p className="text-sm font-bold text-primary">{t.captcha(captcha.num1, captcha.num2)}</p>
                   </div>
                 </div>
                 <input
@@ -267,7 +272,7 @@ export default function Contact() {
                   value={userCaptcha}
                   onChange={(e) => setUserCaptcha(e.target.value)}
                   className="w-full sm:w-32 rounded-xl border-2 border-outline-variant/50 focus:border-primary focus:ring-0 px-4 py-2 text-sm font-bold outline-none transition-all text-center"
-                  placeholder="Answer"
+                  placeholder={t.answer}
                 />
               </motion.div>
               <motion.button
@@ -286,7 +291,7 @@ export default function Contact() {
                 ) : (
                   <Send className="w-5 h-5" />
                 )}
-                {isSending ? 'Sending...' : 'Send Message'}
+                {isSending ? t.sending : t.send}
               </motion.button>
             </form>
           </motion.div>
@@ -302,7 +307,7 @@ export default function Contact() {
           viewport={{ once: true }}
           variants={fadeInUp}
         >
-          Stay Connected
+          {t.stayConnected}
         </motion.h2>
         <motion.div 
           className="flex flex-wrap justify-center gap-6"
@@ -326,7 +331,7 @@ export default function Contact() {
                 <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-.031 19.387c-1.302 0-2.576-.35-3.69-1.013l-4.105 1.075 1.092-4.001c-.727-1.157-1.111-2.488-1.111-3.86 0-4.116 3.348-7.464 7.465-7.464 4.118 0 7.467 3.348 7.467 7.464s-3.349 7.464-7.467 7.464z" />
               </svg>
             </div>
-            <span className="font-bold text-on-surface-variant group-hover:text-[#25D366]">WhatsApp Community</span>
+            <span className="font-bold text-on-surface-variant group-hover:text-[#25D366]">{t.whatsappCommunity}</span>
           </motion.a>
           <motion.a 
             variants={itemVariants}
@@ -360,7 +365,7 @@ export default function Contact() {
             transition={{ type: "spring", stiffness: 300 }}
           >
             <Share2 className="text-primary w-6 h-6" />
-            <span className="font-bold text-on-surface-variant group-hover:text-primary">Share Journey</span>
+            <span className="font-bold text-on-surface-variant group-hover:text-primary">{t.shareJourney}</span>
           </motion.button>
         </motion.div>
       </section>
@@ -378,17 +383,19 @@ export default function Contact() {
             >
               <button 
                 onClick={() => setShowShareMenu(false)}
+                aria-label={t.close}
+                title={t.close}
                 className="absolute top-4 right-4 text-on-surface-variant hover:text-primary transition-colors cursor-pointer"
               >
                 <X className="w-6 h-6" />
               </button>
               
-              <h3 className="text-2xl font-bold text-primary mb-8 text-center">Share Our Journey</h3>
+              <h3 className="text-2xl font-bold text-primary mb-8 text-center">{t.shareOurJourney}</h3>
               
               <div className="grid grid-cols-4 gap-4">
                 {/* WhatsApp */}
                 <button 
-                  onClick={() => window.open(`https://wa.me/?text=${encodeURIComponent('Check out the amazing work Maitri Welfare Foundation is doing! ' + window.location.origin)}`, '_blank')} 
+                  onClick={() => window.open(`https://wa.me/?text=${encodeURIComponent(t.shareText + window.location.origin)}`, '_blank')} 
                   className="flex flex-col items-center gap-3 group cursor-pointer"
                 >
                   <div className="w-14 h-14 rounded-full bg-[#25D366]/10 flex items-center justify-center group-hover:bg-[#25D366]/20 transition-all group-hover:scale-110">
@@ -400,8 +407,8 @@ export default function Contact() {
                 {/* Instagram */}
                 <button 
                   onClick={() => {
-                    navigator.clipboard.writeText('Check out the amazing work Maitri Welfare Foundation is doing! ' + window.location.origin);
-                    toast.success('Message & Link copied! Open Instagram to share.');
+                    navigator.clipboard.writeText(t.shareText + window.location.origin);
+                    toast.success(t.toast.copiedInsta);
                     setTimeout(() => window.open('https://instagram.com', '_blank'), 1000);
                   }} 
                   className="flex flex-col items-center gap-3 group"
@@ -421,16 +428,16 @@ export default function Contact() {
                     <Mail className="w-7 h-7 text-blue-500" />
                   </div>
                   <span className="text-xs font-bold text-on-surface-variant group-hover:text-blue-500 transition-colors">
-                    Mail
+                    {t.mail}
                   </span>
                 </button>
                 
                 {/* Copy */}
                 <button 
                   onClick={() => {
-                    navigator.clipboard.writeText('Check out the amazing work Maitri Welfare Foundation is doing for the community and nature! ' + window.location.origin);
+                    navigator.clipboard.writeText(t.shareTextLong + window.location.origin);
                     setCopied(true);
-                    toast.success('Message & Link copied to clipboard!');
+                    toast.success(t.toast.copiedClipboard);
                     setTimeout(() => setCopied(false), 2000);
                   }} 
                   className="flex flex-col items-center gap-3 group"
@@ -438,7 +445,7 @@ export default function Contact() {
                   <div className="w-14 h-14 rounded-full bg-surface-container/10 flex items-center justify-center group-hover:bg-surface-container/20 transition-all group-hover:scale-110">
                     {copied ? <Check className="w-7 h-7 text-green-500" /> : <Copy className="w-7 h-7 text-on-surface-variant" />}
                   </div>
-                  <span className="text-xs font-bold text-on-surface-variant group-hover:text-on-surface-variant transition-colors">{copied ? 'Copied' : 'Copy'}</span>
+                  <span className="text-xs font-bold text-on-surface-variant group-hover:text-on-surface-variant transition-colors">{copied ? t.copied : t.copy}</span>
                 </button>
               </div>
             </motion.div>

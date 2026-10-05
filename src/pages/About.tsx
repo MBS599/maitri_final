@@ -7,6 +7,8 @@ import fullTeam from '../assets/team/full_team.webp';
 import about1 from '../assets/team/about1.webp';
 import about2 from '../assets/team/about2.webp';
 import SEO from '../components/SEO';
+import { useT } from '../i18n/LanguageContext';
+import { aboutDict } from '../i18n/pages/about';
 
 
 const containerVariants = {
@@ -32,6 +34,7 @@ const itemVariants = {
 };
 
 export default function About() {
+  const t = useT(aboutDict);
   return (
     <div className="pt-20">
       <SEO
@@ -46,7 +49,7 @@ export default function About() {
           <img
             src={aboutHero}
             className="w-full h-full object-cover"
-            alt="Maitri Welfare Foundation social work background"
+            alt={t.heroAlt}
           />
         </div>
         <div className="relative z-10 max-w-4xl mx-auto px-6">
@@ -59,13 +62,13 @@ export default function About() {
               variants={fadeInUp}
               className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6 tracking-tight leading-[1.1]"
             >
-              About Us: Our Mission & Journey
+              {t.heroTitle}
             </motion.h1>
             <motion.p
               variants={fadeInUp}
               className="text-base sm:text-lg md:text-xl opacity-90 leading-relaxed font-medium"
             >
-              Maitri Welfare Foundation is dedicated to empowering communities through transparent, professional, and compassionate social welfare programs. We believe in creating sustainable change that lasts generations.
+              {t.heroText}
             </motion.p>
           </motion.div>
         </div>
@@ -88,9 +91,9 @@ export default function About() {
             <div className="w-12 h-12 sm:w-16 sm:h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-8">
               <Target className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
             </div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-primary mb-4">Our Mission</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-primary mb-4">{t.missionTitle}</h2>
             <p className="text-on-surface-variant leading-relaxed">
-              To alleviate poverty, provide quality education, and offer essential healthcare services to the most vulnerable sections of society. We strive to create an ecosystem of equal opportunities where every individual has the resources they need to thrive and contribute to a better world.
+              {t.missionText}
             </p>
           </motion.div>
 
@@ -109,9 +112,9 @@ export default function About() {
             <div className="w-12 h-12 sm:w-16 sm:h-16 bg-secondary/10 rounded-2xl flex items-center justify-center mb-8">
               <Lightbulb className="w-6 h-6 sm:w-8 sm:h-8 text-secondary" />
             </div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-secondary mb-4">Our Vision</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-secondary mb-4">{t.visionTitle}</h2>
             <p className="text-on-surface-variant leading-relaxed">
-              A world where compassion and systemic support eradicate inequality. We envision empowered communities that are self-reliant, educated, and healthy, paving the way for a brighter, more equitable future for all generations to come.
+              {t.visionText}
             </p>
           </motion.div>
         </div>
@@ -126,7 +129,7 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-primary mb-4">Our Journey</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-primary mb-4">{t.journeyTitle}</h2>
             <div className="w-24 h-1.5 bg-secondary mx-auto rounded-full"></div>
           </motion.div>
 
@@ -138,14 +141,14 @@ export default function About() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <span className="text-secondary font-bold text-[10px] sm:text-sm uppercase tracking-widest mb-4 block">How it all began</span>
-              <h3 className="text-2xl sm:text-3xl font-bold text-primary mb-6">A Vision Shared by Five Friends</h3>
+              <span className="text-secondary font-bold text-[10px] sm:text-sm uppercase tracking-widest mb-4 block">{t.ch1.eyebrow}</span>
+              <h3 className="text-2xl sm:text-3xl font-bold text-primary mb-6">{t.ch1.title}</h3>
               <p className="text-on-surface-variant text-base sm:text-lg leading-relaxed mb-6">
-                Maitri Welfare Foundation started as a small seed of an idea shared among five close friends. Driven by a mutual desire to give back to society, they began their journey with simple social awareness programs, educating local communities about their rights and environmental responsibilities.
+                {t.ch1.text}
               </p>
               <div className="flex gap-4 items-center text-primary font-bold">
                 <div className="w-12 h-0.5 bg-primary"></div>
-                <span>The Foundation of Friendship</span>
+                <span>{t.ch1.tag}</span>
               </div>
             </motion.div>
             <motion.div
@@ -158,7 +161,7 @@ export default function About() {
               <div className="aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white dark:border-surface-container-high">
                 <img
                   src={about1}
-                  alt="Maitri Welfare Foundation founders and early team members"
+                  alt={t.ch1.alt}
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -178,7 +181,7 @@ export default function About() {
               <div className="aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white dark:border-surface-container-high">
                 <img
                   src={about2}
-                  alt="Maitri Welfare Foundation food donation drive for the needy"
+                  alt={t.ch2.alt}
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -191,13 +194,13 @@ export default function About() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <span className="text-secondary font-bold text-sm uppercase tracking-widest mb-4 block">Next Chapter</span>
-              <h3 className="text-3xl font-bold text-primary mb-6">Expanding Our Reach</h3>
+              <span className="text-secondary font-bold text-sm uppercase tracking-widest mb-4 block">{t.ch2.eyebrow}</span>
+              <h3 className="text-3xl font-bold text-primary mb-6">{t.ch2.title}</h3>
               <p className="text-on-surface-variant text-lg leading-relaxed mb-6">
-                As the group witnessed the profound impact of their awareness drives, they realized the need for more direct action. The foundation soon expanded its horizons into critical areas such as food donation, healthcare support, and sustainable development, touching thousands of lives every year.
+                {t.ch2.text}
               </p>
               <div className="flex gap-4 items-center text-primary font-bold">
-                <span>Direct Impact on the Ground</span>
+                <span>{t.ch2.tag}</span>
                 <div className="w-12 h-0.5 bg-primary"></div>
               </div>
             </motion.div>
@@ -211,14 +214,14 @@ export default function About() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <span className="text-secondary font-bold text-sm uppercase tracking-widest mb-4 block">Our Team Today</span>
-              <h3 className="text-3xl font-bold text-primary mb-6">A Growing Community of Scholars</h3>
+              <span className="text-secondary font-bold text-sm uppercase tracking-widest mb-4 block">{t.ch3.eyebrow}</span>
+              <h3 className="text-3xl font-bold text-primary mb-6">{t.ch3.title}</h3>
               <p className="text-on-surface-variant text-lg leading-relaxed mb-6">
-                What began with five friends has now blossomed into a massive network of over 100+ dedicated individuals. Our team is uniquely powered by a vibrant community of scholars, bachelors, and young professionals who bring fresh energy, academic excellence, and a modern approach to social service.
+                {t.ch3.text}
               </p>
               <div className="flex gap-4 items-center text-primary font-bold">
                 <div className="w-12 h-0.5 bg-primary"></div>
-                <span>Driven by Youth & Intelligence</span>
+                <span>{t.ch3.tag}</span>
               </div>
             </motion.div>
             <motion.div
@@ -231,7 +234,7 @@ export default function About() {
               <div className="aspect-video rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white dark:border-surface-container-high bg-surface-container-low">
                 <img
                   src={fullTeam}
-                  alt="Maitri Welfare Foundation Team"
+                  alt={t.ch3.alt}
                   className="w-full h-full object-contain"
                 />
               </div>
@@ -251,9 +254,9 @@ export default function About() {
             viewport={{ once: true }}
             variants={fadeInUp}
           >
-            <h2 className="text-4xl font-bold mb-6">Our Core Values</h2>
+            <h2 className="text-4xl font-bold mb-6">{t.valuesTitle}</h2>
             <p className="text-on-ink/80">
-              The principles that guide every decision we make and every project we undertake.
+              {t.valuesText}
             </p>
           </motion.div>
 
@@ -265,21 +268,9 @@ export default function About() {
             viewport={{ once: true }}
           >
             {[
-              {
-                icon: Shield,
-                title: "Transparency",
-                desc: "We maintain 100% financial and operational transparency with our donors and beneficiaries."
-              },
-              {
-                icon: Heart,
-                title: "Compassion",
-                desc: "Empathy drives our initiatives. We listen, understand, and act with genuine care."
-              },
-              {
-                icon: Globe,
-                title: "Sustainability",
-                desc: "Our solutions are designed to be long-lasting and environmentally conscious."
-              }
+              { icon: Shield, ...t.values[0] },
+              { icon: Heart, ...t.values[1] },
+              { icon: Globe, ...t.values[2] }
             ].map((value, idx) => (
               <motion.div
                 key={idx}
@@ -307,13 +298,13 @@ export default function About() {
           viewport={{ once: true }}
           variants={fadeInUp}
         >
-          <h2 className="text-3xl font-bold text-primary mb-16">The Impact We've Made</h2>
+          <h2 className="text-3xl font-bold text-primary mb-16">{t.impactTitle}</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { number: "5k+", label: "Lives Impacted" },
-              { number: "120+", label: "Projects Done" },
-              { number: "5+", label: "Cities Reached" },
-              { number: "200+", label: "Volunteers" }
+              { number: "5k+", label: t.stats[0] },
+              { number: "120+", label: t.stats[1] },
+              { number: "5+", label: t.stats[2] },
+              { number: "200+", label: t.stats[3] }
             ].map((stat, idx) => (
               <motion.div
                 key={idx}

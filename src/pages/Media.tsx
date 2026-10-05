@@ -8,6 +8,8 @@ import kakade from '../assets/awards/kakade.webp';
 import news1 from '../assets/news/new1.webp';
 import news2 from '../assets/news/news2.webp';
 import news3 from '../assets/news/news3.webp';
+import { useT } from '../i18n/LanguageContext';
+import { mediaDict } from '../i18n/pages/media';
 
 // Sample data for News & Newsletters
 const newsItems = [
@@ -53,6 +55,8 @@ const itemVariants = {
 
 export default function Media() {
   const [selectedNews, setSelectedNews] = useState<typeof newsItems[0] | null>(null);
+  const t = useT(mediaDict);
+  const selectedText = selectedNews ? t.news[newsItems.indexOf(selectedNews)] : null;
 
   return (
     <div className="pt-20">
@@ -70,9 +74,9 @@ export default function Media() {
         </div>
         <div className="relative z-10 max-w-4xl mx-auto px-6">
           <motion.div initial="hidden" animate="visible" variants={containerVariants}>
-            <motion.h1 variants={itemVariants} className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6 leading-[1.1]">News & Media</motion.h1>
+            <motion.h1 variants={itemVariants} className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6 leading-[1.1]">{t.heroTitle}</motion.h1>
             <motion.p variants={itemVariants} className="text-base sm:text-lg md:text-xl opacity-90 leading-relaxed max-w-2xl mx-auto font-medium">
-              Stay updated with our latest news coverage and media highlights as we continue to make a difference.
+              {t.heroBody}
             </motion.p>
           </motion.div>
         </div>
@@ -82,7 +86,7 @@ export default function Media() {
       <section className="py-24 max-w-7xl mx-auto px-6">
         <div className="flex items-center gap-4 mb-16">
           <div className="w-12 h-1 bg-secondary rounded-full"></div>
-          <h2 className="text-3xl font-bold text-primary uppercase tracking-tight">Media Highlights</h2>
+          <h2 className="text-3xl font-bold text-primary uppercase tracking-tight">{t.highlightsTitle}</h2>
         </div>
 
         <motion.div 
@@ -100,25 +104,25 @@ export default function Media() {
               className="bg-surface-container-low rounded-3xl overflow-hidden border border-outline-variant shadow-sm hover:shadow-xl transition-all group"
             >
               <div className="aspect-video overflow-hidden relative">
-                <img src={item.image} alt={item.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                <img src={item.image} alt={t.news[idx].title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                 <div className="absolute top-4 left-4 bg-primary text-on-primary px-4 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest">
-                  {item.source}
+                  {t.news[idx].source}
                 </div>
               </div>
               <div className="p-8">
                 <div className="flex items-center gap-2 text-secondary font-bold text-xs mb-4 uppercase tracking-widest">
                   <Calendar className="w-4 h-4" />
-                  {item.date}
+                  {t.news[idx].date}
                 </div>
-                <h3 className="text-2xl font-bold text-primary mb-4 leading-tight">{item.title}</h3>
-                <p className="text-on-surface-variant text-sm leading-relaxed line-clamp-3 mb-6">
-                  {item.desc}
+                <h3 className="text-2xl font-bold text-primary mb-4 leading-tight">{t.news[idx].title}</h3>
+                <p className="text-on-surface-variant text-sm leading-relaxed line-clamp-3 mb-6" title={t.news[idx].desc}>
+                  {t.news[idx].desc}
                 </p>
                 <button 
                   onClick={() => setSelectedNews(item)}
                   className="text-primary font-bold text-sm flex items-center gap-2 hover:gap-3 transition-all cursor-pointer"
                 >
-                  Read Full Story <ExternalLink className="w-4 h-4" />
+                  {t.readFull} <ExternalLink className="w-4 h-4" />
                 </button>
               </div>
             </motion.div>
@@ -137,12 +141,12 @@ export default function Media() {
           viewport={{ once: true }}
         >
           <div className="relative z-10">
-            <h2 className="text-2xl sm:text-4xl font-bold mb-8">For Media Inquiries</h2>
+            <h2 className="text-2xl sm:text-4xl font-bold mb-8">{t.inquiriesTitle}</h2>
             <p className="text-lg opacity-80 max-w-2xl mx-auto mb-12 leading-relaxed">
-              Are you a journalist or researcher interested in our work? Get in touch for high-res photos, interviews, or press kits.
+              {t.inquiriesBody}
             </p>
             <Link to="/contact" className="bg-secondary-container text-on-secondary-container px-12 py-4 rounded-full font-bold text-lg hover:shadow-2xl hover:scale-105 transition-all inline-block">
-              Contact Media Desk
+              {t.contactDesk}
             </Link>
           </div>
         </motion.div>
@@ -167,6 +171,7 @@ export default function Media() {
             >
               <button 
                 onClick={() => setSelectedNews(null)}
+                aria-label={t.close}
                 className="absolute top-6 right-6 p-2 bg-surface-container-low/80 backdrop-blur-md rounded-full shadow-lg z-10 hover:bg-surface-container-low transition-colors cursor-pointer"
               >
                 <X className="w-6 h-6 text-primary" />
@@ -174,30 +179,29 @@ export default function Media() {
               <div className="w-full lg:w-3/5 bg-surface-container flex items-center justify-center p-6 lg:p-12 overflow-hidden">
                 <img 
                   src={selectedNews.image} 
-                  alt={selectedNews.title} 
+                  alt={selectedText?.title} 
                   className="max-w-full max-h-full object-contain rounded-2xl shadow-xl" 
                 />
               </div>
               <div className="w-full lg:w-2/5 p-8 lg:p-12 overflow-y-auto bg-surface-container-low">
                 <div className="flex items-center gap-3 text-secondary font-bold text-[10px] mb-6 uppercase tracking-widest">
                   <Calendar className="w-5 h-5" />
-                  {selectedNews.date}
+                  {selectedText?.date}
                   <span className="text-on-surface-variant/30">•</span>
-                  <span>{selectedNews.source}</span>
+                  <span>{selectedText?.source}</span>
                 </div>
-                <h2 className="text-3xl font-bold text-primary mb-8 leading-tight">{selectedNews.title}</h2>
+                <h2 className="text-3xl font-bold text-primary mb-8 leading-tight">{selectedText?.title}</h2>
                 <div className="space-y-6 text-on-surface-variant leading-relaxed text-base font-medium">
-                  <p>{selectedNews.desc}</p>
+                  <p>{selectedText?.desc}</p>
                   <p>
-                    This media coverage highlights our foundation's commitment to humanitarian causes and community development. 
-                    Through collaborative efforts with local trusts and generous donors, we continue to strive for a positive impact on society.
+                    {t.modalBody}
                   </p>
                   <div className="pt-8 border-t border-outline-variant/30 flex flex-col gap-4">
                     <p className="text-sm font-bold text-primary">
-                      Source: {selectedNews.source}
+                      {t.sourceLabel}{selectedText?.source}
                     </p>
                     <Link to="/contact" onClick={() => setSelectedNews(null)} className="text-secondary font-bold text-sm hover:underline">
-                      Have a news lead? Contact us &rarr;
+                      {t.newsLead}
                     </Link>
                   </div>
                 </div>
